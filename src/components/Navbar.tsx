@@ -26,13 +26,13 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`fixed top-6 inset-x-0 z-50 transition-all duration-300 ${scrolled ? 'top-4' : 'top-6'}`}>
+    <nav className={`fixed top-6 inset-x-0 z-50 ${scrolled ? 'top-4' : 'top-6'}`}>
       <div className="max-w-[1200px] mx-auto px-4">
-        {/* The main Navbar Pill that expands - Ultra-Compact */}
+        {/* The main Navbar Pill that expands - NO ANIMATION AT ALL */}
         <div 
           className={`bg-white/80 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.04)] overflow-hidden ${
             isMobileMenuOpen 
-              ? 'rounded-[24px] p-5' 
+              ? 'rounded-[24px] p-5 h-auto' 
               : 'rounded-full md:rounded-[32px] px-4 md:px-6 py-1.5 md:py-2 h-[52px]'
           }`}
         >
@@ -53,15 +53,15 @@ export default function Navbar() {
             <div className="hidden md:flex items-center gap-1">
               {navLinks.map((link) => (
                 <div key={link.name} className="relative group/menu">
-                  <Link href="#" className="flex items-center gap-1 text-[14px] font-medium text-zinc-600 hover:text-black hover:bg-zinc-100/60 px-3 py-1.5 rounded-full transition-all cursor-pointer">
+                  <Link href="#" className="flex items-center gap-1 text-[14px] font-medium text-zinc-600 hover:text-black hover:bg-zinc-100/60 px-3 py-1.5 rounded-full cursor-pointer">
                     {link.name}
-                    {link.hasDropdown && <ChevronDown size={12} className="opacity-40 group-hover/menu:rotate-180 transition-transform duration-300" />}
+                    {link.hasDropdown && <ChevronDown size={12} className="opacity-40" />}
                   </Link>
                   {link.hasDropdown && (
-                    <div className="absolute top-full left-0 mt-3 w-44 bg-white border border-zinc-100 rounded-xl shadow-xl opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all duration-300 translate-y-1 group-hover/menu:translate-y-0 p-1.5">
-                      <Link href="#" className="block px-3 py-1.5 text-[13px] text-zinc-600 hover:text-black hover:bg-zinc-50 rounded-lg transition-colors">About Us</Link>
-                      <Link href="#" className="block px-3 py-1.5 text-[13px] text-zinc-600 hover:text-black hover:bg-zinc-50 rounded-lg transition-colors">Our Team</Link>
-                      <Link href="#" className="block px-3 py-1.5 text-[13px] text-zinc-600 hover:text-black hover:bg-zinc-50 rounded-lg transition-colors">Careers</Link>
+                    <div className="absolute top-full left-0 mt-3 w-44 bg-white border border-zinc-100 rounded-xl shadow-xl opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible p-1.5">
+                      <Link href="#" className="block px-3 py-1.5 text-[13px] text-zinc-600 hover:text-black hover:bg-zinc-50 rounded-lg">About Us</Link>
+                      <Link href="#" className="block px-3 py-1.5 text-[13px] text-zinc-600 hover:text-black hover:bg-zinc-50 rounded-lg">Our Team</Link>
+                      <Link href="#" className="block px-3 py-1.5 text-[13px] text-zinc-600 hover:text-black hover:bg-zinc-50 rounded-lg">Careers</Link>
                     </div>
                   )}
                 </div>
@@ -70,17 +70,17 @@ export default function Navbar() {
 
             {/* Desktop CTA Button */}
             <div className="hidden md:block">
-              <Link href="#" className="group flex items-center bg-[#09090b] text-white pl-5 pr-1.5 py-1 rounded-full font-medium text-[13px] hover:bg-black transition-all">
+              <Link href="#" className="group flex items-center bg-[#09090b] text-white pl-5 pr-1.5 py-1 rounded-full font-medium text-[13px] hover:bg-black">
                 <div className="flex items-center gap-2.5">
                   <span>Book a Call</span>
-                  <div className="bg-white/10 p-1.5 rounded-full group-hover:bg-white/20 transition-all flex items-center justify-center">
-                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  <div className="bg-white/10 p-1.5 rounded-full group-hover:bg-white/20 flex items-center justify-center">
+                    <ArrowRight size={14} className="group-hover:translate-x-1" />
                   </div>
                 </div>
               </Link>
             </div>
 
-            {/* Mobile Menu Toggle - No Animation */}
+            {/* Mobile Menu Toggle - Static Hamburger */}
             <div className="md:hidden">
               <button 
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -91,7 +91,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Morphing Mobile Content - Ultra-Compact */}
+          {/* Morphing Mobile Content - Instant Display (ZERO ANIMATION) */}
           {isMobileMenuOpen && (
             <div className="md:hidden mt-5 flex flex-col gap-1">
               {navLinks.map((link) => (
@@ -100,10 +100,10 @@ export default function Navbar() {
                     <div className="flex flex-col">
                       <button 
                         onClick={() => setIsCompanyOpen(!isCompanyOpen)}
-                        className="flex items-center justify-between px-2 py-2 hover:bg-zinc-50 rounded-lg transition-colors font-medium text-zinc-600 hover:text-black text-[15px] w-full"
+                        className="flex items-center justify-between px-2 py-2 hover:bg-zinc-50 rounded-lg font-medium text-zinc-600 hover:text-black text-[15px] w-full"
                       >
                         {link.name}
-                        <ChevronDown size={12} className={`opacity-40 transition-transform ${isCompanyOpen ? 'rotate-180' : ''}`} />
+                        <ChevronDown size={12} className={`opacity-40 ${isCompanyOpen ? 'rotate-180' : ''}`} />
                       </button>
                       {isCompanyOpen && (
                         <div className="flex flex-col pl-4 gap-0.5 mt-0.5 pb-1.5">
@@ -116,7 +116,7 @@ export default function Navbar() {
                   ) : (
                     <Link 
                       href="#" 
-                      className="flex items-center justify-between px-2 py-2 hover:bg-zinc-50 rounded-lg transition-colors font-medium text-zinc-600 hover:text-black text-[15px]"
+                      className="flex items-center justify-between px-2 py-2 hover:bg-zinc-50 rounded-lg font-medium text-zinc-600 hover:text-black text-[15px]"
                     >
                       {link.name}
                     </Link>
@@ -124,9 +124,9 @@ export default function Navbar() {
                 </div>
               ))}
               <div className="h-[1px] bg-zinc-100/50 my-1.5" />
-              <Link href="#" className="group flex items-center justify-between bg-[#09090b] text-white pl-5 pr-1 py-1 rounded-full font-semibold text-[15px] hover:bg-black transition-all w-full leading-relaxed">
+              <Link href="#" className="group flex items-center justify-between bg-[#09090b] text-white pl-5 pr-1 py-1 rounded-full font-semibold text-[15px] hover:bg-black w-full leading-relaxed">
                 <span>Book a Call</span>
-                <div className="bg-white/10 p-1.5 rounded-full group-hover:bg-white/20 transition-all flex items-center justify-center">
+                <div className="bg-white/10 p-1.5 rounded-full group-hover:bg-white/20 flex items-center justify-center">
                   <ArrowRight size={16} />
                 </div>
               </Link>
