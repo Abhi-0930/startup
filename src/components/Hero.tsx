@@ -2,35 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Star, ChevronRight } from "lucide-react";
-
-const testimonials = [
-  {
-    name: "Marcus T.",
-    text: "Helped me go live in days, not weeks—highly recommend.",
-    position: "top-left",
-  },
-  {
-    name: "Nora S.",
-    text: "The updates and attention to detail are unmatched.",
-    position: "middle-left",
-  },
-  {
-    name: "Daniel K.",
-    text: "Super smooth experience—launched my site in no time!",
-    position: "top-right",
-  },
-  {
-    name: "Amelia R.",
-    text: "Beautiful template, easy to customize, and worth every penny.",
-    position: "middle-right",
-  },
-  {
-    name: "Leo M.",
-    text: "Exactly what I needed to kickstart my SaaS project fast.",
-    position: "bottom-right",
-  },
-];
+import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -55,7 +27,7 @@ export default function Hero() {
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link href="#" className="group flex items-center bg-[#09090b] text-white pl-8 pr-2 py-2 rounded-full font-semibold text-[16px] hover:bg-black transition-all">
             <div className="flex items-center gap-4">
               <span>Book A Call</span>
@@ -67,52 +39,6 @@ export default function Hero() {
           <Link href="#" className="px-8 py-4 rounded-full bg-white border border-zinc-200 text-zinc-900 font-semibold text-[16px] hover:bg-zinc-50 transition-all shadow-sm">
             View Projects
           </Link>
-        </div>
-
-        {/* Social Proof */}
-        <div className="flex flex-col items-center gap-3">
-          <div className="flex -space-x-3">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-zinc-100 overflow-hidden shadow-sm">
-                <div className="w-full h-full bg-gradient-to-br from-zinc-200 to-zinc-300" />
-              </div>
-            ))}
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="flex gap-0.5 text-zinc-900 mb-1">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <Star key={i} size={14} fill="currentColor" />
-              ))}
-            </div>
-            <span className="text-[13px] font-medium text-zinc-500">From 150+ reviews</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Floating Testimonial Cards - Desktop Only */}
-      <div className="hidden lg:block absolute inset-0 pointer-events-none select-none overflow-hidden">
-        {/* Left Side */}
-        <div className="absolute top-[20%] left-[5%] max-w-[200px] bg-white p-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-zinc-100/50">
-          <p className="text-[13px] text-zinc-600 leading-relaxed mb-3">"{testimonials[0].text}"</p>
-          <span className="text-[12px] font-bold text-zinc-900">— {testimonials[0].name}</span>
-        </div>
-        <div className="absolute top-[50%] left-[2%] max-w-[220px] bg-white p-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-zinc-100/50">
-          <p className="text-[14px] text-zinc-600 leading-relaxed mb-3">"{testimonials[1].text}"</p>
-          <span className="text-[12px] font-bold text-zinc-900">— {testimonials[1].name}</span>
-        </div>
-
-        {/* Right Side */}
-        <div className="absolute top-[15%] right-[5%] max-w-[200px] bg-white p-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-zinc-100/50">
-          <p className="text-[13px] text-zinc-600 leading-relaxed mb-3">"{testimonials[2].text}"</p>
-          <span className="text-[12px] font-bold text-zinc-900">— {testimonials[2].name}</span>
-        </div>
-        <div className="absolute top-[40%] right-[2%] max-w-[220px] bg-white p-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-zinc-100/50">
-          <p className="text-[14px] text-zinc-600 leading-relaxed mb-3">"{testimonials[3].text}"</p>
-          <span className="text-[12px] font-bold text-zinc-900">— {testimonials[3].name}</span>
-        </div>
-        <div className="absolute bottom-[20%] right-[6%] max-w-[210px] bg-white p-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-zinc-100/50">
-          <p className="text-[13px] text-zinc-600 leading-relaxed mb-3">"{testimonials[4].text}"</p>
-          <span className="text-[12px] font-bold text-zinc-900">— {testimonials[4].name}</span>
         </div>
       </div>
 
