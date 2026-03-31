@@ -79,11 +79,7 @@ export default function Navbar() {
                 onClick={() => setIsMobileMenuOpen(true)}
                 className="bg-[#09090b] rounded-full text-white shadow-lg flex items-center justify-center w-10 h-10 transition-transform active:scale-95"
               >
-                <div className="flex flex-col gap-1.2 items-end mt-[1px]">
-                  <div className="w-4 h-[1.5px] bg-white rounded-full"></div>
-                  <div className="w-5 h-[1.5px] bg-white rounded-full"></div>
-                  <div className="w-3 h-[1.5px] bg-white rounded-full"></div>
-                </div>
+                <Menu size={20} strokeWidth={2.5} />
               </button>
             </div>
           </div>
@@ -113,7 +109,7 @@ export default function Navbar() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="bg-[#09090b] rounded-full text-white shadow-lg flex items-center justify-center w-10 h-10 relative active:scale-95 transition-transform"
                 >
-                  <div className="w-4 h-[1.5px] bg-white rounded-full"></div>
+                  <X size={20} strokeWidth={2.5} />
                 </button>
               </div>
 
@@ -135,10 +131,10 @@ export default function Navbar() {
               </div>
 
               {/* Mobile CTA */}
-              <Link href="#" className="group flex items-center justify-between bg-[#09090b] text-white pl-8 pr-2 py-2 rounded-full font-semibold text-lg hover:bg-black transition-all mt-auto w-full">
+              <Link href="#" className="group flex items-center justify-between bg-[#09090b] text-white pl-8 pr-1 py-1 rounded-full font-semibold text-lg hover:bg-black transition-all mt-auto w-full">
                 <span>Book a Call</span>
-                <div className="bg-white/10 p-3 rounded-full group-hover:bg-white/20 transition-all flex items-center justify-center">
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                <div className="bg-white/10 p-2 rounded-full group-hover:bg-white/20 transition-all flex items-center justify-center">
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </Link>
             </div>
