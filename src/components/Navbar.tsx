@@ -76,66 +76,44 @@ export default function Navbar() {
             {/* Mobile Menu Toggle */}
             <div className="md:hidden">
               <button 
-                onClick={() => setIsMobileMenuOpen(true)}
-                className="bg-[#09090b] rounded-full text-white shadow-lg flex items-center justify-center w-10 h-10 transition-transform active:scale-95"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="bg-[#09090b] rounded-full text-white shadow-lg flex items-center justify-center w-10 h-10 transition-all active:scale-95"
               >
-                <Menu size={20} strokeWidth={2.5} />
+                {isMobileMenuOpen ? (
+                  <X size={20} strokeWidth={2.5} />
+                ) : (
+                  <Menu size={20} strokeWidth={2.5} />
+                )}
               </button>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Dropdown */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            className="fixed inset-0 z-[60] p-4 bg-black/20 backdrop-blur-sm"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden fixed top-20 inset-x-4 z-[60] overflow-hidden"
           >
-            <div className="w-full h-full bg-white rounded-[32px] p-6 flex flex-col relative shadow-2xl overflow-hidden">
-              {/* Mobile Header */}
-              <div className="flex items-center justify-between mb-12">
-                <Image
-                  src="/zerogrid-logo-bg-remove.png"
-                  alt="Zerogrid Logo"
-                  width={140}
-                  height={32}
-                  className="h-8 w-auto object-contain"
-                />
-                <button 
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="bg-[#09090b] rounded-full text-white shadow-lg flex items-center justify-center w-10 h-10 relative active:scale-95 transition-transform"
+            <div className="bg-white rounded-[24px] p-4 shadow-xl border border-zinc-100 flex flex-col gap-2">
+              {navLinks.map((link) => (
+                <Link 
+                  key={link.name} 
+                  href="#" 
+                  className="flex items-center justify-between px-4 py-3 hover:bg-zinc-50 rounded-xl transition-colors font-medium text-zinc-600 hover:text-black"
                 >
-                  <X size={20} strokeWidth={2.5} />
-                </button>
-              </div>
-
-              {/* Vertical Nav Links */}
-              <div className="flex flex-col gap-6 flex-1">
-                {navLinks.map((link) => (
-                  <Link 
-                    key={link.name} 
-                    href="#" 
-                    className="flex items-center justify-between p-4 bg-zinc-50 rounded-2xl border border-zinc-100/50 hover:bg-zinc-100 transition-colors"
-                  >
-                    <div className="flex items-center gap-4 text-zinc-900 font-medium text-lg">
-                      <span className="text-zinc-400">{link.icon}</span>
-                      {link.name}
-                    </div>
-                    {link.hasDropdown && <ChevronDown size={18} className="text-zinc-400" />}
-                  </Link>
-                ))}
-              </div>
-
-              {/* Mobile CTA */}
-              <Link href="#" className="group flex items-center justify-between bg-[#09090b] text-white pl-8 pr-1 py-1 rounded-full font-semibold text-lg hover:bg-black transition-all mt-auto w-full">
+                  {link.name}
+                  {link.hasDropdown && <ChevronDown size={14} className="opacity-50" />}
+                </Link>
+              ))}
+              <div className="h-[1px] bg-zinc-100 my-2" />
+              <Link href="#" className="flex items-center justify-between bg-[#09090b] text-white px-6 py-3 rounded-full font-semibold hover:bg-black transition-all">
                 <span>Book a Call</span>
-                <div className="bg-white/10 p-2 rounded-full group-hover:bg-white/20 transition-all flex items-center justify-center">
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </div>
+                <ArrowRight size={18} />
               </Link>
             </div>
           </motion.div>
