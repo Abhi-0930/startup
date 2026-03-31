@@ -2,13 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, ArrowRight, Menu, X, LayoutGrid, Folder, Briefcase, User } from "lucide-react";
+import { ChevronDown, ArrowRight, Menu } from "lucide-react";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isCompanyOpen, setIsCompanyOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,42 +19,49 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Company", icon: <LayoutGrid size={20} />, hasDropdown: true },
-    { name: "Services", icon: <Briefcase size={20} /> },
-    { name: "Projects", icon: <Folder size={20} /> },
-    { name: "Contact", icon: <User size={20} /> },
+    { name: "Company", hasDropdown: true },
+    { name: "Services" },
+    { name: "Projects" },
+    { name: "Contact" },
   ];
 
   return (
-    <>
-      <nav className={`fixed top-6 inset-x-0 z-50 transition-all duration-300 ${scrolled ? 'top-4' : 'top-6'}`}>
-        <div className="max-w-[1200px] mx-auto px-4">
-          <div className="bg-white/80 backdrop-blur-xl border border-white/20 rounded-full md:rounded-[40px] px-4 md:px-8 py-2 md:py-3 flex items-center justify-between shadow-[0_8px_32px_rgba(0,0,0,0.04)]">
-            {/* Logo */}
+    <nav className={`fixed top-6 inset-x-0 z-50 transition-all duration-300 ${scrolled ? 'top-4' : 'top-6'}`}>
+      <div className="max-w-[1200px] mx-auto px-4">
+        {/* The main Navbar Pill that expands - Ultra-Compact */}
+        <div 
+          className={`bg-white/80 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.04)] overflow-hidden ${
+            isMobileMenuOpen 
+              ? 'rounded-[24px] p-5' 
+              : 'rounded-full md:rounded-[32px] px-4 md:px-6 py-1.5 md:py-2 h-[52px]'
+          }`}
+        >
+          {/* Header row (Logo + Toggle) */}
+          <div className="flex items-center justify-between h-9 md:h-8">
             <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/zerogrid-logo-bg-remove.png"
                 alt="Zerogrid Logo"
-                width={140}
-                height={32}
-                className="h-8 w-auto object-contain"
+                width={100}
+                height={24}
+                className="h-6 w-auto object-contain"
                 priority
               />
             </Link>
 
             {/* Desktop Navigation Links */}
-            <div className="hidden md:flex items-center gap-2">
+            <div className="hidden md:flex items-center gap-1">
               {navLinks.map((link) => (
                 <div key={link.name} className="relative group/menu">
-                  <Link href="#" className="flex items-center gap-1 text-[15px] font-medium text-zinc-600 hover:text-black hover:bg-zinc-100/80 px-4 py-2 rounded-full transition-all cursor-pointer">
+                  <Link href="#" className="flex items-center gap-1 text-[14px] font-medium text-zinc-600 hover:text-black hover:bg-zinc-100/60 px-3 py-1.5 rounded-full transition-all cursor-pointer">
                     {link.name}
-                    {link.hasDropdown && <ChevronDown size={14} className="opacity-50 group-hover/menu:rotate-180 transition-transform duration-300" />}
+                    {link.hasDropdown && <ChevronDown size={12} className="opacity-40 group-hover/menu:rotate-180 transition-transform duration-300" />}
                   </Link>
                   {link.hasDropdown && (
-                    <div className="absolute top-full left-0 mt-4 w-48 bg-white border border-zinc-100 rounded-2xl shadow-xl opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all duration-300 translate-y-2 group-hover/menu:translate-y-0 p-2">
-                      <Link href="#" className="block px-4 py-2 text-[14px] text-zinc-600 hover:text-black hover:bg-zinc-50 rounded-xl transition-colors">About Us</Link>
-                      <Link href="#" className="block px-4 py-2 text-[14px] text-zinc-600 hover:text-black hover:bg-zinc-50 rounded-xl transition-colors">Our Team</Link>
-                      <Link href="#" className="block px-4 py-2 text-[14px] text-zinc-600 hover:text-black hover:bg-zinc-50 rounded-xl transition-colors">Careers</Link>
+                    <div className="absolute top-full left-0 mt-3 w-44 bg-white border border-zinc-100 rounded-xl shadow-xl opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all duration-300 translate-y-1 group-hover/menu:translate-y-0 p-1.5">
+                      <Link href="#" className="block px-3 py-1.5 text-[13px] text-zinc-600 hover:text-black hover:bg-zinc-50 rounded-lg transition-colors">About Us</Link>
+                      <Link href="#" className="block px-3 py-1.5 text-[13px] text-zinc-600 hover:text-black hover:bg-zinc-50 rounded-lg transition-colors">Our Team</Link>
+                      <Link href="#" className="block px-3 py-1.5 text-[13px] text-zinc-600 hover:text-black hover:bg-zinc-50 rounded-lg transition-colors">Careers</Link>
                     </div>
                   )}
                 </div>
@@ -63,62 +70,70 @@ export default function Navbar() {
 
             {/* Desktop CTA Button */}
             <div className="hidden md:block">
-              <Link href="#" className="group flex items-center bg-[#09090b] text-white pl-6 pr-1.5 py-1.5 rounded-full font-medium text-[14px] hover:bg-black transition-all">
-                <div className="flex items-center gap-3">
+              <Link href="#" className="group flex items-center bg-[#09090b] text-white pl-5 pr-1.5 py-1 rounded-full font-medium text-[13px] hover:bg-black transition-all">
+                <div className="flex items-center gap-2.5">
                   <span>Book a Call</span>
-                  <div className="bg-white/10 p-2 rounded-full group-hover:bg-white/20 transition-all flex items-center justify-center">
-                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  <div className="bg-white/10 p-1.5 rounded-full group-hover:bg-white/20 transition-all flex items-center justify-center">
+                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
               </Link>
             </div>
 
-            {/* Mobile Menu Toggle */}
+            {/* Mobile Menu Toggle - No Animation */}
             <div className="md:hidden">
               <button 
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="bg-[#09090b] rounded-full text-white shadow-lg flex items-center justify-center w-10 h-10 transition-all active:scale-95"
+                className="bg-[#09090b] rounded-full text-white shadow-lg flex items-center justify-center w-9 h-9"
               >
-                {isMobileMenuOpen ? (
-                  <X size={20} strokeWidth={2.5} />
-                ) : (
-                  <Menu size={20} strokeWidth={2.5} />
-                )}
+                <Menu size={18} strokeWidth={2.5} />
               </button>
             </div>
           </div>
-        </div>
-      </nav>
 
-      {/* Mobile Menu Dropdown */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden fixed top-20 inset-x-4 z-[60] overflow-hidden"
-          >
-            <div className="bg-white rounded-[24px] p-4 shadow-xl border border-zinc-100 flex flex-col gap-2">
+          {/* Morphing Mobile Content - Ultra-Compact */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden mt-5 flex flex-col gap-1">
               {navLinks.map((link) => (
-                <Link 
-                  key={link.name} 
-                  href="#" 
-                  className="flex items-center justify-between px-4 py-3 hover:bg-zinc-50 rounded-xl transition-colors font-medium text-zinc-600 hover:text-black"
-                >
-                  {link.name}
-                  {link.hasDropdown && <ChevronDown size={14} className="opacity-50" />}
-                </Link>
+                <div key={link.name}>
+                  {link.hasDropdown ? (
+                    <div className="flex flex-col">
+                      <button 
+                        onClick={() => setIsCompanyOpen(!isCompanyOpen)}
+                        className="flex items-center justify-between px-2 py-2 hover:bg-zinc-50 rounded-lg transition-colors font-medium text-zinc-600 hover:text-black text-[15px] w-full"
+                      >
+                        {link.name}
+                        <ChevronDown size={12} className={`opacity-40 transition-transform ${isCompanyOpen ? 'rotate-180' : ''}`} />
+                      </button>
+                      {isCompanyOpen && (
+                        <div className="flex flex-col pl-4 gap-0.5 mt-0.5 pb-1.5">
+                          <Link href="#" className="py-1.5 text-[14px] text-zinc-500 hover:text-black">About Us</Link>
+                          <Link href="#" className="py-1.5 text-[14px] text-zinc-500 hover:text-black">Our Team</Link>
+                          <Link href="#" className="py-1.5 text-[14px] text-zinc-500 hover:text-black">Careers</Link>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <Link 
+                      href="#" 
+                      className="flex items-center justify-between px-2 py-2 hover:bg-zinc-50 rounded-lg transition-colors font-medium text-zinc-600 hover:text-black text-[15px]"
+                    >
+                      {link.name}
+                    </Link>
+                  )}
+                </div>
               ))}
-              <div className="h-[1px] bg-zinc-100 my-2" />
-              <Link href="#" className="flex items-center justify-between bg-[#09090b] text-white px-6 py-3 rounded-full font-semibold hover:bg-black transition-all">
+              <div className="h-[1px] bg-zinc-100/50 my-1.5" />
+              <Link href="#" className="group flex items-center justify-between bg-[#09090b] text-white pl-5 pr-1 py-1 rounded-full font-semibold text-[15px] hover:bg-black transition-all w-full leading-relaxed">
                 <span>Book a Call</span>
-                <ArrowRight size={18} />
+                <div className="bg-white/10 p-1.5 rounded-full group-hover:bg-white/20 transition-all flex items-center justify-center">
+                  <ArrowRight size={16} />
+                </div>
               </Link>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+          )}
+        </div>
+      </div>
+    </nav>
   );
 }
