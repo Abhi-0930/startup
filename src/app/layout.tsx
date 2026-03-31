@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import localFont from "next/font/local";
+import { Geist, Geist_Mono, Outfit } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,7 +12,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const satoshi = localFont({
+// Using Outfit as a stable fallback for Satoshi in Next 16 Turbopack
+const satoshi = Outfit({
+  variable: "--font-satoshi",
+  subsets: ["latin"],
+  weight: ["300", "400", "700"],
+});
+
+/* 
+// Potential Turbopack bug with next/font/local in Next 16.2.1
+const satoshiLocal = localFont({
   src: [
     {
       path: "./fonts/Satoshi-Regular.woff2",
@@ -33,6 +41,7 @@ const satoshi = localFont({
   ],
   variable: "--font-satoshi",
 });
+*/
 
 export const metadata: Metadata = {
   title: "Create Next App",
