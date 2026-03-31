@@ -11,6 +11,8 @@
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-satoshi), var(--font-geist-sans), sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --color-brand-blue: #1d4ed8;
+  --shadow-soft: 0 8px 30px rgb(0,0,0,0.04);
 }
 
 @media (prefers-color-scheme: dark) {

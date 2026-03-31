@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, ArrowRight, Menu } from "lucide-react";
+import { ChevronDown, ArrowRight, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function Navbar() {
@@ -80,13 +80,13 @@ export default function Navbar() {
               </Link>
             </div>
 
-            {/* Mobile Menu Toggle - Static Hamburger */}
+            {/* Mobile Menu Toggle - Static Hamburger/X */}
             <div className="md:hidden">
               <button 
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="bg-[#09090b] rounded-full text-white shadow-lg flex items-center justify-center w-9 h-9"
               >
-                <Menu size={18} strokeWidth={2.5} />
+                {isMobileMenuOpen ? <X size={18} strokeWidth={2.5} /> : <Menu size={18} strokeWidth={2.5} />}
               </button>
             </div>
           </div>
