@@ -30,10 +30,10 @@ export default function Navbar() {
       <div className="max-w-[1200px] mx-auto px-4">
         {/* The main Navbar Pill that expands - NO ANIMATION AT ALL */}
         <div 
-          className={`bg-white/80 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.04)] ${
+          className={`bg-white/80 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.04)] transition-all duration-500 ease ${
             isMobileMenuOpen 
-              ? 'rounded-[24px] p-5 h-auto overflow-hidden' 
-              : 'rounded-full md:rounded-[32px] px-4 md:px-6 py-1.5 md:py-2 h-[52px]'
+              ? 'rounded-[24px] p-5' 
+              : 'rounded-full md:rounded-[32px] px-3.5 md:px-6 py-2 md:py-2.5'
           }`}
         >
           {/* Header row (Logo + Toggle) */}
@@ -143,23 +143,30 @@ export default function Navbar() {
             <div className="md:hidden">
               <button 
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="bg-[#09090b] rounded-full text-white shadow-lg flex items-center justify-center w-9 h-9 overflow-hidden"
+                className="bg-[#09090b] rounded-full text-white shadow-lg flex items-center justify-center w-[44px] h-[32px] overflow-hidden"
               >
-                <Image 
-                  key={isMobileMenuOpen ? "close" : "open"}
-                  src={isMobileMenuOpen ? "/hamburger-close.png" : "/hamburger.png"}
-                  alt={isMobileMenuOpen ? "Close Menu" : "Open Menu"}
-                  width={isMobileMenuOpen ? 20 : 22}
-                  height={isMobileMenuOpen ? 20 : 22}
-                  className="object-contain"
+                <img 
+                  src="/hamburger.png" 
+                  alt="Open Menu" 
+                  className={`object-contain w-6 h-6 ${isMobileMenuOpen ? 'hidden' : 'block'}`}
+                />
+                <img 
+                  src="/hamburger-close.png" 
+                  alt="Close Menu" 
+                  className={`object-contain w-[18px] h-[18px] ${isMobileMenuOpen ? 'block' : 'hidden'}`}
+                  style={{ filter: 'invert(1) brightness(2)' }}
                 />
               </button>
             </div>
           </div>
 
-          {/* Morphing Mobile Content - Instant Display (ZERO ANIMATION) */}
-          {isMobileMenuOpen && (
-            <div className="md:hidden mt-5 flex flex-col gap-1">
+          {/* Morphing Mobile Content - Smooth Ease Display */}
+          <div 
+            className={`md:hidden grid transition-[grid-template-rows,margin,opacity] duration-500 ease ${
+              isMobileMenuOpen ? 'grid-rows-[1fr] opacity-100 mt-5' : 'grid-rows-[0fr] opacity-0 mt-0 pointer-events-none'
+            }`}
+          >
+            <div className="overflow-hidden flex flex-col gap-1">
               {navLinks.map((link) => (
                 <div key={link.name}>
                   {link.hasDropdown ? (
@@ -199,7 +206,7 @@ export default function Navbar() {
                 </div>
               </Link>
             </div>
-          )}
+          </div>
         </div>
       </div>
     </nav>
