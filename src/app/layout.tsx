@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 const satoshi = Outfit({
   variable: "--font-satoshi",
   subsets: ["latin"],
-  weight: ["300", "400", "700"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 /* 

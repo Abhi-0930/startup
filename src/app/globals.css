@@ -26,12 +26,12 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
 .dark body {
-  background-image: radial-gradient(#1f2937 1px, transparent 1px);
+  background-image: radial-gradient(#374151 1px, transparent 1px);
 }
 
 h1, h2, h3, h4, h5, h6 {
