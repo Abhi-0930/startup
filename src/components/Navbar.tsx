@@ -180,8 +180,8 @@ export default function Navbar() {
                   style={{ animationDelay: `${i * 90 + 50}ms`, animationFillMode: 'both' }}
                 >
                   {link.hasDropdown ? (
-                    <div className="flex flex-col">
-                      <div className={`flex items-center justify-between px-2 py-2 rounded-lg text-[16px] ${isCompanyOpen ? 'text-black' : 'text-zinc-600'}`}>
+                    <div className={`flex flex-col transition-colors duration-300 ${isCompanyOpen ? 'bg-zinc-100 rounded-[24px] pb-5' : ''}`}>
+                      <div className={`flex items-center justify-between rounded-t-[24px] text-[16px] ${isCompanyOpen ? 'text-black px-4 pt-4 pb-1' : 'text-zinc-600 px-2 py-2'}`}>
                         <div className="flex items-center gap-3">
                           {Icon && <Icon size={20} className="text-zinc-400 stroke-[1.5]" />}
                           <Link href="#" className="flex-1 hover:text-black transition-colors">{link.name}</Link>
@@ -195,7 +195,7 @@ export default function Navbar() {
                       </div>
                       
                       {isCompanyOpen && (
-                        <div className="mt-1 bg-zinc-100 rounded-xl p-4 flex flex-col gap-6 animate-slide-up-fade" style={{ animationDelay: '50ms' }}>
+                        <div className="mt-3 px-4 flex flex-col gap-6 animate-slide-up-fade" style={{ animationDelay: '50ms' }}>
                           {/* Company Sub-Group */}
                           <div className="flex flex-col gap-3">
                             <div className="text-[13px] font-medium text-zinc-400 px-1">Company</div>
