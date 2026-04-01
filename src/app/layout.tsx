@@ -13,20 +13,23 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Using Outfit as a stable fallback for Satoshi in Next 16 Turbopack
-const satoshi = Outfit({
-  variable: "--font-satoshi",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-});
+import localFont from "next/font/local";
 
-/* 
-// Potential Turbopack bug with next/font/local in Next 16.2.1
-const satoshiLocal = localFont({
+const satoshi = localFont({
   src: [
+    {
+      path: "./fonts/Satoshi-Light.woff2",
+      weight: "300",
+      style: "normal",
+    },
     {
       path: "./fonts/Satoshi-Regular.woff2",
       weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Satoshi-Medium.woff2",
+      weight: "500",
       style: "normal",
     },
     {
@@ -35,14 +38,13 @@ const satoshiLocal = localFont({
       style: "normal",
     },
     {
-      path: "./fonts/Satoshi-Light.woff2",
-      weight: "300",
+      path: "./fonts/Satoshi-Black.woff2",
+      weight: "900",
       style: "normal",
     },
   ],
   variable: "--font-satoshi",
 });
-*/
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -57,9 +59,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${satoshi.variable} h-full antialiased`}
+      className={`${satoshi.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col font-sans">
         <Navbar />
         {children}
       </body>
