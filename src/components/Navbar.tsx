@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, ArrowRight, Menu, X, Folder, Users } from "lucide-react";
+import { ChevronDown, ArrowRight, Menu, X, Folder, Users, LayoutGrid } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function Navbar() {
@@ -19,18 +19,26 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Company", hasDropdown: true },
-    { name: "Services" },
-    { name: "Projects" },
-    { name: "Contact" },
+    { name: "Company", hasDropdown: true, icon: LayoutGrid },
+    { name: "Projects", icon: Folder },
+    { name: "About us", icon: Users },
   ];
 
   return (
     <nav className={`fixed top-6 inset-x-0 z-50 ${scrolled ? 'top-4' : 'top-6'}`}>
+      {/* Full Screen Blur Overlay (Activates heavily when mobile menu opens) */}
+      <div 
+        className={`fixed inset-0 -z-10 bg-black/10 backdrop-blur-[4px] transition-all duration-300 ease-out md:hidden ${
+          isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+        onClick={() => setIsMobileMenuOpen(false)}
+      />
+
       <div className="max-w-[1200px] mx-auto px-4">
         {/* The main Navbar Pill that expands - NO ANIMATION AT ALL */}
         <div 
-          className={`bg-white/80 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.04)] transition-all duration-500 ease ${
+
+          className={`bg-white/80 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.04)] ${
             isMobileMenuOpen 
               ? 'rounded-[24px] p-5' 
               : 'rounded-full md:rounded-[32px] px-3.5 md:px-6 py-2 md:py-2.5'
@@ -160,53 +168,99 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Morphing Mobile Content - Smooth Ease Display */}
-          <div 
-            className={`md:hidden grid transition-[grid-template-rows,margin,opacity] duration-500 ease ${
-              isMobileMenuOpen ? 'grid-rows-[1fr] opacity-100 mt-5' : 'grid-rows-[0fr] opacity-0 mt-0 pointer-events-none'
-            }`}
-          >
-            <div className="overflow-hidden flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <div key={link.name}>
+          {/* Instant Mobile Content Display (Zero morphing) */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden mt-5 overflow-hidden flex flex-col gap-1">
+              {navLinks.map((link, i) => {
+                const Icon = link.icon;
+                return (
+                <div 
+                  key={link.name}
+                  className="animate-slide-up-fade"
+                  style={{ animationDelay: `${i * 90 + 50}ms`, animationFillMode: 'both' }}
+                >
                   {link.hasDropdown ? (
                     <div className="flex flex-col">
-                      <div className="flex items-center justify-between px-2 py-2 rounded-lg text-zinc-600 font-medium text-[15px]">
-                        <Link href="#" className="flex-1 hover:text-black transition-colors">{link.name}</Link>
+                      <div className={`flex items-center justify-between px-2 py-2 rounded-lg text-[16px] ${isCompanyOpen ? 'text-black' : 'text-zinc-600'}`}>
+                        <div className="flex items-center gap-3">
+                          {Icon && <Icon size={20} className="text-zinc-400 stroke-[1.5]" />}
+                          <Link href="#" className="flex-1 hover:text-black transition-colors">{link.name}</Link>
+                        </div>
                         <button 
                           onClick={() => setIsCompanyOpen(!isCompanyOpen)}
-                          className="p-2 hover:bg-zinc-100 rounded-full transition-colors flex items-center justify-center"
+                          className="p-1.5 hover:bg-zinc-100 rounded-full transition-colors flex items-center justify-center -mr-1"
                         >
-                          <ChevronDown size={14} className={`opacity-60 transition-transform ${isCompanyOpen ? 'rotate-180' : ''}`} />
+                          <ChevronDown size={18} className={`opacity-60 transition-transform ${isCompanyOpen ? 'rotate-180' : ''}`} />
                         </button>
                       </div>
+                      
                       {isCompanyOpen && (
-                        <div className="flex flex-col pl-4 gap-0.5 mt-0.5 pb-1.5">
-                          <Link href="#" className="py-1.5 text-[15px] text-black font-medium">About Us</Link>
-                          <Link href="#" className="py-1.5 text-[15px] text-black font-medium">Our Team</Link>
-                          <Link href="#" className="py-1.5 text-[15px] text-black font-medium">Careers</Link>
+                        <div className="mt-1 bg-zinc-100 rounded-xl p-4 flex flex-col gap-6 animate-slide-up-fade" style={{ animationDelay: '50ms' }}>
+                          {/* Company Sub-Group */}
+                          <div className="flex flex-col gap-3">
+                            <div className="text-[13px] font-medium text-zinc-400 px-1">Company</div>
+                            <div className="flex flex-col gap-1.5">
+                              <Link href="#" className="flex items-start gap-4 p-2 hover:bg-white rounded-xl transition-all group">
+                                <div className="bg-white w-10 h-10 rounded-full flex items-center justify-center border border-zinc-100/50 shrink-0 transition-all">
+                                  <Folder size={18} className="text-zinc-400" />
+                                </div>
+                                <div className="flex flex-col pt-0.5">
+                                  <span className="font-medium text-[15px] text-zinc-900 leading-none">Projects</span>
+                                  <span className="text-[12px] text-zinc-500 mt-1 leading-snug">See our work that we've built.</span>
+                                </div>
+                              </Link>
+                              
+                              <Link href="#" className="flex items-start gap-4 p-2 hover:bg-white rounded-xl transition-all group">
+                                <div className="bg-white w-10 h-10 rounded-full flex items-center justify-center border border-zinc-100/50 shrink-0 transition-all">
+                                  <Users size={18} className="text-zinc-400" />
+                                </div>
+                                <div className="flex flex-col pt-0.5">
+                                  <span className="font-medium text-[15px] text-zinc-900 leading-none">About us</span>
+                                  <span className="text-[12px] text-zinc-500 mt-1 leading-snug">About our amazing team.</span>
+                                </div>
+                              </Link>
+                            </div>
+                          </div>
+
+                          {/* Pages Sub-Group */}
+                          <div className="flex flex-col gap-2">
+                            <div className="text-[13px] font-medium text-zinc-400 px-1">Pages</div>
+                            <div className="flex flex-col gap-0.5">
+                              <Link href="#" className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Contact us</Link>
+                              <Link href="#" className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Career</Link>
+                              <Link href="#" className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Privacy Policy</Link>
+                              <Link href="#" className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Terms of Service</Link>
+                            </div>
+                          </div>
                         </div>
                       )}
                     </div>
                   ) : (
                     <Link 
                       href="#" 
-                      className="flex items-center justify-between px-2 py-2 hover:bg-zinc-50 rounded-lg font-medium text-black text-[16px]"
+                      className="flex items-center gap-3 px-2 py-2.5 hover:bg-zinc-50 rounded-lg text-black text-[16px]"
                     >
+                      {Icon && <Icon size={20} className="text-zinc-400 stroke-[1.5]" />}
                       {link.name}
                     </Link>
                   )}
                 </div>
-              ))}
-              <div className="h-[1px] bg-zinc-100/50 my-1.5" />
-              <Link href="#" className="group flex items-center justify-between bg-[#09090b] text-white pl-5 pr-1 py-1 rounded-full font-medium text-[15px] hover:bg-black w-full leading-relaxed">
-                <span>Book a 30-Min call</span>
-                <div className="bg-white/10 p-1.5 rounded-full group-hover:bg-white/20 flex items-center justify-center">
-                  <ArrowRight size={16} />
-                </div>
-              </Link>
+              );
+              })}
+              <div 
+                className="animate-slide-up-fade"
+                style={{ animationDelay: `${navLinks.length * 90 + 50}ms`, animationFillMode: 'both' }}
+              >
+                <div className="h-[1px] bg-zinc-100/50 my-1.5" />
+                <Link href="#" className="group flex items-center justify-between bg-[#09090b] text-white pl-5 pr-1 py-1 rounded-full font-medium text-[15px] hover:bg-black w-full leading-relaxed">
+                  <span>Book a 30-Min call</span>
+                  <div className="bg-white/10 p-1.5 rounded-full group-hover:bg-white/20 flex items-center justify-center">
+                    <ArrowRight size={16} />
+                  </div>
+                </Link>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </nav>
