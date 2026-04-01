@@ -143,9 +143,16 @@ export default function Navbar() {
             <div className="md:hidden">
               <button 
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="bg-[#09090b] rounded-full text-white shadow-lg flex items-center justify-center w-9 h-9"
+                className="bg-[#09090b] rounded-full text-white shadow-lg flex items-center justify-center w-9 h-9 overflow-hidden"
               >
-                {isMobileMenuOpen ? <X size={18} strokeWidth={2.5} /> : <Menu size={18} strokeWidth={2.5} />}
+                <Image 
+                  key={isMobileMenuOpen ? "close" : "open"}
+                  src={isMobileMenuOpen ? "/hamburger-close.png" : "/hamburger.png"}
+                  alt={isMobileMenuOpen ? "Close Menu" : "Open Menu"}
+                  width={isMobileMenuOpen ? 20 : 22}
+                  height={isMobileMenuOpen ? 20 : 22}
+                  className="object-contain"
+                />
               </button>
             </div>
           </div>
