@@ -63,3 +63,14 @@ h1, h2, h3, h4, h5, h6 {
   animation: slideZoomOut 12s ease-out forwards;
   will-change: transform;
 }
+
+@keyframes delayedReveal {
+  0% { opacity: 0; transform: translateY(6px); }
+  60% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-delayed-reveal {
+  animation: delayedReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0; /* Hidden initially while waiting for keyframe */
+}
