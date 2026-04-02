@@ -1,8 +1,25 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
+
+const project1Images = [
+  "/project1/zvQ7tedi7AxHplgmospF42dcjQo.png_width=1200&height=800.png",
+  "/project1/5kd7Hmen8Zb7gfwj1BZyuA0ko.png_width=1200&height=800.png",
+  "/project1/MAVstedJYqQvsrJ7l1kxjR498.jpg_width=1200&height=904.png",
+];
 
 export default function FeatureProject() {
+  const [currentImg, setCurrentImg] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImg((prev) => (prev + 1) % project1Images.length);
+    }, 4000); // Change image every 4 seconds for a cinematic feel
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="px-4 md:px-8 max-w-[1400px] mx-auto pt-8 pb-20">
       <div className="bg-white rounded-[32px] p-2 md:p-3 border border-zinc-200/60 shadow-sm relative group overflow-hidden">
@@ -29,13 +46,20 @@ export default function FeatureProject() {
 
         {/* Massive Main Image Container */}
         <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-[24px] overflow-hidden bg-neutral-900">
-          <Image
-            src="/project1/zvQ7tedi7AxHplgmospF42dcjQo.png_width=1200&height=800.png"
-            alt="Feature Project Main"
-            fill
-            className="object-cover animate-slow-scale"
-            priority
-          />
+          {project1Images.map((src, idx) => (
+            <div 
+              key={src} 
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === currentImg ? 'opacity-100' : 'opacity-0'}`}
+            >
+              <Image
+                src={src}
+                alt={`Feature Project Image ${idx + 1}`}
+                fill
+                className="object-cover animate-slow-scale"
+                priority={idx === 0}
+              />
+            </div>
+          ))}
           
           {/* Center Hover Action Button (View Project Blur Pill) */}
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20">
