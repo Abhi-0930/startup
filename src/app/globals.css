@@ -55,12 +55,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes slowScale {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.08); }
-  100% { transform: scale(1); }
+  0% { transform: scale(1.15); }
+  50% { transform: scale(1); }
+  100% { transform: scale(1.15); }
 }
 
 .animate-slow-scale {
-  animation: slowScale 25s ease-in-out infinite;
+  animation: slowScale 8s ease-in-out infinite;
   will-change: transform;
 }
