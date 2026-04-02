@@ -99,7 +99,7 @@ export default function FeatureProject() {
             ref={cursorRef}
             className={`absolute top-0 left-0 hidden md:flex items-center justify-center pointer-events-none z-50 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
           >
-            <button className="px-5 py-2.5 bg-zinc-100/95 backdrop-blur-md border border-zinc-200/50 text-zinc-900 font-semibold text-[13px] rounded-full shadow-lg tracking-wide whitespace-nowrap">
+            <button className="px-5 py-2.5 bg-white/95 backdrop-blur-sm border border-black/5 text-zinc-500 font-semibold text-[13px] rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] tracking-wide whitespace-nowrap">
               View Project
             </button>
           </div>
