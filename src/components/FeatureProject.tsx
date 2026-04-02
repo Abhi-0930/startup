@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const slides = [
   // Finlytics (Project 1)
@@ -20,6 +20,8 @@ const slides = [
 
 export default function FeatureProject() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -32,6 +34,16 @@ export default function FeatureProject() {
 
   // Helper to extract the thumbnails for the currently active project
   const currentThumbnails = slides.filter(s => s.category === activeSlide.category).slice(0, 3);
+
+  // Directly mutate the custom pill's DOM style without re-rendering NextJS state!
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cursorRef.current) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    // Set the pill slightly offset from the cursor so they both sit comfortably side-by-side
+    cursorRef.current.style.transform = `translate(${x}px, ${y}px) translate(16px, 16px)`;
+  };
 
   return (
     <section className="px-4 md:px-8 max-w-[1400px] mx-auto pt-8 pb-20">
@@ -55,7 +67,12 @@ export default function FeatureProject() {
         </div>
 
         {/* Massive Main Image Container */}
-        <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-[24px] overflow-hidden bg-neutral-900 border border-black/5">
+        <div 
+          className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-[24px] overflow-hidden bg-neutral-900 border border-black/5"
+          onMouseMove={handleMouseMove}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
           {slides.map((slide, idx) => {
             const isCurrent = idx === currentSlide;
             const isPrev = idx === (currentSlide - 1 + slides.length) % slides.length;
@@ -77,9 +94,12 @@ export default function FeatureProject() {
             );
           })}
           
-          {/* Center Hover Action Button (View Project Blur Pill) */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 pointer-events-none">
-            <button className="px-6 py-3 bg-black/40 backdrop-blur-md border border-white/10 text-white font-medium rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 hover:bg-black/60 shadow-xl pointer-events-auto">
+          {/* Custom Mouse Follower Tooltip Pill */}
+          <div 
+            ref={cursorRef}
+            className={`absolute top-0 left-0 hidden md:flex items-center justify-center pointer-events-none z-50 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+          >
+            <button className="px-5 py-2.5 bg-zinc-100/95 backdrop-blur-md border border-zinc-200/50 text-zinc-900 font-semibold text-[13px] rounded-full shadow-lg tracking-wide whitespace-nowrap">
               View Project
             </button>
           </div>
