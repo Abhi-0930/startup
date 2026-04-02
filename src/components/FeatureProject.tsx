@@ -26,11 +26,11 @@ export default function FeatureProject() {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 4000); 
     return () => clearInterval(timer);
-  }, []);
+  }, [currentSlide]);
 
   const activeSlide = slides[currentSlide];
 
-  // Helper to extract the 3 thumbnail images for the currently active project
+  // Helper to extract the thumbnails for the currently active project
   const currentThumbnails = slides.filter(s => s.category === activeSlide.category).slice(0, 3);
 
   return (
@@ -48,10 +48,7 @@ export default function FeatureProject() {
             </span>
           </div>
 
-          <Link
-            href="#"
-            className="hidden md:flex items-center gap-2 px-4 py-2 bg-zinc-50 hover:bg-zinc-100 transition-colors rounded-full border border-zinc-200/80 text-[14px] font-medium text-neutral-700"
-          >
+          <Link href="#" className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-black/10 text-[14px] font-medium text-neutral-900 hover:bg-neutral-50 transition-colors shrink-0">
             View Project
             <ArrowRight size={16} />
           </Link>
@@ -81,28 +78,38 @@ export default function FeatureProject() {
           })}
           
           {/* Center Hover Action Button (View Project Blur Pill) */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20">
-            <button className="px-6 py-3 bg-black/40 backdrop-blur-md border border-white/10 text-white font-medium rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 hover:bg-black/60 shadow-xl">
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 pointer-events-none">
+            <button className="px-6 py-3 bg-black/40 backdrop-blur-md border border-white/10 text-white font-medium rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 hover:bg-black/60 shadow-xl pointer-events-auto">
               View Project
             </button>
           </div>
 
           {/* Bottom Left Thumbnails - dynamically loaded for the active project */}
-          <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 flex items-center gap-2 z-10 transition-opacity duration-500">
-            {currentThumbnails.map((thumb, idx) => (
-              <div key={thumb.id} className="relative w-16 h-12 md:w-24 md:h-16 rounded-[12px] md:rounded-[16px] overflow-hidden border-2 border-white/20 bg-neutral-800 shadow-xl hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
-                <Image 
-                  src={thumb.src}
-                  alt={`Thumb ${idx}`} 
-                  fill 
-                  className="object-cover"
-                />
-              </div>
-            ))}
+          <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 flex items-center gap-2 z-30 transition-opacity duration-500">
+            {currentThumbnails.map((thumb, idx) => {
+              const isThumbActive = thumb.id === slides[currentSlide].id;
+              return (
+                <div 
+                  key={thumb.id} 
+                  onClick={() => {
+                    const slideIndex = slides.findIndex(s => s.id === thumb.id);
+                    if (slideIndex > -1) setCurrentSlide(slideIndex);
+                  }}
+                  className={`relative w-16 h-12 md:w-24 md:h-16 rounded-[12px] md:rounded-[16px] overflow-hidden border-2 bg-neutral-800 shadow-xl transition-all duration-300 cursor-pointer ${isThumbActive ? 'border-white opacity-100 ring-2 ring-white/20 ring-offset-1 ring-offset-transparent' : 'border-white/20 opacity-60 hover:opacity-100 hover:-translate-y-1'}`}
+                >
+                  <Image 
+                    src={thumb.src}
+                    alt={`Thumb ${idx}`} 
+                    fill 
+                    className="object-cover"
+                  />
+                </div>
+              );
+            })}
           </div>
           
           {/* Subtle gradient overlay to ensure thumbnails pop */}
-          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none" />
+          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none z-10" />
         </div>
       </div>
     </section>
