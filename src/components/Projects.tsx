@@ -67,21 +67,26 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
           aspectRatio: project.span === 'wide' ? '21/9' : '4/3' 
         }}
       >
-        {project.images.map((src, idx) => (
-          <div 
-            key={src} 
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === currentImg ? 'opacity-100' : 'opacity-0'}`}
-          >
-            <Image
-              src={src}
-              alt={`${project.title} Image ${idx + 1}`}
-              fill
-              className="object-cover animate-slow-scale"
-              style={{ animationDelay: project.delay }}
-              priority={idx === 0}
-            />
-          </div>
-        ))}
+        {project.images.map((src, idx) => {
+          const isCurrent = idx === currentImg;
+          const isPrev = idx === (currentImg - 1 + project.images.length) % project.images.length;
+          const isActive = isCurrent || isPrev;
+
+          return (
+            <div 
+              key={src} 
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${isCurrent ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+            >
+              <Image
+                src={src}
+                alt={`${project.title} Image ${idx + 1}`}
+                fill
+                className={`object-cover ${isActive ? 'active-zoom' : 'scale-[1.15]'}`}
+                priority={idx === 0}
+              />
+            </div>
+          );
+        })}
         
         {/* Optional slight dark gradient overlay to make images feel richer at the edges */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none z-10" />

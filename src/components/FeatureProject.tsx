@@ -46,20 +46,26 @@ export default function FeatureProject() {
 
         {/* Massive Main Image Container */}
         <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-[24px] overflow-hidden bg-neutral-900">
-          {project1Images.map((src, idx) => (
-            <div 
-              key={src} 
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === currentImg ? 'opacity-100' : 'opacity-0'}`}
-            >
-              <Image
-                src={src}
-                alt={`Feature Project Image ${idx + 1}`}
-                fill
-                className="object-cover animate-slow-scale"
-                priority={idx === 0}
-              />
-            </div>
-          ))}
+          {project1Images.map((src, idx) => {
+            const isCurrent = idx === currentImg;
+            const isPrev = idx === (currentImg - 1 + project1Images.length) % project1Images.length;
+            const isActive = isCurrent || isPrev;
+
+            return (
+              <div 
+                key={src} 
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${isCurrent ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+              >
+                <Image
+                  src={src}
+                  alt={`Feature Project Image ${idx + 1}`}
+                  fill
+                  className={`object-cover ${isActive ? 'active-zoom' : 'scale-[1.15]'}`}
+                  priority={idx === 0}
+                />
+              </div>
+            );
+          })}
           
           {/* Center Hover Action Button (View Project Blur Pill) */}
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20">

@@ -54,13 +54,12 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0; /* Ensures elements are hidden before animation starts */
 }
 
-@keyframes slowScale {
+@keyframes slideZoomOut {
   0% { transform: scale(1.15); }
-  50% { transform: scale(1); }
-  100% { transform: scale(1.15); }
+  100% { transform: scale(1); }
 }
 
-.animate-slow-scale {
-  animation: slowScale 8s ease-in-out infinite;
+.active-zoom {
+  animation: slideZoomOut 12s ease-out forwards;
   will-change: transform;
 }
