@@ -53,3 +53,14 @@ h1, h2, h3, h4, h5, h6 {
   animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   opacity: 0; /* Ensures elements are hidden before animation starts */
 }
+
+@keyframes slowScale {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.animate-slow-scale {
+  animation: slowScale 25s ease-in-out infinite;
+  will-change: transform;
+}
