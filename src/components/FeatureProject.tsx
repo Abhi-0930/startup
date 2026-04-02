@@ -46,7 +46,7 @@ export default function FeatureProject() {
   };
 
   return (
-    <section className="px-4 md:px-8 max-w-[1400px] mx-auto pt-8 pb-20">
+    <section className="px-4 md:px-8 max-w-[1400px] mx-auto pt-8 pb-8 md:pb-12">
       <div className="bg-white rounded-[32px] p-2 md:p-3 border border-zinc-200/60 shadow-sm relative group overflow-hidden transition-all duration-700">
         
         {/* Top Header of Card */}
@@ -99,7 +99,7 @@ export default function FeatureProject() {
             ref={cursorRef}
             className={`absolute top-0 left-0 hidden md:flex items-center justify-center pointer-events-none z-50 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
           >
-            <button className="px-5 py-2.5 bg-white/95 backdrop-blur-sm border border-black/5 text-zinc-500 font-semibold text-[13px] rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] tracking-wide whitespace-nowrap">
+            <button className="px-5 py-2.5 bg-white/95 backdrop-blur-sm border border-black/5 text-zinc-500 font-medium text-[13px] rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] tracking-wide whitespace-nowrap">
               View Project
             </button>
           </div>

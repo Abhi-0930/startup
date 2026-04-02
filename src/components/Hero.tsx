@@ -6,8 +6,17 @@ import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative pt-32 pb-20 overflow-hidden min-h-screen flex flex-col justify-center">
-      {/* Background Dot Grid is handled by globals.css body style */}
+    <section className="relative pt-32 pb-20 md:pb-28 flex flex-col justify-center">
+      {/* Background Dot Grid with Top/Bottom Gradient Fade Masks */}
+      <div 
+        className="absolute inset-0 pointer-events-none -bottom-24 opacity-60"
+        style={{ 
+          backgroundImage: 'radial-gradient(#d1d5db 1.5px, transparent 1.5px)', 
+          backgroundSize: '32px 32px',
+          maskImage: 'linear-gradient(to bottom, transparent 0%, black 25%, black 60%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 25%, black 60%, transparent 100%)'
+        }}
+      />
       
       <div className="container mx-auto px-4 relative z-10 text-center">
         {/* Main Heading */}
