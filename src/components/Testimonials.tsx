@@ -96,7 +96,7 @@ export default function Testimonials() {
                   </p>
                   
                   {/* The Bottom Profile Block */}
-                  <div className="flex items-center justify-between mt-8 pt-6 border-t border-zinc-100">
+                  <div className="flex items-center justify-between mt-6">
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 rounded-full overflow-hidden bg-zinc-200 shrink-0">
                          <img 
