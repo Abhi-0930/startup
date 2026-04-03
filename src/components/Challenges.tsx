@@ -6,15 +6,15 @@ const challengesData = [
   {
     id: "01",
     challenge: "Outdated Design",
-    description: "Your brand looks stuck in the past.",
+    description: "An old-fashioned website makes your business look much less professional than it really is.",
     solution: "We build world-class, premium designs that instantly elevate your brand's authority.",
-    imageSrc: "https://images.unsplash.com/photo-1508962914676-13d82dfd79ea?q=80&w=1200&auto=format&fit=crop",
-    videoSrc: "https://videos.pexels.com/video-files/2759477/2759477-hd_1920_1080_30fps.mp4"
+    imageSrc: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
+    videoSrc: "https://videos.pexels.com/video-files/3130283/3130283-hd_1920_1080_24fps.mp4"
   },
   {
     id: "02",
     challenge: "Confusing Layout",
-    description: "Customers don't know where to click.",
+    description: "If your website is hard to navigate, customers will leave before even seeing what you offer.",
     solution: "We design clear, intuitive interfaces that guide your users seamlessly toward a sale.",
     imageSrc: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop",
     videoSrc: "https://videos.pexels.com/video-files/3141208/3141208-hd_1920_1080_25fps.mp4"
@@ -22,7 +22,7 @@ const challengesData = [
   {
     id: "03",
     challenge: "Slow Performance",
-    description: "Loading screens are driving users away.",
+    description: "Slow loading speeds frustrate your users and often make them switch to your competitors.",
     solution: "We build hyperspeed, high-performance platforms that load instantly on any device.",
     imageSrc: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop",
     videoSrc: "https://videos.pexels.com/video-files/3129671/3129671-hd_1920_1080_30fps.mp4"
@@ -30,7 +30,7 @@ const challengesData = [
   {
     id: "04",
     challenge: "Hard to Manage",
-    description: "Updating content is a total nightmare.",
+    description: "Wasting hours on simple website updates stops you from focusing on your actual core business.",
     solution: "We give you 100% control with custom, easy-to-use systems that anyone can manage.",
     imageSrc: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
     videoSrc: "https://videos.pexels.com/video-files/3129957/3129957-hd_1920_1080_25fps.mp4"
