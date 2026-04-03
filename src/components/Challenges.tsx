@@ -90,15 +90,14 @@ function ChallengeCard({ item }: { item: typeof challengesData[0] }) {
 
         {/* Revealable Solution Text sliding up on Active State */}
         <div className={`grid transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${isActive ? 'grid-rows-[1fr] opacity-100 mt-4' : 'grid-rows-[0fr] opacity-0 mt-0'}`}>
-          <div className="overflow-hidden">
+          <div className="overflow-hidden flex flex-col gap-3">
+            <div className="flex items-center gap-2 text-[11px] font-bold text-emerald-400 uppercase tracking-widest drop-shadow-sm">
+              Our Solution 
+              <ArrowRight className="w-3.5 h-3.5" />
+            </div>
             <p className="text-white/90 text-[15px] leading-relaxed">
               {item.solution}
             </p>
-            
-            <div className="mt-5 flex items-center gap-2 text-[13px] font-bold text-white uppercase tracking-wider">
-              Our Solution 
-              <ArrowRight className="w-4 h-4 transform transition-transform" />
-            </div>
           </div>
         </div>
         
