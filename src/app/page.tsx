@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import FeatureProject from "@/components/FeatureProject";
 import LogoTicker from "@/components/LogoTicker";
+import Testimonials from "@/components/Testimonials";
 import Projects from "@/components/Projects";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <Hero />
       <FeatureProject />
       <LogoTicker />
+      <Testimonials />
       <Projects />
     </main>
   );
