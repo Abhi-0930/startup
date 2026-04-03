@@ -36,7 +36,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-24 md:py-32 overflow-hidden bg-zinc-50/30">
+    <section className="pt-8 pb-24 md:pt-12 md:pb-32 overflow-hidden bg-zinc-50/30">
       <style>{`
         @keyframes scrollLeftSlow {
           0% { transform: translateX(0%); }
@@ -98,12 +98,11 @@ export default function Testimonials() {
                   {/* The Bottom Profile Block */}
                   <div className="flex items-center justify-between mt-8 pt-6 border-t border-zinc-100">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-full overflow-hidden bg-zinc-200 relative shrink-0">
-                         <Image 
+                      <div className="w-12 h-12 rounded-full overflow-hidden bg-zinc-200 shrink-0">
+                         <img 
                            src={item.profileImage} 
                            alt={item.author} 
-                           fill 
-                           className="object-cover"
+                           className="w-full h-full object-cover"
                          />
                       </div>
                       <div>
