@@ -14,7 +14,7 @@ const challengesData = [
     id: "02",
     challenge: "Your website looks outdated.",
     solution: "We build modern, premium designs that instantly elevate your brand's authority and trust.",
-    imageSrc: "https://images.unsplash.com/photo-1507238692062-710e9803b9b4?q=80&w=1000&auto=format&fit=crop",
+    imageSrc: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1000&auto=format&fit=crop",
     videoSrc: "https://videos.pexels.com/video-files/3209211/3209211-hd_1920_1080_25fps.mp4"
   },
   {
@@ -104,6 +104,16 @@ function ChallengeCard({ item }: { item: typeof challengesData[0] }) {
         
       </div>
       
+      {/* Dynamic 'Solution' Badge top right */}
+      <div className={`absolute top-6 right-6 z-50 bg-black/40 backdrop-blur-md border border-white/10 shadow-lg px-2.5 py-1 rounded-full pointer-events-none transition-all duration-500 transform ${isActive ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 -translate-y-4'}`}>
+        <div className="flex items-center gap-1.5">
+          <div className="w-1.5 h-1.5 rounded-full bg-[#10b981] shadow-[0_0_8px_#10b981] animate-pulse"></div>
+          <p className="text-white/90 text-[10px] font-medium tracking-[0.15em] uppercase drop-shadow-sm">
+            Solution
+          </p>
+        </div>
+      </div>
+
     </div>
   );
 }
