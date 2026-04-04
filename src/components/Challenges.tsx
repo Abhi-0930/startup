@@ -13,11 +13,11 @@ const challengesData = [
   },
   {
     id: "02",
-    challenge: "Confusing Layout",
-    description: "If your website is hard to navigate, customers will leave before even seeing what you offer.",
-    solution: "We design clear, intuitive interfaces that guide your users seamlessly toward a sale.",
-    imageSrc: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop",
-    videoSrc: "https://videos.pexels.com/video-files/3141208/3141208-hd_1920_1080_25fps.mp4"
+    challenge: "Outdated Tech",
+    description: "Old, outdated technology stacks slow down your business and frequently crash when your traffic begins to grow.",
+    solution: "We use the latest high-performance technology to ensure your platform is lightning-fast and 100% reliable.",
+    imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
+    videoSrc: "https://videos.pexels.com/video-files/3129671/3129671-hd_1920_1080_30fps.mp4"
   },
   {
     id: "03",
@@ -25,7 +25,7 @@ const challengesData = [
     description: "Slow loading speeds frustrate your users and often make them switch to your competitors.",
     solution: "We build hyperspeed, high-performance platforms that load instantly on any device.",
     imageSrc: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop",
-    videoSrc: "https://videos.pexels.com/video-files/3129671/3129671-hd_1920_1080_30fps.mp4"
+    videoSrc: "https://videos.pexels.com/video-files/8261314/8261314-hd_1920_1080_24fps.mp4"
   },
   {
     id: "04",
@@ -66,7 +66,7 @@ function ChallengeCard({ item }: { item: typeof challengesData[0] }) {
 
   return (
     <div 
-      className="relative w-full aspect-square md:aspect-[4/3] lg:aspect-[16/10] rounded-[32px] overflow-hidden cursor-pointer shadow-lg transition-all duration-700 border border-black/10"
+      className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden cursor-pointer shadow-xl transition-all duration-700 border border-black/5"
       onMouseEnter={activate}
       onMouseLeave={deactivate}
       onClick={handleClick}
@@ -86,62 +86,52 @@ function ChallengeCard({ item }: { item: typeof challengesData[0] }) {
       {/* Dark Overlay */}
       <div className={`absolute inset-0 transition-colors duration-500 pointer-events-none ${isActive ? 'bg-gradient-to-t from-black/95 via-black/80 to-transparent' : 'bg-gradient-to-t from-black/80 via-black/40 to-transparent'}`}></div>
 
-      {/* Dynamic 'Problem' Badge (Mirroring Reference) */}
-      <div className={`absolute top-5 right-5 md:top-6 md:right-6 z-50 bg-black/40 backdrop-blur-md border border-white/10 shadow-lg px-2.5 py-1 rounded-full pointer-events-none transition-all duration-500 transform ${isActive ? 'opacity-0 scale-90 -translate-y-4' : 'opacity-100 scale-100 translate-y-0'}`}>
+      {/* Dynamic 'Problem' Badge */}
+      <div className={`absolute top-4 right-4 z-50 bg-black/40 backdrop-blur-md border border-white/10 shadow-lg px-2.5 py-1 rounded-full pointer-events-none transition-all duration-500 transform ${isActive ? 'opacity-0 scale-90 -translate-y-2' : 'opacity-100 scale-100 translate-y-0'}`}>
         <div className="flex items-center gap-1.5">
           <div className="w-1.5 h-1.5 rounded-full bg-[#ff4d6d] shadow-[0_0_8px_#ff4d6d] animate-pulse"></div>
-          <p className="text-white/90 text-[10px] font-medium tracking-[0.15em] uppercase drop-shadow-sm">
+          <p className="text-white/90 text-[10px] font-bold tracking-[0.15em] uppercase">
             Problem
           </p>
         </div>
       </div>
 
-      {/* Dynamic 'Solution' Badge (Top Right) */}
-      <div className={`absolute top-5 right-5 md:top-6 md:right-6 z-50 bg-black/40 backdrop-blur-md border border-white/10 shadow-lg px-2.5 py-1 rounded-full pointer-events-none transition-all duration-500 transform ${isActive ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 -translate-y-4'}`}>
+      {/* Dynamic 'Solution' Badge */}
+      <div className={`absolute top-4 right-4 z-50 bg-black/40 backdrop-blur-md border border-white/10 shadow-lg px-2.5 py-1 rounded-full pointer-events-none transition-all duration-500 transform ${isActive ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 -translate-y-2'}`}>
         <div className="flex items-center gap-1.5">
           <div className="w-1.5 h-1.5 rounded-full bg-[#10b981] shadow-[0_0_8px_#10b981] animate-pulse"></div>
-          <p className="text-white/90 text-[10px] font-medium tracking-[0.15em] uppercase drop-shadow-sm">
+          <p className="text-white/90 text-[10px] font-bold tracking-[0.15em] uppercase">
             Solution
           </p>
         </div>
       </div>
 
       {/* Content Container */}
-      <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end pointer-events-none">
+      <div className="absolute inset-0 p-5 md:p-6 flex flex-col justify-end pointer-events-none">
         
-        {/* Challenge Header (Simplified Title) */}
+        {/* Challenge Header */}
         <div className={`transform transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${isActive ? '-translate-y-2' : 'translate-y-0'}`}>
-          <h3 className="text-white text-[24px] md:text-[30px] font-semibold leading-tight mb-2 drop-shadow-md">
+          <h3 className="text-white text-[20px] md:text-[24px] font-bold leading-tight mb-2 drop-shadow-xl">
             {item.challenge}
           </h3>
-          <p className={`text-white/70 text-[14px] md:text-[16px] transition-opacity duration-500 ${isActive ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100'}`}>
+          <p className={`text-white/80 text-[13px] md:text-[14px] leading-relaxed transition-opacity duration-500 ${isActive ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100'}`}>
             {item.description}
           </p>
         </div>
 
-        {/* Revealable Solution Text (On Active) */}
-        <div className={`grid transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${isActive ? 'grid-rows-[1fr] opacity-100 mt-4 md:mt-5' : 'grid-rows-[0fr] opacity-0 mt-0'}`}>
-          <div className="overflow-hidden flex flex-col gap-2 md:gap-3">
-            <div className="flex items-center gap-2 text-[11px] font-bold text-[#10b981] uppercase tracking-widest drop-shadow-sm">
+        {/* Revealable Solution Text */}
+        <div className={`grid transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${isActive ? 'grid-rows-[1fr] opacity-100 mt-3 md:mt-4' : 'grid-rows-[0fr] opacity-0 mt-0'}`}>
+          <div className="overflow-hidden flex flex-col gap-2">
+            <div className="flex items-center gap-2 text-[10px] font-black text-[#10b981] uppercase tracking-[0.2em] drop-shadow-sm">
               Our Solution 
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-3 h-3" />
             </div>
-            <p className="text-white/95 text-[15px] md:text-[17px] leading-relaxed max-w-xl font-medium">
+            <p className="text-white text-[14px] md:text-[15px] leading-relaxed max-w-lg font-semibold line-clamp-2">
               {item.solution}
             </p>
           </div>
         </div>
         
-      </div>
-      
-      {/* Dynamic Solution Badge (Top Right) */}
-      <div className={`absolute top-5 right-5 md:top-6 md:right-6 z-50 bg-black/40 backdrop-blur-md border border-white/10 shadow-lg px-2.5 py-1 rounded-full pointer-events-none transition-all duration-500 transform ${isActive ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 -translate-y-4'}`}>
-        <div className="flex items-center gap-1.5">
-          <div className="w-1.5 h-1.5 rounded-full bg-[#10b981] shadow-[0_0_8px_#10b981] animate-pulse"></div>
-          <p className="text-white/90 text-[10px] font-medium tracking-[0.15em] uppercase drop-shadow-sm">
-            Solution
-          </p>
-        </div>
       </div>
 
     </div>
@@ -150,18 +140,18 @@ function ChallengeCard({ item }: { item: typeof challengesData[0] }) {
 
 export default function Challenges() {
   return (
-    <section className="pt-8 pb-24 md:pt-12 md:pb-32 max-w-[1400px] mx-auto px-4 md:px-8">
+    <section className="pt-12 pb-24 md:pt-16 md:pb-32 max-w-4xl mx-auto px-6">
       
       {/* Centered Header Section */}
-      <div className="mb-8 md:mb-12 text-center">
-        <h2 className="text-[2.5rem] md:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-neutral-900 leading-[1.1]">
+      <div className="mb-10 md:mb-14 text-center">
+        <h2 className="text-[2.2rem] md:text-5xl font-black tracking-tighter text-neutral-900 leading-[1] mb-4">
           The challenges <br className="hidden md:block" />
           <span className="text-neutral-400">modern businesses face.</span>
         </h2>
       </div>
 
       {/* 2x2 Interactive Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
         {challengesData.map((item) => (
            <ChallengeCard key={item.id} item={item} />
         ))}
