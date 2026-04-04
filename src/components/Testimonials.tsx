@@ -88,8 +88,7 @@ export default function Testimonials() {
                     <span className="text-[#e25a48] text-5xl font-serif leading-none opacity-90">
                       ❝
                     </span>
-                  </div>
-                  
+                  </div>                 
                   {/* The Review English */}
                   <p className="text-zinc-600 text-[15px] md:text-[16px] leading-relaxed flex-grow">
                     {item.text}
