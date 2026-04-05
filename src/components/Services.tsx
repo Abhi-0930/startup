@@ -48,8 +48,8 @@ export default function Services() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 md:mb-28 gap-10">
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-2.5 h-2.5 bg-[#ff4d6d] rounded-sm rotate-45"></div>
-              <span className="text-[13px] font-bold uppercase tracking-[0.25em] text-neutral-400">Services</span>
+              <div className="w-2 h-2 bg-[#ff4d6d]"></div>
+              <span className="text-[13px] font-bold text-neutral-500">Services</span>
             </div>
             <h2 className="text-[2.8rem] md:text-[4rem] lg:text-[5rem] font-bold leading-[1.05] tracking-tighter text-neutral-900">
               From idea to scale. <br />

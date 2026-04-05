@@ -5,35 +5,35 @@ import { ArrowRight } from "lucide-react";
 const challengesData = [
   {
     id: "01",
-    challenge: "Outdated Design",
-    description: "An old-fashioned website makes your business look much less professional than it really is.",
-    solution: "We build world-class, premium designs that instantly elevate your brand's authority.",
+    challenge: "No Online Presence",
+    description: "Businesses today lose potential clients daily simply because they don't have a website or their existing one looks outdated and untrustworthy. First impressions happen online now.",
+    solution: "We build fast, modern, and professional websites that make your business look credible, attract the right clients, and turn visitors into paying customers from day one.",
     imageSrc: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
     videoSrc: "https://videos.pexels.com/video-files/3130283/3130283-hd_1920_1080_24fps.mp4"
   },
   {
     id: "02",
-    challenge: "Outdated Tech",
-    description: "Old, outdated technology stacks slow down your business and frequently crash when your traffic begins to grow.",
-    solution: "We use the latest high-performance technology to ensure your platform is lightning-fast and 100% reliable.",
+    challenge: "Losing Mobile Customers",
+    description: "Customers expect to interact with businesses through their phones. Without a mobile app, you're making it harder for them to reach you and easier for them to choose a competitor who has one.",
+    solution: "We build custom mobile apps tailored exactly to your business needs, giving your customers a seamless experience on their phones and keeping them loyal to you.",
+    imageSrc: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&auto=format&fit=crop",
+    videoSrc: "https://videos.pexels.com/video-files/4255013/4255013-hd_1920_1080_30fps.mp4"
+  },
+  {
+    id: "03",
+    challenge: "Too Much Manual Work",
+    description: "Business owners and their teams waste hours every single week on repetitive tasks like follow-ups, data entry, scheduling and reporting. That is time and money that should be going into growth.",
+    solution: "We build AI automation systems that silently handle all your repetitive work in the background, freeing your team to focus entirely on growing the business.",
     imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
     videoSrc: "https://videos.pexels.com/video-files/3129671/3129671-hd_1920_1080_30fps.mp4"
   },
   {
-    id: "03",
-    challenge: "Slow Performance",
-    description: "Slow loading speeds frustrate your users and often make them switch to your competitors.",
-    solution: "We build hyperspeed, high-performance platforms that load instantly on any device.",
+    id: "04",
+    challenge: "Underperforming Website",
+    description: "You already have a website but it loads slowly, doesn't show up on Google, looks outdated, and brings in absolutely no enquiries. It's sitting there doing nothing while costing you money.",
+    solution: "We audit, fix, and fully optimise your existing website so it starts working hard for your business, bringing in traffic, building trust, and converting visitors into real leads.",
     imageSrc: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop",
     videoSrc: "https://videos.pexels.com/video-files/8261314/8261314-hd_1920_1080_24fps.mp4"
-  },
-  {
-    id: "04",
-    challenge: "Hard to Manage",
-    description: "Wasting hours on simple website updates stops you from focusing on your actual core business.",
-    solution: "We give you 100% control with custom, easy-to-use systems that anyone can manage.",
-    imageSrc: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
-    videoSrc: "https://videos.pexels.com/video-files/3129957/3129957-hd_1920_1080_25fps.mp4"
   }
 ];
 
@@ -110,23 +110,27 @@ function ChallengeCard({ item }: { item: typeof challengesData[0] }) {
       <div className="absolute inset-0 p-5 md:p-10 flex flex-col justify-end pointer-events-none">
         
         {/* Challenge Header */}
-        <div className={`transform transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${isActive ? '-translate-y-3' : 'translate-y-0'}`}>
-          <h3 className="text-white text-[20px] md:text-[36px] font-bold leading-tight mb-2 md:mb-3 drop-shadow-xl">
+        <div className={`transform transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${isActive ? '-translate-y-4 md:-translate-y-3' : 'translate-y-0'}`}>
+          <h3 className="text-white text-[22px] md:text-[36px] font-bold leading-tight mb-2 md:mb-3 drop-shadow-2xl">
             {item.challenge}
           </h3>
-          <p className={`text-white/80 text-[13px] md:text-[17px] leading-relaxed transition-opacity duration-500 ${isActive ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100'}`}>
+          
+          {/* Problem Description: Visible ONLY on Desktop, hidden COMPLETELY on Mobile to keep it clean */}
+          <p className={`hidden md:block text-white/80 leading-relaxed transition-all duration-500 md:text-[17px]
+            ${isActive ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100 h-auto'}
+          `}>
             {item.description}
           </p>
         </div>
 
-        {/* Revealable Solution Text */}
+        {/* Revealable Solution Text: Shown on both Mobile (Tap) and Desktop (Hover) */}
         <div className={`grid transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${isActive ? 'grid-rows-[1fr] opacity-100 mt-4 md:mt-6' : 'grid-rows-[0fr] opacity-0 mt-0'}`}>
           <div className="overflow-hidden flex flex-col gap-2 md:gap-3">
             <div className="flex items-center gap-2 text-[10px] md:text-[12px] font-black text-[#10b981] uppercase tracking-[0.2em] drop-shadow-sm">
               Our Solution 
               <ArrowRight className="w-3.5 md:w-4 h-3.5 md:h-4" />
             </div>
-            <p className="text-white text-[14px] md:text-[18px] lg:text-[19px] leading-relaxed max-w-lg font-semibold line-clamp-3">
+            <p className="text-white text-[15px] md:text-[18px] lg:text-[19px] leading-relaxed max-w-lg font-semibold line-clamp-4 md:line-clamp-3">
               {item.solution}
             </p>
           </div>

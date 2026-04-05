@@ -103,7 +103,7 @@ export default function Testimonials() {
                            src={item.profileImage} 
                            alt={item.author} 
                            className="w-full h-full object-cover"
-                         />
+                         />6
                       </div>
                       <div>
                         <h4 className="font-semibold text-zinc-900 text-[15px]">{item.author}</h4>
