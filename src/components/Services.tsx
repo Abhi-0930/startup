@@ -19,37 +19,37 @@ const services = [
   {
     id: 1,
     title: "Web Development",
-    description: "Fast, modern, and conversion-focused websites built to make your business look credible, rank on Google, and turn visitors into paying clients.",
+    description: "Custom, high-performance websites built for speed and reliability, designed to establish immediate brand authority and convert traffic into revenue.",
     icon: <Code className="w-5 h-5" />
   },
   {
     id: 2,
     title: "App Development",
-    description: "Custom mobile and web applications designed around your exact business needs — intuitive, scalable, and built to deliver a seamless user experience.",
+    description: "Scalable mobile and web applications with intuitive user interfaces, tailored to solve specific business problems and enhance customer engagement.",
     icon: <Smartphone className="w-5 h-5" />
   },
   {
     id: 3,
     title: "AI Automation",
-    description: "Repetitive tasks, manual workflows, and time-consuming processes — automated intelligently so your team can focus entirely on what drives growth.",
+    description: "Intelligent automation workflows that handle repetitive manual tasks, ensuring a more efficient team and significantly reduced operational overhead.",
     icon: <Cpu className="w-5 h-5" />
   },
   {
     id: 4,
     title: "AI Applications",
-    description: "Smart, intelligent applications powered by AI — from chatbots and recommendation engines to fully custom tools built around your business logic.",
+    description: "Advanced tools including custom chatbots and recommendation engines that use AI to deliver a personalized, high-speed experience to your users.",
     icon: <Sparkles className="w-5 h-5" />
   },
   {
     id: 5,
     title: "MVP Prototyping",
-    description: "A startup idea brought to life quickly and efficiently — validated, functional, and ready to present to real users or early-stage investors.",
+    description: "Functional early-stage products designed for rapid testing, allowing you to validate core ideas with real users and secure stakeholder buy-in.",
     icon: <Layers className="w-5 h-5" />
   },
   {
     id: 6,
     title: "SEO Improvement",
-    description: "Higher rankings, consistent organic traffic, and better visibility — your website optimised to reach the right audience at exactly the right time.",
+    description: "Strategic search engine optimization that increases organic visibility and brings targeted traffic to your site without the need for paid ads.",
     icon: <Search className="w-5 h-5" />
   }
 ];

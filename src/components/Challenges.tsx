@@ -6,32 +6,32 @@ const challengesData = [
   {
     id: "01",
     challenge: "No Online Presence",
-    description: "Businesses today lose potential clients daily simply because they don't have a website or their existing one looks outdated and untrustworthy. First impressions happen online now.",
-    solution: "We build fast, modern, and professional websites that make your business look credible, attract the right clients, and turn visitors into paying customers from day one.",
+    description: "A potential loss of revenue due to a missing or outdated digital storefront that fails to establish trust with modern users.",
+    solution: "High-performance digital platforms that establish immediate brand credibility and drive lead generation from day one.",
     imageSrc: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
     videoSrc: "https://videos.pexels.com/video-files/3130283/3130283-hd_1920_1080_24fps.mp4"
   },
   {
     id: "02",
     challenge: "Losing Mobile Customers",
-    description: "Customers expect to interact with businesses through their phones. Without a mobile app, you're making it harder for them to reach you and easier for them to choose a competitor who has one.",
-    solution: "We build custom mobile apps tailored exactly to your business needs, giving your customers a seamless experience on their phones and keeping them loyal to you.",
+    description: "Loss of engagement and customer retention due to a fragmented or difficult-to-use mobile experience across various devices.",
+    solution: "Intuitive mobile applications and responsive experiences designed to maintain high customer engagement and brand loyalty.",
     imageSrc: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&auto=format&fit=crop",
     videoSrc: "https://videos.pexels.com/video-files/4255013/4255013-hd_1920_1080_30fps.mp4"
   },
   {
     id: "03",
     challenge: "Too Much Manual Work",
-    description: "Business owners and their teams waste hours every single week on repetitive tasks like follow-ups, data entry, scheduling and reporting. That is time and money that should be going into growth.",
-    solution: "We build AI automation systems that silently handle all your repetitive work in the background, freeing your team to focus entirely on growing the business.",
+    description: "Significant operational overhead and team burnout caused by repetitive manual tasks that could be handled through intelligent automation.",
+    solution: "Intelligent automation systems that operate silently in the background, eliminating repetitive tasks and returning focus to growth strategies.",
     imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
     videoSrc: "https://videos.pexels.com/video-files/3129671/3129671-hd_1920_1080_30fps.mp4"
   },
   {
     id: "04",
     challenge: "Underperforming Website",
-    description: "You already have a website but it loads slowly, doesn't show up on Google, looks outdated, and brings in absolutely no enquiries. It's sitting there doing nothing while costing you money.",
-    solution: "We audit, fix, and fully optimise your existing website so it starts working hard for your business, bringing in traffic, building trust, and converting visitors into real leads.",
+    description: "A digital paperweight that fails to convert traffic effectively, often due to slow load times or an outdated technical infrastructure.",
+    solution: "Data-driven performance optimization and infrastructure updates that transform low-converting sites into efficient business tools.",
     imageSrc: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop",
     videoSrc: "https://videos.pexels.com/video-files/8261314/8261314-hd_1920_1080_24fps.mp4"
   }
