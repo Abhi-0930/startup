@@ -30,17 +30,20 @@ export default function Hero() {
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10">
-          <Link href="#" className="group flex items-center bg-[#09090b] text-white pl-6 pr-1.5 py-1.5 sm:pl-8 sm:pr-2 sm:py-2 rounded-full font-semibold text-[14px] sm:text-[16px] hover:bg-black transition-all w-full sm:w-auto justify-center sm:justify-start">
-            <div className="flex items-center gap-3 sm:gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          <Link href="#" className="group/btn h-[48px] sm:h-[56px] flex items-center bg-[#09090b] text-white pl-6 pr-1.5 py-1.5 sm:pl-8 sm:pr-2 sm:py-2 rounded-full font-bold text-[15px] sm:text-[17px] hover:bg-black transition-all w-full sm:w-auto justify-center sm:justify-start">
+            <div className="flex items-center gap-4">
               <span>Book a 30-Min call</span>
-              <div className="bg-white/10 p-2 sm:p-2.5 rounded-full group-hover:bg-white/20 transition-all flex items-center justify-center">
-                <ArrowRight size={18} className="sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+              <div className="bg-white/10 w-9 h-9 sm:w-11 sm:h-11 rounded-full transition-all flex items-center justify-center group-hover/btn:w-[48px] sm:group-hover/btn:w-[56px] group-hover/btn:rounded-full overflow-hidden">
+                <ArrowRight size={20} className="transition-transform duration-300 group-hover/btn:translate-x-1" />
               </div>
             </div>
           </Link>
-          <Link href="#" className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 rounded-full bg-white border border-zinc-200 text-zinc-900 font-semibold text-[14px] sm:text-[16px] hover:bg-zinc-50 transition-all shadow-sm">
-            View Projects
+          <Link href="#" className="group/btn h-[48px] sm:h-[56px] w-full sm:w-auto flex items-center justify-center gap-3 pl-8 pr-1.5 py-1.5 sm:py-2 rounded-full bg-white border border-zinc-200 text-zinc-900 font-bold text-[15px] sm:text-[17px] hover:bg-zinc-50 transition-all shadow-sm">
+            <span>View Projects</span>
+            <div className="bg-zinc-100 w-9 h-9 sm:w-11 sm:h-11 rounded-full transition-all flex items-center justify-center group-hover/btn:w-[48px] sm:group-hover/btn:w-[56px] group-hover/btn:rounded-full overflow-hidden">
+               <ArrowRight size={20} className="transition-transform duration-300 group-hover/btn:translate-x-1" />
+            </div>
           </Link>
         </div>
 

@@ -101,9 +101,9 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
         
         <Link 
           href="#"
-          className="w-12 h-12 rounded-full bg-zinc-100 border border-zinc-200 flex items-center justify-center transition-all duration-300 group-hover:bg-black group-hover:border-black group-hover:text-white text-zinc-900"
+          className="group/arrow w-12 h-12 rounded-full bg-zinc-100 border border-zinc-200 flex items-center justify-center transition-all duration-300 hover:w-[58px]"
         >
-          <ArrowRight size={20} className="transform transition-transform duration-300 group-hover:-rotate-45" />
+          <ArrowRight size={20} className="transition-transform duration-300 group-hover/arrow:translate-x-1" />
         </Link>
       </div>
     </div>

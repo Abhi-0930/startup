@@ -7,38 +7,55 @@ import {
   Layers, 
   PenTool, 
   ChevronDown, 
-  ArrowRight 
+  ArrowRight,
+  Code,
+  Smartphone,
+  Cpu,
+  Sparkles,
+  Search
 } from "lucide-react";
 
 const services = [
   {
     id: 1,
-    title: "Web Design & UX/UI",
-    description: "Crafting visually stunning and highly intuitive digital experiences that engage users and drive meaningful results for your brand.",
-    icon: <Layout className="w-5 h-5" />
+    title: "Web Development",
+    description: "Fast, modern, and conversion-focused websites built to make your business look credible, rank on Google, and turn visitors into paying clients.",
+    icon: <Code className="w-5 h-5" />
   },
   {
     id: 2,
-    title: "No-code Development",
-    description: "Building powerful, scalable web applications at lightning speed using modern no-code platforms without compromising on quality or performance.",
-    icon: <Zap className="w-5 h-5" />
+    title: "App Development",
+    description: "Custom mobile and web applications designed around your exact business needs — intuitive, scalable, and built to deliver a seamless user experience.",
+    icon: <Smartphone className="w-5 h-5" />
   },
   {
     id: 3,
-    title: "MVP prototyping",
-    description: "Rapidly turning your complex ideas into functional prototypes to validate concepts and secure early-stage feedback from your target audience.",
-    icon: <Layers className="w-5 h-5" />
+    title: "AI Automation",
+    description: "Repetitive tasks, manual workflows, and time-consuming processes — automated intelligently so your team can focus entirely on what drives growth.",
+    icon: <Cpu className="w-5 h-5" />
   },
   {
     id: 4,
-    title: "Ongoing Design Partner",
-    description: "Providing continuous design support and updates to keep your digital presence ahead of the curve and aligned with evolving market trends.",
-    icon: <PenTool className="w-5 h-5" />
+    title: "AI Applications",
+    description: "Smart, intelligent applications powered by AI — from chatbots and recommendation engines to fully custom tools built around your business logic.",
+    icon: <Sparkles className="w-5 h-5" />
+  },
+  {
+    id: 5,
+    title: "MVP Prototyping",
+    description: "A startup idea brought to life quickly and efficiently — validated, functional, and ready to present to real users or early-stage investors.",
+    icon: <Layers className="w-5 h-5" />
+  },
+  {
+    id: 6,
+    title: "SEO Improvement",
+    description: "Higher rankings, consistent organic traffic, and better visibility — your website optimised to reach the right audience at exactly the right time.",
+    icon: <Search className="w-5 h-5" />
   }
 ];
 
 export default function Services() {
-  const [activeTab, setActiveTab] = useState<number | null>(4); // Default to Ongoing Design Partner as in reference
+  const [activeTab, setActiveTab] = useState<number | null>(1); // Default to Web Development
 
   return (
     <section className="py-24 md:py-36 bg-white overflow-hidden">
@@ -58,9 +75,9 @@ export default function Services() {
           </div>
           
           <button className="group flex items-center gap-4 bg-white border border-neutral-100 px-8 py-4 rounded-full hover:bg-neutral-50 transition-all duration-300 shadow-sm hover:shadow-md">
-            <span className="font-bold text-neutral-900 tracking-tight">Start A Project</span>
-            <div className="w-10 h-10 rounded-full bg-neutral-50 flex items-center justify-center group-hover:bg-neutral-900 group-hover:text-white transition-all duration-300">
-              <ArrowRight className="w-5 h-5" />
+            <span className="font-normal text-neutral-900 tracking-tight">Start A Project</span>
+            <div className="w-10 h-10 rounded-full bg-neutral-50 flex items-center justify-center transition-all duration-300 group-hover:w-[48px] group-hover:rounded-full overflow-hidden">
+              <ArrowRight size={20} className="transition-transform duration-300 group-hover:translate-x-1" />
             </div>
           </button>
         </div>
@@ -91,9 +108,7 @@ export default function Services() {
                     }`}>
                       {service.icon}
                     </div>
-                    <span className={`text-[20px] md:text-[24px] font-bold tracking-tight transition-colors duration-500 ${
-                      activeTab === service.id ? "text-neutral-900" : "text-neutral-500 group-hover:text-neutral-900"
-                    }`}>
+                    <span className="text-[20px] md:text-[24px] font-normal tracking-tight text-neutral-900 transition-colors duration-500">
                       {service.title}
                     </span>
                   </div>
@@ -112,7 +127,7 @@ export default function Services() {
                       className="overflow-hidden"
                     >
                       <div className="pt-6 pl-16 md:pl-19 pr-4">
-                        <p className="text-neutral-400 text-[16px] md:text-[18px] leading-relaxed max-w-lg font-medium">
+                        <p className="text-neutral-600 text-[16px] md:text-[18px] leading-relaxed max-w-lg font-medium">
                           {service.description}
                         </p>
                       </div>

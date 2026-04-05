@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, ArrowRight, Menu, X, Folder, Users, LayoutGrid } from "lucide-react";
+import { ChevronDown, ArrowRight, Menu, X, Folder, Users, LayoutGrid, MessageSquare } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function Navbar() {
@@ -22,6 +22,7 @@ export default function Navbar() {
     { name: "Company", hasDropdown: true, icon: LayoutGrid },
     { name: "Projects", icon: Folder },
     { name: "About us", icon: Users },
+    { name: "Contact", icon: MessageSquare },
   ];
 
   return (
@@ -61,7 +62,7 @@ export default function Navbar() {
             <div className="hidden md:flex items-center gap-1">
               {navLinks.map((link) => (
                 <div key={link.name} className="relative group/nav py-2">
-                  <Link href="#" className="flex items-center gap-1 text-[15px] font-medium text-black hover:bg-zinc-100/80 px-3.5 py-2 rounded-full cursor-pointer transition-colors leading-none">
+                  <Link href="#" className="flex items-center gap-1 text-[15px] font-[550] text-black hover:bg-zinc-100/80 px-3.5 py-2 rounded-full cursor-pointer transition-colors leading-none">
                     {link.name}
                     {link.hasDropdown && <ChevronDown size={14} className="opacity-70 group-hover/nav:rotate-180 transition-transform" />}
                   </Link>
@@ -73,33 +74,39 @@ export default function Navbar() {
                           <div className="text-[12px] font-bold text-zinc-400 tracking-wider uppercase px-2">Company</div>
                           
                           <div className="flex flex-col gap-2">
-                            <Link href="#" className="flex items-start gap-4 p-2 rounded-2xl hover:bg-zinc-50 transition-colors group/item">
-                              <div className="w-11 h-11 rounded-full border border-zinc-100 flex items-center justify-center bg-white shadow-sm group-hover/item:border-zinc-200 transition-colors">
-                                <Folder size={20} className="text-zinc-600" />
+                            <Link href="#" className="flex items-center justify-between p-2 rounded-2xl hover:bg-zinc-50 transition-colors group/item">
+                              <div className="flex items-start gap-4">
+                                <div className="w-11 h-11 rounded-full border border-zinc-100 flex items-center justify-center bg-white shadow-sm group-hover/item:border-zinc-200 transition-colors">
+                                  <Folder size={20} className="text-zinc-600" />
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-[15px] font-semibold text-black">Projects</span>
+                                  <span className="text-[13px] text-zinc-500 mt-0.5">See our work that we've built.</span>
+                                </div>
                               </div>
-                              <div className="flex flex-col">
-                                  <span className="text-[15px] font-semibold text-black">Projects</span>
-                                <span className="text-[13px] text-zinc-500 mt-0.5">See our work that we've built.</span>
-                              </div>
+                              <ArrowRight size={20} className="text-zinc-400 opacity-0 group-hover/item:opacity-100 -translate-x-4 group-hover/item:translate-x-0 transition-all duration-300 mr-2" />
                             </Link>
 
-                            <Link href="#" className="flex items-start gap-4 p-2 rounded-2xl hover:bg-zinc-50 transition-colors group/item">
-                              <div className="w-11 h-11 rounded-full border border-zinc-100 flex items-center justify-center bg-white shadow-sm group-hover/item:border-zinc-200 transition-colors">
-                                <Users size={20} className="text-zinc-600" />
+                            <Link href="#" className="flex items-center justify-between p-2 rounded-2xl hover:bg-zinc-50 transition-colors group/item">
+                              <div className="flex items-start gap-4">
+                                <div className="w-11 h-11 rounded-full border border-zinc-100 flex items-center justify-center bg-white shadow-sm group-hover/item:border-zinc-200 transition-colors">
+                                  <Users size={20} className="text-zinc-600" />
+                                </div>
+                                <div className="flex flex-col">
+                                  <span className="text-[15px] font-semibold text-black">About us</span>
+                                  <span className="text-[13px] text-zinc-500 mt-0.5">About our amazing team.</span>
+                                </div>
                               </div>
-                              <div className="flex flex-col">
-                                <span className="text-[15px] font-semibold text-black">About us</span>
-                                <span className="text-[13px] text-zinc-500 mt-0.5">About our amazing team.</span>
-                              </div>
+                              <ArrowRight size={20} className="text-zinc-400 opacity-0 group-hover/item:opacity-100 -translate-x-4 group-hover/item:translate-x-0 transition-all duration-300 mr-2" />
                             </Link>
                           </div>
 
                           {/* Nested "Book A Call" style button */}
                           <div className="mt-2 px-2">
-                            <Link href="#" className="group/btn flex items-center justify-between bg-[#09090b] text-white pl-6 pr-1.5 py-1.5 rounded-full font-semibold text-[15px] hover:bg-black transition-all w-full">
-                              <span>Book A Call</span>
-                              <div className="bg-white/10 p-2 rounded-full group-hover/btn:bg-white/20 transition-all flex items-center justify-center">
-                                <ArrowRight size={16} />
+                            <Link href="#" className="group/btn flex items-center justify-between bg-[#09090b] text-white pl-6 pr-1.5 py-1.5 rounded-full font-bold text-[15px] hover:bg-black transition-all w-full relative overflow-hidden">
+                              <span className="relative z-10">Book A Call</span>
+                              <div className="bg-white/10 p-2 rounded-full transition-all flex items-center justify-center group-hover/btn:w-[48px] group-hover/btn:rounded-[18px]">
+                                <ArrowRight size={16} className="transition-transform duration-300 group-hover/btn:translate-x-1" />
                               </div>
                             </Link>
                           </div>
@@ -137,11 +144,11 @@ export default function Navbar() {
 
             {/* Desktop CTA Button */}
             <div className="hidden md:block">
-              <Link href="#" className="group flex items-center bg-[#09090b] text-white pl-5 pr-1.5 py-1 rounded-full font-medium text-[13px] hover:bg-black">
-                <div className="flex items-center gap-2.5">
+              <Link href="#" className="group flex items-center bg-[#09090b] text-white pl-5 pr-1.5 py-1 rounded-full font-bold text-[13px] hover:bg-black transition-all">
+                <div className="flex items-center gap-3">
                   <span>Book a 30-Min call</span>
-                  <div className="bg-white/10 p-1.5 rounded-full group-hover:bg-white/20 flex items-center justify-center">
-                    <ArrowRight size={14} className="group-hover:translate-x-1" />
+                  <div className="bg-white/10 h-[28px] w-[28px] rounded-full transition-all duration-300 flex items-center justify-center group-hover:w-[40px] group-hover:rounded-full overflow-hidden">
+                    <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
                   </div>
                 </div>
               </Link>
@@ -238,7 +245,7 @@ export default function Navbar() {
                   ) : (
                     <Link 
                       href="#" 
-                      className="flex items-center gap-3 px-2 py-2.5 hover:bg-zinc-50 rounded-lg text-black text-[16px]"
+                      className="flex items-center gap-3 px-2 py-2.5 hover:bg-zinc-50 rounded-lg text-black text-[16px] font-[550]"
                     >
                       {Icon && <Icon size={20} className="text-zinc-400 stroke-[1.5]" />}
                       {link.name}
