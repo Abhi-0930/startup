@@ -90,7 +90,8 @@ export default function Services() {
             {services.map((service) => (
               <div 
                 key={service.id}
-                className={`group transition-all duration-500 rounded-[32px] overflow-hidden ${
+                onMouseEnter={() => setActiveTab(service.id)}
+                className={`group transition-all duration-500 rounded-[32px] overflow-hidden cursor-pointer ${
                   activeTab === service.id 
                     ? "bg-white border border-neutral-100 shadow-[0_20px_50px_rgba(0,0,0,0.05)] p-7" 
                     : "bg-white border border-transparent hover:border-neutral-100 p-5"
