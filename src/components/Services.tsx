@@ -103,8 +103,8 @@ export default function Services() {
                   <div className="flex items-center gap-5">
                     <div className={`w-12 h-12 rounded-2xl flex items-center justify-center border transition-all duration-500 sm:w-14 sm:h-14 ${
                       activeTab === service.id 
-                        ? "bg-white border-neutral-200 text-neutral-900 shadow-sm" 
-                        : "bg-neutral-50 border-neutral-50 text-neutral-400 group-hover:text-neutral-900 group-hover:border-neutral-100"
+                        ? "bg-black border-black text-white" 
+                        : "bg-white border-neutral-100 text-neutral-400 group-hover:border-neutral-200 group-hover:text-black"
                     }`}>
                       {service.icon}
                     </div>
