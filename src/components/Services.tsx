@@ -91,6 +91,7 @@ export default function Services() {
               <div 
                 key={service.id}
                 onMouseEnter={() => setActiveTab(service.id)}
+                onMouseLeave={() => setActiveTab(null)}
                 className={`group transition-all duration-500 rounded-[32px] overflow-hidden cursor-pointer ${
                   activeTab === service.id 
                     ? "bg-white border border-neutral-100 shadow-[0_20px_50px_rgba(0,0,0,0.05)] p-7" 
