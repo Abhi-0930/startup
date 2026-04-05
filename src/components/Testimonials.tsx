@@ -36,7 +36,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="pt-8 pb-24 md:pt-12 md:pb-32 overflow-hidden bg-zinc-50/30">
+    <section className="pt-8 pb-4 md:pt-12 md:pb-8 overflow-hidden bg-zinc-50/30">
       <style>{`
         @keyframes scrollLeftSlow {
           0% { transform: translateX(0%); }

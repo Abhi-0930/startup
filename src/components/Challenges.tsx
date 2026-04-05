@@ -66,96 +66,82 @@ function ChallengeCard({ item }: { item: typeof challengesData[0] }) {
 
   return (
     <div 
-      className="relative w-full aspect-[16/10] md:aspect-[4/3] rounded-[24px] md:rounded-[40px] overflow-hidden cursor-pointer shadow-2xl transition-all duration-700 border border-black/5"
+      className="group relative w-full bg-white rounded-[28px] md:rounded-[32px] p-3.5 pb-6 md:p-5 md:pb-8 overflow-hidden cursor-pointer shadow-[0_8px_30px_rgb(0,0,0,0.03)] border border-zinc-100 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] transition-all duration-500"
       onMouseEnter={activate}
       onMouseLeave={deactivate}
       onClick={handleClick}
     >
-
-      {/* Media Background */}
-      <video
-         ref={videoRef}
-         src={item.videoSrc}
-         poster={item.imageSrc}
-         loop
-         muted
-         playsInline
-         className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[10s] ease-linear ${isActive ? 'scale-110' : 'scale-100'}`}
-      />
-      
-      {/* Dark Overlay */}
-      <div className={`absolute inset-0 transition-colors duration-500 pointer-events-none ${isActive ? 'bg-gradient-to-t from-black/95 via-black/80 to-transparent' : 'bg-gradient-to-t from-black/80 via-black/40 to-transparent'}`}></div>
-
-      {/* Dynamic 'Problem' Badge */}
-      <div className={`absolute top-4 right-4 md:top-6 md:right-6 z-50 bg-black/40 backdrop-blur-md border border-white/10 shadow-lg px-2.5 py-1 rounded-full pointer-events-none transition-all duration-500 transform ${isActive ? 'opacity-0 scale-90 -translate-y-2' : 'opacity-100 scale-100 translate-y-0'}`}>
-        <div className="flex items-center gap-1.5">
-          <div className="w-1.5 h-1.5 rounded-full bg-[#ff4d6d] shadow-[0_0_8px_#ff4d6d] animate-pulse"></div>
-          <p className="text-white/90 text-[10px] font-bold tracking-[0.15em] uppercase">
-            Problem
-          </p>
-        </div>
-      </div>
-
-      {/* Dynamic 'Solution' Badge */}
-      <div className={`absolute top-4 right-4 md:top-6 md:right-6 z-50 bg-black/40 backdrop-blur-md border border-white/10 shadow-lg px-2.5 py-1 rounded-full pointer-events-none transition-all duration-500 transform ${isActive ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 -translate-y-2'}`}>
-        <div className="flex items-center gap-1.5">
-          <div className="w-1.5 h-1.5 rounded-full bg-[#10b981] shadow-[0_0_8px_#10b981] animate-pulse"></div>
-          <p className="text-white/90 text-[10px] font-bold tracking-[0.15em] uppercase">
-            Solution
-          </p>
-        </div>
-      </div>
-
-      {/* Content Container */}
-      <div className="absolute inset-0 p-5 md:p-10 flex flex-col justify-end pointer-events-none">
+      {/* Media Container (Top) */}
+      <div className="relative w-full aspect-[16/10] md:aspect-[1.5/1] rounded-[20px] md:rounded-[24px] overflow-hidden bg-zinc-50 border border-zinc-100/50">
+        <video
+           key={item.id}
+           ref={videoRef}
+           src={item.videoSrc}
+           poster={item.imageSrc}
+           autoPlay
+           loop
+           muted
+           playsInline
+           className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[10s] ease-linear ${isActive ? 'scale-110' : 'scale-100'}`}
+        />
         
+        {/* Subtle Overlay */}
+        <div className="absolute inset-0 bg-black/5"></div>
+      </div>
+
+      {/* Content Container (Bottom) */}
+      <div className="mt-5 md:mt-6 px-1.5 text-left">
+        {/* Dynamic Badge Area */}
+        <div className="relative h-4 flex items-center mb-2.5">
+          <div className={`absolute left-0 bg-red-50 border border-red-100 px-2 py-0.5 rounded-full flex items-center gap-1 transition-all duration-500 ${isActive ? 'opacity-0 -translate-y-2' : 'opacity-100 translate-y-0'}`}>
+            <div className="w-1.5 h-1.5 rounded-full bg-red-500"></div>
+            <span className="text-red-600 text-[9px] font-bold tracking-wider uppercase">Problem</span>
+          </div>
+
+          <div className={`absolute left-0 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-full flex items-center gap-1 transition-all duration-500 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
+            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+            <span className="text-emerald-600 text-[9px] font-bold tracking-wider uppercase">Solution</span>
+          </div>
+        </div>
+
         {/* Challenge Header */}
-        <div className={`transform transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${isActive ? '-translate-y-4 md:-translate-y-3' : 'translate-y-0'}`}>
-          <h3 className="text-white text-[22px] md:text-[36px] font-bold leading-tight mb-2 md:mb-3 drop-shadow-2xl">
-            {item.challenge}
-          </h3>
-          
-          {/* Problem Description: Visible ONLY on Desktop, hidden COMPLETELY on Mobile to keep it clean */}
-          <p className={`hidden md:block text-white/80 leading-relaxed transition-all duration-500 md:text-[17px]
-            ${isActive ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100 h-auto'}
-          `}>
+        <h3 className="text-[#0a0a0b] text-[17px] md:text-[19px] font-semibold leading-tight mb-2.5 tracking-tight group-hover:text-black transition-colors text-left">
+          {item.challenge}
+        </h3>
+        
+        {/* Text Reveal Logic: Problem vs Solution */}
+        <div className="relative min-h-[50px] md:min-h-[60px] text-left">
+          {/* Problem Text */}
+          <p className={`text-zinc-500 text-[13px] md:text-[14px] leading-relaxed transition-all duration-500 absolute inset-0 text-left ${isActive ? 'opacity-0 invisible -translate-x-4' : 'opacity-100 visible translate-x-0'}`}>
             {item.description}
           </p>
-        </div>
-
-        {/* Revealable Solution Text: Shown on both Mobile (Tap) and Desktop (Hover) */}
-        <div className={`grid transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${isActive ? 'grid-rows-[1fr] opacity-100 mt-4 md:mt-6' : 'grid-rows-[0fr] opacity-0 mt-0'}`}>
-          <div className="overflow-hidden flex flex-col gap-2 md:gap-3">
-            <div className="flex items-center gap-2 text-[10px] md:text-[12px] font-black text-[#10b981] uppercase tracking-[0.2em] drop-shadow-sm">
-              Our Solution 
-              <ArrowRight className="w-3.5 md:w-4 h-3.5 md:h-4" />
-            </div>
-            <p className="text-white text-[15px] md:text-[18px] lg:text-[19px] leading-relaxed max-w-lg font-semibold line-clamp-4 md:line-clamp-3">
+          
+          {/* Solution Text */}
+          <div className={`transition-all duration-500 absolute inset-0 text-left ${isActive ? 'opacity-100 visible translate-x-0' : 'opacity-0 invisible translate-x-4'}`}>
+            <p className="text-[#0a0a0b] text-[13px] md:text-[14px] leading-relaxed font-medium text-left">
               {item.solution}
             </p>
           </div>
         </div>
-        
       </div>
-
     </div>
   );
 }
 
 export default function Challenges() {
   return (
-    <section className="pt-12 pb-24 md:pt-24 md:pb-40 max-w-[1200px] mx-auto px-6">
+    <section className="pt-0 pb-12 md:pt-0 md:pb-16 max-w-[980px] mx-auto px-6">
       
       {/* Centered Header Section */}
-      <div className="mb-10 md:mb-20 text-center">
-        <h2 className="text-[2.2rem] md:text-6xl lg:text-[4rem] font-black tracking-tighter text-neutral-900 leading-[1] mb-6 md:mb-8">
+      <div className="mb-10 md:mb-16 text-center">
+        <h2 className="text-[2.2rem] md:text-5xl lg:text-[3.5rem] font-black tracking-tighter text-neutral-900 leading-[1.1] mb-6 md:mb-8">
           The challenges <br className="hidden md:block" />
           <span className="text-neutral-400">modern businesses face.</span>
         </h2>
       </div>
 
       {/* 2x2 Interactive Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
         {challengesData.map((item) => (
            <ChallengeCard key={item.id} item={item} />
         ))}

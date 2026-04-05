@@ -58,7 +58,7 @@ export default function Services() {
   const [activeTab, setActiveTab] = useState<number | null>(1); // Default to Web Development
 
   return (
-    <section className="py-24 md:py-36 bg-white overflow-hidden">
+    <section className="pt-0 pb-24 md:pt-0 md:pb-36 bg-white overflow-hidden">
       <div className="max-w-[1300px] mx-auto px-6 md:px-12">
         
         {/* Header Section */}
