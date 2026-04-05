@@ -3,6 +3,7 @@ import FeatureProject from "@/components/FeatureProject";
 import LogoTicker from "@/components/LogoTicker";
 import Testimonials from "@/components/Testimonials";
 import Challenges from "@/components/Challenges";
+import Services from "@/components/Services";
 import Projects from "@/components/Projects";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <LogoTicker />
       <Testimonials />
       <Challenges />
+      <Services />
       <Projects />
     </main>
   );
