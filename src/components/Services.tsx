@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Layout, 
@@ -20,37 +21,43 @@ const services = [
     id: 1,
     title: "Web Development",
     description: "Custom, high-performance websites built for speed and reliability, designed to establish immediate brand authority and convert traffic into revenue.",
-    icon: <Code className="w-5 h-5" />
+    icon: <Code className="w-5 h-5" />,
+    imageSrc: "/services/web-dev.avif"
   },
   {
     id: 2,
     title: "App Development",
     description: "Scalable mobile and web applications with intuitive user interfaces, tailored to solve specific business problems and enhance customer engagement.",
-    icon: <Smartphone className="w-5 h-5" />
+    icon: <Smartphone className="w-5 h-5" />,
+    imageSrc: "/services/app-dev.avif"
   },
   {
     id: 3,
     title: "AI Automation",
     description: "Intelligent automation workflows that handle repetitive manual tasks, ensuring a more efficient team and significantly reduced operational overhead.",
-    icon: <Cpu className="w-5 h-5" />
+    icon: <Cpu className="w-5 h-5" />,
+    imageSrc: "/services/automation.avif"
   },
   {
     id: 4,
     title: "AI Applications",
     description: "Advanced tools including custom chatbots and recommendation engines that use AI to deliver a personalized, high-speed experience to your users.",
-    icon: <Sparkles className="w-5 h-5" />
+    icon: <Sparkles className="w-5 h-5" />,
+    imageSrc: "/services/ai.avif"
   },
   {
     id: 5,
     title: "MVP Prototyping",
     description: "Functional early-stage products designed for rapid testing, allowing you to validate core ideas with real users and secure stakeholder buy-in.",
-    icon: <Layers className="w-5 h-5" />
+    icon: <Layers className="w-5 h-5" />,
+    imageSrc: "/services/mvp.avif"
   },
   {
     id: 6,
     title: "SEO Improvement",
     description: "Strategic search engine optimization that increases organic visibility and brings targeted traffic to your site without the need for paid ads.",
-    icon: <Search className="w-5 h-5" />
+    icon: <Search className="w-5 h-5" />,
+    imageSrc: "/services/seo.avif"
   }
 ];
 
@@ -141,26 +148,38 @@ export default function Services() {
           </div>
 
           {/* Right Column: Visual Media Showcase */}
-          <div className="relative mt-12 lg:mt-0 flex group items-center justify-center">
-            {/* Background Decorative Element (Matching Image's Red Bar Effect) */}
+          <div className="relative mt-12 lg:mt-0 flex group items-center justify-center h-full min-h-[500px]">
+            {/* Background Decorative Element */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] pointer-events-none opacity-30 select-none">
                 <div className="absolute top-0 right-1/4 w-[1px] h-full bg-[#ff4d6d] opacity-20 blur-[1px]"></div>
                 <div className="absolute top-1/2 right-[15%] -translate-y-1/2 w-48 h-48 bg-[#ff4d6d]/10 blur-[100px] rounded-full animate-pulse"></div>
             </div>
 
-            <div className="relative w-full aspect-[4/5] sm:aspect-[4/3] rounded-[60px] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.1)] border border-neutral-100 ring-1 ring-black/5 bg-neutral-50">
-               <video 
-                 src="https://videos.pexels.com/video-files/4828606/4828606-uhd_2560_1440_25fps.mp4" 
-                 autoPlay 
-                 loop 
-                 muted 
-                 playsInline 
-                 className="w-full h-full object-cover transition-transform duration-[10s] group-hover:scale-105"
-               />
-               
-               {/* Reference Red Vertical Bar */}
-               <div className="absolute top-[15%] right-[12%] w-[12%] h-[60%] bg-[#ff4d6d] opacity-90 rounded-2xl shadow-[0_20px_50px_rgba(255,77,109,0.4)] pointer-events-none"></div>
-               <div className="absolute top-[10%] right-[10%] w-[16%] h-[70%] bg-[#ff4d6d]/20 blur-2xl rounded-3xl pointer-events-none animate-pulse"></div>
+            <div className="relative w-full aspect-[4/5] sm:aspect-[4/3] rounded-[48px] md:rounded-[60px] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.1)] border border-neutral-100 ring-1 ring-black/5 bg-neutral-50">
+               <AnimatePresence mode="wait">
+                 <motion.div
+                   key={activeTab}
+                   initial={{ opacity: 0, scale: 1.02 }}
+                   animate={{ opacity: 1, scale: 1 }}
+                   exit={{ opacity: 0, scale: 0.98 }}
+                   transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
+                   className="w-full h-full"
+                 >
+                   <Image
+                     src={services.find(s => s.id === activeTab)?.imageSrc || services[0].imageSrc} 
+                     alt={services.find(s => s.id === activeTab)?.title || "Service"}
+                     fill
+                     className="object-cover transition-transform duration-[10s] group-hover:scale-105"
+                     priority
+                   />
+                   
+                   {/* Subtle Overlay to match the branding */}
+                   <div className="absolute inset-0 bg-black/5 mix-blend-multiply"></div>
+                   
+                   {/* Brand Accent Mark */}
+                   <div className="absolute top-[15%] right-[10%] w-[10%] h-[55%] bg-[#ff4d6d] opacity-80 rounded-2xl shadow-[0_20px_50px_rgba(255,77,109,0.3)] pointer-events-none backdrop-blur-sm border border-white/20"></div>
+                 </motion.div>
+               </AnimatePresence>
             </div>
           </div>
 
