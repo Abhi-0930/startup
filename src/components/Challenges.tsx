@@ -21,22 +21,22 @@ const challengesData: ChallengeItem[] = [
   {
     id: "02",
     challenge: "Outdated Technology Stack",
-    description: "Using old systems that are slow, hard to manage, and expensive to keep running.",
-    solution: "Modern tech stacks built to handle more users and scale easily as you grow.",
+    description: "Using old, slow systems makes it impossible to provide the fast and secure experience that modern customers expect today.",
+    solution: "We build high-speed Web, App, and AI systems with Next.js, React Native, and Multi-Agentic AI to handle more users and scale easily.",
     imageSrc: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&auto=format&fit=crop"
   },
   {
     id: "03",
     challenge: "Too Much Manual Work",
-    description: "Your team is wasting time on repetitive tasks that could be done much faster with automation.",
-    solution: "Automated systems that handle the manual work so your team can focus on growth.",
+    description: "Your team spends hours on repetitive tasks that should be automated, slowing down your business growth.",
+    solution: "We build custom AI agents that handle the boring work, letting your team focus on what actually matters.",
     imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop"
   },
   {
     id: "04",
     challenge: "Slow Website Performance",
-    description: "A slow website that frustrates your visitors and makes them leave your site.",
-    solution: "Speed optimizations that make your site load instantly and keep users happy.",
+    description: "A slow website frustrates your users, kills your search rankings, and makes you lose money every single second.",
+    solution: "We optimize every line of code to ensure your site loads instantly on any device, anywhere in the world.",
     imageSrc: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop"
   }
 ];
