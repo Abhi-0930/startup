@@ -13,30 +13,30 @@ interface ChallengeItem {
 const challengesData: ChallengeItem[] = [
   {
     id: "01",
-    challenge: "No Online Presence",
-    description: "A potential loss of revenue due to a missing or outdated digital storefront that fails to establish trust with modern users.",
-    solution: "High-performance digital platforms that establish immediate brand credibility and drive lead generation.",
+    challenge: "Low Brand Visibility",
+    description: "New customers can't find your business online when they search for you.",
+    solution: "Powerful SEO and search tools that make your brand visible to everyone.",
     imageSrc: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop"
   },
   {
     id: "02",
     challenge: "Outdated Technology Stack",
-    description: "Reliance on legacy systems and rigid frameworks that result in sluggish performance and increasingly high maintenance costs.",
-    solution: "Implementation of the most advanced, high-performance tech stacks engineered to scale effortlessly and thrive in the modern digital landscape.",
+    description: "Using old systems that are slow, hard to manage, and expensive to keep running.",
+    solution: "Modern tech stacks built to handle more users and scale easily as you grow.",
     imageSrc: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&auto=format&fit=crop"
   },
   {
     id: "03",
     challenge: "Too Much Manual Work",
-    description: "Significant operational overhead and team burnout caused by repetitive manual tasks that could be handled through intelligent automation.",
-    solution: "Intelligent automation systems that operate silently in the background, eliminating repetitive tasks and returning focus to growth strategies.",
+    description: "Your team is wasting time on repetitive tasks that could be done much faster with automation.",
+    solution: "Automated systems that handle the manual work so your team can focus on growth.",
     imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop"
   },
   {
     id: "04",
-    challenge: "Underperforming Website",
-    description: "A digital paperweight that fails to convert traffic effectively, often due to slow load times or an outdated technical infrastructure.",
-    solution: "Data-driven performance optimization and infrastructure updates that transform low-converting sites into efficient business tools.",
+    challenge: "Slow Website Performance",
+    description: "A slow website that frustrates your visitors and makes them leave your site.",
+    solution: "Speed optimizations that make your site load instantly and keep users happy.",
     imageSrc: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop"
   }
 ];
