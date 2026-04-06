@@ -13,9 +13,9 @@ interface ChallengeItem {
 const challengesData: ChallengeItem[] = [
   {
     id: "01",
-    challenge: "Low Brand Visibility",
-    description: "New customers can't find your business online when they search for you.",
-    solution: "Powerful SEO and search tools that make your brand visible to everyone.",
+    challenge: "Outdated or No Online Presence",
+    description: "Businesses lose potential clients daily because their website looks unprofessional, loads slowly, or doesn't even exist yet. First impressions happen online now.",
+    solution: "We build fast, modern websites that make your business look credible and convert visitors into paying customers from day one.",
     imageSrc: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop"
   },
   {
