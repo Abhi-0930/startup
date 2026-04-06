@@ -72,8 +72,7 @@ export default function Services() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 md:mb-28 gap-10">
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-2 h-2 bg-[#ff4d6d]"></div>
-              <span className="text-[13px] font-bold text-neutral-500">Services</span>
+              <span className="text-[13px] font-bold text-neutral-500 tracking-[0.2em] uppercase">Services</span>
             </div>
             <h2 className="text-[2.8rem] md:text-[4rem] lg:text-[5rem] font-bold leading-[1.05] tracking-tighter text-neutral-900">
               From idea to scale. <br />
@@ -149,12 +148,6 @@ export default function Services() {
 
           {/* Right Column: Visual Media Showcase */}
           <div className="relative mt-12 lg:mt-0 flex group items-center justify-center h-full min-h-[500px]">
-            {/* Background Decorative Element */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] pointer-events-none opacity-30 select-none">
-                <div className="absolute top-0 right-1/4 w-[1px] h-full bg-[#ff4d6d] opacity-20 blur-[1px]"></div>
-                <div className="absolute top-1/2 right-[15%] -translate-y-1/2 w-48 h-48 bg-[#ff4d6d]/10 blur-[100px] rounded-full animate-pulse"></div>
-            </div>
-
             <div className="relative w-full aspect-[4/5] sm:aspect-[4/3] rounded-[48px] md:rounded-[60px] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.1)] border border-neutral-100 ring-1 ring-black/5 bg-neutral-50">
                <AnimatePresence mode="wait">
                  <motion.div
@@ -163,21 +156,24 @@ export default function Services() {
                    animate={{ opacity: 1, scale: 1 }}
                    exit={{ opacity: 0, scale: 0.98 }}
                    transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
-                   className="w-full h-full"
+                   className="w-full h-full relative"
                  >
+                   {/* Skeleton Loader (Shimmer) */}
+                   <div className="absolute inset-0 bg-neutral-100 overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full animate-shimmer w-[200%] h-full"></div>
+                   </div>
+
                    <Image
                      src={services.find(s => s.id === activeTab)?.imageSrc || services[0].imageSrc} 
                      alt={services.find(s => s.id === activeTab)?.title || "Service"}
                      fill
                      className="object-cover transition-transform duration-[10s] group-hover:scale-105"
-                     priority
+                     priority={true}
                    />
                    
                    {/* Subtle Overlay to match the branding */}
                    <div className="absolute inset-0 bg-black/5 mix-blend-multiply"></div>
                    
-                   {/* Brand Accent Mark */}
-                   <div className="absolute top-[15%] right-[10%] w-[10%] h-[55%] bg-[#ff4d6d] opacity-80 rounded-2xl shadow-[0_20px_50px_rgba(255,77,109,0.3)] pointer-events-none backdrop-blur-sm border border-white/20"></div>
                  </motion.div>
                </AnimatePresence>
             </div>

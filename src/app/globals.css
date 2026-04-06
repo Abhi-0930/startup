@@ -72,3 +72,12 @@ h1, h2, h3, h4, h5, h6 {
   animation: delayedReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   opacity: 0; /* Hidden initially while waiting for keyframe */
 }
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s infinite;
+}
