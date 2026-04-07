@@ -23,7 +23,7 @@ const challengesData: ChallengeItem[] = [
     challenge: "Outdated Technology Stack",
     description: "Using old, slow systems makes it impossible to provide the fast and secure experience that modern customers expect today.",
     solution: "We build high-speed Web, App, and AI systems with Next.js, React Native, and Multi-Agentic AI to handle more users and scale easily.",
-    imageSrc: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&auto=format&fit=crop"
+    imageSrc: "/challenges/outdated-tech.webm"
   },
   {
     id: "03",
@@ -43,6 +43,7 @@ const challengesData: ChallengeItem[] = [
 
 function ChallengeCard({ item }: { item: ChallengeItem }) {
   const [isActive, setIsActive] = useState(false);
+  const isVideo = item.imageSrc.endsWith('.webm') || item.imageSrc.endsWith('.mp4');
 
   return (
     <div 
@@ -52,14 +53,25 @@ function ChallengeCard({ item }: { item: ChallengeItem }) {
     >
       {/* Media Container (Top) */}
       <div className="relative w-full aspect-[1.4/1] rounded-[18px] md:rounded-[20px] overflow-hidden bg-neutral-50 border border-neutral-100/50 mb-7">
-        <img
-           src={item.imageSrc}
-           alt={item.challenge}
-           className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[10s] ease-linear ${isActive ? 'scale-105' : 'scale-100'}`}
-        />
+        {isVideo ? (
+          <video
+            src={item.imageSrc}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[10s] ease-linear ${isActive ? 'scale-105' : 'scale-100'}`}
+          />
+        ) : (
+          <img
+            src={item.imageSrc}
+            alt={item.challenge}
+            className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[10s] ease-linear ${isActive ? 'scale-105' : 'scale-100'}`}
+          />
+        )}
         
         {/* Subtle Overlay */}
-        <div className="absolute inset-0 bg-black/2"></div>
+        <div className="absolute inset-0 bg-black/2 text-left"></div>
       </div>
 
       {/* Content Container (Bottom) */}
