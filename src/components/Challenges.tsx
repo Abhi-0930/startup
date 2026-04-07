@@ -49,6 +49,10 @@ function ChallengeCard({ item }: { item: ChallengeItem }) {
   useEffect(() => {
     if (isVideo && videoRef.current) {
       if (isActive) {
+        // Start from 0.25s to skip initial frame delay if at the beginning
+        if (videoRef.current.currentTime < 0.25) {
+          videoRef.current.currentTime = 0.25;
+        }
         videoRef.current.play().catch(error => {
           console.error("Video play failed:", error);
         });
