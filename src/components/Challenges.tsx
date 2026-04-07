@@ -1,5 +1,5 @@
 "use client";
-import { useRef, ReactNode, useState } from "react";
+import { useRef, ReactNode, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ChallengeItem {
@@ -43,23 +43,38 @@ const challengesData: ChallengeItem[] = [
 
 function ChallengeCard({ item }: { item: ChallengeItem }) {
   const [isActive, setIsActive] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const isVideo = item.imageSrc.endsWith('.webm') || item.imageSrc.endsWith('.mp4');
+
+  useEffect(() => {
+    if (isVideo && videoRef.current) {
+      if (isActive) {
+        videoRef.current.play().catch(error => {
+          console.error("Video play failed:", error);
+        });
+      } else {
+        videoRef.current.pause();
+      }
+    }
+  }, [isActive, isVideo]);
 
   return (
     <div 
       className="group relative w-full bg-white rounded-[24px] md:rounded-[28px] p-4 pb-6 md:p-5 md:pb-7 overflow-hidden cursor-pointer shadow-[0_8px_30px_rgb(0,0,0,0.03)] border border-neutral-100 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] transition-all duration-500"
       onMouseEnter={() => setIsActive(true)}
       onMouseLeave={() => setIsActive(false)}
+      onClick={() => setIsActive(!isActive)}
     >
       {/* Media Container (Top) */}
       <div className="relative w-full aspect-[1.4/1] rounded-[18px] md:rounded-[20px] overflow-hidden bg-neutral-50 border border-neutral-100/50 mb-7">
         {isVideo ? (
           <video
+            ref={videoRef}
             src={item.imageSrc}
-            autoPlay
             loop
             muted
             playsInline
+            preload="auto"
             className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[10s] ease-linear ${isActive ? 'scale-105' : 'scale-100'}`}
           />
         ) : (
