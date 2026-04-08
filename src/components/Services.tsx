@@ -57,7 +57,7 @@ const services = [
     title: "SEO Improvement",
     description: "Strategic search engine optimization that increases organic visibility and brings targeted traffic to your site without the need for paid ads.",
     icon: <Search className="w-5 h-5" />,
-    imageSrc: "/services/seo.avif"
+    imageSrc: "/services/seo-improvment.avif"
   }
 ];
 
@@ -148,23 +148,37 @@ export default function Services() {
 
           {/* Right Column: Visual Media Showcase */}
           <div className="relative mt-12 lg:mt-0 flex group items-center justify-center h-full min-h-[500px]">
+            {/* Hidden Preloader: This ensures all images are cached and ready INstantaneously */}
+            <div className="hidden" aria-hidden="true">
+              {services.map((service) => (
+                <Image 
+                  key={`preload-${service.id}`}
+                  src={service.imageSrc}
+                  alt="preload"
+                  width={1}
+                  height={1}
+                  priority={true}
+                />
+              ))}
+            </div>
+
             <div className="relative w-full aspect-[4/5] sm:aspect-[4/3] rounded-[48px] md:rounded-[60px] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.1)] border border-neutral-100 ring-1 ring-black/5 bg-neutral-50">
-               <AnimatePresence mode="wait">
-                 <motion.div
-                   key={activeTab}
-                   initial={{ opacity: 0, scale: 1.02 }}
-                   animate={{ opacity: 1, scale: 1 }}
-                   exit={{ opacity: 0, scale: 0.98 }}
-                   transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
-                   className="w-full h-full relative"
-                 >
+               <AnimatePresence>
+                   <motion.div
+                     key={activeTab}
+                     initial={{ opacity: 0 }}
+                     animate={{ opacity: 1 }}
+                     exit={{ opacity: 0 }}
+                     transition={{ duration: 0.1, ease: "linear" }}
+                     className="w-full h-full absolute inset-0"
+                   >
                    {/* Skeleton Loader (Shimmer) */}
                    <div className="absolute inset-0 bg-neutral-100 overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full animate-shimmer w-[200%] h-full"></div>
                    </div>
 
                    <Image
-                     key={activeTab}
+                     key={`active-img-${activeTab}`}
                      src={services.find(s => s.id === activeTab)?.imageSrc || services[0].imageSrc} 
                      alt={services.find(s => s.id === activeTab)?.title || "Service"}
                      fill
