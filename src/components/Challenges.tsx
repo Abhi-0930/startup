@@ -130,7 +130,7 @@ function ChallengeCard({ item }: { item: ChallengeItem }) {
 
 export default function Challenges() {
   return (
-    <section id="challenges" className="pt-0 pb-12 md:pt-0 md:pb-20 max-w-[1000px] mx-auto px-6">
+    <section id="challenges" className="pt-10 pb-12 md:pt-14 md:pb-20 max-w-[1000px] mx-auto px-6">
       
       {/* Centered Header Section */}
       <div className="mb-14 md:mb-20 text-center">
