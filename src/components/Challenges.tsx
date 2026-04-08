@@ -30,7 +30,7 @@ const challengesData: ChallengeItem[] = [
     challenge: "Too Much Manual Work",
     description: "Your team spends hours on repetitive tasks that should be automated, slowing down your business growth.",
     solution: "We build custom AI agents that handle the boring work, letting your team focus on what actually matters.",
-    imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop"
+    imageSrc: "/challenges/too-much-manual-work.webm"
   },
   {
     id: "04",
@@ -49,10 +49,6 @@ function ChallengeCard({ item }: { item: ChallengeItem }) {
   useEffect(() => {
     if (isVideo && videoRef.current) {
       if (isActive) {
-        // Start from 0.25s to skip initial frame delay if at the beginning
-        if (videoRef.current.currentTime < 0.25) {
-          videoRef.current.currentTime = 0.25;
-        }
         videoRef.current.play().catch(error => {
           console.error("Video play failed:", error);
         });
