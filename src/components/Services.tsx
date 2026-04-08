@@ -43,7 +43,7 @@ const services = [
     title: "AI Applications",
     description: "Advanced tools including custom chatbots and recommendation engines that use AI to deliver a personalized, high-speed experience to your users.",
     icon: <Sparkles className="w-5 h-5" />,
-    imageSrc: "/services/ai.avif"
+    imageSrc: "/services/ai-applications.avif"
   },
   {
     id: 5,
@@ -164,6 +164,7 @@ export default function Services() {
                    </div>
 
                    <Image
+                     key={activeTab}
                      src={services.find(s => s.id === activeTab)?.imageSrc || services[0].imageSrc} 
                      alt={services.find(s => s.id === activeTab)?.title || "Service"}
                      fill
