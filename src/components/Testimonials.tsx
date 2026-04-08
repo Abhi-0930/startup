@@ -1,5 +1,9 @@
-import Image from "next/image";
+"use client";
+
+import React, { useState, useEffect, useRef } from "react";
 import { Quote, Activity, Boxes, Aperture } from "lucide-react";
+import { Skeleton } from "@/components/ui/Skeleton";
+import { motion, AnimatePresence } from "framer-motion";
 
 const testimonials = [
   {
@@ -35,93 +39,194 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [imagesLoaded, setImagesLoaded] = useState(0);
+  const [minTimeElapsed, setMinTimeElapsed] = useState(false);
+  const imgRefs = useRef<(HTMLImageElement | null)[]>([]);
+  const totalImages = 3;
+
+  useEffect(() => {
+    // 200ms minimum threshold to prevent flicker
+    const timer = setTimeout(() => setMinTimeElapsed(true), 200);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    // Proactive check for cached images
+    let count = 0;
+    imgRefs.current.forEach((img) => {
+      if (img?.complete) count++;
+    });
+    if (count > 0) setImagesLoaded(count);
+  }, []);
+
+  useEffect(() => {
+    if (imagesLoaded >= totalImages && minTimeElapsed) {
+      setIsLoading(false);
+    }
+  }, [imagesLoaded, minTimeElapsed]);
+
   return (
-    <section className="pt-8 pb-4 md:pt-12 md:pb-8 overflow-hidden bg-zinc-50/30">
+    <section className="relative pt-16 pb-24 md:pt-24 md:pb-32 overflow-hidden min-h-[600px] flex flex-col justify-center">
+      {/* Testimonials Backdrop - Layered & Sophisticated */}
+      <div className="absolute inset-0 bg-[#fafafa] pointer-events-none -z-10" />
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-zinc-200 to-transparent opacity-50" />
+      
       <style>{`
         @keyframes scrollLeftSlow {
           0% { transform: translateX(0%); }
           100% { transform: translateX(-33.3333%); }
         }
         .animate-scroll-slow {
-          animation: scrollLeftSlow 40s linear infinite;
+          animation: scrollLeftSlow 50s linear infinite;
         }
         .animate-scroll-slow:hover {
           animation-play-state: paused;
         }
       `}</style>
       
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8 mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 tracking-tight text-center max-w-2xl mx-auto">
-          What our clients say 
-          <span className="block text-zinc-400 mt-2">after working with us.</span>
-        </h2>
+      <div className="max-w-[1400px] mx-auto px-4 md:px-8 mb-20 relative z-10">
+        <AnimatePresence mode="wait">
+          {isLoading ? (
+            <motion.div 
+              key="testimonial-header-skeleton"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="text-center space-y-3"
+            >
+              <Skeleton className="h-10 md:h-12 w-[280px] md:w-[450px] mx-auto rounded-lg" />
+              <Skeleton className="h-10 md:h-12 w-[200px] md:w-[350px] mx-auto rounded-lg" />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="testimonial-header"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="text-center"
+            >
+              <h2 className="text-4xl md:text-6xl font-bold text-zinc-900 tracking-tight max-w-2xl mx-auto leading-[1.1]">
+                What our clients say 
+                <span className="block text-zinc-400 mt-2 font-medium">after working with us.</span>
+              </h2>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Marquee Viewport */}
       <div className="relative flex items-center w-full">
-        {/* Transparent edge masks to blend into the background */}
-        <div className="absolute inset-y-0 left-0 w-16 md:w-40 bg-gradient-to-r from-zinc-50 via-zinc-50/80 to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute inset-y-0 right-0 w-16 md:w-40 bg-gradient-to-l from-zinc-50 via-zinc-50/80 to-transparent z-10 pointer-events-none"></div>
+        {/* Superior Edge Masks */}
+        <div className="absolute inset-y-0 left-0 w-24 md:w-64 bg-gradient-to-r from-[#fafafa] via-[#fafafa]/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-24 md:w-64 bg-gradient-to-l from-[#fafafa] via-[#fafafa]/80 to-transparent z-10 pointer-events-none" />
 
-        <div className="flex w-max animate-scroll-slow items-center gap-6 md:gap-8 px-4">
-          {/* We produce exactly 3 duplicate sets of the array so we can shift -33.33% to seamlessly loop */}
-          {[0, 1, 2].map((groupIndex) => (
-            <div key={`group-${groupIndex}`} className="flex items-stretch gap-6 md:gap-8">
-              
-              {testimonials.map((item) => (
-                <div 
-                  key={`${groupIndex}-${item.id}`} 
-                  className="w-[340px] md:w-[480px] bg-white rounded-[32px] p-8 md:p-10 border border-zinc-200/60 shadow-sm shrink-0 flex flex-col group hover:shadow-md hover:border-zinc-300 transition-all duration-300 cursor-grab active:cursor-grabbing"
-                >
-                  {/* Top: Massive Stat */}
-                  <div>
-                    <h3 className="text-[40px] leading-none font-bold text-zinc-900 tracking-tight">
-                      {item.stat}
-                    </h3>
-                    <p className="text-zinc-500 font-medium text-[15px] md:text-[17px] mt-2">
-                      {item.statLabel}
-                    </p>
+        <AnimatePresence mode="wait">
+          {isLoading ? (
+            <motion.div 
+              key="testimonials-skeleton"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="flex items-center gap-6 md:gap-10 px-4"
+            >
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="w-[340px] md:w-[520px] bg-white rounded-[40px] p-8 md:p-12 border border-zinc-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] shrink-0 space-y-8">
+                  <div className="space-y-3">
+                    <Skeleton className="h-12 w-28 rounded-lg" />
+                    <Skeleton className="h-4 w-44 rounded-md" />
                   </div>
-                  
-                  {/* The Quotation mark */}
-                  <div className="mt-8 mb-4">
-                    <span className="text-[#e25a48] text-5xl font-serif leading-none opacity-90">
-                      ❝
-                    </span>
-                  </div>    
-
-                  {/* The Review English */}
-                  <p className="text-zinc-600 text-[15px] md:text-[16px] leading-relaxed flex-grow">
-                    {item.text}
-                  </p>  
-                                  
-                  {/* The Bottom Profile Block */}
-                  <div className="flex items-center justify-between mt-6">
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-full overflow-hidden bg-zinc-200 shrink-0">
-                         <img 
-                           src={item.profileImage} 
-                           alt={item.author} 
-                           className="w-full h-full object-cover"
-                         />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-zinc-900 text-[15px]">{item.author}</h4>
-                        <p className="text-zinc-500 text-[13px]">{item.role}</p>
-                      </div>
-                    </div>
-                    {/* The Company Logo Mark */}
-                    <div className="text-zinc-300 group-hover:text-zinc-400 transition-colors">
-                       <item.CompanyIcon size={24} />
+                  <Skeleton className="h-10 w-10 rounded-xl" />
+                  <div className="space-y-2">
+                    <Skeleton className="h-4 w-full rounded-md" />
+                    <Skeleton className="h-4 w-[90%] rounded-md" />
+                    <Skeleton className="h-4 w-[85%] rounded-md" />
+                  </div>
+                  <div className="flex items-center gap-5 pt-4">
+                    <Skeleton className="w-14 h-14 rounded-full" />
+                    <div className="space-y-2">
+                      <Skeleton className="h-4 w-28 rounded-md" />
+                      <Skeleton className="h-3 w-20 rounded-md" />
                     </div>
                   </div>
                 </div>
               ))}
-              
-            </div>
-          ))}
-        </div>
+
+              <div className="hidden" aria-hidden="true">
+                {testimonials.map((item, index) => (
+                  <img 
+                    key={`pre-${item.id}`}
+                    ref={(el) => { imgRefs.current[index] = el; }}
+                    src={item.profileImage} 
+                    onLoad={() => setImagesLoaded(prev => prev + 1)} 
+                  />
+                ))}
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div 
+              key="testimonials-content"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              className="flex w-max animate-scroll-slow items-center gap-6 md:gap-10 px-4"
+            >
+              {[0, 1, 2].map((groupIndex) => (
+                <div key={`group-${groupIndex}`} className="flex items-stretch gap-6 md:gap-10">
+                  {testimonials.map((item) => (
+                    <div 
+                      key={`${groupIndex}-${item.id}`} 
+                      className="w-[340px] md:w-[520px] bg-white rounded-[40px] p-8 md:p-12 border border-black/[0.03] shadow-[0_10px_40px_rgba(0,0,0,0.03)] shrink-0 flex flex-col group hover:shadow-[0_20px_60px_rgba(0,0,0,0.06)] hover:border-black/[0.06] hover:-translate-y-1 transition-all duration-500 cursor-grab active:cursor-grabbing relative overflow-hidden"
+                    >
+                      {/* Subtle Internal Glow */}
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-zinc-50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                      
+                      <div className="relative z-10">
+                        <h3 className="text-[48px] leading-tight font-bold text-zinc-900 tracking-tighter">
+                          {item.stat}
+                        </h3>
+                        <p className="text-zinc-500 font-bold text-[15px] md:text-[17px] mt-1 uppercase tracking-wider">
+                          {item.statLabel}
+                        </p>
+                      </div>
+                      
+                      <div className="mt-10 mb-6 relative z-10">
+                        <div className="w-12 h-12 rounded-2xl bg-zinc-50 border border-zinc-100 flex items-center justify-center group-hover:bg-black group-hover:border-black transition-colors duration-500">
+                          <Quote size={24} className="text-[#e25a48] group-hover:text-white transition-colors duration-500" />
+                        </div>
+                      </div>    
+    
+                      <p className="text-zinc-600 text-[16px] md:text-[18px] leading-[1.6] flex-grow font-medium relative z-10">
+                        "{item.text}"
+                      </p>  
+                                      
+                      <div className="flex items-center justify-between mt-10 pt-8 border-t border-zinc-100 relative z-10">
+                        <div className="flex items-center gap-5">
+                          <div className="w-14 h-14 rounded-full overflow-hidden border-[3px] border-white shadow-md shrink-0 transition-transform duration-500 group-hover:scale-110">
+                             <img 
+                               src={item.profileImage} 
+                               alt={item.author} 
+                               className="w-full h-full object-cover"
+                             />
+                          </div>
+                          <div>
+                            <h4 className="font-bold text-zinc-900 text-[16px] md:text-[17px] tracking-tight">{item.author}</h4>
+                            <p className="text-zinc-400 font-medium text-[13px] md:text-[14px]">{item.role}</p>
+                          </div>
+                        </div>
+                        <div className="text-zinc-200 group-hover:text-zinc-800 transition-all duration-500 transform group-hover:rotate-12">
+                           <item.CompanyIcon size={32} strokeWidth={1.5} />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
+
     </section>
   );
 }

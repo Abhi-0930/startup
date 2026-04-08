@@ -1,6 +1,7 @@
 "use client";
 import { useRef, ReactNode, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Skeleton } from "@/components/ui/Skeleton";
 
 interface ChallengeItem {
   id: string;
@@ -129,23 +130,96 @@ function ChallengeCard({ item }: { item: ChallengeItem }) {
 }
 
 export default function Challenges() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [minTimeElapsed, setMinTimeElapsed] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // 200ms minimum threshold to prevent flicker
+    const timer = setTimeout(() => setMinTimeElapsed(true), 200);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    // Proactive check if video is already ready
+    if (videoRef.current && videoRef.current.readyState >= 3) {
+      setVideoLoaded(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (videoLoaded && minTimeElapsed) {
+      setIsLoading(false);
+    }
+  }, [videoLoaded, minTimeElapsed]);
+
   return (
     <section id="challenges" className="pt-10 pb-12 md:pt-14 md:pb-20 max-w-[1000px] mx-auto px-6">
-      
-      {/* Centered Header Section */}
-      <div className="mb-14 md:mb-20 text-center">
-        <h2 className="text-[2.2rem] md:text-5xl lg:text-[4.2rem] font-black tracking-tighter text-neutral-900 leading-[1.05] mb-6 md:mb-8">
-          The challenges <br className="hidden md:block" />
-          <span className="text-neutral-400">modern businesses face.</span>
-        </h2>
-      </div>
+      <AnimatePresence mode="wait">
+        {isLoading ? (
+          <motion.div 
+            key="challenges-skeleton"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="w-full"
+          >
+            {/* Header Skeleton */}
+            <div className="mb-14 md:mb-20 text-center space-y-4">
+              <Skeleton className="h-12 md:h-20 w-[240px] md:w-[400px] mx-auto" />
+              <Skeleton className="h-12 md:h-20 w-[180px] md:w-[300px] mx-auto" />
+            </div>
 
-      {/* 2-Column Grid (2x2) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
-        {challengesData.map((item) => (
-           <ChallengeCard key={item.id} item={item} />
-        ))}
-      </div>
+            {/* Grid Skeleton */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="bg-white rounded-[28px] p-5 space-y-6 shadow-sm border border-neutral-100">
+                  <Skeleton className="aspect-[1.4/1] w-full rounded-[20px]" />
+                  <div className="space-y-4 px-1">
+                    <Skeleton className="h-4 w-20 rounded-full" />
+                    <Skeleton className="h-6 w-[80%]" />
+                    <div className="space-y-2">
+                      <Skeleton className="h-4 w-full" />
+                      <Skeleton className="h-4 w-[90%]" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Hidden preloader for first video */}
+            <video
+              ref={videoRef}
+              src={challengesData[0].imageSrc}
+              className="hidden"
+              muted
+              playsInline
+              onLoadedData={() => setVideoLoaded(true)}
+            />
+          </motion.div>
+        ) : (
+          <motion.div 
+            key="challenges-content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="mb-14 md:mb-20 text-center">
+              <h2 className="text-[2.2rem] md:text-5xl lg:text-[4.2rem] font-black tracking-tighter text-neutral-900 leading-[1.05] mb-6 md:mb-8">
+                The challenges <br className="hidden md:block" />
+                <span className="text-neutral-400">modern businesses face.</span>
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+              {challengesData.map((item) => (
+                <ChallengeCard key={item.id} item={item} />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

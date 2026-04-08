@@ -63,16 +63,24 @@ export default function Navbar() {
         >
           {/* Header row (Logo + Toggle) */}
           <div className="flex items-center justify-between h-9 md:h-8">
-            <Link href="/" className="flex items-center gap-2">
-              <Image
-                src="/zerogrid-logo-bg-remove.png"
-                alt="Zerogrid Logo"
-                width={120}
-                height={30}
-                className="h-7 w-auto object-contain"
-                priority
-              />
-            </Link>
+            <div className="flex items-center gap-3">
+              <Link href="/" className="flex items-center gap-2 group/logo relative">
+                {/* Desktop Full Logo */}
+                <Image
+                  src="/zerogrid-logo-bg-remove.png"
+                  alt="Zerogrid Logo"
+                  width={120}
+                  height={30}
+                  className="h-7 w-auto object-contain hidden md:block"
+                  priority
+                />
+                
+                {/* Mobile Icon Logo (Stylized Z) */}
+                <div className="md:hidden flex items-center justify-center w-8 h-8 rounded-lg bg-black text-white font-black text-lg shadow-lg shadow-black/20 hover:scale-105 transition-transform">
+                  Z
+                </div>
+              </Link>
+            </div>
 
             {/* Desktop Navigation Links: USING CSS HOVER (group) */}
             <div className="hidden md:flex items-center gap-1">
@@ -168,23 +176,33 @@ export default function Navbar() {
               </Link>
             </div>
 
-            {/* Mobile Menu Toggle - Static Hamburger/X */}
+            {/* Mobile Menu Toggle - MORPHING HAMBURGER */}
             <div className="md:hidden">
               <button 
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="bg-[#09090b] rounded-full text-white shadow-lg flex items-center justify-center w-[44px] h-[32px] overflow-hidden"
+                className="group relative flex flex-col items-center justify-center w-10 h-10 bg-black rounded-full text-white shadow-xl transition-all duration-300 active:scale-95 border border-white/10"
               >
-                <img 
-                  src="/hamburger.png" 
-                  alt="Open Menu" 
-                  className={`object-contain w-6 h-6 ${isMobileMenuOpen ? 'hidden' : 'block'}`}
-                />
-                <img 
-                  src="/hamburger-close.png" 
-                  alt="Close Menu" 
-                  className={`object-contain w-[18px] h-[18px] ${isMobileMenuOpen ? 'block' : 'hidden'}`}
-                  style={{ filter: 'invert(1) brightness(2)' }}
-                />
+                <div className="relative w-5 h-4 flex flex-col justify-between">
+                  {/* Staggered Lines */}
+                  <span 
+                    className={`h-[1.5px] bg-white rounded-full transition-all duration-500 ease-[cubic-bezier(0.68,-0.6,0.32,1.6)] ${
+                      isMobileMenuOpen ? 'w-5 translate-y-[7.5px]' : 'w-5'
+                    }`} 
+                  />
+                  <span 
+                    className={`h-[1.5px] bg-white rounded-full transition-all duration-500 ease-[cubic-bezier(0.68,-0.6,0.32,1.6)] ${
+                      isMobileMenuOpen ? 'w-5 opacity-0 scale-x-0' : 'w-3 self-end'
+                    }`} 
+                  />
+                  <span 
+                    className={`h-[1.5px] bg-white rounded-full transition-all duration-500 ease-[cubic-bezier(0.68,-0.6,0.32,1.6)] ${
+                      isMobileMenuOpen ? 'w-5 -translate-y-[7.5px]' : 'w-5'
+                    }`} 
+                  />
+                </div>
+                
+                {/* Subtle outer glow when active */}
+                <div className={`absolute inset-0 rounded-full bg-white/20 blur-md transition-opacity duration-500 ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0'}`} />
               </button>
             </div>
           </div>
