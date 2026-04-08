@@ -80,31 +80,12 @@ export default function Services() {
             </h2>
           </div>
           
-          <div className="relative group p-[4px]">
-            <style>{`
-              @keyframes perfect-spin {
-                from { transform: rotate(0deg); }
-                to { transform: rotate(360deg); }
-              }
-            `}</style>
-            {/* The Constant Velocity Techno-Cyan Shine */}
-            <div className="absolute inset-0 rounded-full overflow-hidden">
-               <div 
-                 className="absolute inset-[-1000%] translate-x-[50%] translate-y-[50%]" 
-                 style={{
-                   background: "conic-gradient(from 0deg at 50% 50%, transparent 0%, transparent 45%, #06b6d4 50%, transparent 55%, transparent 100%)",
-                   animation: "perfect-spin 4s linear infinite"
-                 }}
-               />
+          <button className="group flex items-center gap-4 bg-zinc-950 px-8 py-4 rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg">
+            <span className="font-medium text-white tracking-tight">Start A Project</span>
+            <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-white/20">
+              <ArrowRight size={20} className="text-white transition-transform duration-300 group-hover:translate-x-1" />
             </div>
-
-            <button className="relative flex items-center gap-4 bg-zinc-950 px-8 py-4 rounded-full transition-all duration-500 hover:scale-[1.02] active:scale-[0.98] shadow-[0_10px_40px_rgba(0,0,0,0.5)] overflow-hidden border border-white/5">
-              <span className="relative z-10 font-medium text-white tracking-tight">Start A Project</span>
-              <div className="relative z-10 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-white/20">
-                <ArrowRight size={20} className="text-white transition-transform duration-300 group-hover:translate-x-1" />
-              </div>
-            </button>
-          </div>
+          </button>
         </div>
 
         {/* Content Section: 2 Columns */}
