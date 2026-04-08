@@ -36,7 +36,7 @@ const services = [
     title: "AI Automation",
     description: "Intelligent automation workflows that handle repetitive manual tasks, ensuring a more efficient team and significantly reduced operational overhead.",
     icon: <Cpu className="w-5 h-5" />,
-    imageSrc: "/services/automation.avif"
+    imageSrc: "/services/ai-automation.avif"
   },
   {
     id: 4,
