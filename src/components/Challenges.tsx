@@ -37,7 +37,7 @@ const challengesData: ChallengeItem[] = [
     challenge: "Slow Website Performance",
     description: "A slow website frustrates your users, kills your search rankings, and makes you lose money every single second.",
     solution: "We optimize every line of code to ensure your site loads instantly on any device, anywhere in the world.",
-    imageSrc: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop"
+    imageSrc: "/challenges/slow-website-performance.webm"
   }
 ];
 
