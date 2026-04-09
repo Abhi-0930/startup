@@ -6,23 +6,28 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 const steps = [
   {
     number: "01",
-    title: "Discovery & Strategy",
-    description: "We dive deep into your business goals, user needs, and market landscape to build a bulletproof roadmap for success.",
+    title: "Discovery Call",
+    description: "We get on a quick call to understand your business, your goals, and exactly what you need. No technical talk, just a simple conversation.",
   },
   {
     number: "02",
-    title: "Design & Prototyping",
-    description: "Your vision takes shape through clean, high-end UI design and interactive prototypes that prioritize user experience.",
+    title: "Plan & Proposal",
+    description: "Based on what you told us, we put together a clear plan, timeline, and pricing. You know exactly what you are getting before we start anything.",
   },
   {
     number: "03",
-    title: "Agile Development",
-    description: "Our senior engineers build your product using cutting-edge tech, ensuring clean code, scalability, and top-tier performance.",
+    title: "Design & Build",
+    description: "Our team gets to work. We design and build your project while keeping you updated at every stage so there are no surprises.",
   },
   {
     number: "04",
-    title: "Launch & Scale",
-    description: "We handle the seamless deployment and continue to support your growth with data-driven optimizations and scaling.",
+    title: "Review & Feedback",
+    description: "You review everything we have built. If anything needs to be changed or improved, we do it. Your satisfaction comes first before we move forward.",
+  },
+  {
+    number: "05",
+    title: "Launch",
+    description: "Once you are happy with everything, we launch your project live. Everything is tested, checked, and ready to go.",
   },
 ];
 
@@ -110,8 +115,8 @@ function StepItem({
   progress: any // MotionValue<number>
 }) {
   // Sync activation with the container line progress
-  // Each step lights up in its own 25% sector (0.25, 0.5, 0.75, 1.0)
-  const activationPoint = index / 4;
+  // Each step lights up in its own sector
+  const activationPoint = index / steps.length;
   
   const opacity = useTransform(
     progress,

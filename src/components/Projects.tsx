@@ -59,7 +59,7 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
   }, [project.images.length, project.id]);
 
   return (
-    <div className={`group flex flex-col gap-6 ${project.span === 'wide' ? 'md:col-span-2' : 'col-span-1'}`}>
+    <div className={`group/project flex flex-col gap-6 ${project.span === 'wide' ? 'md:col-span-2' : 'col-span-1'}`}>
       <div 
         className="relative overflow-hidden rounded-[32px] border border-black/5 shadow-sm bg-neutral-900"
         style={{ 
@@ -97,9 +97,12 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
         
         <Link 
           href="#"
-          className="group/arrow w-12 h-12 rounded-full bg-zinc-100 border border-zinc-200 flex items-center justify-center transition-all duration-300 hover:w-[58px]"
+          className="w-12 h-12 rounded-full bg-zinc-100 border border-zinc-200 flex items-center justify-center transition-all duration-300 group-hover/project:w-[58px] overflow-hidden"
         >
-          <ArrowRight size={20} className="transition-transform duration-300 group-hover/arrow:translate-x-1" />
+          <ArrowRight 
+            size={20} 
+            className="text-zinc-900 transition-transform duration-300 group-hover/project:translate-x-1.5" 
+          />
         </Link>
       </div>
     </div>
@@ -135,8 +138,8 @@ export default function Projects() {
   }, [imagesLoaded, minTimeElapsed]);
 
   return (
-    <section className="py-24 md:py-32 px-4 md:px-8 max-w-[1400px] mx-auto min-h-[600px]">
-      <div className="flex items-center justify-between mb-16">
+    <section className="pb-24 md:pb-32 pt-8 md:pt-12 px-4 md:px-8 max-w-[1400px] mx-auto min-h-[600px] -mt-10 md:-mt-16 relative z-20">
+      <div className="flex flex-col items-center justify-center mb-16 text-center">
         <AnimatePresence mode="wait">
           {isLoading ? (
             <motion.div 
@@ -144,23 +147,24 @@ export default function Projects() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="flex items-center justify-between w-full"
+              className="flex flex-col items-center justify-center w-full space-y-4"
             >
-              <Skeleton className="h-10 md:h-12 w-48 md:w-64" />
-              <Skeleton className="hidden md:block h-10 w-32 rounded-full" />
+              <Skeleton className="h-10 md:h-12 w-64 md:w-96" />
+              <Skeleton className="h-6 w-48 md:w-64" />
             </motion.div>
           ) : (
             <motion.div 
               key="projects-header"
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex items-center justify-between w-full"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex flex-col items-center justify-center w-full space-y-4"
             >
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Selected Work</h2>
-              <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-zinc-100 rounded-full text-sm font-medium">
-                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-                Latest Projects
-              </div>
+              <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-zinc-900">
+                Selected Work
+              </h2>
+              <p className="text-xl md:text-2xl text-zinc-400 font-medium max-w-2xl leading-relaxed">
+                Words Are Easy. Here Is Our Work.
+              </p>
             </motion.div>
           )}
         </AnimatePresence>
