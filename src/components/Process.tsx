@@ -125,9 +125,16 @@ function StepItem({
     [0.98, 1]
   );
 
+  // Re-introducing the "fade left" parallax slide
+  const x = useTransform(
+    progress,
+    [activationPoint, activationPoint + 0.12],
+    [40, 0]
+  );
+
   return (
     <motion.div 
-      style={{ opacity, scale }}
+      style={{ opacity, scale, x }}
       className="relative group pr-4"
     >
       {/* Mobile Step Indicator (Darker number) */}
@@ -140,8 +147,8 @@ function StepItem({
 
       {/* Step Card Content */}
       <div className="flex items-start gap-8">
-        {/* Step Number Sidebar (Darker number) */}
-        <div className="shrink-0 pt-1">
+        {/* Step Number Sidebar - Hidden on mobile, shows on desktop */}
+        <div className="hidden md:block shrink-0 pt-1">
           <span className="text-6xl md:text-7xl font-black text-blue-600/20 select-none tracking-tighter leading-none group-hover:text-blue-600/30 transition-colors">
             {step.number}
           </span>
