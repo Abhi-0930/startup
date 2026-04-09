@@ -1,9 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import lottie from "lottie-web";
-import { defineElement } from "@lordicon/element";
 
 // High-fidelity LordIcons with stable IDs
 const steps = [
@@ -11,36 +9,27 @@ const steps = [
     number: "01",
     title: "Discovery & Strategy",
     description: "We dive deep into your business goals, user needs, and market landscape to build a bulletproof roadmap for success.",
-    iconSrc: "https://cdn.lordicon.com/msoeawqm.json", // Magnifying glass / Search
   },
   {
     number: "02",
     title: "Design & Prototyping",
     description: "Your vision takes shape through clean, high-end UI design and interactive prototypes that prioritize user experience.",
-    iconSrc: "https://cdn.lordicon.com/wloilxuq.json", // Pen / Design
   },
   {
     number: "03",
     title: "Agile Development",
     description: "Our senior engineers build your product using cutting-edge tech, ensuring clean code, scalability, and top-tier performance.",
-    iconSrc: "https://cdn.lordicon.com/fpipqnoz.json", // Gear / Build
   },
   {
     number: "04",
     title: "Launch & Scale",
     description: "We handle the seamless deployment and continue to support your growth with data-driven optimizations and scaling.",
-    iconSrc: "https://cdn.lordicon.com/wtpbfbcq.json", // Rocket / Launch
   },
 ];
 
 export default function Process() {
   const containerRef = useRef<HTMLDivElement>(null);
   
-  // Register LordIcon element
-  useEffect(() => {
-    defineElement(lottie.loadAnimation);
-  }, []);
-
   // Scroll Progress Logic
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -151,7 +140,7 @@ function StepItem({ step }: { step: typeof steps[0] }) {
     <motion.div 
       ref={itemRef}
       style={{ opacity, x, scale }}
-      className="relative group "
+      className="relative group pr-4"
     >
       {/* Mobile Step Indicator */}
       <div className="md:hidden flex items-center gap-4 mb-4">
@@ -162,31 +151,24 @@ function StepItem({ step }: { step: typeof steps[0] }) {
       </div>
 
       {/* Step Card Content */}
-      <div className="flex flex-col md:flex-row gap-8 items-start">
-        {/* Step Icon */}
-        <div className="relative shrink-0">
-          <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl flex items-center justify-center group-hover:border-blue-500/50 group-hover:bg-white/10 transition-all duration-500">
-            <lord-icon
-              src={step.iconSrc}
-              trigger="loop"
-              delay="2000"
-              colors="primary:#3b82f6,secondary:#ffffff"
-              style={{ width: "60px", height: "60px" }}
-            />
-          </div>
-          {/* Desktop Step Number (Floating behind) */}
-          <span className="hidden md:block absolute -left-12 top-0 text-7xl font-black text-white/5 select-none tracking-tighter">
+      <div className="flex items-start gap-8">
+        {/* Desktop Step Number (The primary anchor) */}
+        <div className="shrink-0 pt-2">
+          <span className="text-6xl md:text-8xl font-black text-blue-500/10 select-none tracking-tighter leading-none">
             {step.number}
           </span>
         </div>
 
-        <div className="space-y-3">
-          <h3 className="text-2xl font-bold text-white tracking-tight group-hover:text-blue-400 transition-colors">
+        <div className="space-y-4 pt-1">
+          <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tight group-hover:text-blue-400 transition-colors">
             {step.title}
           </h3>
-          <p className="text-zinc-400 text-lg leading-relaxed">
+          <p className="text-zinc-400 text-lg md:text-2xl leading-relaxed max-w-xl">
             {step.description}
           </p>
+          
+          {/* Subtle separator */}
+          <div className="w-12 h-1 bg-blue-500/20 rounded-full group-hover:w-24 group-hover:bg-blue-500 transition-all duration-500" />
         </div>
       </div>
     </motion.div>
