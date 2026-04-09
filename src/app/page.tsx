@@ -5,6 +5,7 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import Testimonials from "@/components/Testimonials";
 import Challenges from "@/components/Challenges";
 import Services from "@/components/Services";
+import Process from "@/components/Process";
 import Projects from "@/components/Projects";
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <Challenges />
       <Services />
       <WhyChooseUs />
+      <Process />
       <Projects />
     </main>
   );
