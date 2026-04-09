@@ -16,33 +16,33 @@ declare global {
 
 const features = [
   {
-    title: "Impact-Driven Solutions",
-    description: "Every product we build is custom-crafted to create real business impact.",
-    iconSrc: "https://cdn.lordicon.com/qhgampre.json", // Chart
+    title: "Real Business Growth",
+    description: "We build custom tools that actually help your business grow.",
+    iconSrc: "https://cdn.lordicon.com/nocovpqy.json", // Chart
   },
   {
-    title: "Fast & Reliable Delivery",
-    description: "Get high-quality results in days or weeks, not months.",
+    title: "Fast Results",
+    description: "Get your project done in days or weeks, not months.",
     iconSrc: "https://cdn.lordicon.com/kbtmbydv.json", // Clock
   },
   {
-    title: "Transparent & Fair Pricing",
-    description: "Honest, customized pricing with no hidden fees or surprises.",
-    iconSrc: "https://cdn.lordicon.com/vaeunfgy.json", // Money
+    title: "Simple Pricing",
+    description: "Honest pricing with no hidden costs or surprises.",
+    iconSrc: "https://cdn.lordicon.com/lpxtupth.json", // Money
   },
   {
-    title: "Expert Problem Solvers",
-    description: "We tackle technical and creative challenges with innovative solutions.",
+    title: "Problem Solvers",
+    description: "We are tech experts who fix your toughest challenges easily.",
     iconSrc: "https://cdn.lordicon.com/jvucoldz.json", // Settings/Problem solving
   },
   {
-    title: "Seamless Collaboration",
-    description: "Clear communication and feedback at every stage of the project.",
+    title: "Easy Collaboration",
+    description: "We talk clearly and keep you updated every step of the way.",
     iconSrc: "https://cdn.lordicon.com/lupuorrc.json", // Users/Collaboration
   },
   {
-    title: "Direct Access to Top Talent",
-    description: "Work directly with senior experts—no long-term hiring needed.",
+    title: "Direct Access",
+    description: "Work directly with senior experts without having to hire anyone.",
     iconSrc: "https://cdn.lordicon.com/msoeawqm.json", // Target/Talent
   },
 ];
@@ -94,7 +94,7 @@ export default function WhyChooseUs() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-zinc-500 text-lg max-w-2xl mx-auto"
           >
-            Discover the advantages of partnering with a tech team that's built for results and client success:
+            Discover why our clients love working with a tech team that gets things done:
           </motion.p>
         </div>
 

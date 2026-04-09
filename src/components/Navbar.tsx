@@ -46,7 +46,7 @@ export default function Navbar() {
     <nav className={`fixed top-6 inset-x-0 z-50 ${scrolled ? 'top-4' : 'top-6'}`}>
       {/* Full Screen Blur Overlay: ONLY RENDER ON MOBILE */}
       <div 
-        className={`fixed inset-0 bg-black/10 backdrop-blur-[4px] transition-all duration-300 ease-out md:hidden ${
+        className={`fixed inset-0 bg-black/10 backdrop-blur-[3px] transition-all duration-300 ease-out md:hidden ${
           isMobileMenuOpen ? 'opacity-100 pointer-events-auto z-40' : 'opacity-0 pointer-events-none -z-50'
         }`}
         onClick={() => setIsMobileMenuOpen(false)}
@@ -55,7 +55,7 @@ export default function Navbar() {
       <div className="max-w-[1200px] mx-auto px-4 overflow-visible">
         {/* The main Navbar Pill */}
         <div 
-          className={`bg-white/80 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.04)] overflow-visible ${
+          className={`relative z-50 bg-white/80 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.04)] overflow-visible ${
             isMobileMenuOpen 
               ? 'rounded-[24px] p-5' 
               : 'rounded-full md:rounded-[32px] px-3.5 md:px-6 py-2 md:py-2.5'
