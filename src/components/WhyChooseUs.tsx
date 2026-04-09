@@ -2,134 +2,157 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Zap, ShieldCheck, Target, Settings, ArrowRight } from "lucide-react";
+import { 
+  BarChart3, 
+  Clock, 
+  DollarSign, 
+  ShieldAlert, 
+  Users, 
+  Crosshair 
+} from "lucide-react";
 
-const reasons = [
+const features = [
   {
-    id: "01",
-    label: "VELOCITY",
-    title: "Infinite Speed Stacks",
-    description: "Our high-performance architecture ensures your site loads in under a second. No bloat, just speed.",
-    icon: Zap,
+    title: "Impact-Driven Solutions",
+    description: "Every product we build is custom-crafted to create real business impact.",
+    icon: BarChart3,
   },
   {
-    id: "02",
-    label: "AUTHORITY",
-    title: "Premium Design DNA",
-    description: "We don't just build sites; we craft world-class digital identities that command immediate respect.",
-    icon: ShieldCheck,
+    title: "Fast & Reliable Delivery",
+    description: "Get high-quality results in days or weeks, not months.",
+    icon: Clock,
   },
   {
-    id: "03",
-    label: "PERFORMANCE",
-    title: "Conversion-Led Growth",
-    description: "Every pixel is engineered to maximize engagement and turn cold visitors into paying customers.",
-    icon: Target,
+    title: "Transparent & Fair Pricing",
+    description: "Honest, customized pricing with no hidden fees or surprises.",
+    icon: DollarSign,
   },
   {
-    id: "04",
-    label: "MANAGEMENT",
-    title: "Zero Friction Control",
-    description: "A management experience so simple your entire team can handle updates without touching code.",
-    icon: Settings,
+    title: "Expert Problem Solvers",
+    description: "We tackle technical and creative challenges with innovative solutions.",
+    icon: ShieldAlert,
+  },
+  {
+    title: "Seamless Collaboration",
+    description: "Clear communication and feedback at every stage of the project.",
+    icon: Users,
+  },
+  {
+    title: "Direct Access to Top Talent",
+    description: "Work directly with senior experts—no long-term hiring needed.",
+    icon: Crosshair,
   },
 ];
 
 export default function WhyChooseUs() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+    },
+  };
+
   return (
-    <section className="py-24 md:py-32 bg-[#EDF1FE] relative overflow-hidden">
-      {/* Decorative Light Elements */}
-      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-zinc-200 to-transparent" />
-      
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/50 border border-white/80 backdrop-blur-sm mb-6 shadow-sm"
-          >
-            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-            <span className="text-zinc-600 font-mono text-[10px] uppercase tracking-widest font-bold">
-              Engineering Excellence // 2026
-            </span>
-          </motion.div>
-          
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+    <section className="py-16 md:py-24 bg-[#F8FAFC] relative overflow-hidden">
+      <div className="container mx-auto px-6 max-w-6xl relative z-10">
+        
+        {/* Header Section */}
+        <div className="text-center mb-4 md:mb-6">
+          <motion.h2 
+            initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl md:text-7xl font-bold text-zinc-900 tracking-tighter leading-[0.9] mb-8"
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-5xl font-bold text-zinc-900 tracking-tight mb-4"
           >
-            Why elite founders <br />
-            <span className="text-[#3b82f6]">choose Zerogrid.</span>
+            Why Choose Zerogrid?
           </motion.h2>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl text-zinc-500 max-w-2xl mx-auto leading-relaxed"
+            className="text-zinc-500 text-lg max-w-2xl mx-auto"
           >
-            Simple English, professional UI. We build the infrastructure that helps your business scale without the technical debt.
+            Discover the advantages of partnering with a tech team that's built for results and client success:
           </motion.p>
         </div>
 
-        {/* Vertical Focused Stack */}
-        <div className="max-w-3xl mx-auto flex flex-col gap-6 md:gap-8">
-          {reasons.map((reason, index) => {
-            const Icon = reason.icon;
-            return (
-              <motion.div
-                key={reason.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="group bg-white rounded-[40px] p-8 md:p-12 border border-zinc-100 shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(37,99,235,0.05)] transition-all duration-700 hover:-translate-y-1"
-              >
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="text-[10px] font-mono text-blue-500 font-bold tracking-widest">
-                        [{reason.id}] {reason.label}
-                      </span>
-                      <div className="h-[1px] w-8 bg-zinc-200 group-hover:w-16 transition-all duration-500 group-hover:bg-blue-300" />
-                    </div>
-                    
-                    <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 tracking-tight mb-4">
-                      {reason.title}
-                    </h3>
-                    
-                    <p className="text-zinc-500 text-base md:text-lg leading-relaxed max-w-xl">
-                      {reason.description}
-                    </p>
-                  </div>
+        {/* Top Separator */}
+        <div className="w-full border-t border-dashed border-zinc-200 mb-8 md:mb-10" />
 
-                  <div className="shrink-0 flex items-center justify-center">
-                    <div className="w-16 h-16 md:w-24 md:h-24 rounded-3xl bg-zinc-50 border border-zinc-100 flex items-center justify-center text-zinc-900 group-hover:bg-blue-600 group-hover:text-white group-hover:rotate-12 transition-all duration-500 shadow-sm">
-                      <Icon size={32} strokeWidth={1.5} className="md:w-10 md:h-10" />
-                    </div>
-                  </div>
+        {/* Feature Grid */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-y-12 md:gap-y-16 gap-x-12"
+        >
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <motion.div 
+                key={index}
+                variants={itemVariants}
+                className="flex flex-col items-center text-center group"
+              >
+                {/* Animated Icon Container */}
+                <div className="relative mb-8">
+                  <motion.div 
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-2xl bg-white shadow-[0_10px_30px_rgba(0,0,0,0.03)] border border-zinc-100 group-hover:border-blue-200 group-hover:shadow-[0_15px_40px_rgba(37,99,235,0.08)] transition-all duration-500"
+                  >
+                    <Icon 
+                      size={32} 
+                      className="text-blue-600 group-hover:text-blue-500 transition-colors duration-500" 
+                      strokeWidth={1.5}
+                    />
+                  </motion.div>
+                  {/* Subtle Background Glow on Hover */}
+                  <div className="absolute inset-0 bg-blue-500/5 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10" />
                 </div>
-                
-                <div className="mt-8 md:mt-12 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="flex gap-1">
-                    {[1, 2, 3].map((i) => (
-                      <div key={i} className="w-1 h-1 rounded-full bg-blue-400/40" />
-                    ))}
-                  </div>
-                  <button className="flex items-center gap-2 text-xs font-bold text-blue-600 uppercase tracking-widest">
-                    Infrastructure Details
-                    <ArrowRight size={14} />
-                  </button>
-                </div>
+
+                <h3 className="text-xl md:text-2xl font-bold text-zinc-900 mb-4 tracking-tight">
+                  {feature.title}
+                </h3>
+                <p className="text-zinc-500 text-base md:text-lg leading-relaxed max-w-[280px]">
+                  {feature.description}
+                </p>
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
+
+        {/* Bottom Separator */}
+        <div className="w-full border-t border-dashed border-zinc-200 mt-12 md:mt-16 mb-12" />
+
+        {/* Footer CTA */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="flex justify-center"
+        >
+          <button className="bg-zinc-950 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-zinc-800 transition-all duration-300 shadow-[0_20px_40px_rgba(0,0,0,0.15)] hover:shadow-[0_25px_50px_rgba(0,0,0,0.2)] hover:-translate-y-1 active:scale-95">
+            Reserve Your Slot
+          </button>
+        </motion.div>
       </div>
     </section>
   );
