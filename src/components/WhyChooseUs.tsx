@@ -1,50 +1,57 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { 
-  BarChart3, 
-  Clock, 
-  DollarSign, 
-  ShieldAlert, 
-  Users, 
-  Crosshair 
-} from "lucide-react";
+import lottie from "lottie-web";
+import { defineElement } from "@lordicon/element";
+
+// Helper to make it easier to use the custom element in TSX
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      "lord-icon": any;
+    }
+  }
+}
 
 const features = [
   {
     title: "Impact-Driven Solutions",
     description: "Every product we build is custom-crafted to create real business impact.",
-    icon: BarChart3,
+    iconSrc: "https://cdn.lordicon.com/qhgampre.json", // Chart
   },
   {
     title: "Fast & Reliable Delivery",
     description: "Get high-quality results in days or weeks, not months.",
-    icon: Clock,
+    iconSrc: "https://cdn.lordicon.com/kbtmbydv.json", // Clock
   },
   {
     title: "Transparent & Fair Pricing",
     description: "Honest, customized pricing with no hidden fees or surprises.",
-    icon: DollarSign,
+    iconSrc: "https://cdn.lordicon.com/vaeunfgy.json", // Money
   },
   {
     title: "Expert Problem Solvers",
     description: "We tackle technical and creative challenges with innovative solutions.",
-    icon: ShieldAlert,
+    iconSrc: "https://cdn.lordicon.com/jvucoldz.json", // Settings/Problem solving
   },
   {
     title: "Seamless Collaboration",
     description: "Clear communication and feedback at every stage of the project.",
-    icon: Users,
+    iconSrc: "https://cdn.lordicon.com/lupuorrc.json", // Users/Collaboration
   },
   {
     title: "Direct Access to Top Talent",
     description: "Work directly with senior experts—no long-term hiring needed.",
-    icon: Crosshair,
+    iconSrc: "https://cdn.lordicon.com/msoeawqm.json", // Target/Talent
   },
 ];
 
 export default function WhyChooseUs() {
+  useEffect(() => {
+    defineElement(lottie.loadAnimation);
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -103,25 +110,69 @@ export default function WhyChooseUs() {
           className="grid grid-cols-1 md:grid-cols-3 gap-y-12 md:gap-y-16 gap-x-12"
         >
           {features.map((feature, index) => {
-            const Icon = feature.icon;
             return (
               <motion.div 
                 key={index}
                 variants={itemVariants}
                 className="flex flex-col items-center text-center group"
               >
-                {/* Animated Icon Container */}
+                {/* Icon Container */}
                 <div className="relative mb-8">
                   <motion.div 
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-2xl bg-white shadow-[0_10px_30px_rgba(0,0,0,0.03)] border border-zinc-100 group-hover:border-blue-200 group-hover:shadow-[0_15px_40px_rgba(37,99,235,0.08)] transition-all duration-500"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                    className="w-16 h-16 md:w-24 md:h-24 flex items-center justify-center rounded-2xl bg-white shadow-[0_10px_30px_rgba(0,0,0,0.03)] border border-zinc-100 group-hover:border-blue-200 group-hover:shadow-[0_15px_40px_rgba(37,99,235,0.08)] transition-all duration-500"
                   >
-                    <Icon 
-                      size={32} 
-                      className="text-blue-600 group-hover:text-blue-500 transition-colors duration-500" 
-                      strokeWidth={1.5}
-                    />
+                    {/* First 3 use custom animations to guarantee visibility; next 3 use verified LordIcons */}
+                    {index < 3 ? (
+                      <motion.svg
+                        width="60"
+                        height="60"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="text-blue-500"
+                      >
+                        {index === 0 && ( // Chart Animation
+                          <>
+                            <motion.path d="M18 20V10" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1, repeat: Infinity, repeatType: "reverse" }} />
+                            <motion.path d="M12 20V4" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse" }} />
+                            <motion.path d="M6 20V14" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.2, repeat: Infinity, repeatType: "reverse" }} />
+                          </>
+                        )}
+                        {index === 1 && ( // Clock Animation
+                          <>
+                            <circle cx="12" cy="12" r="10" />
+                            <motion.path 
+                              d="M12 6v6l4 2" 
+                              animate={{ rotate: 360 }} 
+                              transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+                              style={{ transformOrigin: "12px 12px" }}
+                            />
+                          </>
+                        )}
+                        {index === 2 && ( // Pricing Animation
+                          <>
+                            <motion.path 
+                              d="M12 1v22M17 5H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6" 
+                              animate={{ scale: [1, 1.1, 1], opacity: [1, 0.7, 1] }}
+                              transition={{ duration: 2, repeat: Infinity }}
+                            />
+                          </>
+                        )}
+                      </motion.svg>
+                    ) : (
+                      <lord-icon
+                        src={feature.iconSrc}
+                        trigger="loop"
+                        delay="2000"
+                        colors="primary:#3b82f6,secondary:#1e293b"
+                        style={{ width: "70px", height: "70px" }}
+                      />
+                    )}
                   </motion.div>
                   {/* Subtle Background Glow on Hover */}
                   <div className="absolute inset-0 bg-blue-500/5 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10" />
