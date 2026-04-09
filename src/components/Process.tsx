@@ -43,22 +43,22 @@ function StepItem({
   total: number, 
   scrollProgress: any 
 }) {
-  // We use a broader range for thresholds to ensure smooth activation
-  const threshold = index / total;
-  const nextThreshold = (index + 1) / total;
+  // Offset the thresholds so Step 01 doesn't activate at 0 progress
+  const threshold = (index + 0.5) / (total + 1);
+  const nextThreshold = (index + 1.5) / (total + 1);
 
   // Activation mapping for colors
   const circleBorderColor = useTransform(
     scrollProgress,
-    [threshold - 0.02, threshold],
+    [threshold - 0.1, threshold],
     ["#e5e7eb", ACCENT_COLOR],
     { clamp: true }
   );
 
   const circleTextColor = useTransform(
     scrollProgress,
-    [threshold - 0.02, threshold],
-    ["#a1a1aa", ACCENT_COLOR],
+    [threshold - 0.1, threshold],
+    ["#a1a1aa", "#18181b"], // Transitions to Zinc-900 (Black)
     { clamp: true }
   );
 
@@ -70,14 +70,14 @@ function StepItem({
     { clamp: true }
   );
 
-  // Content card animations
-  const opacity = useTransform(scrollProgress, [threshold - 0.05, threshold, threshold + 0.1], [0, 1, 1]);
-  const scale = useTransform(scrollProgress, [threshold - 0.05, threshold, threshold + 0.1], [0.95, 1, 1]);
-  const x = useTransform(scrollProgress, [threshold - 0.05, threshold], [20, 0]);
+  // Content card animations - also synced to the new threshold
+  const opacity = useTransform(scrollProgress, [threshold - 0.15, threshold, threshold + 0.1], [0, 1, 1]);
+  const scale = useTransform(scrollProgress, [threshold - 0.15, threshold, threshold + 0.1], [0.95, 1, 1]);
+  const x = useTransform(scrollProgress, [threshold - 0.15, threshold], [20, 0]);
 
   return (
     <div className="relative py-8 md:py-16 flex items-center">
-      {/* Path Line Segment - Only show if not the last item */}
+      {/* Path Line Segment - DOWN */}
       {index < total && (
         <div className="absolute top-1/2 bottom-0 left-6 md:left-8 -translate-x-1/2 w-[2px]">
           {/* Static Background Segment */}
