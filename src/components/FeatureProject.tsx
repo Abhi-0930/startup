@@ -8,16 +8,16 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const slides = [
   // Finlytics (Project 1)
-  { id: 'f1', category: 'Finlytics', title: 'Launch MVP for Finlytics', subtitle: 'Live in 27 days, 1,200+ early users', src: '/project1/zvQ7tedi7AxHplgmospF42dcjQo.png_width=1200&height=800.png' },
-  { id: 'f2', category: 'Finlytics', title: 'Launch MVP for Finlytics', subtitle: 'Live in 27 days, 1,200+ early users', src: '/project1/5kd7Hmen8Zb7gfwj1BZyuA0ko.png_width=1200&height=800.png' },
-  { id: 'f3', category: 'Finlytics', title: 'Launch MVP for Finlytics', subtitle: 'Live in 27 days, 1,200+ early users', src: '/project1/MAVstedJYqQvsrJ7l1kxjR498.jpg_width=1200&height=904.png' },
+  { id: 'f1', projectId: '01', category: 'Finlytics', title: 'Launch MVP for Finlytics', subtitle: 'Live in 27 days, 1,200+ early users', src: '/project1/zvQ7tedi7AxHplgmospF42dcjQo.png_width=1200&height=800.png' },
+  { id: 'f2', projectId: '01', category: 'Finlytics', title: 'Launch MVP for Finlytics', subtitle: 'Live in 27 days, 1,200+ early users', src: '/project1/5kd7Hmen8Zb7gfwj1BZyuA0ko.png_width=1200&height=800.png' },
+  { id: 'f3', projectId: '01', category: 'Finlytics', title: 'Launch MVP for Finlytics', subtitle: 'Live in 27 days, 1,200+ early users', src: '/project1/MAVstedJYqQvsrJ7l1kxjR498.jpg_width=1200&height=904.png' },
   // Atlas (Project 2)
-  { id: 'a1', category: 'Atlas', title: 'Atlas Technologies', subtitle: 'Complete Brand & Web Redesign', src: '/project2/vdtm4vbMi9SyPgj2Z1bVuq9b2o.png_width=960&height=1200.png' },
-  { id: 'a2', category: 'Atlas', title: 'Atlas Technologies', subtitle: 'Complete Brand & Web Redesign', src: '/project2/xktGFEeTfvx5MDldvQxlaw79M.png_width=800&height=1200.png' },
+  { id: 'a1', projectId: '02', category: 'Atlas', title: 'Atlas Technologies', subtitle: 'Complete Brand & Web Redesign', src: '/project2/vdtm4vbMi9SyPgj2Z1bVuq9b2o.png_width=960&height=1200.png' },
+  { id: 'a2', projectId: '02', category: 'Atlas', title: 'Atlas Technologies', subtitle: 'Complete Brand & Web Redesign', src: '/project2/xktGFEeTfvx5MDldvQxlaw79M.png_width=800&height=1200.png' },
   // Orbital Bank (Project 3)
-  { id: 'o1', category: 'Orbital', title: 'Orbital Bank Dashboard', subtitle: 'Motion & 3D Interactive Design', src: '/project3/1KCYDj61X5Ycm5Vp5kluuhMho.png_width=2400&height=1600.png' },
-  { id: 'o2', category: 'Orbital', title: 'Orbital Bank Dashboard', subtitle: 'Motion & 3D Interactive Design', src: '/project3/TwCiV5MUt16Q38ftZYKlEhNhbJI.png_width=1984&height=2400.png' },
-  { id: 'o3', category: 'Orbital', title: 'Orbital Bank Dashboard', subtitle: 'Motion & 3D Interactive Design', src: '/project3/uqJwE4mTSKeNtBAX8YU8vy1hkVs.png_width=2400&height=1600.png' }
+  { id: 'o1', projectId: '03', category: 'Orbital', title: 'Orbital Bank Dashboard', subtitle: 'Motion & 3D Interactive Design', src: '/project3/1KCYDj61X5Ycm5Vp5kluuhMho.png_width=2400&height=1600.png' },
+  { id: 'o2', projectId: '03', category: 'Orbital', title: 'Orbital Bank Dashboard', subtitle: 'Motion & 3D Interactive Design', src: '/project3/TwCiV5MUt16Q38ftZYKlEhNhbJI.png_width=1984&height=2400.png' },
+  { id: 'o3', projectId: '03', category: 'Orbital', title: 'Orbital Bank Dashboard', subtitle: 'Motion & 3D Interactive Design', src: '/project3/uqJwE4mTSKeNtBAX8YU8vy1hkVs.png_width=2400&height=1600.png' }
 ];
 
 export default function FeatureProject() {

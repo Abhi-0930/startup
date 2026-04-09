@@ -59,7 +59,7 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
   }, [project.images.length, project.id]);
 
   return (
-    <div className={`group/project flex flex-col gap-6 ${project.span === 'wide' ? 'md:col-span-2' : 'col-span-1'}`}>
+    <div className={`flex flex-col gap-6 ${project.span === 'wide' ? 'md:col-span-2' : 'col-span-1'}`}>
       <div 
         className="relative overflow-hidden rounded-[32px] border border-black/5 shadow-sm bg-neutral-900"
         style={{ 
@@ -96,12 +96,12 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
         </div>
         
         <Link 
-          href="#"
-          className="w-12 h-12 rounded-full bg-zinc-100 border border-zinc-200 flex items-center justify-center transition-all duration-300 group-hover/project:w-[58px] overflow-hidden"
+          href={`/projects/${project.id}`}
+          className="group w-12 h-12 rounded-full bg-zinc-100 border border-zinc-200 flex items-center justify-center transition-all duration-300 hover:w-[58px] overflow-hidden"
         >
           <ArrowRight 
             size={20} 
-            className="text-zinc-900 transition-transform duration-300 group-hover/project:translate-x-1.5" 
+            className="text-zinc-900 transition-transform duration-300 group-hover:translate-x-1.5" 
           />
         </Link>
       </div>
