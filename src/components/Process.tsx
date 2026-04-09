@@ -1,7 +1,6 @@
 "use client";
-
-import { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 const steps = [
   {
@@ -31,146 +30,150 @@ const steps = [
   },
 ];
 
+const ACCENT_COLOR = "#f04d3d"; // Vibrant Red/Orange from user image
+
+function StepItem({ 
+  step, 
+  index, 
+  total, 
+  scrollProgress 
+}: { 
+  step: typeof steps[0], 
+  index: number, 
+  total: number, 
+  scrollProgress: any 
+}) {
+  const threshold = index / total;
+  const nextThreshold = (index + 1) / total;
+
+  // Activation mapping for colors
+  const circleBorderColor = useTransform(
+    scrollProgress,
+    [threshold - 0.05, threshold],
+    ["#e5e7eb", ACCENT_COLOR]
+  );
+
+  const circleTextColor = useTransform(
+    scrollProgress,
+    [threshold - 0.05, threshold],
+    ["#a1a1aa", ACCENT_COLOR]
+  );
+
+  // Partial line progress for this specific segment
+  const lineProgress = useTransform(
+    scrollProgress,
+    [threshold, nextThreshold],
+    ["0%", "100%"]
+  );
+
+  // Content card animations
+  const opacity = useTransform(scrollProgress, [threshold - 0.1, threshold, threshold + 0.1], [0, 1, 1]);
+  const scale = useTransform(scrollProgress, [threshold - 0.1, threshold, threshold + 0.1], [0.95, 1, 1]);
+  const x = useTransform(scrollProgress, [threshold - 0.1, threshold], [20, 0]);
+
+  return (
+    <div className="relative py-8 md:h-[280px] flex items-center">
+      {/* Path Line Segment - Only show if not the last item */}
+      {index < total && (
+        <div className="absolute top-1/2 bottom-0 left-8 md:left-1/2 -translate-x-1/2 w-[2px]">
+          {/* Static Background Segment */}
+          <div className="h-full w-full bg-zinc-100" />
+          {/* Active Red Segment */}
+          <motion.div 
+            style={{ height: lineProgress }}
+            className="absolute top-0 left-0 w-full bg-[#f04d3d] z-10 origin-top"
+          />
+        </div>
+      )}
+
+      {/* Path Line Segment - Connect UP to previous - Only show if not the first item */}
+      {index > 0 && (
+        <div className="absolute top-0 bottom-1/2 left-8 md:left-1/2 -translate-x-1/2 w-[2px]">
+          {/* Static Background Segment */}
+          <div className="h-full w-full bg-zinc-100" />
+          {/* Active Red Segment */}
+          <motion.div 
+            style={{ height: "100%" }}
+            className={`absolute top-0 left-0 w-full bg-[#f04d3d] z-10 origin-top opacity-0 transition-opacity duration-300`}
+            animate={{ opacity: useTransform(scrollProgress, (v: number) => v >= threshold ? 1 : 0) as any }}
+          />
+          {/* Note: Simplified the 'UP' connection for perfect alignment */}
+          <motion.div 
+             initial={false}
+             style={{ 
+               height: "100%",
+               backgroundColor: ACCENT_COLOR,
+               opacity: useTransform(scrollProgress, (v: number) => v >= threshold ? 1 : 0) as any
+             }}
+             className="absolute top-0 left-0 w-full z-10"
+          />
+        </div>
+      )}
+
+      {/* Central Path Circle */}
+      <div className="absolute left-8 md:left-1/2 -translate-x-1/2 z-20">
+        <motion.div 
+          style={{ borderColor: circleBorderColor }}
+          className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white border-2 flex items-center justify-center shadow-sm"
+        >
+          <motion.span 
+            style={{ color: circleTextColor }}
+            className="text-lg md:text-2xl font-bold font-heading"
+          >
+            {step.number}
+          </motion.span>
+        </motion.div>
+      </div>
+
+      {/* Content Card */}
+      <motion.div 
+        style={{ opacity, scale, x }}
+        className="ml-24 md:ml-[58%] w-full max-w-[calc(100%-80px)] md:w-[480px]"
+      >
+        <div className="p-6 md:p-8 rounded-[32px] md:rounded-[40px] bg-zinc-50 border border-zinc-100/80 shadow-sm hover:shadow-md transition-all duration-500">
+          <h3 className="text-xl md:text-3xl font-bold text-zinc-900 mb-2 md:mb-3">{step.title}</h3>
+          <p className="text-base md:text-xl text-zinc-600 leading-relaxed font-medium">{step.description}</p>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
 export default function Process() {
   const containerRef = useRef<HTMLDivElement>(null);
-
-  // Scroll Progress Logic for the central timeline
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start center", "end center"],
   });
 
-  const scaleY = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
-
   return (
-    <section 
-      ref={containerRef}
-      className="py-16 md:py-32 bg-white relative overflow-hidden text-zinc-900"
-      id="process"
-    >
-      <div className="container mx-auto px-6 max-w-6xl relative z-10">
-        <div className="flex flex-col md:flex-row gap-16 md:gap-24 items-start">
-          
-          {/* Left Column: Sticky Header */}
-          <div className="w-full md:w-[40%] md:sticky md:top-32 self-start space-y-6">
-            <div className="flex items-center gap-2">
-              <div className="w-2.5 h-2.5 rounded-full bg-blue-600 shadow-[0_0_10px_rgba(37,99,235,0.3)] animate-pulse" />
-              <span className="text-[12px] font-bold text-blue-600 uppercase tracking-widest">The Workflow</span>
-            </div>
-            
-            <h2 className="text-4xl md:text-6xl font-bold text-zinc-900 leading-[1.1] tracking-tight">
-              A high-precision <br />
-              <span className="text-zinc-400">plan for impact.</span>
-            </h2>
-            
-            <p className="text-zinc-600 text-lg md:text-xl max-w-sm leading-relaxed">
-              Every project follows our verified roadmap to ensure speed, quality, and results.
-            </p>
-          </div>
+    <section ref={containerRef} className="relative py-24 md:py-32 bg-white min-h-screen overflow-hidden">
+      <div className="container mx-auto px-4">
+        {/* Header */}
+        <div className="text-left md:text-center mb-16 md:mb-24 space-y-4 px-4">
+          <span className="text-[10px] md:text-[12px] font-bold text-zinc-400 uppercase tracking-[0.2em]">The Workflow</span>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 leading-[1.1]">
+            How We Bring <br className="hidden md:block" />
+            <span className="text-zinc-400">Your Vision To Life.</span>
+          </h2>
+        </div>
 
-          {/* Middle Column: Vertical Timeline Bar */}
-          <div className="hidden md:flex flex-col items-center relative self-stretch py-4">
-            {/* Background Line */}
-            <div className="w-[1px] h-full bg-zinc-100 absolute inset-0" />
-            
-            {/* Animated Progress Line */}
-            <motion.div 
-              style={{ scaleY }}
-              className="w-[1px] h-full bg-blue-600 absolute inset-0 origin-top shadow-[0_60px_40px_rgba(37,99,235,0.2)]"
-            />
-          </div>
-
-          {/* Right Column: Step Cards */}
-          <div className="w-full md:w-[55%] flex flex-col gap-24 md:gap-32 pb-12">
+        {/* Global Path Container */}
+        <div className="relative max-w-7xl mx-auto">
+          {/* Steps Loop */}
+          <div className="flex flex-col">
             {steps.map((step, index) => (
               <StepItem 
-                key={index} 
+                key={step.number} 
                 step={step} 
                 index={index} 
-                progress={scrollYProgress} 
+                total={steps.length - 1} 
+                scrollProgress={scrollYProgress}
               />
             ))}
           </div>
         </div>
       </div>
-
-      {/* Decorative Gradients */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-50/30 blur-[150px] rounded-full -translate-y-1/2 translate-x-1/2 -z-10" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-50/30 blur-[150px] rounded-full translate-y-1/2 -translate-x-1/2 -z-10" />
     </section>
-  );
-}
-
-function StepItem({ 
-  step, 
-  index, 
-  progress 
-}: { 
-  step: typeof steps[0], 
-  index: number, 
-  progress: any // MotionValue<number>
-}) {
-  // Sync activation with the container line progress
-  // Each step lights up in its own sector
-  const activationPoint = index / steps.length;
-  
-  const opacity = useTransform(
-    progress,
-    [activationPoint, activationPoint + 0.1, activationPoint + 0.25],
-    [0.1, 1, 1]
-  );
-  
-  const scale = useTransform(
-    progress,
-    [activationPoint, activationPoint + 0.15],
-    [0.98, 1]
-  );
-
-  // Re-introducing the "fade left" parallax slide
-  const x = useTransform(
-    progress,
-    [activationPoint, activationPoint + 0.12],
-    [40, 0]
-  );
-
-  return (
-    <motion.div 
-      style={{ opacity, scale, x }}
-      className="relative group pr-4"
-    >
-      {/* Mobile Step Indicator (Darker number) */}
-      <div className="md:hidden flex items-center gap-4 mb-4">
-        <span className="text-4xl font-black text-blue-600/20 tracking-tighter leading-none">
-          {step.number}
-        </span>
-        <div className="h-[1px] flex-1 bg-zinc-100" />
-      </div>
-
-      {/* Step Card Content */}
-      <div className="flex items-start gap-8">
-        {/* Step Number Sidebar - Hidden on mobile, shows on desktop */}
-        <div className="hidden md:block shrink-0 pt-1">
-          <span className="text-6xl md:text-7xl font-black text-blue-600/20 select-none tracking-tighter leading-none group-hover:text-blue-600/30 transition-colors">
-            {step.number}
-          </span>
-        </div>
-
-        <div className="space-y-4 pt-1">
-          <h3 className="text-2xl md:text-4xl font-bold text-zinc-900 tracking-tight group-hover:text-blue-600 transition-colors">
-            {step.title}
-          </h3>
-          <p className="text-zinc-600 text-lg md:text-xl leading-relaxed max-w-xl">
-            {step.description}
-          </p>
-          
-          {/* Visual accent - Blue theme line */}
-          <div className="w-12 h-1 bg-blue-600/20 rounded-full group-hover:w-24 group-hover:bg-blue-600 transition-all duration-500" />
-        </div>
-      </div>
-    </motion.div>
   );
 }
