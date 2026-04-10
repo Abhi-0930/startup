@@ -59,48 +59,59 @@ export default function ProjectFooter({ currentId }: { currentId: string }) {
         </div>
       </section>
 
-      {/* Book a Call CTA - Pattern Style */}
-      <section className="py-24 md:py-32 bg-white">
-        <div className="container mx-auto px-4 md:px-12 max-w-[1400px]">
-          <div className="relative w-full bg-[#09090b] rounded-[40px] md:rounded-[60px] overflow-hidden p-8 md:p-20 shadow-2xl">
-            {/* Dot Pattern Background */}
-            <div 
-              className="absolute inset-0 opacity-[0.15]" 
-              style={{ 
-                backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)', 
-                backgroundSize: '32px 32px' 
-              }} 
-            />
-            
-            <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-12">
-              <div className="max-w-2xl space-y-2 md:space-y-4">
-                <div className="text-3xl md:text-6xl font-bold tracking-tight leading-tight">
-                  <span className="text-white">You focus </span>
-                  <span className="text-zinc-600">on</span>
-                </div>
-                <div className="text-3xl md:text-6xl font-bold tracking-tight leading-tight text-zinc-600">
-                  your company.
-                </div>
-                <div className="text-3xl md:text-6xl font-bold tracking-tight leading-tight">
-                  <span className="text-zinc-600">We make </span>
-                  <span className="text-white italic">it happen.</span>
-                </div>
-                <div className="text-3xl md:text-6xl font-bold tracking-tight leading-tight text-white pt-2 md:pt-4">
-                  Unstoppable Growth.
-                </div>
+      {/* Book a Call CTA - Pattern Style - FULL WIDTH */}
+      <section className="relative w-full bg-[#09090b] py-24 md:py-40 overflow-hidden">
+        {/* Animated Moving Dot Pattern */}
+        <motion.div 
+          className="absolute inset-0 opacity-[0.3] pointer-events-none" 
+          style={{ 
+            backgroundImage: 'radial-gradient(circle, #ffffff 1.5px, transparent 1.5px)', 
+            backgroundSize: '24px 24px',
+            maskImage: 'linear-gradient(to right, transparent, rgba(0,0,0,0.2) 20%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.2) 80%, transparent)',
+            WebkitMaskImage: 'linear-gradient(to right, transparent, rgba(0,0,0,0.2) 20%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.2) 80%, transparent)',
+            maskSize: '200% 100%',
+            WebkitMaskSize: '200% 100%',
+          }} 
+          animate={{ 
+            maskPosition: ["-100% 0%", "200% 0%"],
+            WebkitMaskPosition: ["-100% 0%", "200% 0%"]
+          }}
+          transition={{ 
+            duration: 15, 
+            repeat: Infinity, 
+            ease: "linear" 
+          }}
+        />
+        
+        <div className="container mx-auto px-4 md:px-12 max-w-[1400px] relative z-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="max-w-2xl space-y-2 md:space-y-4">
+              <div className="text-3xl md:text-7xl font-bold tracking-tight leading-tight">
+                <span className="text-white">You focus </span>
+                <span className="text-zinc-600">on</span>
               </div>
+              <div className="text-3xl md:text-7xl font-bold tracking-tight leading-tight text-zinc-600">
+                your company.
+              </div>
+              <div className="text-3xl md:text-7xl font-bold tracking-tight leading-tight">
+                <span className="text-zinc-600">We make </span>
+                <span className="text-white italic">it happen.</span>
+              </div>
+              <div className="text-3xl md:text-7xl font-bold tracking-tight leading-tight text-white pt-2 md:pt-4">
+                Unstoppable Growth.
+              </div>
+            </div>
 
-              <div className="flex-shrink-0">
-                <Link 
-                  href="#" 
-                  className="group inline-flex items-center gap-6 bg-white rounded-full pl-8 pr-3 py-3 shadow-xl transition-all hover:pr-4"
-                >
-                  <span className="text-black font-bold text-lg md:text-xl">Book A Call</span>
-                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-black/5 flex items-center justify-center transition-all group-hover:bg-zinc-100">
-                    <ArrowRight className="text-black" size={24} />
-                  </div>
-                </Link>
-              </div>
+            <div className="flex-shrink-0">
+              <Link 
+                href="#" 
+                className="group inline-flex items-center gap-6 bg-white rounded-full pl-8 pr-3 py-3 shadow-xl transition-all hover:pr-4"
+              >
+                <span className="text-black font-bold text-lg md:text-xl">Book A Call</span>
+                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-black/5 flex items-center justify-center transition-all group-hover:bg-zinc-100">
+                  <ArrowRight className="text-black" size={24} />
+                </div>
+              </Link>
             </div>
           </div>
         </div>
