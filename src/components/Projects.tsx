@@ -60,8 +60,9 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
 
   return (
     <div className={`flex flex-col gap-6 ${project.span === 'wide' ? 'md:col-span-2' : 'col-span-1'}`}>
-      <div 
-        className="relative overflow-hidden rounded-[32px] border border-black/5 shadow-sm bg-neutral-900"
+      <Link 
+        href={`/projects/${project.id}`}
+        className="block relative overflow-hidden rounded-[32px] border border-black/5 shadow-sm bg-neutral-900 group/image cursor-pointer"
         style={{ 
           aspectRatio: project.span === 'wide' ? '21/9' : '4/3' 
         }}
@@ -80,14 +81,14 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                 src={src}
                 alt={`${project.title} Image ${idx + 1}`}
                 fill
-                className={`object-cover ${isActive ? 'active-zoom' : 'scale-[1.15]'}`}
+                className={`object-cover transition-transform duration-700 group-hover/image:scale-[1.05] ${isActive ? 'active-zoom' : 'scale-[1.15]'}`}
                 priority={idx === 0}
               />
             </div>
           );
         })}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none z-10" />
-      </div>
+      </Link>
 
       <div className="flex items-center justify-between px-2">
         <div className="flex flex-col gap-1">
@@ -138,7 +139,7 @@ export default function Projects() {
   }, [imagesLoaded, minTimeElapsed]);
 
   return (
-    <section className="pb-24 md:pb-32 pt-8 md:pt-12 px-4 md:px-8 max-w-[1400px] mx-auto min-h-[600px] -mt-10 md:-mt-16 relative z-20">
+    <section id="work" className="pb-24 md:pb-32 pt-8 md:pt-12 px-4 md:px-8 max-w-[1400px] mx-auto min-h-[600px] -mt-10 md:-mt-16 relative z-20">
       <div className="flex flex-col items-center justify-center mb-16 text-center">
         <AnimatePresence mode="wait">
           {isLoading ? (

@@ -1,7 +1,14 @@
-"use client";
 import { ProjectData } from "@/data/projects";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
 
 export default function ProjectOverview({ project }: { project: ProjectData }) {
   return (
@@ -10,7 +17,28 @@ export default function ProjectOverview({ project }: { project: ProjectData }) {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-24 relative">
           
           {/* Main Content (LHS) */}
-          <div className="md:col-span-7 space-y-16">
+          <div className="md:col-span-7 space-y-12">
+            {/* Breadcrumbs */}
+            <Breadcrumb>
+              <BreadcrumbList className="text-[10px] uppercase tracking-[0.2em] font-normal">
+                <BreadcrumbItem>
+                  <BreadcrumbLink asChild className="hover:text-zinc-900 transition-colors">
+                    <Link href="/">Home</Link>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator className="opacity-30" />
+                <BreadcrumbItem>
+                  <BreadcrumbLink asChild className="hover:text-zinc-900 transition-colors">
+                    <Link href="/#work">Work</Link>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator className="opacity-30" />
+                <BreadcrumbItem>
+                  <BreadcrumbPage className="text-zinc-400 font-normal">{project.title}</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 uppercase tracking-widest text-sm text-zinc-400">The Summary</h2>
               <p className="text-xl md:text-2xl text-zinc-600 leading-relaxed font-medium">
@@ -61,13 +89,40 @@ export default function ProjectOverview({ project }: { project: ProjectData }) {
 
               <div className="space-y-4">
                 <h4 className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">Tech Stack</h4>
-                <div className="grid grid-cols-2 gap-y-2 gap-x-4">
-                  {project.stack.map((tech, idx) => (
-                    <div key={idx} className="flex items-center gap-2 group">
-                      <div className="w-1 h-1 rounded-full bg-zinc-300 group-hover:bg-blue-500 transition-colors" />
-                      <span className="text-[13px] font-semibold text-zinc-700">{tech.name}</span>
-                    </div>
-                  ))}
+                <div className="grid grid-cols-2 gap-y-4 gap-x-6">
+                  {project.stack.map((tech, idx) => {
+                    // Slug mapping for Simple Icons
+                    const slugMap: Record<string, string> = {
+                      "Next.js": "nextdotjs",
+                      "TypeScript": "typescript",
+                      "Tailwind CSS": "tailwindcss",
+                      "Framer Motion": "framer",
+                      "React": "react",
+                      "GSAP": "greensock",
+                      "Three.js": "threedotjs",
+                      "Sanity CMS": "sanity",
+                      "R3F": "threedotjs" // Using Three.js icon for R3F
+                    };
+                    const slug = slugMap[tech.name] || tech.name.toLowerCase().replace(/\s+/g, "");
+                    const iconUrl = `https://cdn.simpleicons.org/${slug}/52525b`; // Zinc-600
+
+                    return (
+                      <div key={idx} className="flex items-center gap-3 group">
+                        <div className="w-6 h-6 p-1 rounded-sm bg-zinc-50 border border-zinc-100 flex items-center justify-center transition-colors group-hover:border-zinc-200">
+                          <img 
+                            src={iconUrl} 
+                            alt={tech.name} 
+                            className="w-full h-full object-contain opacity-70 group-hover:opacity-100 transition-opacity"
+                            onError={(e) => {
+                              // Fallback if icon not found
+                              (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${tech.name[0]}&background=f4f4f5&color=71717a&size=32`;
+                            }}
+                          />
+                        </div>
+                        <span className="text-[13px] font-semibold text-zinc-700">{tech.name}</span>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
 

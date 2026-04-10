@@ -51,7 +51,7 @@ export const projectsData: ProjectData[] = [
       { name: "Tailwind CSS" },
       { name: "Framer Motion" }
     ],
-    services: ["UX/UI Design", "Product Strategy", "Frontend Development"],
+    services: ["Web Development", "SEO Improvement", "App Development"],
     year: "2024",
     liveLink: "https://finlytics.app",
     heroImage: "/project1/zvQ7tedi7AxHplgmospF42dcjQo.png_width=1200&height=800.png",
@@ -84,7 +84,7 @@ export const projectsData: ProjectData[] = [
       { name: "Three.js" },
       { name: "Sanity CMS" }
     ],
-    services: ["Brand Strategy", "Web Design", "3D Motion Graphics"],
+    services: ["Web Development", "MVP Prototyping"],
     year: "2023",
     liveLink: "https://atlasthech.com",
     heroImage: "/project2/xktGFEeTfvx5MDldvQxlaw79M.png_width=800&height=1200.png",
@@ -104,7 +104,7 @@ export const projectsData: ProjectData[] = [
     subtitle: "The future of digital banking in three dimensions.",
     description: "Orbital Bank is a neobank focused on the Gen-Z demographic. They wanted their card management app to feel like a high-end gaming interface.",
     challenge: "How do you make banking feel 'fun' without losing the trust and security necessary for a financial institution?",
-    solution: "We integrated real-time 3D card rendering and physics-based motion. The entire UI reacts to the user's touch, creating a tactile and 'expensive' feeling digital product.",
+    solution: "We integrated real-time 3D card rendering and physics-based motion. The entire UI react to the user's touch, creating a tactile and 'expensive' feeling digital product.",
     impact: [
       { label: "Waitlist Join", value: "50k+" },
       { label: "Engagement", value: "+80%" },
@@ -113,10 +113,9 @@ export const projectsData: ProjectData[] = [
     stack: [
       { name: "Next.js" },
       { name: "Three.js" },
-      { name: "R3F" },
-      { name: "Tailwind" }
+      { name: "Tailwind CSS" }
     ],
-    services: ["Product Design", "3D Modeling", "Motion Design"],
+    services: ["App Development", "AI Applications", "MVP Prototyping"],
     year: "2024",
     heroImage: "/project3/uqJwE4mTSKeNtBAX8YU8vy1hkVs.png_width=2400&height=1600.png",
     gallery: [

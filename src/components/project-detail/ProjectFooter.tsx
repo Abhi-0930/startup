@@ -6,42 +6,105 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function ProjectFooter({ currentId }: { currentId: string }) {
-  // Find the next project in the list, or loop back to the first one
-  const currentIndex = projectsData.findIndex(p => p.id === currentId);
-  const nextProject = projectsData[(currentIndex + 1) % projectsData.length];
+  // Get all other projects for the "More Case Studies" section
+  const otherProjects = projectsData.filter(p => p.id !== currentId);
 
   return (
-    <section className="relative h-[60vh] md:h-[80vh] w-full group overflow-hidden bg-neutral-900">
-      <Link href={`/projects/${nextProject.id}`} className="absolute inset-0 block z-20">
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4 z-30">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="space-y-6"
-          >
-            <span className="text-zinc-400 uppercase tracking-[0.4em] font-bold text-xs">Next Case Study</span>
-            <h2 className="text-5xl md:text-8xl font-bold text-white tracking-tight transition-transform duration-700 group-hover:scale-105">
-              {nextProject.title}
-            </h2>
-            <div className="flex items-center justify-center gap-4 pt-8">
-              <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center transition-all duration-300 group-hover:bg-white group-hover:border-white">
-                <ArrowRight className="text-white transition-colors duration-300 group-hover:text-neutral-900" size={24} />
+    <div className="bg-white">
+      {/* More Work Section */}
+      <section className="py-24 md:py-32 border-t border-zinc-100">
+        <div className="container mx-auto px-4 md:px-12 max-w-[1400px]">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+            <div className="space-y-4">
+              <span className="text-zinc-400 uppercase tracking-[0.3em] font-bold text-[10px]">Case Studies</span>
+              <h2 className="text-4xl md:text-5xl font-bold text-zinc-900 tracking-tight">More case studies like this</h2>
+            </div>
+            <Link 
+              href="/#work" 
+              className="group flex items-center gap-2 text-sm font-bold text-zinc-600 hover:text-zinc-900 transition-colors"
+            >
+              <span>View all work</span>
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            {otherProjects.map((project) => (
+              <Link 
+                key={project.id}
+                href={`/projects/${project.id}`}
+                className="group flex flex-col gap-6"
+              >
+                <div className="relative aspect-[16/9] overflow-hidden rounded-[32px] border border-zinc-100 shadow-sm bg-zinc-50">
+                  <Image 
+                    src={project.heroImage}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors" />
+                </div>
+                <div className="flex items-center justify-between px-2">
+                  <div className="space-y-1">
+                    <h3 className="text-2xl font-bold text-zinc-900">{project.title}</h3>
+                    <p className="text-sm font-medium text-zinc-500">{project.category}</p>
+                  </div>
+                  <div className="w-12 h-12 rounded-full border border-zinc-100 flex items-center justify-center transition-all duration-300 group-hover:bg-zinc-900 group-hover:border-zinc-900">
+                    <ArrowRight size={20} className="text-zinc-400 transition-colors group-hover:text-white" />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Book a Call CTA - Pattern Style */}
+      <section className="py-24 md:py-32 bg-white">
+        <div className="container mx-auto px-4 md:px-12 max-w-[1400px]">
+          <div className="relative w-full bg-[#09090b] rounded-[40px] md:rounded-[60px] overflow-hidden p-8 md:p-20 shadow-2xl">
+            {/* Dot Pattern Background */}
+            <div 
+              className="absolute inset-0 opacity-[0.15]" 
+              style={{ 
+                backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)', 
+                backgroundSize: '32px 32px' 
+              }} 
+            />
+            
+            <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-12">
+              <div className="max-w-2xl space-y-2 md:space-y-4">
+                <div className="text-3xl md:text-6xl font-bold tracking-tight leading-tight">
+                  <span className="text-white">You focus </span>
+                  <span className="text-zinc-600">on</span>
+                </div>
+                <div className="text-3xl md:text-6xl font-bold tracking-tight leading-tight text-zinc-600">
+                  your company.
+                </div>
+                <div className="text-3xl md:text-6xl font-bold tracking-tight leading-tight">
+                  <span className="text-zinc-600">We make </span>
+                  <span className="text-white italic">it happen.</span>
+                </div>
+                <div className="text-3xl md:text-6xl font-bold tracking-tight leading-tight text-white pt-2 md:pt-4">
+                  Unstoppable Growth.
+                </div>
+              </div>
+
+              <div className="flex-shrink-0">
+                <Link 
+                  href="#" 
+                  className="group inline-flex items-center gap-6 bg-white rounded-full pl-8 pr-3 py-3 shadow-xl transition-all hover:pr-4"
+                >
+                  <span className="text-black font-bold text-lg md:text-xl">Book A Call</span>
+                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-black/5 flex items-center justify-center transition-all group-hover:bg-zinc-100">
+                    <ArrowRight className="text-black" size={24} />
+                  </div>
+                </Link>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
-      </Link>
-
-      {/* Background Image of Next Project */}
-      <div className="absolute inset-0 z-0">
-        <Image 
-          src={nextProject.heroImage} 
-          alt="Next Project"
-          fill
-          className="object-cover opacity-30 transition-transform duration-1000 group-hover:scale-110 group-hover:opacity-50"
-        />
-        <div className="absolute inset-0 bg-neutral-900/40" />
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
