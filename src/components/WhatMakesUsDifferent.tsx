@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Zap, Target, Shield, Users, Clock, CreditCard } from "lucide-react";
+import { ArrowRight, Zap, LayoutDashboard, Shield, Users, Clock, CreditCard } from "lucide-react";
 
 const features = [
   {
@@ -13,38 +13,38 @@ const features = [
     delay: 0.1
   },
   {
-    title: "Direct Founder Access",
-    description: "No account managers. You work directly with senior experts who understand your business vision.",
+    title: "Expert In-house Team",
+    description: "No outsourcing, no juniors. Every single member of our in-house team is a verified tech expert dedicated to your success.",
     icon: <Users className="text-zinc-900" size={32} />,
-    badge: "Partnership",
+    badge: "Elite Squad",
     delay: 0.2
   },
   {
-    title: "Fixed & Fair Pricing",
-    description: "Clear, predefined pricing with no hidden fees or monthly surprises. You know exactly what you pay.",
-    icon: <CreditCard className="text-zinc-900" size={32} />,
+    title: "Separate Project CRM",
+    description: "Manage your entire project in one place. Review status, track progress, and raise inquiries through your dedicated project portal.",
+    icon: <LayoutDashboard className="text-zinc-900" size={32} />,
     badge: "Transparency",
     delay: 0.3
   },
   {
-    title: "Design + Code Unity",
-    description: "We bridge the gap between world-class design and robust engineering. Seamless from pixel to production.",
+    title: "High-End Infrastructure",
+    description: "We use elite designs involving Redis and Kafka to boost performance, eliminate latency, and make your platform ultra-fast.",
     icon: <Zap className="text-zinc-900" size={32} />,
-    badge: "Expertise",
+    badge: "Performance",
     delay: 0.4
   },
   {
-    title: "Problem First, Tech Second",
-    description: "We don't just write code. We solve business problems using the most efficient technology available.",
-    icon: <Target className="text-zinc-900" size={32} />,
-    badge: "Impact",
+    title: "3 Months Free Maintenance",
+    description: "We don't just ship and leave. We provide 3 months of comprehensive free maintenance to ensure your product stays flawless.",
+    icon: <Shield className="text-zinc-900" size={32} />,
+    badge: "Support",
     delay: 0.5
   },
   {
-    title: "Scalable Foundations",
-    description: "Every line of code is written with growth in mind. We build systems that scale as your users do.",
-    icon: <Shield className="text-zinc-900" size={32} />,
-    badge: "Stability",
+    title: "Fixed & Fair Pricing",
+    description: "Clear, predefined pricing with no hidden fees or monthly surprises. You know exactly what you pay before we start writing code.",
+    icon: <CreditCard className="text-zinc-900" size={32} />,
+    badge: "Budget",
     delay: 0.6
   }
 ];
@@ -86,8 +86,8 @@ export default function WhatMakesUsDifferent() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-4xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight text-zinc-900 leading-[1.05]"
           >
-            Engineered for Impact, <br />
-            <span className="text-zinc-300">Crafted for Growth.</span>
+            What makes us <br />
+            <span className="text-zinc-300">stand out.</span>
           </motion.h2>
         </div>
 
