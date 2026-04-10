@@ -130,7 +130,10 @@ export default function FeatureProject() {
                 </span>
               </div>
 
-              <Link href="#" className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-black/10 text-[14px] font-medium text-neutral-900 hover:bg-neutral-50 transition-colors shrink-0">
+              <Link 
+                href={`/projects/${activeSlide.projectId}`}
+                className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-black/10 text-[14px] font-medium text-neutral-900 hover:bg-neutral-50 transition-colors shrink-0"
+              >
                 View Project
                 <ArrowRight size={16} />
               </Link>
@@ -143,35 +146,38 @@ export default function FeatureProject() {
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
-              {slides.map((slide, idx) => {
-                const isCurrent = idx === currentSlide;
-                const isPrev = idx === (currentSlide - 1 + slides.length) % slides.length;
-                const isActive = isCurrent || isPrev;
+              {/* Clickable Image Area */}
+              <Link href={`/projects/${activeSlide.projectId}`} className="absolute inset-0 z-10">
+                {slides.map((slide, idx) => {
+                  const isCurrent = idx === currentSlide;
+                  const isPrev = idx === (currentSlide - 1 + slides.length) % slides.length;
+                  const isActive = isCurrent || isPrev;
 
-                return (
-                  <div 
-                    key={`${slide.id}-${idx}`}
-                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${isCurrent ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
-                  >
-                    <Image
-                      src={slide.src}
-                      alt={`Feature Project Image ${idx + 1}`}
-                      fill
-                      className={`object-cover ${isActive ? 'active-zoom' : 'scale-[1.15]'}`}
-                      priority={idx <= 1}
-                    />
-                  </div>
-                );
-              })}
+                  return (
+                    <div 
+                      key={`${slide.id}-${idx}`}
+                      className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${isCurrent ? 'opacity-100' : 'opacity-0'}`}
+                    >
+                      <Image
+                        src={slide.src}
+                        alt={`Feature Project Image ${idx + 1}`}
+                        fill
+                        className={`object-cover ${isActive ? 'active-zoom' : 'scale-[1.15]'}`}
+                        priority={idx <= 1}
+                      />
+                    </div>
+                  );
+                })}
+              </Link>
               
               {/* Custom Mouse Follower Tooltip Pill */}
               <div 
                 ref={cursorRef}
                 className={`absolute top-0 left-0 hidden md:flex items-center justify-center pointer-events-none z-50 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
               >
-                <button className="px-5 py-2.5 bg-white/95 backdrop-blur-sm border border-black/5 text-zinc-500 font-medium text-[13px] rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] tracking-wide whitespace-nowrap">
+                <div className="px-5 py-2.5 bg-white/95 backdrop-blur-sm border border-black/5 text-zinc-500 font-medium text-[13px] rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] tracking-wide whitespace-nowrap">
                   View Project
-                </button>
+                </div>
               </div>
 
               {/* Bottom Left Thumbnails - dynamically loaded for the active project */}
@@ -181,7 +187,9 @@ export default function FeatureProject() {
                   return (
                     <div 
                       key={thumb.id} 
-                      onClick={() => {
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
                         const slideIndex = slides.findIndex(s => s.id === thumb.id);
                         if (slideIndex > -1) setCurrentSlide(slideIndex);
                       }}

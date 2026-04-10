@@ -62,11 +62,11 @@ export default function ProjectOverview({ project }: { project: ProjectData }) {
             </div>
 
             {/* Results Grid */}
-            <div className="grid grid-cols-3 gap-8 p-12 bg-zinc-50 rounded-[40px] border border-zinc-100">
+            <div className="grid grid-cols-3 gap-4 md:gap-12 p-6 md:p-8 bg-zinc-50 rounded-2xl border border-zinc-100">
               {project.impact.map((stat, idx) => (
-                <div key={idx} className="flex flex-col gap-2">
-                  <span className="text-3xl md:text-5xl font-bold tracking-tighter text-zinc-900">{stat.value}</span>
-                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-zinc-400">{stat.label}</span>
+                <div key={idx} className="flex flex-col gap-1">
+                  <span className="text-xl md:text-2xl font-bold tracking-tight text-zinc-900">{stat.value}</span>
+                  <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-widest text-zinc-400">{stat.label}</span>
                 </div>
               ))}
             </div>

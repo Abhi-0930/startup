@@ -1,12 +1,14 @@
 import Hero from "@/components/Hero";
 import FeatureProject from "@/components/FeatureProject";
 import LogoTicker from "@/components/LogoTicker";
-import WhyChooseUs from "@/components/WhyChooseUs";
+import WhatMakesUsDifferent from "@/components/WhatMakesUsDifferent";
 import Testimonials from "@/components/Testimonials";
 import Challenges from "@/components/Challenges";
 import Services from "@/components/Services";
 import Process from "@/components/Process";
 import Projects from "@/components/Projects";
+import FAQ from "@/components/FAQ";
+import FinalCTA from "@/components/FinalCTA";
 
 export default function Home() {
   return (
@@ -17,9 +19,11 @@ export default function Home() {
       <Testimonials />
       <Challenges />
       <Services />
-      <WhyChooseUs />
       <Process />
       <Projects />
+      <WhatMakesUsDifferent />
+      <FAQ />
+      <FinalCTA />
     </main>
   );
 }
