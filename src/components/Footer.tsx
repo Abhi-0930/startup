@@ -3,13 +3,13 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { ArrowRight, Send, Camera, Globe, Code } from "lucide-react";
 
 export default function Footer() {
   return (
     <footer className="relative pt-24 pb-12 bg-white overflow-hidden">
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+      {/* 1. Main Content Section (Top) */}
+      <div className="container mx-auto px-6 max-w-7xl relative z-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           
           {/* Brand & Newsletter Section */}
@@ -81,23 +81,25 @@ export default function Footer() {
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Huge Watermark */}
-        <div className="absolute left-0 bottom-0 pointer-events-none select-none translate-y-1/4 md:translate-y-1/3">
-          <h2 className="text-[13vw] md:text-[15vw] font-black text-black/5 tracking-tighter leading-none">
-            ZEROGRID.
-          </h2>
-        </div>
+      {/* 2. Massive Watermark (Middle) - Now in normal flow for zero overlap */}
+      <div className="w-full pointer-events-none select-none text-center my-12 md:my-20">
+        <h2 className="text-[18vw] font-black text-black/[0.03] tracking-tighter leading-none inline-block">
+          ZEROGRID.
+        </h2>
+      </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-40 pt-8 border-t border-zinc-100 flex flex-col md:flex-row items-center justify-between gap-6 relative z-20">
-          <p className="text-[13px] font-medium text-zinc-400 uppercase tracking-widest">
+      {/* 3. Bottom Legal Bar - Strictly positioned after the watermark */}
+      <div className="container mx-auto px-6 max-w-7xl">
+        <div className="pt-8 border-t border-zinc-100 flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-[13px] font-medium text-black uppercase tracking-widest">
             © 2026 Zerogrid. All rights reserved
           </p>
           
           <div className="flex items-center gap-8">
-            <Link href="#" className="text-[13px] font-medium text-zinc-400 hover:text-black transition-colors">Privacy policy</Link>
-            <Link href="#" className="text-[13px] font-medium text-zinc-400 hover:text-black transition-colors">Terms of Service</Link>
+            <Link href="#" className="text-[13px] font-medium text-black hover:opacity-70 transition-all">Privacy policy</Link>
+            <Link href="#" className="text-[13px] font-medium text-black hover:opacity-70 transition-all">Terms of Service</Link>
           </div>
         </div>
       </div>
