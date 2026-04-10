@@ -1,9 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle2, ChevronDown, Search } from "lucide-react";
-import { countryCodes } from "@/data/countryCodes";
+import PhoneInput, { getCountries, getCountryCallingCode } from 'react-phone-number-input';
+import en from 'react-phone-number-input/locale/en.json';
+import 'react-phone-number-input/style.css';
 
 const services = [
   "Web Development",
@@ -26,19 +28,36 @@ export default function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [currency, setCurrency] = useState(currencies[0]);
   const [budget, setBudget] = useState(currencies[0].min); 
+  const [phone, setPhone] = useState<string | undefined>();
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
   
-  // New Phone States
-  const defaultCountry = countryCodes.find(c => c.name === "India") || countryCodes[0];
-  const [selectedCountry, setSelectedCountry] = useState(defaultCountry);
+  // High-Fidelity Phone States
+  const [country, setCountry] = useState<any>("IN");
   const [isCountrySelectorOpen, setIsCountrySelectorOpen] = useState(false);
-  const [countrySearchQuery, setCountrySearchQuery] = useState("");
-  
-  const filteredCountries = countryCodes.filter(c => 
-    c.name.toLowerCase().includes(countrySearchQuery.toLowerCase()) || 
-    c.dial_code.includes(countrySearchQuery)
-  );
+  const [countrySearch, setCountrySearch] = useState("");
+  const [mounted, setMounted] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsCountrySelectorOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  if (!mounted) return null;
+
+  const countries = getCountries();
+  const filteredCountries = countries.filter(c => {
+    const name = en[c as keyof typeof en]?.toLowerCase() || "";
+    const code = getCountryCallingCode(c as any);
+    return name.includes(countrySearch.toLowerCase()) || code.includes(countrySearch);
+  });
   
   const toggleService = (service: string) => {
     setSelectedServices(prev => 
@@ -69,7 +88,7 @@ export default function ContactForm() {
         </p>
         <button 
           onClick={() => setIsSubmitted(false)}
-          className="mt-10 text-sm font-bold uppercase tracking-widest text-zinc-400 hover:text-black transition-colors"
+          className="mt-10 text-sm font-semibold uppercase tracking-widest text-zinc-400 hover:text-black transition-colors"
         >
           Send another message
         </button>
@@ -85,7 +104,7 @@ export default function ContactForm() {
       <form onSubmit={handleSubmit} className="relative z-10 space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <label className="text-xs font-bold text-zinc-400 uppercase tracking-widest ml-4">Full Name</label>
+            <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest ml-4">Full Name</label>
             <input 
               required
               type="text" 
@@ -94,7 +113,7 @@ export default function ContactForm() {
             />
           </div>
           <div className="space-y-2">
-            <label className="text-xs font-bold text-zinc-400 uppercase tracking-widest ml-4">Email Address</label>
+            <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest ml-4">Email Address</label>
             <input 
               required
               type="email" 
@@ -104,28 +123,36 @@ export default function ContactForm() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="md:max-w-2xl">
           <div className="space-y-2">
-            <label className="text-xs font-bold text-zinc-400 uppercase tracking-widest ml-4">Company / Website</label>
+            <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest ml-4">Company / Website</label>
             <input 
               type="text" 
               placeholder="example.com" 
               className="w-full h-14 px-6 rounded-2xl bg-zinc-50 border border-zinc-100 focus:border-zinc-900 focus:ring-0 outline-none transition-all placeholder:text-zinc-300 font-medium"
             />
           </div>
+        </div>
 
-          <div className="space-y-2 relative">
-            <label className="text-xs font-bold text-zinc-400 uppercase tracking-widest ml-4">Phone Number</label>
-            <div className="flex gap-2">
-              {/* Country Selector */}
+        <div className="md:max-w-2xl relative" ref={dropdownRef}>
+          <div className="space-y-2">
+            <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest ml-4">Phone Number</label>
+            {/* Unified Visual Container with increased padding */}
+            <div className="h-14 rounded-2xl bg-zinc-50 border border-zinc-100 flex items-center px-2 focus-within:border-zinc-900 focus-within:bg-white transition-all">
               <div className="relative">
+                {/* Custom Trigger (Borderless) */}
                 <button
                   type="button"
                   onClick={() => setIsCountrySelectorOpen(!isCountrySelectorOpen)}
-                  className="h-14 px-4 rounded-2xl bg-zinc-50 border border-zinc-100 focus:border-zinc-900 transition-all flex items-center gap-2 min-w-[100px]"
+                  className="h-11 px-3 rounded-xl flex items-center gap-2 transition-all hover:bg-zinc-100 group min-w-[90px]"
                 >
-                  <span className="text-sm font-bold text-zinc-900">{selectedCountry.dial_code}</span>
+                  <img 
+                    src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${country}.svg`}
+                    className="w-5 h-3.5 rounded-sm shadow-sm"
+                    alt={country}
+                  />
                   <ChevronDown size={14} className={`text-zinc-400 transition-transform ${isCountrySelectorOpen ? 'rotate-180' : ''}`} />
+                  <span className="text-sm font-medium text-zinc-900">+{getCountryCallingCode(country as any)}</span>
                 </button>
 
                 <AnimatePresence>
@@ -134,32 +161,42 @@ export default function ContactForm() {
                       initial={{ opacity: 0, y: 10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                      className="absolute top-full left-0 mt-2 w-[280px] max-h-[320px] bg-white rounded-2xl border border-zinc-100 shadow-2xl z-50 overflow-hidden flex flex-col"
+                      className="absolute top-full left-0 mt-3 w-[320px] bg-white rounded-2xl border border-zinc-100 shadow-2xl z-50 overflow-hidden flex flex-col"
                     >
-                      <div className="p-3 border-b border-zinc-50 flex items-center gap-2 bg-zinc-50/50">
-                        <Search size={14} className="text-zinc-400" />
+                      <div className="p-4 border-b border-zinc-50 bg-zinc-50/50 flex items-center gap-3">
+                        <Search size={16} className="text-zinc-400" />
                         <input 
                           autoFocus
                           type="text"
                           placeholder="Search country..."
-                          value={countrySearchQuery}
-                          onChange={(e) => setCountrySearchQuery(e.target.value)}
+                          value={countrySearch}
+                          onChange={(e) => setCountrySearch(e.target.value)}
                           className="w-full bg-transparent border-none outline-none text-sm font-medium placeholder:text-zinc-400"
                         />
                       </div>
-                      <div className="overflow-y-auto py-2">
-                        {filteredCountries.map((country) => (
+                      <div className="max-h-[300px] overflow-y-auto py-2 scrollbar-thin scrollbar-thumb-zinc-200">
+                        {filteredCountries.map((c) => (
                           <button
-                            key={country.code}
+                            key={c}
                             type="button"
                             onClick={() => {
-                              setSelectedCountry(country);
+                              setCountry(c);
                               setIsCountrySelectorOpen(false);
+                              setCountrySearch("");
                             }}
-                            className="w-full px-4 py-2.5 text-left hover:bg-zinc-50 transition-colors flex items-center justify-between group"
+                            className={`w-full px-5 py-3 text-left flex items-center justify-between transition-all hover:bg-zinc-50 group ${country === c ? 'bg-zinc-50' : ''}`}
                           >
-                            <span className="text-xs font-bold text-zinc-600 group-hover:text-zinc-900">{country.name}</span>
-                            <span className="text-xs font-bold text-zinc-400">{country.dial_code}</span>
+                            <div className="flex items-center gap-4">
+                              <img 
+                                src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${c}.svg`}
+                                className="w-6 h-4 rounded-sm shadow-sm flex-shrink-0"
+                                alt={c}
+                              />
+                              <span className="text-sm font-medium text-zinc-600 group-hover:text-zinc-900 transition-colors">
+                                {en[c as keyof typeof en]}
+                              </span>
+                            </div>
+                            <span className="text-sm font-medium text-zinc-400">+{getCountryCallingCode(c as any)}</span>
                           </button>
                         ))}
                       </div>
@@ -168,26 +205,30 @@ export default function ContactForm() {
                 </AnimatePresence>
               </div>
 
-              {/* Number Input */}
-              <input 
-                type="tel" 
-                placeholder="98765 43210" 
-                className="flex-1 h-14 px-6 rounded-2xl bg-zinc-50 border border-zinc-100 focus:border-zinc-900 focus:ring-0 outline-none transition-all placeholder:text-zinc-300 font-medium"
-              />
+              <div className="flex-1">
+                <PhoneInput
+                  displayInitialValueAsLocalNumber
+                  country={country}
+                  value={phone}
+                  onChange={setPhone}
+                  placeholder="98765 43210"
+                  className="custom-phone-input"
+                />
+              </div>
             </div>
           </div>
         </div>
 
         {/* Service Chips */}
         <div className="space-y-4">
-          <label className="text-xs font-bold text-zinc-400 uppercase tracking-widest ml-4">What do you need help with?</label>
+          <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest ml-4">What do you need help with?</label>
           <div className="flex flex-wrap gap-2">
             {services.map(service => (
               <button
                 key={service}
                 type="button"
                 onClick={() => toggleService(service)}
-                className={`px-5 py-2.5 rounded-full text-sm font-bold border transition-all ${
+                className={`px-5 py-2.5 rounded-full text-sm font-semibold border transition-all ${
                   selectedServices.includes(service)
                     ? "bg-zinc-900 text-white border-zinc-900"
                     : "bg-zinc-50 text-zinc-500 border-zinc-100 hover:border-zinc-300 hover:text-black"
@@ -219,7 +260,7 @@ export default function ContactForm() {
         {/* Budget Slider */}
         <div className="space-y-6 pt-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 ml-4">
-            <label className="text-xs font-bold text-zinc-400 uppercase tracking-widest">Project Budget Range</label>
+            <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest">Project Budget Range</label>
             
             <div className="flex items-center gap-3">
               {/* Currency Selector */}
@@ -227,7 +268,7 @@ export default function ContactForm() {
                 <button
                   type="button"
                   onClick={() => setIsCurrencyOpen(!isCurrencyOpen)}
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-50 border border-zinc-100 text-sm font-bold text-zinc-600 hover:border-zinc-300 transition-all"
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-50 border border-zinc-100 text-sm font-semibold text-zinc-600 hover:border-zinc-300 transition-all"
                 >
                   {currency.code}
                   <ChevronDown size={14} className={`transition-transform ${isCurrencyOpen ? 'rotate-180' : ''}`} />
@@ -250,7 +291,7 @@ export default function ContactForm() {
                             setBudget(curr.min);
                             setIsCurrencyOpen(false);
                           }}
-                          className={`w-full px-4 py-2 text-left text-sm font-bold transition-colors ${
+                          className={`w-full px-4 py-2 text-left text-sm font-semibold transition-colors ${
                             currency.code === curr.code ? "bg-zinc-950 text-white" : "text-zinc-600 hover:bg-zinc-50"
                           }`}
                         >
@@ -301,7 +342,7 @@ export default function ContactForm() {
         </div>
 
         <div className="space-y-2">
-          <label className="text-xs font-bold text-zinc-400 uppercase tracking-widest ml-4">Project Details</label>
+          <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest ml-4">Project Details</label>
           <textarea 
             rows={4} 
             placeholder="Tell us about your project goals, timeline, and any specific requirements..." 
@@ -317,7 +358,7 @@ export default function ContactForm() {
           <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
         </button>
 
-        <p className="text-center text-[10px] text-zinc-300 font-bold uppercase tracking-[0.2em]">
+        <p className="text-center text-[10px] text-zinc-300 font-semibold uppercase tracking-[0.2em]">
           Safe & Secure Lead Submission
         </p>
       </form>
