@@ -2,60 +2,110 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar } from "lucide-react";
+import { 
+  ArrowRight, 
+  Database, 
+  Cloud, 
+  MousePointer2, 
+  PenTool, 
+  Zap, 
+  TrendingUp, 
+  Target, 
+  Eye, 
+  Code2, 
+  Smartphone,
+  Sparkles
+} from "lucide-react";
+
+const services = [
+  { name: "Blockchain Technology", icon: Database },
+  { name: "Cloud & DevOps", icon: Cloud },
+  { name: "UI/UX", icon: MousePointer2 },
+  { name: "Logo Designing", icon: PenTool },
+  { name: "Rapid Prototyping and MVPs", icon: Zap },
+  { name: "Digital Marketing & SEO", icon: TrendingUp },
+  { name: "Brand Strategy", icon: Target },
+  { name: "Visual Identity", icon: Eye },
+  { name: "Web Development", icon: Code2 },
+  { name: "App Development", icon: Smartphone },
+];
 
 export default function FinalCTA() {
   return (
-    <section className="relative py-32 md:py-60 bg-zinc-950 overflow-hidden">
-      {/* Animated Background Element */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.1, 0.2, 0.1]
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-1/2 -left-1/4 w-[150%] h-[150%] bg-[radial-gradient(circle,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[length:32px_32px]"
-        />
-      </div>
-
-      <div className="container mx-auto px-6 max-w-5xl relative z-10 text-center">
+    <section className="py-20 md:py-32 bg-white overflow-hidden">
+      <div className="container mx-auto px-6 max-w-[1400px]">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col items-center gap-8 md:gap-12"
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative rounded-[2.5rem] bg-black overflow-hidden"
         >
-          {/* Badge */}
-          <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-[10px] md:text-[12px] font-bold text-white/60 uppercase tracking-widest">Available now for Q2 projects</span>
+          {/* Subtle Background Pattern */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+            <div className="absolute inset-0 bg-[radial-gradient(circle,white_1px,transparent_1px)] bg-[length:40px_40px]" />
           </div>
 
-          {/* Main Copy */}
-          <div className="space-y-6 md:space-y-8">
-            <h2 className="text-4xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight text-white leading-[1.1]">
-              You've reached the end — <br />
-              <span className="text-white/40 italic font-serif leading-tight">now let's start something new.</span>
-            </h2>
-            <p className="text-lg md:text-2xl text-white/50 font-medium max-w-2xl mx-auto">
-              Ready to transform your business logic into a high-performance digital reality? Let's discuss your vision.
-            </p>
-          </div>
+          <div className="relative z-10 pt-16 md:pt-24 pb-12 flex flex-col items-center text-center">
+            {/* Main Content */}
+            <div className="px-6 space-y-8 md:space-y-10 mb-12">
+              <h2 className="text-xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-white/90 leading-tight max-w-4xl">
+                You've reached the end — <br className="hidden md:block" />
+                <span className="text-white">now let's start something new!</span>
+              </h2>
 
-          {/* CTA Button */}
-          <div className="flex flex-col sm:flex-row items-center gap-4 mt-8">
-            <button className="group relative flex items-center gap-4 px-10 py-5 bg-white text-zinc-950 rounded-full font-bold text-xl hover:bg-zinc-100 transition-all shadow-[0_20px_40px_rgba(255,255,255,0.1)] hover:-translate-y-1 active:scale-95">
-              <Calendar size={22} className="group-hover:rotate-12 transition-transform" />
-              <span>Book a 30-Min Call</span>
-              <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-          </div>
+              <div className="flex justify-center">
+                <button className="group relative flex items-center gap-3 px-8 py-3.5 bg-white text-black rounded-full font-bold text-base md:text-lg hover:bg-zinc-100 transition-all shadow-xl hover:-translate-y-1 active:scale-95">
+                  <Sparkles size={18} className="text-zinc-400 group-hover:text-amber-500 transition-colors" />
+                  <span>Let's Connect</span>
+                  <div className="absolute inset-0 rounded-full bg-white blur-md opacity-20 group-hover:opacity-40 transition-opacity -z-10" />
+                </button>
+              </div>
+            </div>
 
-          <p className="text-sm font-medium text-white/30 tracking-wide mt-4">
-            Trust us, we are good at this. :)
-          </p>
+            {/* Branding/Trust Line */}
+            <div className="mt-8 mb-6">
+              <p className="text-[13px] md:text-sm font-medium text-white/40 tracking-wide uppercase">
+                Trust us we are good at this :)
+              </p>
+            </div>
+
+            {/* Services Marquee */}
+            <div className="w-full relative mt-4 overflow-hidden py-4 border-t border-white/5 bg-white/[0.02]">
+              <div 
+                className="flex whitespace-nowrap overflow-hidden"
+                style={{
+                  maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+                  WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)'
+                }}
+              >
+                <motion.div 
+                  animate={{ x: ["0%", "-50%"] }}
+                  transition={{ 
+                    duration: 30, 
+                    repeat: Infinity, 
+                    ease: "linear" 
+                  }}
+                  className="flex items-center gap-4 px-4 w-max"
+                >
+                  {[...Array(2)].map((_, groupIdx) => (
+                    <div key={groupIdx} className="flex items-center gap-4">
+                      {services.map((service, idx) => (
+                        <div 
+                          key={`${groupIdx}-${idx}`}
+                          className="flex items-center gap-2 px-6 py-2.5 rounded-full border border-dashed border-white/20 bg-white/5 text-xs md:text-sm font-bold text-white/70 hover:border-white/40 hover:text-white transition-colors cursor-default"
+                        >
+                          <div className="w-1.5 h-1.5 rounded-full bg-zinc-600" />
+                          <service.icon size={14} className="text-zinc-500" />
+                          {service.name}
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </motion.div>
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
