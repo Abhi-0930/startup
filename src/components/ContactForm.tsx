@@ -16,16 +16,16 @@ const services = [
 ];
 
 const currencies = [
-  { code: "USD", symbol: "$" },
-  { code: "EUR", symbol: "€" },
-  { code: "GBP", symbol: "£" },
-  { code: "INR", symbol: "₹" }
+  { code: "USD", symbol: "$", min: 1000, max: 150000, step: 1000, labelMin: "1k", labelMax: "150k+" },
+  { code: "EUR", symbol: "€", min: 1000, max: 150000, step: 1000, labelMin: "1k", labelMax: "150k+" },
+  { code: "GBP", symbol: "£", min: 1000, max: 150000, step: 1000, labelMin: "1k", labelMax: "150k+" },
+  { code: "INR", symbol: "₹", min: 50000, max: 10000000, step: 10000, labelMin: "50k", labelMax: "1Cr+" }
 ];
 
 export default function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [budget, setBudget] = useState(50000);
   const [currency, setCurrency] = useState(currencies[0]);
+  const [budget, setBudget] = useState(currencies[0].min); 
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
   
@@ -154,6 +154,7 @@ export default function ContactForm() {
                           type="button"
                           onClick={() => {
                             setCurrency(curr);
+                            setBudget(curr.min);
                             setIsCurrencyOpen(false);
                           }}
                           className={`w-full px-4 py-2 text-left text-sm font-bold transition-colors ${
@@ -172,7 +173,7 @@ export default function ContactForm() {
               <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-50 border border-zinc-100">
                 <span className="text-red-500 font-bold">{currency.symbol}</span>
                 <span className="text-lg font-medium tracking-tight text-zinc-900">
-                  {budget >= 150000 ? `150,000+` : `${budget.toLocaleString()}`}
+                  {budget >= currency.max ? currency.labelMax.replace(currency.symbol, '') : `${budget.toLocaleString()}`}
                 </span>
               </div>
             </div>
@@ -181,16 +182,16 @@ export default function ContactForm() {
           <div className="px-4">
             <input 
               type="range" 
-              min="5000" 
-              max="150000" 
-              step="5000"
+              min={currency.min} 
+              max={currency.max} 
+              step={currency.step}
               value={budget}
               onChange={(e) => setBudget(parseInt(e.target.value))}
               className="w-full h-1.5 bg-zinc-100 rounded-full appearance-none cursor-pointer accent-zinc-900"
             />
             <div className="flex justify-between mt-4">
-              <span className="text-[10px] font-medium text-zinc-300 uppercase tracking-[0.1em]">{currency.symbol}5k</span>
-              <span className="text-[10px] font-medium text-zinc-300 uppercase tracking-[0.1em]">{currency.symbol}150k+</span>
+              <span className="text-[10px] font-medium text-zinc-300 uppercase tracking-[0.1em]">{currency.symbol}{currency.labelMin}</span>
+              <span className="text-[10px] font-medium text-zinc-300 uppercase tracking-[0.1em]">{currency.symbol}{currency.labelMax}</span>
             </div>
           </div>
         </div>
