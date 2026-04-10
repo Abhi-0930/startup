@@ -120,7 +120,10 @@ export default function Hero() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
-                <Link href="#" className="group/btn h-[52px] sm:h-[60px] flex items-center bg-[#09090b] text-white pl-7 pr-2 py-2 sm:pl-8 sm:pr-2.5 sm:py-2.5 rounded-full font-bold text-[16px] sm:text-[18px] hover:bg-black transition-all w-full sm:w-auto justify-center sm:justify-start ring-offset-4 hover:ring-2 ring-black/5 relative overflow-hidden group">
+                <Link 
+                  href="/book" 
+                  className="group/btn h-[52px] sm:h-[60px] flex items-center bg-[#09090b] text-white pl-7 pr-2 py-2 sm:pl-8 sm:pr-2.5 sm:py-2.5 rounded-full font-bold text-[16px] sm:text-[18px] hover:bg-black transition-all w-full sm:w-auto justify-center sm:justify-start ring-offset-4 hover:ring-2 ring-black/5 relative overflow-hidden group"
+                >
                   {/* Subtle Inner Glow on Hover */}
                   <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-cyan-500/10 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                   

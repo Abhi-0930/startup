@@ -104,7 +104,7 @@ export default function ProjectFooter({ currentId }: { currentId: string }) {
 
             <div className="flex-shrink-0">
               <Link 
-                href="#" 
+                href="/book" 
                 className="group inline-flex items-center gap-6 bg-white rounded-full pl-8 pr-3 py-3 shadow-xl transition-all hover:pr-4"
               >
                 <span className="text-black font-bold text-lg md:text-xl">Book A Call</span>

@@ -138,7 +138,10 @@ export default function Navbar() {
                           </div>
 
                           <div className="mt-2 px-2">
-                            <Link href="/contact" className="group/btn flex items-center justify-between bg-[#09090b] text-white pl-6 pr-1.5 py-1.5 rounded-full font-bold text-[15px] hover:bg-black transition-all w-full relative overflow-hidden">
+                            <Link 
+                              href="/book" 
+                              className="group/btn flex items-center justify-between bg-[#09090b] text-white pl-6 pr-1.5 py-1.5 rounded-full font-bold text-[15px] hover:bg-black transition-all w-full relative overflow-hidden"
+                            >
                               <span className="relative z-10">Book A Call</span>
                               <div className="bg-white/10 p-2 rounded-full transition-all flex items-center justify-center group-hover/btn:w-[48px] group-hover/btn:rounded-[18px]">
                                 <ArrowRight size={16} className="transition-transform duration-300 group-hover/btn:translate-x-1" />
@@ -169,7 +172,10 @@ export default function Navbar() {
 
             {/* Desktop CTA Button */}
             <div className="hidden md:block">
-              <Link href="/contact" className="group flex items-center bg-[#09090b] text-white pl-5 pr-1.5 py-1 rounded-full font-bold text-[13px] hover:bg-black transition-all">
+              <Link 
+                href="/book" 
+                className="group flex items-center bg-[#09090b] text-white pl-5 pr-1.5 py-1 rounded-full font-bold text-[13px] hover:bg-black transition-all"
+              >
                 <div className="flex items-center gap-3">
                   <span>Book a 30-Min call</span>
                   <div className="bg-white/10 h-[28px] w-[28px] rounded-full transition-all duration-300 flex items-center justify-center group-hover:w-[40px] group-hover:rounded-full overflow-hidden">
@@ -294,7 +300,10 @@ export default function Navbar() {
                 style={{ animationDelay: `${navLinks.length * 90 + 50}ms`, animationFillMode: 'both' }}
               >
                 <div className="h-[1px] bg-zinc-100/50 my-1.5" />
-                <Link href="/contact" className="group flex items-center justify-between bg-[#09090b] text-white pl-5 pr-1 py-1 rounded-full font-medium text-[15px] hover:bg-black w-full leading-relaxed">
+                <Link 
+                  href="/book" 
+                  className="group flex items-center justify-between bg-[#09090b] text-white pl-5 pr-1 py-1 rounded-full font-medium text-[15px] hover:bg-black w-full leading-relaxed"
+                >
                   <span>Book a 30-Min call</span>
                   <div className="bg-white/10 p-1.5 rounded-full group-hover:bg-white/20 flex items-center justify-center">
                     <ArrowRight size={16} />

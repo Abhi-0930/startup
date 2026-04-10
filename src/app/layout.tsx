@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "./globals.css";
@@ -53,6 +52,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-sans">
         <Navbar />
         {children}
+        {/* The booking flow is now handled via the dedicated /book page */}
         <Footer />
       </body>
     </html>
