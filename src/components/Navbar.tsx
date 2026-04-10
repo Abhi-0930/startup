@@ -37,9 +37,9 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Company", hasDropdown: true, icon: LayoutGrid },
-    { name: "Projects", icon: Folder },
-    { name: "About us", icon: Users },
-    { name: "Contact", icon: MessageSquare },
+    { name: "Projects", icon: Folder, href: "#" },
+    { name: "About us", icon: Users, href: "#" },
+    { name: "Contact", icon: MessageSquare, href: "/contact" },
   ];
 
   return (
@@ -89,7 +89,10 @@ export default function Navbar() {
                   key={link.name} 
                   className="relative py-2 group/nav"
                 >
-                  <Link href="#" className="flex items-center gap-1 text-[15px] font-[550] text-black hover:bg-zinc-100/80 px-3.5 py-2 rounded-full cursor-pointer transition-colors leading-none">
+                  <Link 
+                    href={link.href || "#"} 
+                    className="flex items-center gap-1 text-[15px] font-[550] text-black hover:bg-zinc-100/80 px-3.5 py-2 rounded-full cursor-pointer transition-colors leading-none"
+                  >
                     {link.name}
                     {link.hasDropdown && (
                       <ChevronDown 
@@ -135,7 +138,7 @@ export default function Navbar() {
                           </div>
 
                           <div className="mt-2 px-2">
-                            <Link href="#" className="group/btn flex items-center justify-between bg-[#09090b] text-white pl-6 pr-1.5 py-1.5 rounded-full font-bold text-[15px] hover:bg-black transition-all w-full relative overflow-hidden">
+                            <Link href="/contact" className="group/btn flex items-center justify-between bg-[#09090b] text-white pl-6 pr-1.5 py-1.5 rounded-full font-bold text-[15px] hover:bg-black transition-all w-full relative overflow-hidden">
                               <span className="relative z-10">Book A Call</span>
                               <div className="bg-white/10 p-2 rounded-full transition-all flex items-center justify-center group-hover/btn:w-[48px] group-hover/btn:rounded-[18px]">
                                 <ArrowRight size={16} className="transition-transform duration-300 group-hover/btn:translate-x-1" />
@@ -150,7 +153,7 @@ export default function Navbar() {
                           
                           <div className="flex flex-col gap-1">
                             {["Contact us", "Career", "Privacy Policy", "Terms of Service"].map((page) => (
-                              <Link key={page} href="#" className="group/page flex items-center justify-between px-2 py-2 text-[15px] font-medium text-black hover:bg-white/50 rounded-lg transition-all">
+                              <Link key={page} href={page === "Contact us" ? "/contact" : "#"} className="group/page flex items-center justify-between px-2 py-2 text-[15px] font-medium text-black hover:bg-white/50 rounded-lg transition-all">
                                 <span className="group-hover/page:translate-x-1 transition-transform">{page}</span>
                                 <ArrowRight size={18} className="text-zinc-400 opacity-0 group-hover/page:opacity-100 -translate-x-2 group-hover/page:translate-x-0 transition-all" />
                               </Link>
@@ -166,7 +169,7 @@ export default function Navbar() {
 
             {/* Desktop CTA Button */}
             <div className="hidden md:block">
-              <Link href="#" className="group flex items-center bg-[#09090b] text-white pl-5 pr-1.5 py-1 rounded-full font-bold text-[13px] hover:bg-black transition-all">
+              <Link href="/contact" className="group flex items-center bg-[#09090b] text-white pl-5 pr-1.5 py-1 rounded-full font-bold text-[13px] hover:bg-black transition-all">
                 <div className="flex items-center gap-3">
                   <span>Book a 30-Min call</span>
                   <div className="bg-white/10 h-[28px] w-[28px] rounded-full transition-all duration-300 flex items-center justify-center group-hover:w-[40px] group-hover:rounded-full overflow-hidden">
@@ -265,7 +268,7 @@ export default function Navbar() {
                           <div className="flex flex-col gap-2">
                             <div className="text-[13px] font-medium text-zinc-400 px-1">Pages</div>
                             <div className="flex flex-col gap-0.5">
-                              <Link href="#" className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Contact us</Link>
+                              <Link href="/contact" className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Contact us</Link>
                               <Link href="#" className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Career</Link>
                               <Link href="#" className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Privacy Policy</Link>
                               <Link href="#" className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Terms of Service</Link>
@@ -276,7 +279,7 @@ export default function Navbar() {
                     </div>
                   ) : (
                     <Link 
-                      href="#" 
+                      href={link.href || "#"} 
                       className="flex items-center gap-3 px-2 py-2.5 hover:bg-zinc-50 rounded-lg text-black text-[16px] font-[550]"
                     >
                       {Icon && <Icon size={20} className="text-zinc-400 stroke-[1.5]" />}
@@ -291,7 +294,7 @@ export default function Navbar() {
                 style={{ animationDelay: `${navLinks.length * 90 + 50}ms`, animationFillMode: 'both' }}
               >
                 <div className="h-[1px] bg-zinc-100/50 my-1.5" />
-                <Link href="#" className="group flex items-center justify-between bg-[#09090b] text-white pl-5 pr-1 py-1 rounded-full font-medium text-[15px] hover:bg-black w-full leading-relaxed">
+                <Link href="/contact" className="group flex items-center justify-between bg-[#09090b] text-white pl-5 pr-1 py-1 rounded-full font-medium text-[15px] hover:bg-black w-full leading-relaxed">
                   <span>Book a 30-Min call</span>
                   <div className="bg-white/10 p-1.5 rounded-full group-hover:bg-white/20 flex items-center justify-center">
                     <ArrowRight size={16} />

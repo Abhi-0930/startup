@@ -51,16 +51,13 @@ export default function Footer() {
             <div className="flex flex-col gap-6 min-w-[140px]">
               <h4 className="text-[13px] font-bold text-zinc-400 uppercase tracking-widest">Company</h4>
               <nav className="flex flex-col gap-4">
-                <Link href="#" className="text-zinc-600 hover:text-black font-medium transition-colors">Contact us</Link>
+                <Link href="/contact" className="text-zinc-600 hover:text-black font-medium transition-colors">Contact us</Link>
                 <Link href="#" className="text-zinc-600 hover:text-black font-medium transition-colors">About us</Link>
                 <Link href="#" className="text-zinc-600 hover:text-black font-medium transition-colors flex items-center gap-2">
                   Projects <span className="w-1.5 h-1.5 rounded-full bg-red-400/30" />
                 </Link>
                 <Link href="#" className="text-zinc-600 hover:text-black font-medium transition-colors flex items-center gap-2">
-                  Career <span className="px-1.5 py-0.5 rounded-full bg-red-500/10 text-[#FF4D4D] text-[10px] font-black uppercase">Hiring</span>
-                </Link>
-                <Link href="#" className="text-zinc-600 hover:text-black font-medium transition-colors flex items-center gap-2">
-                  Blog <span className="w-5 h-5 rounded-full bg-zinc-900 text-white text-[10px] flex items-center justify-center font-bold">6</span>
+                  Career
                 </Link>
               </nav>
             </div>
@@ -94,8 +91,8 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-40 pt-8 border-t border-zinc-100 flex flex-col md:flex-row items-center justify-between gap-6 relative z-20">
-          <p className="text-[13px] font-medium text-zinc-400">
-            @ 2025 Built with <span className="text-red-500/60 font-serif italic text-base mx-1 leading-none">Antigravity</span> by Zerogrid Studio
+          <p className="text-[13px] font-medium text-zinc-400 uppercase tracking-widest">
+            © 2026 Zerogrid. All rights reserved
           </p>
           
           <div className="flex items-center gap-8">
