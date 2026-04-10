@@ -26,7 +26,7 @@ export default function ContactPage() {
               className="space-y-6"
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200">
-                <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
                 <span className="text-[11px] font-bold text-zinc-600 uppercase tracking-widest">Always Available</span>
               </div>
               
@@ -46,7 +46,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+              className="hidden lg:grid grid-cols-1 sm:grid-cols-2 gap-6"
             >
               {[
                 { 
@@ -85,7 +85,7 @@ export default function ContactPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
-              className="mt-6 flex items-center gap-4 px-6 py-4 rounded-3xl bg-zinc-950 text-white"
+              className="mt-6 hidden lg:flex items-center gap-4 px-6 py-4 rounded-3xl bg-zinc-950 text-white"
             >
               <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
                 <CheckCircle2 size={20} className="text-white" />
