@@ -52,7 +52,7 @@ const features = [
 
 export default function WhatMakesUsDifferent() {
   return (
-    <section id="difference" className="relative py-24 md:py-48 bg-white overflow-hidden">
+    <section id="difference" className="relative py-12 md:py-20 -mt-20 md:-mt-32 bg-white overflow-hidden">
       {/* Structural Background (Dashed Grid) */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Horizontal Dashed Lines */}

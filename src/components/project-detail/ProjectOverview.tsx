@@ -12,7 +12,7 @@ import {
 
 export default function ProjectOverview({ project }: { project: ProjectData }) {
   return (
-    <section className="py-24 md:py-40 bg-white">
+    <section className="pt-12 md:pt-16 pb-24 md:pb-40 bg-white">
       <div className="container mx-auto px-4 md:px-12 max-w-[1400px]">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-24 relative">
           

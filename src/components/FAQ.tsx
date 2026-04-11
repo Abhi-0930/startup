@@ -32,7 +32,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-24 md:py-40 bg-zinc-50 overflow-hidden">
+    <section className="py-12 md:py-20 -mt-28 md:-mt-32 bg-zinc-50 overflow-hidden">
       <div className="container mx-auto px-6 max-w-4xl relative">
         
         {/* Header Area with Avatar */}

@@ -38,7 +38,7 @@ export default function Hero() {
   }, [imagesLoaded, minTimeElapsed]);
 
   return (
-    <section className="relative pt-32 pb-20 md:pb-28 flex flex-col justify-center min-h-[600px] overflow-hidden">
+    <section className="relative pt-52 pb-0 flex flex-col min-h-0 overflow-hidden">
       {/* Premium Cyberpunk Backdrop */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Soft Neon Glows */}

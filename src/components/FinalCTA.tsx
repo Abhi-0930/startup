@@ -33,7 +33,7 @@ const services = [
 
 export default function FinalCTA() {
   return (
-    <section className="py-20 md:py-32 bg-white overflow-hidden">
+    <section className="py-8 md:py-12 -mt-16 md:-mt-24 bg-white overflow-hidden">
       <div className="container mx-auto px-6 max-w-[1400px]">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -96,7 +96,6 @@ export default function FinalCTA() {
                           key={`${groupIdx}-${idx}`}
                           className="flex items-center gap-2 px-6 py-2.5 rounded-full border border-dashed border-white/20 bg-white/5 text-xs md:text-sm font-bold text-white/70 hover:border-white/40 hover:text-white transition-colors cursor-default"
                         >
-                          <div className="w-1.5 h-1.5 rounded-full bg-zinc-600" />
                           <service.icon size={14} className="text-zinc-500" />
                           {service.name}
                         </div>

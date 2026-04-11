@@ -155,7 +155,7 @@ export default function Challenges() {
   }, [videoLoaded, minTimeElapsed]);
 
   return (
-    <section id="challenges" className="pt-10 pb-12 md:pt-14 md:pb-20 max-w-[1000px] mx-auto px-6">
+    <section id="challenges" className="pt-4 pb-8 md:pt-6 md:pb-12 -mt-12 md:-mt-20 max-w-[1000px] mx-auto px-6">
       <AnimatePresence mode="wait">
         {isLoading ? (
           <motion.div 

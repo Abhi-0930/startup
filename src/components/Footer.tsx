@@ -7,7 +7,7 @@ import { ArrowRight, Send, Camera, Globe, Code } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="relative pt-24 pb-12 bg-white overflow-hidden">
+    <footer className="relative pt-12 pb-8 -mt-16 md:-mt-24 bg-white overflow-hidden">
       {/* 1. Main Content Section (Top) */}
       <div className="container mx-auto px-6 max-w-7xl relative z-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
@@ -53,8 +53,8 @@ export default function Footer() {
               <nav className="flex flex-col gap-4">
                 <Link href="/book" className="text-zinc-600 hover:text-black font-medium transition-colors">Book a call</Link>
                 <Link href="/about" className="text-zinc-600 hover:text-black font-medium transition-colors">About us</Link>
-                <Link href="#work" className="text-zinc-600 hover:text-black font-medium transition-colors flex items-center gap-2">
-                  Projects <span className="w-1.5 h-1.5 rounded-full bg-red-400/30" />
+                <Link href="#work" className="text-zinc-600 hover:text-black font-medium transition-colors">
+                  Projects
                 </Link>
                 <Link href="#" className="text-zinc-600 hover:text-black font-medium transition-colors flex items-center gap-2">
                   Career
@@ -84,8 +84,8 @@ export default function Footer() {
       </div>
 
       {/* 2. Massive Watermark (Middle) - Now in normal flow for zero overlap */}
-      <div className="w-full pointer-events-none select-none text-center my-12 md:my-20">
-        <h2 className="text-[18vw] font-black text-black/[0.03] tracking-tighter leading-none inline-block">
+      <div className="w-full pointer-events-none select-none text-center my-8 md:my-12">
+        <h2 className="text-[12vw] font-black text-black/[0.03] tracking-tighter leading-none inline-block whitespace-nowrap">
           CODE LOOM.
         </h2>
       </div>

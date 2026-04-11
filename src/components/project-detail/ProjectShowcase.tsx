@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function ProjectShowcase({ project }: { project: ProjectData }) {
   return (
-    <section className="py-24 md:py-32 bg-zinc-50 overflow-hidden">
+    <section className="py-12 md:py-20 bg-zinc-50 overflow-hidden">
       <div className="container mx-auto px-4 md:px-12 max-w-[1400px]">
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">

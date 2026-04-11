@@ -37,7 +37,7 @@ export default function LogoTicker() {
           animation: scrollLeftMarquee 20s linear infinite;
         }
       `}</style>
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8 flex justify-center pb-8">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-8 flex justify-center pb-8 -mt-12 md:-mt-16 relative z-10">
         <AnimatePresence mode="wait">
           {isLoading ? (
             <motion.div 
@@ -47,7 +47,7 @@ export default function LogoTicker() {
               exit={{ opacity: 0 }}
               className="flex items-center gap-6 px-6 py-4 rounded-2xl bg-zinc-50 border border-black/5 shadow-sm"
             >
-              <Skeleton className="h-4 w-32 hidden sm:block" />
+              <Skeleton className="h-4 w-24 sm:w-32" />
               <div className="w-px h-6 bg-black/5 hidden md:block" />
               <div className="flex gap-8">
                 {[1, 2, 3, 4, 5].map((i) => (
@@ -63,7 +63,7 @@ export default function LogoTicker() {
               transition={{ duration: 0.5 }}
               className="flex items-center gap-4 px-6 py-3 rounded-2xl bg-zinc-50 border border-black/5 shadow-sm overflow-hidden whitespace-nowrap"
             >
-              <p className="text-zinc-500 font-medium text-[14px] md:text-[15px] shrink-0 tracking-tight z-10 hidden sm:block">
+              <p className="text-zinc-500 font-medium text-[12px] sm:text-[15px] shrink-0 tracking-tight z-10">
                 Trusted by top founders.
               </p>
               

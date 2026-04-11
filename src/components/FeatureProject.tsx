@@ -70,7 +70,7 @@ export default function FeatureProject() {
   };
 
   return (
-    <section className="px-4 md:px-8 max-w-[1400px] mx-auto pt-8 pb-8 md:pb-12">
+    <section className="px-4 md:px-8 max-w-[1400px] mx-auto pt-0 pb-8 md:pb-12">
       <AnimatePresence mode="wait">
         {isLoading ? (
           <motion.div 

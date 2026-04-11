@@ -52,7 +52,7 @@ function Counter({ target, suffix }: { target: number; suffix: string }) {
 
 export default function Stats() {
   return (
-    <section className="py-20 md:py-32 bg-white">
+    <section className="py-8 md:py-12 -mt-12 md:-mt-20 bg-white">
       <div className="container mx-auto px-6 max-w-[1400px]">
         
         {/* Header */}

@@ -67,7 +67,7 @@ export default function Testimonials() {
   }, [imagesLoaded, minTimeElapsed]);
 
   return (
-    <section className="relative pt-16 pb-24 md:pt-24 md:pb-32 overflow-hidden min-h-[600px] flex flex-col justify-center">
+    <section className="relative pt-8 pb-12 -mt-16 md:-mt-32 overflow-hidden min-h-0 flex flex-col">
       {/* Testimonials Backdrop - Layered & Sophisticated */}
       <div className="absolute inset-0 bg-[#fafafa] pointer-events-none -z-10" />
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-zinc-200 to-transparent opacity-50" />
@@ -131,7 +131,7 @@ export default function Testimonials() {
               className="flex items-center gap-6 md:gap-10 px-4"
             >
               {[1, 2, 3].map((i) => (
-                <div key={i} className="w-[340px] md:w-[520px] bg-white rounded-[40px] p-8 md:p-12 border border-zinc-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] shrink-0 space-y-8">
+                <div key={i} className="w-[300px] md:w-[520px] bg-white rounded-[32px] md:rounded-[40px] p-6 md:p-12 border border-zinc-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] shrink-0 space-y-8">
                   <div className="space-y-3">
                     <Skeleton className="h-12 w-28 rounded-lg" />
                     <Skeleton className="h-4 w-44 rounded-md" />
@@ -176,7 +176,7 @@ export default function Testimonials() {
                   {testimonials.map((item) => (
                     <div 
                       key={`${groupIndex}-${item.id}`} 
-                      className="w-[340px] md:w-[520px] bg-white rounded-[40px] p-8 md:p-12 border border-black/[0.03] shadow-[0_10px_40px_rgba(0,0,0,0.03)] shrink-0 flex flex-col group hover:shadow-[0_20px_60px_rgba(0,0,0,0.06)] hover:border-black/[0.06] hover:-translate-y-1 transition-all duration-500 cursor-grab active:cursor-grabbing relative overflow-hidden"
+                      className="w-[300px] md:w-[520px] bg-white rounded-[32px] md:rounded-[40px] p-6 md:p-12 border border-black/[0.03] shadow-[0_10px_40px_rgba(0,0,0,0.03)] shrink-0 flex flex-col group hover:shadow-[0_20px_60px_rgba(0,0,0,0.06)] hover:border-black/[0.06] hover:-translate-y-1 transition-all duration-500 cursor-grab active:cursor-grabbing relative overflow-hidden"
                     >
                       {/* Subtle Internal Glow */}
                       <div className="absolute top-0 right-0 w-32 h-32 bg-zinc-50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -185,7 +185,7 @@ export default function Testimonials() {
                         <h3 className="text-[48px] leading-tight font-bold text-zinc-900 tracking-tighter">
                           {item.stat}
                         </h3>
-                        <p className="text-zinc-500 font-bold text-[15px] md:text-[17px] mt-1 uppercase tracking-wider">
+                        <p className="text-zinc-500 font-bold text-[13px] md:text-[17px] mt-1 uppercase tracking-wider">
                           {item.statLabel}
                         </p>
                       </div>

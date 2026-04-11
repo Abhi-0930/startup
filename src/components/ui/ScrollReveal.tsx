@@ -34,9 +34,9 @@ export default function ScrollReveal({ children, index, bgColor = "bg-white" }: 
     >
       <motion.div
         style={{ scale, opacity }}
-        className={`sticky top-0 w-full ${bgColor} overflow-hidden shadow-[0_-20px_50px_rgba(0,0,0,0.02)] ${index === 0 ? '' : 'rounded-t-[40px] md:rounded-t-[60px]'}`}
+        className={`${index === 0 ? 'relative' : 'sticky top-0'} w-full ${bgColor} relative shadow-[0_-20px_50px_rgba(0,0,0,0.02)] ${index === 0 ? '' : 'rounded-t-[40px] md:rounded-t-[60px]'}`}
       >
-        <div className="w-full relative py-20 md:py-32">
+        <div className="w-full relative py-0">
           {children}
         </div>
       </motion.div>

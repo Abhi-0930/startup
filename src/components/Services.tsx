@@ -90,7 +90,7 @@ export default function Services() {
   }, [mediaLoaded, minTimeElapsed]);
 
   return (
-    <section className="pt-0 pb-24 md:pt-0 md:pb-36 bg-white overflow-hidden">
+    <section className="pt-16 pb-16 md:pt-20 md:pb-24 -mt-8 md:-mt-14 bg-white overflow-hidden">
       <div className="max-w-[1300px] mx-auto px-6 md:px-12">
         <AnimatePresence mode="wait">
           {isLoading ? (

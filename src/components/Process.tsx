@@ -143,7 +143,7 @@ export default function Process() {
   });
 
   return (
-    <section ref={containerRef} className="relative py-24 md:py-40 bg-white min-h-screen overflow-hidden -mt-40 md:-mt-48">
+    <section ref={containerRef} className="relative py-12 md:py-20 bg-white overflow-hidden -mt-40 md:-mt-64">
       <div className="container mx-auto px-4 md:px-12 max-w-[1400px]">
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-24">
