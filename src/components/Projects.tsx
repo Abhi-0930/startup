@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const projects = [
   {
     id: "01",
+    slug: "bitebuzz-delivery",
     title: "BiteBuzz Delivery",
     category: "Full-Stack Development",
     images: [
@@ -22,6 +23,7 @@ const projects = [
   },
   {
     id: "02",
+    slug: "atlas-technologies",
     title: "Atlas Technologies",
     category: "Web & Brand Design",
     images: [
@@ -33,6 +35,7 @@ const projects = [
   },
   {
     id: "03",
+    slug: "orbital-bank",
     title: "Orbital Bank",
     category: "Motion & 3D Design",
     images: [
@@ -62,7 +65,7 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
   return (
     <div className={`flex flex-col gap-6 ${project.span === 'wide' ? 'md:col-span-2' : 'col-span-1'}`}>
       <Link 
-        href={`/projects/${project.id}`}
+        href={`/projects/${project.slug}`}
         className="block relative overflow-hidden rounded-[32px] shadow-sm bg-neutral-900 group/image cursor-pointer"
         style={{ 
           aspectRatio: project.span === 'wide' ? '21/9' : '4/3' 

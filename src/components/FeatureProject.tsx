@@ -8,16 +8,16 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const slides = [
   // BiteBuzz (Project 1)
-  { id: 'b1', projectId: '01', category: 'BiteBuzz', title: 'Launch MVP for BiteBuzz', subtitle: 'Live in 21 days, 1,200+ early users', src: '/project1/img1.png' },
-  { id: 'b2', projectId: '01', category: 'BiteBuzz', title: 'Launch MVP for BiteBuzz', subtitle: 'Live in 21 days, 1,200+ early users', src: '/project1/img2.png' },
-  { id: 'b3', projectId: '01', category: 'BiteBuzz', title: 'Launch MVP for BiteBuzz', subtitle: 'Live in 21 days, 1,200+ early users', src: '/project1/img3.png' },
+  { id: 'b1', projectSlug: 'bitebuzz-delivery', category: 'BiteBuzz', title: 'Launch MVP for BiteBuzz', subtitle: 'Live in 21 days, 1,200+ early users', src: '/project1/img1.png' },
+  { id: 'b2', projectSlug: 'bitebuzz-delivery', category: 'BiteBuzz', title: 'Launch MVP for BiteBuzz', subtitle: 'Live in 21 days, 1,200+ early users', src: '/project1/img2.png' },
+  { id: 'b3', projectSlug: 'bitebuzz-delivery', category: 'BiteBuzz', title: 'Launch MVP for BiteBuzz', subtitle: 'Live in 21 days, 1,200+ early users', src: '/project1/img3.png' },
   // Atlas (Project 2)
-  { id: 'a1', projectId: '02', category: 'Atlas', title: 'Atlas Technologies', subtitle: 'Complete Brand & Web Redesign', src: '/project2/vdtm4vbMi9SyPgj2Z1bVuq9b2o.png_width=960&height=1200.png' },
-  { id: 'a2', projectId: '02', category: 'Atlas', title: 'Atlas Technologies', subtitle: 'Complete Brand & Web Redesign', src: '/project2/xktGFEeTfvx5MDldvQxlaw79M.png_width=800&height=1200.png' },
+  { id: 'a1', projectSlug: 'atlas-technologies', category: 'Atlas', title: 'Atlas Technologies', subtitle: 'Complete Brand & Web Redesign', src: '/project2/vdtm4vbMi9SyPgj2Z1bVuq9b2o.png_width=960&height=1200.png' },
+  { id: 'a2', projectSlug: 'atlas-technologies', category: 'Atlas', title: 'Atlas Technologies', subtitle: 'Complete Brand & Web Redesign', src: '/project2/xktGFEeTfvx5MDldvQxlaw79M.png_width=800&height=1200.png' },
   // Orbital Bank (Project 3)
-  { id: 'o1', projectId: '03', category: 'Orbital', title: 'Orbital Bank Dashboard', subtitle: 'Motion & 3D Interactive Design', src: '/project3/1KCYDj61X5Ycm5Vp5kluuhMho.png_width=2400&height=1600.png' },
-  { id: 'o2', projectId: '03', category: 'Orbital', title: 'Orbital Bank Dashboard', subtitle: 'Motion & 3D Interactive Design', src: '/project3/TwCiV5MUt16Q38ftZYKlEhNhbJI.png_width=1984&height=2400.png' },
-  { id: 'o3', projectId: '03', category: 'Orbital', title: 'Orbital Bank Dashboard', subtitle: 'Motion & 3D Interactive Design', src: '/project3/uqJwE4mTSKeNtBAX8YU8vy1hkVs.png_width=2400&height=1600.png' }
+  { id: 'o1', projectSlug: 'orbital-bank', category: 'Orbital', title: 'Orbital Bank Dashboard', subtitle: 'Motion & 3D Interactive Design', src: '/project3/1KCYDj61X5Ycm5Vp5kluuhMho.png_width=2400&height=1600.png' },
+  { id: 'o2', projectSlug: 'orbital-bank', category: 'Orbital', title: 'Orbital Bank Dashboard', subtitle: 'Motion & 3D Interactive Design', src: '/project3/TwCiV5MUt16Q38ftZYKlEhNhbJI.png_width=1984&height=2400.png' },
+  { id: 'o3', projectSlug: 'orbital-bank', category: 'Orbital', title: 'Orbital Bank Dashboard', subtitle: 'Motion & 3D Interactive Design', src: '/project3/uqJwE4mTSKeNtBAX8YU8vy1hkVs.png_width=2400&height=1600.png' }
 ];
 
 export default function FeatureProject() {
@@ -131,7 +131,7 @@ export default function FeatureProject() {
               </div>
 
               <Link 
-                href={`/projects/${activeSlide.projectId}`}
+                href={`/projects/${activeSlide.projectSlug}`}
                 className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-black/10 text-[14px] font-medium text-neutral-900 hover:bg-neutral-50 transition-colors shrink-0"
               >
                 View Project
@@ -147,7 +147,7 @@ export default function FeatureProject() {
               onMouseLeave={() => setIsHovered(false)}
             >
               {/* Clickable Image Area */}
-              <Link href={`/projects/${activeSlide.projectId}`} className="absolute inset-0 z-10">
+              <Link href={`/projects/${activeSlide.projectSlug}`} className="absolute inset-0 z-10">
                 {slides.map((slide, idx) => {
                   const isCurrent = idx === currentSlide;
                   const isPrev = idx === (currentSlide - 1 + slides.length) % slides.length;

@@ -18,6 +18,7 @@ export interface ProjectData {
   liveLink?: string;
   adminLink?: string;
   userLink?: string;
+  slug: string;
   year: string;
   heroImage: string;
   gallery: {
@@ -36,6 +37,7 @@ export interface ProjectData {
 export const projectsData: ProjectData[] = [
   {
     id: "01",
+    slug: "bitebuzz-delivery",
     title: "BiteBuzz Delivery",
     category: "Full-Stack Development",
     subtitle: "A seamless, high-performance food delivery experience.",
@@ -73,6 +75,7 @@ export const projectsData: ProjectData[] = [
   },
   {
     id: "02",
+    slug: "atlas-technologies",
     title: "Atlas Technologies",
     category: "Web & Brand Design",
     subtitle: "A digital identity for a pioneering robotics firm.",
@@ -105,6 +108,7 @@ export const projectsData: ProjectData[] = [
   },
   {
     id: "03",
+    slug: "orbital-bank",
     title: "Orbital Bank",
     category: "Motion & 3D Design",
     subtitle: "The future of digital banking in three dimensions.",

@@ -32,7 +32,7 @@ export default function ProjectFooter({ currentId }: { currentId: string }) {
             {otherProjects.map((project) => (
               <Link 
                 key={project.id}
-                href={`/projects/${project.id}`}
+                href={`/projects/${project.slug}`}
                 className="group flex flex-col gap-6"
               >
                 <div className="relative aspect-[16/9] overflow-hidden rounded-[32px] border border-zinc-100 shadow-sm bg-zinc-50">

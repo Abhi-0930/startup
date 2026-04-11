@@ -9,14 +9,14 @@ import { useEffect } from "react";
 
 export default function ProjectPage() {
   const params = useParams();
-  const id = params.id as string;
+  const slug = params.slug as string;
 
-  const project = projectsData.find((p) => p.id === id);
+  const project = projectsData.find((p) => p.slug === slug) || projectsData.find((p) => p.id === slug);
 
   useEffect(() => {
     // Scroll to top on page transition
     window.scrollTo(0, 0);
-  }, [id]);
+  }, [slug]);
 
   if (!project) {
     notFound();
