@@ -257,7 +257,11 @@ export default function Navbar() {
                           <div className="flex flex-col gap-3">
                             <div className="text-[13px] font-medium text-zinc-400 px-1">Company</div>
                             <div className="flex flex-col gap-1.5">
-                              <Link href="/#work" className="flex items-start gap-4 p-2 hover:bg-white rounded-xl transition-all group">
+                              <Link 
+                                href="/#work" 
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className="flex items-start gap-4 p-2 hover:bg-white rounded-xl transition-all group"
+                              >
                                 <div className="bg-white w-10 h-10 rounded-full flex items-center justify-center border border-zinc-100/50 shrink-0 transition-all">
                                   <Folder size={18} className="text-zinc-400" />
                                 </div>
@@ -267,7 +271,11 @@ export default function Navbar() {
                                 </div>
                               </Link>
                               
-                              <Link href="/about" className="flex items-start gap-4 p-2 hover:bg-white rounded-xl transition-all group">
+                              <Link 
+                                href="/about" 
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className="flex items-start gap-4 p-2 hover:bg-white rounded-xl transition-all group"
+                              >
                                 <div className="bg-white w-10 h-10 rounded-full flex items-center justify-center border border-zinc-100/50 shrink-0 transition-all">
                                   <Users size={18} className="text-zinc-400" />
                                 </div>
@@ -283,10 +291,10 @@ export default function Navbar() {
                           <div className="flex flex-col gap-2">
                             <div className="text-[13px] font-medium text-zinc-400 px-1">Pages</div>
                             <div className="flex flex-col gap-0.5">
-                               <Link href="/contact" className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Contact us</Link>
-                               <Link href="/career" className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Career</Link>
-                               <Link href="/privacy" className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Privacy Policy</Link>
-                               <Link href="/terms" className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Terms of Service</Link>
+                               <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Contact us</Link>
+                               <Link href="/career" onClick={() => setIsMobileMenuOpen(false)} className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Career</Link>
+                               <Link href="/privacy" onClick={() => setIsMobileMenuOpen(false)} className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Privacy Policy</Link>
+                               <Link href="/terms" onClick={() => setIsMobileMenuOpen(false)} className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Terms of Service</Link>
                             </div>
                           </div>
                         </div>
@@ -295,6 +303,7 @@ export default function Navbar() {
                   ) : (
                     <Link 
                       href={link.href || "#"} 
+                      onClick={() => setIsMobileMenuOpen(false)}
                       className="flex items-center gap-3 px-2 py-2.5 hover:bg-zinc-50 rounded-lg text-black text-[16px] font-[550]"
                     >
                       {Icon && <Icon size={20} className="text-zinc-400 stroke-[1.5]" />}
@@ -311,6 +320,7 @@ export default function Navbar() {
                 <div className="h-[1px] bg-zinc-100/50 my-1.5" />
                 <Link 
                   href="/book" 
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className="group flex items-center justify-between bg-[#09090b] text-white pl-5 pr-1 py-1 rounded-full font-medium text-[15px] hover:bg-black w-full leading-relaxed"
                 >
                   <span>Book a 30-Min call</span>
