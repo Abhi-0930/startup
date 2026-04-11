@@ -24,35 +24,35 @@ export default function TermsOfService() {
           <section className="space-y-6">
             <h2 className="text-3xl font-bold text-zinc-900 tracking-tight">1. Acceptance of Terms</h2>
             <p>
-              By accessing and using the Zerogrid website and services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
+              By accessing and using the Code Loom website and services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
             </p>
           </section>
 
           <section className="space-y-6">
             <h2 className="text-3xl font-bold text-zinc-900 tracking-tight">2. Use of License</h2>
             <p>
-              Permission is granted to temporarily download one copy of the materials (information or software) on Zerogrid's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title.
+              Permission is granted to temporarily download one copy of the materials (information or software) on Code Loom's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title.
             </p>
           </section>
 
           <section className="space-y-6">
             <h2 className="text-3xl font-bold text-zinc-900 tracking-tight">3. Service Provision</h2>
             <p>
-              Zerogrid provides high-performance design and engineering services. All project scope, timelines, and deliverables are governed by individual client contracts which supersede these general terms in the event of a conflict.
+              Code Loom provides high-performance design and engineering services. All project scope, timelines, and deliverables are governed by individual client contracts which supersede these general terms in the event of a conflict.
             </p>
           </section>
 
           <section className="space-y-6">
             <h2 className="text-3xl font-bold text-zinc-900 tracking-tight">4. Intellectual Property</h2>
             <p>
-              The website and its entire contents, features, and functionality (including but not limited to all information, software, text, displays, images, video, and audio) are owned by Zerogrid, its licensors, or other providers of such material.
+              The website and its entire contents, features, and functionality (including but not limited to all information, software, text, displays, images, video, and audio) are owned by Code Loom, its licensors, or other providers of such material.
             </p>
           </section>
 
           <section className="space-y-6">
             <h2 className="text-3xl font-bold text-zinc-900 tracking-tight">5. Disclaimer</h2>
             <p>
-              The materials on Zerogrid's website are provided on an 'as is' basis. Zerogrid makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability.
+              The materials on Code Loom's website are provided on an 'as is' basis. Code Loom makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability.
             </p>
           </section>
 

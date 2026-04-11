@@ -68,16 +68,16 @@ export default function Navbar() {
                 {/* Desktop Full Logo */}
                 <Image
                   src="/zerogrid-logo-bg-remove.png"
-                  alt="Zerogrid Logo"
+                  alt="Code Loom Logo"
                   width={120}
                   height={30}
                   className="h-7 w-auto object-contain hidden md:block"
                   priority
                 />
                 
-                {/* Mobile Icon Logo (Stylized Z) */}
+                {/* Mobile Icon Logo (Stylized C) */}
                 <div className="md:hidden flex items-center justify-center w-8 h-8 rounded-lg bg-black text-white font-black text-lg shadow-lg shadow-black/20 hover:scale-105 transition-transform">
-                  Z
+                   C
                 </div>
               </Link>
             </div>

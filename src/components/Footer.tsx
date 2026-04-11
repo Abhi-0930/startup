@@ -17,7 +17,7 @@ export default function Footer() {
             <Link href="/" className="inline-block">
               <Image
                 src="/zerogrid-logo-bg-remove.png"
-                alt="Zerogrid Logo"
+                alt="Code Loom Logo"
                 width={140}
                 height={35}
                 className="h-8 w-auto object-contain"
@@ -86,7 +86,7 @@ export default function Footer() {
       {/* 2. Massive Watermark (Middle) - Now in normal flow for zero overlap */}
       <div className="w-full pointer-events-none select-none text-center my-12 md:my-20">
         <h2 className="text-[18vw] font-black text-black/[0.03] tracking-tighter leading-none inline-block">
-          ZEROGRID.
+          CODE LOOM.
         </h2>
       </div>
 
@@ -94,7 +94,7 @@ export default function Footer() {
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="pt-8 border-t border-zinc-100 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-[13px] font-medium text-black uppercase tracking-widest">
-            © 2026 Zerogrid. All rights reserved
+            © 2026 Code Loom. All rights reserved
           </p>
           
           <div className="flex items-center gap-8">

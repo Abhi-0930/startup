@@ -27,7 +27,7 @@ const founders = [
 
 const comparison = [
   {
-    label: "Zerogrid Approach",
+    label: "Code Loom Approach",
     items: [
       "Rapid deployment in days, not months.",
       "Fixed pricing with clear deliverables.",
@@ -52,7 +52,7 @@ const milestones = [
   {
     year: "2025",
     title: "The Foundation",
-    desc: "Zerogrid was born from a vision to bridge the gap between design and scalable engineering.",
+    desc: "Code Loom was born from a vision to bridge the gap between design and scalable engineering.",
   },
   {
     year: "2026",
@@ -107,7 +107,7 @@ export default function AboutPage() {
                 </h2>
                 <div className="max-w-md space-y-6">
                   <p className="text-xl text-zinc-500 font-medium leading-relaxed">
-                    Zerogrid started with a simple belief: that high-performance teams deserve more than just "good enough" sites. 
+                    Code Loom started with a simple belief: that high-performance teams deserve more than just "good enough" sites. 
                   </p>
                   <p className="text-lg text-zinc-400 font-medium leading-relaxed">
                     We've spent thousands of hours perfecting a workflow that prioritizes speed, aesthetic beauty, and technical robustness. Today, we're the silent partner behind some of the most innovative digital platforms.
@@ -217,12 +217,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 4. Team Section - "The minds behind Zerogrid" */}
+      {/* 4. Team Section - "The minds behind Code Loom" */}
       <section className="py-24 md:py-32 px-6">
         <div className="container mx-auto max-w-7xl">
           <div className="flex flex-col items-center mb-24 text-center space-y-6">
             <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-zinc-900 uppercase">
-              The minds behind <br /> <span className="text-zinc-300 italic">Zerogrid.</span>
+              The minds behind <br /> <span className="text-zinc-300 italic">Code Loom.</span>
             </h2>
             <p className="text-xl text-zinc-500 font-medium max-w-2xl italic">
               "Building the future of digital performance, one pixel at a time."

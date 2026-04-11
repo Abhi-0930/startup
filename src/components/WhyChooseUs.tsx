@@ -85,7 +85,7 @@ export default function WhyChooseUs() {
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-5xl font-bold text-zinc-900 tracking-tight mb-4"
           >
-            Why Choose Zerogrid?
+            Why Choose Code Loom?
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0 }}

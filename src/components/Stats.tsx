@@ -63,7 +63,7 @@ export default function Stats() {
             viewport={{ once: true }}
             className="text-[2.5rem] md:text-[3.5rem] font-bold tracking-tighter text-zinc-900 leading-[1.1]"
           >
-            Zerogrid makes it simple, <br />
+            Code Loom makes it simple, <br />
             <span className="text-zinc-400">and delivers results.</span>
           </motion.h2>
         </div>

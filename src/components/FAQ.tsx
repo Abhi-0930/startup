@@ -66,7 +66,7 @@ export default function FAQ() {
               transition={{ delay: 0.1 }}
               className="text-zinc-500 text-lg md:text-xl font-medium max-w-xl"
             >
-              Zerogrid is powered by a passionate team of experts who care about your success.
+              Code Loom is powered by a passionate team of experts who care about your success.
             </motion.p>
           </div>
         </div>

@@ -24,7 +24,7 @@ export default function PrivacyPolicy() {
           <section className="space-y-6">
             <h2 className="text-3xl font-bold text-zinc-900 tracking-tight">1. Introduction</h2>
             <p>
-              At Zerogrid, we respect your privacy and are committed to protecting it through our compliance with this policy. This policy describes the types of information we may collect from you or that you may provide when you visit our website and our practices for collecting, using, maintaining, protecting, and disclosing that information.
+              At Code Loom, we respect your privacy and are committed to protecting it through our compliance with this policy. This policy describes the types of information we may collect from you or that you may provide when you visit our website and our practices for collecting, using, maintaining, protecting, and disclosing that information.
             </p>
           </section>
 
@@ -67,7 +67,7 @@ export default function PrivacyPolicy() {
               To ask questions or comment about this privacy policy and our privacy practices, contact us at:
             </p>
             <p className="font-bold text-zinc-900">
-              hello@zerogrid.tech
+              hello@codeloom.io
             </p>
           </section>
         </div>

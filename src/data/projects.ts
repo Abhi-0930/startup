@@ -60,7 +60,7 @@ export const projectsData: ProjectData[] = [
       { src: "/project1/MAVstedJYqQvsrJ7l1kxjR498.jpg_width=1200&height=904.png", alt: "Mobile Analytics View", span: "normal" }
     ],
     clientQuote: {
-      text: "The Zerogrid team didn't just redesign our UI; they redefined how our users interact with their data. The results were immediate and massive.",
+      text: "The Code Loom team didn't just redesign our UI; they redefined how our users interact with their data. The results were immediate and massive.",
       author: "David Chen",
       role: "CEO, Finlytics"
     }
@@ -92,7 +92,7 @@ export const projectsData: ProjectData[] = [
       { src: "/project2/vdtm4vbMi9SyPgj2Z1bVuq9b2o.png_width=960&height=1200.png", alt: "Brand Visualization", span: "wide" }
     ],
     clientQuote: {
-      text: "Zerogrid captured our DNA perfectly. They translated complex robotics concepts into a world-class visual experience.",
+      text: "Code Loom captured our DNA perfectly. They translated complex robotics concepts into a world-class visual experience.",
       author: "Sarah Jorgan",
       role: "Head of Marketing, Atlas"
     }
@@ -123,7 +123,7 @@ export const projectsData: ProjectData[] = [
       { src: "/project3/TwCiV5MUt16Q38ftZYKlEhNhbJI.png_width=1984&height=2400.png", alt: "Mobile Card View", span: "normal" }
     ],
     clientQuote: {
-      text: "The motion and 3D work Zerogrid delivered is on another level. Our app is being cited as a new benchmark for neobanks.",
+      text: "The motion and 3D work Code Loom delivered is on another level. Our app is being cited as a new benchmark for neobanks.",
       author: "Marcus Aurelius",
       role: "Founder, Orbital"
     }

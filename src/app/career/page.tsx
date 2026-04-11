@@ -38,14 +38,14 @@ export default function CareerPage() {
                 <span className="text-black"> always</span> looking for exceptional talent to join our talent pool.
               </p>
               <p className="text-lg text-zinc-400 font-medium leading-relaxed">
-                If you believe you can bring something extraordinary to the Zerogrid mission, don't wait for a listing. 
+                If you believe you can bring something extraordinary to the Code Loom mission, don't wait for a listing. 
                 Reach out and show us what you're building.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row items-center gap-6 pt-8">
               <Link 
-                href="mailto:careers@zerogrid.agency" 
+                href="mailto:careers@codeloom.io" 
                 className="w-full sm:w-auto flex items-center justify-center gap-4 bg-black text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-zinc-800 transition-all transform hover:scale-105 shadow-xl shadow-black/20"
               >
                 <span>Spontaneous Application</span>
