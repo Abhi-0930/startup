@@ -16,6 +16,8 @@ export interface ProjectData {
   }[];
   services: string[];
   liveLink?: string;
+  adminLink?: string;
+  userLink?: string;
   year: string;
   heroImage: string;
   gallery: {
@@ -34,35 +36,39 @@ export interface ProjectData {
 export const projectsData: ProjectData[] = [
   {
     id: "01",
-    title: "Finlytics Redesign",
-    category: "UX/UI Design",
-    subtitle: "Modernizing financial analytics for a global user base.",
-    description: "Finlytics came to us with a complex, legacy platform that was losing users due to high friction and a dated aesthetic. We rebuilt the experience from the ground up, focusing on data clarity and seamless navigation.",
-    challenge: "The primary challenge was organizing massive amounts of real-time financial data into a clean, intuitive dashboard that didn't overwhelm the user while maintaining all power-user features.",
-    solution: "We implemented a modular widget system coupled with a high-contrast dark theme. This allowed users to customize their view while significantly reducing cognitive load through smart grouping and visual hierarchy.",
+    title: "BiteBuzz Delivery",
+    category: "Full-Stack Development",
+    subtitle: "A seamless, high-performance food delivery experience.",
+    description: "BiteBuzz is a premium food delivery platform designed to connect foodies with their favorite local restaurants. We focused on creating an 'appetizing' digital experience that prioritizes speed, intuitive navigation, and effortless ordering.",
+    challenge: "The goal was to build a web platform that feels as fluid as a native app, capable of handling complex menu hierarchies and real-time order tracking without any performance lag.",
+    solution: "We implemented a modular menu system with smart filtering and a lightning-fast checkout flow. Using Next.js and optimized asset delivery, we achieved sub-second page transitions and a highly responsive mobile experience.",
     impact: [
-      { label: "User Retention", value: "+40%" },
-      { label: "Load Time", value: "0.8s" },
-      { label: "Onboarding Time", value: "-60%" }
+      { label: "Order Speed", value: "-45%" },
+      { label: "User Retention", value: "+35%" },
+      { label: "Active Users", value: "10k+" }
     ],
     stack: [
       { name: "Next.js" },
-      { name: "TypeScript" },
+      { name: "Node.js" },
+      { name: "MongoDB" },
       { name: "Tailwind CSS" },
-      { name: "Framer Motion" }
+      { name: "Stripe" }
     ],
-    services: ["Web Development", "SEO Improvement", "App Development"],
+    services: ["Web Development", "App Development", "UX/UI Design"],
     year: "2024",
-    liveLink: "https://finlytics.app",
-    heroImage: "/project1/zvQ7tedi7AxHplgmospF42dcjQo.png_width=1200&height=800.png",
+    adminLink: "https://bite-buzz-admin.vercel.app/",
+    userLink: "https://bite-buzz-frontend.vercel.app/",
+    liveLink: "https://bite-buzz-frontend.vercel.app/",
+    heroImage: "/project1/img1.png",
     gallery: [
-      { src: "/project1/5kd7Hmen8Zb7gfwj1BZyuA0ko.png_width=1200&height=800.png", alt: "Finlytics Dashboard", span: "wide" },
-      { src: "/project1/MAVstedJYqQvsrJ7l1kxjR498.jpg_width=1200&height=904.png", alt: "Mobile Analytics View", span: "normal" }
+      { src: "/project1/img2.png", alt: "BiteBuzz Hero Section", span: "wide" },
+      { src: "/project1/img3.png", alt: "Orders Dashboard", span: "normal" },
+      { src: "/project1/img4.png", alt: "Menu Inventory Management", span: "normal" }
     ],
     clientQuote: {
-      text: "The Code Loom team didn't just redesign our UI; they redefined how our users interact with their data. The results were immediate and massive.",
-      author: "David Chen",
-      role: "CEO, Finlytics"
+      text: "Code Loom took our vision of a modern food delivery platform and turned it into a high-conversion reality. The speed of the site is unparalleled.",
+      author: "Akshitha",
+      role: "Product Owner, BiteBuzz"
     }
   },
   {

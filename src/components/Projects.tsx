@@ -9,12 +9,13 @@ import { motion, AnimatePresence } from "framer-motion";
 const projects = [
   {
     id: "01",
-    title: "Finlytics Redesign",
-    category: "UX/UI Design",
+    title: "BiteBuzz Delivery",
+    category: "Full-Stack Development",
     images: [
-      "/project1/zvQ7tedi7AxHplgmospF42dcjQo.png_width=1200&height=800.png",
-      "/project1/5kd7Hmen8Zb7gfwj1BZyuA0ko.png_width=1200&height=800.png",
-      "/project1/MAVstedJYqQvsrJ7l1kxjR498.jpg_width=1200&height=904.png",
+      "/project1/img1.png",
+      "/project1/img2.png",
+      "/project1/img3.png",
+      "/project1/img4.png",
     ],
     span: "normal",
     delay: "0s",
@@ -62,7 +63,7 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
     <div className={`flex flex-col gap-6 ${project.span === 'wide' ? 'md:col-span-2' : 'col-span-1'}`}>
       <Link 
         href={`/projects/${project.id}`}
-        className="block relative overflow-hidden rounded-[32px] border border-black/5 shadow-sm bg-neutral-900 group/image cursor-pointer"
+        className="block relative overflow-hidden rounded-[32px] shadow-sm bg-neutral-900 group/image cursor-pointer"
         style={{ 
           aspectRatio: project.span === 'wide' ? '21/9' : '4/3' 
         }}

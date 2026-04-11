@@ -1,6 +1,10 @@
+"use client";
+import { useState, useRef, useEffect } from "react";
 import { ProjectData } from "@/data/projects";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ChevronDown } from "lucide-react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -11,6 +15,19 @@ import {
 } from "@/components/ui/breadcrumb"
 
 export default function ProjectOverview({ project }: { project: ProjectData }) {
+  const [isVisitOpen, setIsVisitOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsVisitOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
     <section className="pt-12 md:pt-16 pb-24 md:pb-40 bg-white">
       <div className="container mx-auto px-4 md:px-12 max-w-[1400px]">
@@ -131,7 +148,57 @@ export default function ProjectOverview({ project }: { project: ProjectData }) {
                   <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">Launch Year</span>
                   <span className="text-sm font-bold text-zinc-900">{project.year}</span>
                 </div>
-                {project.liveLink && (
+                {(project.adminLink && project.userLink) ? (
+                  <div 
+                    ref={menuRef}
+                    className="relative"
+                    onMouseEnter={() => setIsVisitOpen(true)}
+                    onMouseLeave={() => setIsVisitOpen(false)}
+                  >
+                    <button 
+                      onClick={() => setIsVisitOpen(!isVisitOpen)}
+                      className="flex items-center gap-2 px-6 py-3 bg-zinc-900 text-white rounded-full text-sm font-bold hover:bg-black transition-all group lg:min-w-[140px] justify-center"
+                    >
+                      <span>Visit Site</span>
+                      <ChevronDown size={14} className={`transition-transform duration-300 ${isVisitOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                    
+                    {/* Hover/Click Menu */}
+                    <AnimatePresence>
+                      {isVisitOpen && (
+                        <motion.div 
+                          initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                          transition={{ duration: 0.2, ease: "easeOut" }}
+                          className="absolute bottom-full right-0 mb-4 z-50 pointer-events-auto"
+                        >
+                          <div className="bg-white rounded-2xl shadow-2xl border border-zinc-100 p-2 min-w-[200px]">
+                            <Link 
+                              href={project.userLink}
+                              target="_blank"
+                              onClick={() => setIsVisitOpen(false)}
+                              className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-zinc-50 transition-colors text-sm font-bold text-zinc-900 group/link"
+                            >
+                              <span>Customer Panel</span>
+                              <ExternalLink size={12} className="opacity-40 group-hover/link:opacity-100 transition-opacity" />
+                            </Link>
+                            <Link 
+                              href={project.adminLink}
+                              target="_blank"
+                              onClick={() => setIsVisitOpen(false)}
+                              className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-zinc-50 transition-colors text-sm font-bold text-zinc-900 group/link"
+                            >
+                              <span>Admin Panel</span>
+                              <ExternalLink size={12} className="opacity-40 group-hover/link:opacity-100 transition-opacity" />
+                            </Link>
+                          </div>
+                          <div className="absolute top-full right-8 -mt-1 border-8 border-transparent border-t-white filter drop-shadow(0 1px 0 rgba(0,0,0,0.05))" />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : project.liveLink && (
                   <Link 
                     href={project.liveLink}
                     target="_blank"

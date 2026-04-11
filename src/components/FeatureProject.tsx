@@ -7,10 +7,10 @@ import { Skeleton } from "@/components/ui/Skeleton";
 import { motion, AnimatePresence } from "framer-motion";
 
 const slides = [
-  // Finlytics (Project 1)
-  { id: 'f1', projectId: '01', category: 'Finlytics', title: 'Launch MVP for Finlytics', subtitle: 'Live in 27 days, 1,200+ early users', src: '/project1/zvQ7tedi7AxHplgmospF42dcjQo.png_width=1200&height=800.png' },
-  { id: 'f2', projectId: '01', category: 'Finlytics', title: 'Launch MVP for Finlytics', subtitle: 'Live in 27 days, 1,200+ early users', src: '/project1/5kd7Hmen8Zb7gfwj1BZyuA0ko.png_width=1200&height=800.png' },
-  { id: 'f3', projectId: '01', category: 'Finlytics', title: 'Launch MVP for Finlytics', subtitle: 'Live in 27 days, 1,200+ early users', src: '/project1/MAVstedJYqQvsrJ7l1kxjR498.jpg_width=1200&height=904.png' },
+  // BiteBuzz (Project 1)
+  { id: 'b1', projectId: '01', category: 'BiteBuzz', title: 'Launch MVP for BiteBuzz', subtitle: 'Live in 21 days, 1,200+ early users', src: '/project1/img1.png' },
+  { id: 'b2', projectId: '01', category: 'BiteBuzz', title: 'Launch MVP for BiteBuzz', subtitle: 'Live in 21 days, 1,200+ early users', src: '/project1/img2.png' },
+  { id: 'b3', projectId: '01', category: 'BiteBuzz', title: 'Launch MVP for BiteBuzz', subtitle: 'Live in 21 days, 1,200+ early users', src: '/project1/img3.png' },
   // Atlas (Project 2)
   { id: 'a1', projectId: '02', category: 'Atlas', title: 'Atlas Technologies', subtitle: 'Complete Brand & Web Redesign', src: '/project2/vdtm4vbMi9SyPgj2Z1bVuq9b2o.png_width=960&height=1200.png' },
   { id: 'a2', projectId: '02', category: 'Atlas', title: 'Atlas Technologies', subtitle: 'Complete Brand & Web Redesign', src: '/project2/xktGFEeTfvx5MDldvQxlaw79M.png_width=800&height=1200.png' },
@@ -116,7 +116,7 @@ export default function FeatureProject() {
             initial={{ opacity: 0, scale: 0.99 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-[32px] p-2 md:p-3 border border-zinc-200/60 shadow-sm relative group overflow-hidden transition-all duration-700"
+            className="bg-white rounded-[32px] p-2 md:p-3 shadow-sm relative group overflow-hidden transition-all duration-700"
           >
             
             {/* Top Header of Card */}
@@ -141,7 +141,7 @@ export default function FeatureProject() {
 
             {/* Massive Main Image Container */}
             <div 
-              className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-[24px] overflow-hidden bg-neutral-900 border border-black/5"
+              className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-[24px] overflow-hidden bg-neutral-900"
               onMouseMove={handleMouseMove}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
