@@ -6,13 +6,7 @@ import lottie from "lottie-web";
 import { defineElement } from "@lordicon/element";
 
 // Helper to make it easier to use the custom element in TSX
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      "lord-icon": any;
-    }
-  }
-}
+// Global declaration moved to src/types/lord-icon.d.ts
 
 const features = [
   {
@@ -49,6 +43,7 @@ const features = [
 
 export default function WhyChooseUs() {
   useEffect(() => {
+    // @ts-ignore - The library type definition might not match the runtime function signature
     defineElement(lottie.loadAnimation);
   }, []);
 
@@ -68,7 +63,7 @@ export default function WhyChooseUs() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as any },
     },
   };
 
@@ -165,13 +160,16 @@ export default function WhyChooseUs() {
                         )}
                       </motion.svg>
                     ) : (
-                      <lord-icon
-                        src={feature.iconSrc}
-                        trigger="loop"
-                        delay="2000"
-                        colors="primary:#3b82f6,secondary:#1e293b"
-                        style={{ width: "70px", height: "70px" }}
-                      />
+                      <div className="flex items-center justify-center">
+                        {/* @ts-ignore - Custom Element */}
+                        <lord-icon
+                          src={feature.iconSrc}
+                          trigger="loop"
+                          delay="2000"
+                          colors="primary:#3b82f6,secondary:#1e293b"
+                          style={{ width: "70px", height: "70px" }}
+                        />
+                      </div>
                     )}
                   </motion.div>
                   {/* Subtle Background Glow on Hover */}

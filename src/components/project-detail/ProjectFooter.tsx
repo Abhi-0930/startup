@@ -74,7 +74,6 @@ export default function ProjectFooter({ currentId }: { currentId: string }) {
           }} 
           animate={{ 
             maskPosition: ["-100% 0%", "200% 0%"],
-            WebkitMaskPosition: ["-100% 0%", "200% 0%"]
           }}
           transition={{ 
             duration: 15, 
