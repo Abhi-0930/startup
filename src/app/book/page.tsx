@@ -69,16 +69,12 @@ export default function BookPage() {
 
   return (
     <main className="min-h-screen bg-white pt-24 pb-20 md:pt-40 md:pb-32 relative overflow-hidden">
-      {/* Visual Background Elements */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-zinc-50 rounded-full blur-[120px] -mr-48 -mt-48 opacity-60 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-zinc-50 rounded-full blur-[100px] -ml-24 -mb-24 opacity-40 pointer-events-none" />
-
       <AnimatePresence>
         {isBooked && (
           <motion.div 
-            initial={{ opacity: 0, y: -100 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -100 }}
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            exit={{ y: -100 }}
             className="fixed top-8 left-1/2 -translate-x-1/2 z-[100] w-full max-w-md px-4"
           >
             <div className="bg-zinc-900 text-white rounded-2xl p-4 shadow-2xl border border-white/10 flex items-center gap-4">
@@ -97,97 +93,73 @@ export default function BookPage() {
         )}
       </AnimatePresence>
 
-      <div className="container mx-auto px-6 max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
-          
-          {/* Content Column */}
-          <div className="lg:col-span-5 space-y-12 md:sticky md:top-40">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="space-y-6"
-            >
-              <span className="text-zinc-400 uppercase tracking-[0.3em] font-bold text-[10px]">Strategic Consultation</span>
-              <h1 className="text-5xl md:text-7xl font-bold text-zinc-900 tracking-tight leading-[0.95]">
-                Book your <br />
-                <span className="italic">session.</span>
-              </h1>
-              <p className="text-lg text-zinc-600 max-w-md leading-relaxed">
-                30 minutes dedicated to breaking down your product vision and architecting a clear path to scale.
-              </p>
-            </motion.div>
+      <div className="container mx-auto px-6 max-w-5xl relative z-20 isolate">
+        <div className="flex flex-col items-center text-center space-y-6 mb-12">
+          <div className="space-y-4">
+            <span className="text-black uppercase tracking-[0.3em] font-medium text-[9px] !important" style={{ color: '#000000' }}>Strategic Consultation</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-black tracking-tight leading-[1.1] !important" style={{ color: '#000000' }}>
+              Book your <span className="italic">session.</span>
+            </h1>
+            <p className="text-md text-black max-w-xl mx-auto leading-relaxed font-medium !important" style={{ color: '#000000' }}>
+              30 minutes dedicated to breaking down your product vision and architecting a clear path to scale.
+            </p>
+          </div>
+        </div>
 
-            {/* Takeaways Section */}
-            <div className="space-y-8">
-              <h3 className="text-sm font-bold text-zinc-900 uppercase tracking-widest">What we'll achieve Together</h3>
-              <div className="space-y-6">
-                {takeaways.map((item, idx) => (
-                  <motion.div 
-                    key={idx}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 * idx }}
-                    className="flex gap-5 group"
-                  >
-                    <div className="w-10 h-10 rounded-xl bg-zinc-50 flex items-center justify-center shrink-0 transition-all group-hover:bg-zinc-900 group-hover:text-white group-hover:rotate-6">
-                      {item.icon}
-                    </div>
-                    <div className="space-y-1">
-                      <h4 className="font-bold text-zinc-900">{item.title}</h4>
-                      <p className="text-sm text-zinc-500 leading-relaxed">{item.desc}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Prerequisites Card */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="p-8 rounded-[32px] bg-zinc-50 border border-zinc-100 space-y-6 relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 p-4 opacity-[0.05] pointer-events-none">
-                <ClipboardList size={80} />
-              </div>
-              <h3 className="text-sm font-bold text-zinc-900 uppercase tracking-widest relative z-10">Prerequisites</h3>
-              <div className="space-y-4 relative z-10">
-                {prerequisites.map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-3 group">
-                    <div className="mt-1 transition-colors">{item.icon}</div>
-                    <p className="text-sm text-zinc-600 font-medium leading-relaxed group-hover:text-zinc-900 transition-colors">
-                      {item.text}
-                    </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-16 px-4">
+          {/* Takeaways Section */}
+          <div className="space-y-6">
+            <h3 className="text-[10px] font-bold text-black uppercase tracking-[0.2em] text-center md:text-left !important" style={{ color: '#000000' }}>What we'll achieve Together</h3>
+            <div className="space-y-6">
+              {takeaways.map((item, idx) => (
+                <div 
+                  key={idx}
+                  className="flex gap-4 items-center"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-zinc-50 flex items-center justify-center shrink-0">
+                    {React.cloneElement(item.icon as React.ReactElement, { size: 18 })}
                   </div>
-                ))}
-              </div>
-            </motion.div>
+                  <div className="space-y-0.5">
+                    <h4 className="font-bold text-black text-md !important" style={{ color: '#000000' }}>{item.title}</h4>
+                    <p className="text-xs text-black leading-relaxed font-medium !important" style={{ color: '#000000' }}>{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Calendar Column */}
-          <div className="lg:col-span-7">
-            <motion.div 
-              className="w-full bg-white rounded-[40px] border border-zinc-100 shadow-[0_40px_100px_rgba(0,0,0,0.08)] overflow-hidden"
-              initial={{ opacity: 0, scale: 0.98, x: 20 }}
-              animate={{ opacity: 1, scale: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <div className="p-1 sm:p-4 min-h-[600px]">
-                <Cal 
-                  namespace="30min"
-                  calLink="abhishek-d7y31n/30min"
-                  style={{ width: "100%", height: "100%", minHeight: "700px" }}
-                  config={{
-                    layout: 'month_view',
-                    theme: 'light'
-                  }}
-                />
-              </div>
-            </motion.div>
+          {/* Prerequisites Card */}
+          <div className="p-8 rounded-[32px] bg-zinc-50 border border-zinc-100 flex flex-col justify-center relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-4 opacity-[0.02] pointer-events-none">
+              <ClipboardList size={80} />
+            </div>
+            <h3 className="text-[10px] font-bold text-black uppercase tracking-[0.2em] mb-6 relative z-10 !important" style={{ color: '#000000' }}>Prerequisites</h3>
+            <div className="space-y-4 relative z-10">
+              {prerequisites.map((item, idx) => (
+                <div key={idx} className="flex items-start gap-3">
+                  <div className="mt-0.5">{React.cloneElement(item.icon as React.ReactElement, { size: 16 })}</div>
+                  <p className="text-xs text-black font-medium leading-relaxed !important" style={{ color: '#000000' }}>
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
+        </div>
 
+        {/* Calendar Section - Focused & Compact */}
+        <div className="w-full max-w-4xl mx-auto bg-white rounded-[40px] border border-zinc-100 shadow-[0_32px_80px_rgba(0,0,0,0.06)] overflow-hidden">
+          <div className="p-1 sm:p-2 min-h-[500px]">
+            <Cal 
+              namespace="30min"
+              calLink="abhishek-d7y31n/30min"
+              style={{ width: "100%", height: "100%", minHeight: "650px" }}
+              config={{
+                layout: 'month_view',
+                theme: 'light'
+              }}
+            />
+          </div>
         </div>
       </div>
     </main>
