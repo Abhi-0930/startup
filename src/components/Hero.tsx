@@ -135,7 +135,7 @@ export default function Hero() {
                   </div>
                 </Link>
                 
-                <Link href="#" className="group/btn h-[52px] sm:h-[60px] w-full sm:w-auto flex items-center justify-center gap-4 px-8 rounded-full bg-white border border-zinc-200 text-zinc-900 font-bold text-[16px] sm:text-[18px] hover:bg-zinc-50 hover:border-zinc-300 transition-all shadow-sm">
+                <Link href="#work" className="group/btn h-[52px] sm:h-[60px] w-full sm:w-auto flex items-center justify-center gap-4 px-8 rounded-full bg-white border border-zinc-200 text-zinc-900 font-bold text-[16px] sm:text-[18px] hover:bg-zinc-50 hover:border-zinc-300 transition-all shadow-sm">
                   <span>View Projects</span>
                   <div className="bg-zinc-100 w-8 h-8 rounded-full flex items-center justify-center group-hover/btn:bg-zinc-200 transition-colors">
                      <ArrowRight size={18} className="transition-transform duration-300 group-hover/btn:-rotate-45" />

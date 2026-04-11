@@ -51,9 +51,9 @@ export default function Footer() {
             <div className="flex flex-col gap-6 min-w-[140px]">
               <h4 className="text-[13px] font-bold text-zinc-400 uppercase tracking-widest">Company</h4>
               <nav className="flex flex-col gap-4">
-                <Link href="/contact" className="text-zinc-600 hover:text-black font-medium transition-colors">Contact us</Link>
+                <Link href="/book" className="text-zinc-600 hover:text-black font-medium transition-colors">Book a call</Link>
                 <Link href="#" className="text-zinc-600 hover:text-black font-medium transition-colors">About us</Link>
-                <Link href="#" className="text-zinc-600 hover:text-black font-medium transition-colors flex items-center gap-2">
+                <Link href="#work" className="text-zinc-600 hover:text-black font-medium transition-colors flex items-center gap-2">
                   Projects <span className="w-1.5 h-1.5 rounded-full bg-red-400/30" />
                 </Link>
                 <Link href="#" className="text-zinc-600 hover:text-black font-medium transition-colors flex items-center gap-2">

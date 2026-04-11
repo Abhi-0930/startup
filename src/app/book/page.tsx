@@ -9,6 +9,7 @@ import { CheckCircle2, Loader2 } from "lucide-react";
 export default function BookPage() {
   const router = useRouter();
   const [isBooked, setIsBooked] = useState(false);
+  const [countdown, setCountdown] = useState(5);
 
   useEffect(() => {
     (async function () {
@@ -18,14 +19,21 @@ export default function BookPage() {
         callback: (event) => {
           console.log("Booking successful!", event);
           setIsBooked(true);
-          // 5 second delay so user can see the confirmation on Cal.com before redirection
-          setTimeout(() => {
-            router.push("/");
-          }, 5000);
         }
       });
     })();
-  }, [router]);
+  }, []);
+
+  // Live countdown timer
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (isBooked && countdown > 0) {
+      timer = setTimeout(() => setCountdown(countdown - 1), 1000);
+    } else if (isBooked && countdown === 0) {
+      router.push("/");
+    }
+    return () => clearTimeout(timer);
+  }, [isBooked, countdown, router]);
 
   return (
     <main className="min-h-screen bg-white pt-32 pb-24 relative overflow-hidden">
@@ -44,7 +52,7 @@ export default function BookPage() {
               <div className="flex-1">
                 <p className="font-bold text-sm">Meeting Scheduled!</p>
                 <div className="flex items-center gap-2 mt-0.5">
-                  <p className="text-xs text-zinc-400">Redirecting to home in 5s</p>
+                  <p className="text-xs text-zinc-400">Redirecting to home in {countdown}s</p>
                   <Loader2 className="animate-spin text-zinc-500" size={12} />
                 </div>
               </div>

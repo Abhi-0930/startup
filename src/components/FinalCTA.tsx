@@ -56,7 +56,7 @@ export default function FinalCTA() {
               </h2>
 
               <div className="flex justify-center">
-                <Link href="/contact" className="group relative flex items-center gap-3 px-8 py-3.5 bg-white text-black rounded-full font-bold text-base md:text-lg hover:bg-zinc-100 transition-all shadow-xl hover:-translate-y-1 active:scale-95">
+                <Link href="/book" className="group relative flex items-center gap-3 px-8 py-3.5 bg-white text-black rounded-full font-bold text base md:text-lg hover:bg-zinc-100 transition-all shadow-xl hover:-translate-y-1 active:scale-95">
                   <Sparkles size={18} className="text-zinc-400 group-hover:text-amber-500 transition-colors" />
                   <span>Let's Connect</span>
                   <div className="absolute inset-0 rounded-full bg-white blur-md opacity-20 group-hover:opacity-40 transition-opacity -z-10" />

@@ -155,8 +155,8 @@ export default function Navbar() {
                           <div className="text-[12px] font-bold text-zinc-400 tracking-wider uppercase px-2 text-left">Pages</div>
                           
                           <div className="flex flex-col gap-1">
-                            {["Contact us", "Career", "Privacy Policy", "Terms of Service"].map((page) => (
-                              <Link key={page} href={page === "Contact us" ? "/contact" : "#"} className="group/page flex items-center justify-between px-2 py-2 text-[15px] font-medium text-black hover:bg-white/50 rounded-lg transition-all">
+                            {["Book A Call", "Career", "Privacy Policy", "Terms of Service"].map((page) => (
+                              <Link key={page} href={page === "Book A Call" ? "/book" : "#"} className="group/page flex items-center justify-between px-2 py-2 text-[15px] font-medium text-black hover:bg-white/50 rounded-lg transition-all">
                                 <span className="group-hover/page:translate-x-1 transition-transform">{page}</span>
                                 <ArrowRight size={18} className="text-zinc-400 opacity-0 group-hover/page:opacity-100 -translate-x-2 group-hover/page:translate-x-0 transition-all" />
                               </Link>

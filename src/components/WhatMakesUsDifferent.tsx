@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { ArrowRight, Zap, LayoutDashboard, Shield, Users, Clock, CreditCard } from "lucide-react";
 
 const features = [
@@ -151,12 +152,12 @@ export default function WhatMakesUsDifferent() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <button className="group flex items-center gap-6 bg-zinc-900 text-white pl-8 pr-3 py-3 rounded-full font-bold text-lg hover:bg-black transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1">
+            <Link href="/book" className="group flex items-center gap-6 bg-zinc-900 text-white pl-8 pr-3 py-3 rounded-full font-bold text-lg hover:bg-black transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1">
               <span>Reserve Your Slot</span>
               <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center transition-all group-hover:bg-white group-hover:text-black">
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </div>
-            </button>
+            </Link>
           </motion.div>
         </div>
 

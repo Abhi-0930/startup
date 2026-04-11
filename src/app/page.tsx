@@ -9,21 +9,32 @@ import Process from "@/components/Process";
 import Projects from "@/components/Projects";
 import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
+import Stats from "@/components/Stats";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export default function Home() {
+  const sections = [
+    { component: <Hero />, key: "hero", bgColor: "bg-white" },
+    { component: <FeatureProject />, key: "feature", bgColor: "bg-white" },
+    { component: <LogoTicker />, key: "ticker", bgColor: "bg-white" },
+    { component: <Stats />, key: "stats", bgColor: "bg-white" },
+    { component: <Testimonials />, key: "testimonials", bgColor: "bg-white" },
+    { component: <Challenges />, key: "challenges", bgColor: "bg-white" },
+    { component: <Services />, key: "services", bgColor: "bg-white" },
+    { component: <Process />, key: "process", bgColor: "bg-white" },
+    { component: <Projects />, key: "projects", bgColor: "bg-white" },
+    { component: <WhatMakesUsDifferent />, key: "what-makes-us-different", bgColor: "bg-white" },
+    { component: <FAQ />, key: "faq", bgColor: "bg-zinc-50" },
+    { component: <FinalCTA />, key: "final-cta", bgColor: "bg-white" },
+  ];
+
   return (
-    <main className="flex-1">
-      <Hero />
-      <FeatureProject />
-      <LogoTicker />
-      <Testimonials />
-      <Challenges />
-      <Services />
-      <Process />
-      <Projects />
-      <WhatMakesUsDifferent />
-      <FAQ />
-      <FinalCTA />
+    <main className="flex-1 bg-white">
+      {sections.map((section, index) => (
+        <ScrollReveal key={section.key} index={index} bgColor={section.bgColor}>
+          {section.component}
+        </ScrollReveal>
+      ))}
     </main>
   );
 }

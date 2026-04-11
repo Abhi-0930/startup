@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { 
@@ -149,12 +150,12 @@ export default function Services() {
                   </h2>
                 </div>
                 
-                <button className="group flex items-center gap-4 bg-zinc-950 px-8 py-4 rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg">
+                <Link href="/book" className="group flex items-center gap-4 bg-zinc-950 px-8 py-4 rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg">
                   <span className="font-medium text-white tracking-tight">Start A Project</span>
                   <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-white/20">
                     <ArrowRight size={20} className="text-white transition-transform duration-300 group-hover:translate-x-1" />
                   </div>
-                </button>
+                </Link>
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-start">
