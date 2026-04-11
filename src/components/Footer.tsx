@@ -52,7 +52,7 @@ export default function Footer() {
               <h4 className="text-[13px] font-bold text-zinc-400 uppercase tracking-widest">Company</h4>
               <nav className="flex flex-col gap-4">
                 <Link href="/book" className="text-zinc-600 hover:text-black font-medium transition-colors">Book a call</Link>
-                <Link href="#" className="text-zinc-600 hover:text-black font-medium transition-colors">About us</Link>
+                <Link href="/about" className="text-zinc-600 hover:text-black font-medium transition-colors">About us</Link>
                 <Link href="#work" className="text-zinc-600 hover:text-black font-medium transition-colors flex items-center gap-2">
                   Projects <span className="w-1.5 h-1.5 rounded-full bg-red-400/30" />
                 </Link>
@@ -98,8 +98,8 @@ export default function Footer() {
           </p>
           
           <div className="flex items-center gap-8">
-            <Link href="#" className="text-[13px] font-medium text-black hover:opacity-70 transition-all">Privacy policy</Link>
-            <Link href="#" className="text-[13px] font-medium text-black hover:opacity-70 transition-all">Terms of Service</Link>
+            <Link href="/privacy" className="text-[13px] font-medium text-black hover:opacity-70 transition-all">Privacy policy</Link>
+            <Link href="/terms" className="text-[13px] font-medium text-black hover:opacity-70 transition-all">Terms of Service</Link>
           </div>
         </div>
       </div>

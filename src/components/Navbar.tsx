@@ -37,8 +37,8 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Company", hasDropdown: true, icon: LayoutGrid },
-    { name: "Projects", icon: Folder, href: "#" },
-    { name: "About us", icon: Users, href: "#" },
+    { name: "Projects", icon: Folder, href: "/#work" },
+    { name: "About us", icon: Users, href: "/about" },
     { name: "Contact", icon: MessageSquare, href: "/contact" },
   ];
 
@@ -110,7 +110,7 @@ export default function Navbar() {
                           <div className="text-[12px] font-bold text-zinc-400 tracking-wider uppercase px-2 text-left">Company</div>
                           
                           <div className="flex flex-col gap-2">
-                            <Link href="#" className="flex items-center justify-between p-2 rounded-2xl hover:bg-zinc-50 transition-colors group/item">
+                            <Link href="/#work" className="flex items-center justify-between p-2 rounded-2xl hover:bg-zinc-50 transition-colors group/item">
                               <div className="flex items-start gap-4">
                                 <div className="w-11 h-11 rounded-full border border-zinc-100 flex items-center justify-center bg-white shadow-sm group-hover/item:border-zinc-200 transition-colors">
                                   <Folder size={20} className="text-zinc-600" />
@@ -123,7 +123,7 @@ export default function Navbar() {
                               <ArrowRight size={20} className="text-zinc-400 opacity-0 group-hover/item:opacity-100 -translate-x-4 group-hover/item:translate-x-0 transition-all duration-300 mr-2" />
                             </Link>
 
-                            <Link href="#" className="flex items-center justify-between p-2 rounded-2xl hover:bg-zinc-50 transition-colors group/item">
+                            <Link href="/about" className="flex items-center justify-between p-2 rounded-2xl hover:bg-zinc-50 transition-colors group/item">
                               <div className="flex items-start gap-4">
                                 <div className="w-11 h-11 rounded-full border border-zinc-100 flex items-center justify-center bg-white shadow-sm group-hover/item:border-zinc-200 transition-colors">
                                   <Users size={20} className="text-zinc-600" />
@@ -155,12 +155,21 @@ export default function Navbar() {
                           <div className="text-[12px] font-bold text-zinc-400 tracking-wider uppercase px-2 text-left">Pages</div>
                           
                           <div className="flex flex-col gap-1">
-                            {["Book A Call", "Career", "Privacy Policy", "Terms of Service"].map((page) => (
-                              <Link key={page} href={page === "Book A Call" ? "/book" : "#"} className="group/page flex items-center justify-between px-2 py-2 text-[15px] font-medium text-black hover:bg-white/50 rounded-lg transition-all">
-                                <span className="group-hover/page:translate-x-1 transition-transform">{page}</span>
-                                <ArrowRight size={18} className="text-zinc-400 opacity-0 group-hover/page:opacity-100 -translate-x-2 group-hover/page:translate-x-0 transition-all" />
-                              </Link>
-                            ))}
+                             {["Book A Call", "Career", "Privacy Policy", "Terms of Service"].map((page) => (
+                               <Link 
+                                 key={page} 
+                                 href={
+                                   page === "Book A Call" ? "/book" : 
+                                   page === "Career" ? "/career" :
+                                   page === "Privacy Policy" ? "/privacy" :
+                                   page === "Terms of Service" ? "/terms" : "#"
+                                 } 
+                                 className="group/page flex items-center justify-between px-2 py-2 text-[15px] font-medium text-black hover:bg-white/50 rounded-lg transition-all"
+                               >
+                                 <span className="group-hover/page:translate-x-1 transition-transform">{page}</span>
+                                 <ArrowRight size={18} className="text-zinc-400 opacity-0 group-hover/page:opacity-100 -translate-x-2 group-hover/page:translate-x-0 transition-all" />
+                               </Link>
+                             ))}
                           </div>
                         </div>
                       </div>
@@ -248,7 +257,7 @@ export default function Navbar() {
                           <div className="flex flex-col gap-3">
                             <div className="text-[13px] font-medium text-zinc-400 px-1">Company</div>
                             <div className="flex flex-col gap-1.5">
-                              <Link href="#" className="flex items-start gap-4 p-2 hover:bg-white rounded-xl transition-all group">
+                              <Link href="/#work" className="flex items-start gap-4 p-2 hover:bg-white rounded-xl transition-all group">
                                 <div className="bg-white w-10 h-10 rounded-full flex items-center justify-center border border-zinc-100/50 shrink-0 transition-all">
                                   <Folder size={18} className="text-zinc-400" />
                                 </div>
@@ -258,7 +267,7 @@ export default function Navbar() {
                                 </div>
                               </Link>
                               
-                              <Link href="#" className="flex items-start gap-4 p-2 hover:bg-white rounded-xl transition-all group">
+                              <Link href="/about" className="flex items-start gap-4 p-2 hover:bg-white rounded-xl transition-all group">
                                 <div className="bg-white w-10 h-10 rounded-full flex items-center justify-center border border-zinc-100/50 shrink-0 transition-all">
                                   <Users size={18} className="text-zinc-400" />
                                 </div>
@@ -274,10 +283,10 @@ export default function Navbar() {
                           <div className="flex flex-col gap-2">
                             <div className="text-[13px] font-medium text-zinc-400 px-1">Pages</div>
                             <div className="flex flex-col gap-0.5">
-                              <Link href="/contact" className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Contact us</Link>
-                              <Link href="#" className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Career</Link>
-                              <Link href="#" className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Privacy Policy</Link>
-                              <Link href="#" className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Terms of Service</Link>
+                               <Link href="/contact" className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Contact us</Link>
+                               <Link href="/career" className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Career</Link>
+                               <Link href="/privacy" className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Privacy Policy</Link>
+                               <Link href="/terms" className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Terms of Service</Link>
                             </div>
                           </div>
                         </div>
