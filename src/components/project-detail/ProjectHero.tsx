@@ -41,6 +41,26 @@ export default function ProjectHero({ project }: { project: ProjectData }) {
           <p className="text-lg md:text-2xl text-zinc-300 max-w-2xl mx-auto font-medium leading-relaxed opacity-80 mb-12">
             {project.subtitle}
           </p>
+
+          {project.liveLink && (
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              <a 
+                href={project.liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-4 bg-white text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-zinc-200 transition-all active:scale-95 shadow-2xl shadow-white/10"
+              >
+                <span>Visit Site</span>
+                <div className="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center transition-transform group-hover:translate-x-1">
+                  <ArrowDown size={18} className="-rotate-[135deg]" />
+                </div>
+              </a>
+            </motion.div>
+          )}
         </motion.div>
       </div>
 
