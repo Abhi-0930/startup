@@ -85,13 +85,14 @@ export const projectsData: ProjectData[] = [
     ],
     stack: [
       { name: "React 19" },
-      { name: "Python" },
-      { name: "LangChain" },
-      { name: "OpenAI GPT-4" },
-      { name: "MongoDB" }
+      { name: "Node.js" },
+      { name: "Flask" },
+      { name: "Vector DB" },
+      { name: "Docker" },
+      { name: "LangChain" }
     ],
     services: ["AI Applications", "Full-Stack Development", "UX/UI Design"],
-    year: "2024",
+    year: "2025",
     liveLink: "https://empathy-ai-demo.vercel.app",
     heroImage: "/project2/img1.png",
     gallery: [
