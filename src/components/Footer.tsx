@@ -16,11 +16,11 @@ export default function Footer() {
           <div className="lg:col-span-2 flex flex-col gap-8">
             <Link href="/" className="inline-block">
               <Image
-                src="/zerogrid-logo-bg-remove.png"
+                src="/logo-Photoroom.png"
                 alt="Code Loom Logo"
-                width={140}
-                height={35}
-                className="h-8 w-auto object-contain"
+                width={600}
+                height={150}
+                className="h-40 w-auto object-contain"
                 priority
               />
             </Link>

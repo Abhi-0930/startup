@@ -62,23 +62,27 @@ export default function Navbar() {
           }`}
         >
           {/* Header row (Logo + Toggle) */}
-          <div className="flex items-center justify-between h-9 md:h-8">
+          <div className="flex items-center justify-between h-14 md:h-14">
             <div className="flex items-center gap-3">
               <Link href="/" className="flex items-center gap-2 group/logo relative">
                 {/* Desktop Full Logo */}
                 <Image
-                  src="/zerogrid-logo-bg-remove.png"
+                  src="/logo-Photoroom.png"
                   alt="Code Loom Logo"
-                  width={120}
-                  height={30}
-                  className="h-7 w-auto object-contain hidden md:block"
+                  width={600}
+                  height={150}
+                  className="h-48 w-auto object-contain hidden md:block mt-4"
                   priority
                 />
                 
-                {/* Mobile Icon Logo (Stylized C) */}
-                <div className="md:hidden flex items-center justify-center w-8 h-8 rounded-lg bg-black text-white font-black text-lg shadow-lg shadow-black/20 hover:scale-105 transition-transform">
-                   C
-                </div>
+                {/* Mobile Icon Logo */}
+                <Image
+                  src="/logo-Photoroom.png"
+                  alt="Code Loom Logo"
+                  width={400}
+                  height={100}
+                  className="h-32 w-auto object-contain md:hidden mt-2"
+                />
               </Link>
             </div>
 

@@ -48,6 +48,9 @@ const satoshi = localFont({
 export const metadata: Metadata = {
   title: "Code Loom | High-Performance Design & Engineering",
   description: "Code Loom builds conversion-driven websites and marketing that attract, engage, and convert for ambitious founders.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
