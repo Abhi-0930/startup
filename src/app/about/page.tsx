@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Globe, Send, Sparkles, Check, X } from "lucide-react";
-
 const founders = [
   {
     name: "Abhishek",
