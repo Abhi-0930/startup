@@ -8,17 +8,17 @@ import { CheckCircle2, Loader2, Target, Zap, Clock, ClipboardList, Lightbulb, Us
 
 const takeaways = [
   {
-    icon: <Target className="text-zinc-900" size={20} />,
+    icon: Target,
     title: "Growth Roadmap",
     desc: "A high-level strategy to scale your product or launch your new idea."
   },
   {
-    icon: <Zap className="text-zinc-900" size={20} />,
+    icon: Zap,
     title: "Tech Stack Audit",
     desc: "Expert feedback on your existing or proposed technology choices."
   },
   {
-    icon: <Clock className="text-zinc-900" size={20} />,
+    icon: Clock,
     title: "Execution Timeline",
     desc: "Precise estimates on how long your project will take to build."
   }
@@ -26,15 +26,15 @@ const takeaways = [
 
 const prerequisites = [
   {
-    icon: <Lightbulb className="text-zinc-400 group-hover:text-zinc-900 transition-colors" size={18} />,
+    icon: Lightbulb,
     text: "A clear core concept of the problem you are solving."
   },
   {
-    icon: <UserCheck className="text-zinc-400 group-hover:text-zinc-900 transition-colors" size={18} />,
+    icon: UserCheck,
     text: "Defined target audience and their core needs."
   },
   {
-    icon: <ClipboardList className="text-zinc-400 group-hover:text-zinc-900 transition-colors" size={18} />,
+    icon: ClipboardList,
     text: "A list of current technical bottlenecks or scaling concerns."
   }
 ];
@@ -60,43 +60,62 @@ export default function BookPage() {
   useEffect(() => {
     let timer: NodeJS.Timeout;
     if (isBooked && countdown > 0) {
-      timer = setTimeout(() => setCountdown(countdown - 1), 1000);
+      timer = setInterval(() => {
+        setCountdown((prev) => prev - 1);
+      }, 1000);
     } else if (isBooked && countdown === 0) {
       router.push("/");
     }
-    return () => clearTimeout(timer);
+    return () => clearInterval(timer);
   }, [isBooked, countdown, router]);
 
-  return (
-    <main className="min-h-screen bg-white pt-24 pb-20 md:pt-40 md:pb-32 relative overflow-hidden">
-      <AnimatePresence>
-        {isBooked && (
-          <motion.div 
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            exit={{ y: -100 }}
-            className="fixed top-8 left-1/2 -translate-x-1/2 z-[100] w-full max-w-md px-4"
-          >
-            <div className="bg-zinc-900 text-white rounded-2xl p-4 shadow-2xl border border-white/10 flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
-                <CheckCircle2 className="text-emerald-400" size={20} />
-              </div>
-              <div className="flex-1">
-                <p className="font-bold text-sm">Meeting Scheduled!</p>
-                <div className="flex items-center gap-2 mt-0.5">
-                  <p className="text-xs text-zinc-400">Redirecting to home in {countdown}s</p>
-                  <Loader2 className="animate-spin text-zinc-500" size={12} />
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <div className="container mx-auto px-6 max-w-5xl relative z-20 isolate">
-        <div className="flex flex-col items-center text-center space-y-6 mb-12">
+  if (isBooked) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center p-6">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="max-w-md w-full text-center space-y-8"
+        >
+          <div className="w-24 h-24 bg-zinc-900 rounded-full flex items-center justify-center mx-auto shadow-2xl">
+            <CheckCircle2 size={48} className="text-white" />
+          </div>
           <div className="space-y-4">
-            <span className="text-black uppercase tracking-[0.3em] font-medium text-[9px] !important" style={{ color: '#000000' }}>Strategic Consultation</span>
+            <h1 className="text-4xl font-bold text-zinc-900 tracking-tight">Booking Confirmed!</h1>
+            <p className="text-lg text-zinc-500 font-medium">
+              We've sent the details to your email. Get ready to transform your product.
+            </p>
+          </div>
+          <div className="pt-8">
+            <p className="text-sm text-zinc-400 font-bold uppercase tracking-widest">
+              Redirecting in {countdown}s...
+            </p>
+            <div className="mt-4 w-full h-1 bg-zinc-100 rounded-full overflow-hidden">
+              <motion.div 
+                initial={{ width: "100%" }}
+                animate={{ width: "0%" }}
+                transition={{ duration: 5, ease: "linear" }}
+                className="h-full bg-zinc-900"
+              />
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
+
+  return (
+    <main className="min-h-screen bg-white selection:bg-black selection:text-white pt-24 pb-12 overflow-x-hidden">
+      <div className="container mx-auto max-w-7xl relative">
+        {/* Subtle background element */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-zinc-50 rounded-full blur-[120px] opacity-50 -z-10" />
+
+        <div className="flex flex-col items-center mb-12 px-6">
+          <div className="flex flex-col items-center text-center gap-6">
+            <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-500 font-bold text-[10px] uppercase tracking-widest">
+              <Target size={12} className="text-zinc-400 font-bold" />
+              <span>Free Strategy Session</span>
+            </div>
             <h1 className="text-4xl md:text-5xl font-bold text-black tracking-tight leading-[1.1] !important" style={{ color: '#000000' }}>
               Book your <span className="italic">session.</span>
             </h1>
@@ -117,7 +136,7 @@ export default function BookPage() {
                   className="flex gap-4 items-center"
                 >
                   <div className="w-10 h-10 rounded-xl bg-zinc-50 flex items-center justify-center shrink-0">
-                    {React.cloneElement(item.icon as React.ReactElement, { size: 18 })}
+                    <item.icon size={18} className="text-zinc-900" />
                   </div>
                   <div className="space-y-0.5">
                     <h4 className="font-bold text-black text-md !important" style={{ color: '#000000' }}>{item.title}</h4>
@@ -136,8 +155,10 @@ export default function BookPage() {
             <h3 className="text-[10px] font-bold text-black uppercase tracking-[0.2em] mb-6 relative z-10 !important" style={{ color: '#000000' }}>Prerequisites</h3>
             <div className="space-y-4 relative z-10">
               {prerequisites.map((item, idx) => (
-                <div key={idx} className="flex items-start gap-3">
-                  <div className="mt-0.5">{React.cloneElement(item.icon as React.ReactElement, { size: 16 })}</div>
+                <div key={idx} className="flex items-start gap-3 group">
+                  <div className="mt-0.5">
+                    <item.icon size={16} className="text-zinc-400 group-hover:text-zinc-900 transition-colors" />
+                  </div>
                   <p className="text-xs text-black font-medium leading-relaxed !important" style={{ color: '#000000' }}>
                     {item.text}
                   </p>
