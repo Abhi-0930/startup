@@ -64,8 +64,7 @@ export const projectsData: ProjectData[] = [
     heroImage: "/project1/img1.png",
     gallery: [
       { src: "/project1/img2.png", alt: "BiteBuzz Hero Section", span: "wide" },
-      { src: "/project1/img3.png", alt: "Orders Dashboard", span: "normal" },
-      { src: "/project1/img4.png", alt: "Menu Inventory Management", span: "normal" }
+      { src: "/project1/img3.png", alt: "Orders Dashboard", span: "normal" }
     ],
     clientQuote: {
       text: "Code Loom took our vision of a modern food delivery platform and turned it into a high-conversion reality. The speed of the site is unparalleled.",

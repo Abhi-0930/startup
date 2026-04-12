@@ -1,9 +1,22 @@
 "use client";
+import React, { useState, useEffect } from "react";
 import { ProjectData } from "@/data/projects";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { X } from "lucide-react";
 
 export default function ProjectShowcase({ project }: { project: ProjectData }) {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  // Close on Escape key
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelectedImage(null);
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, []);
+
   return (
     <section className="py-12 md:py-20 bg-zinc-50 overflow-hidden">
       <div className="container mx-auto px-4 md:px-12 max-w-[1400px]">
@@ -16,7 +29,8 @@ export default function ProjectShowcase({ project }: { project: ProjectData }) {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: idx * 0.1 }}
               viewport={{ once: true }}
-              className={`relative rounded-[40px] overflow-hidden border border-zinc-200/50 group ${
+              onClick={() => setSelectedImage(image.src)}
+              className={`relative rounded-[40px] overflow-hidden border border-zinc-200/50 group cursor-zoom-in ${
                 image.span === "wide" ? "md:col-span-2" : "col-span-1"
               }`}
               style={{
@@ -52,6 +66,49 @@ export default function ProjectShowcase({ project }: { project: ProjectData }) {
           </div>
         )}
       </div>
+
+      {/* Small Dialogue Image Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 md:p-12">
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedImage(null)}
+              className="absolute inset-0 bg-black/40 backdrop-blur-xl cursor-zoom-out"
+            />
+
+            {/* Modal Content */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative w-full max-w-5xl max-h-[80vh] bg-zinc-100 rounded-[32px] md:rounded-[48px] overflow-hidden shadow-2xl border border-white/20 flex items-center justify-center p-2"
+            >
+              <div className="relative w-full h-full min-h-[400px] md:min-h-[600px]">
+                <Image 
+                  src={selectedImage}
+                  alt="Selected Project Detail"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              
+              {/* Close Button */}
+              <button 
+                onClick={() => setSelectedImage(null)}
+                className="absolute top-6 right-6 w-12 h-12 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-black/70 transition-all active:scale-95 z-[110]"
+              >
+                <X size={24} />
+              </button>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

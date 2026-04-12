@@ -16,7 +16,6 @@ const projects = [
       "/project1/img1.png",
       "/project1/img2.png",
       "/project1/img3.png",
-      "/project1/img4.png",
     ],
     span: "normal",
     delay: "0s",
