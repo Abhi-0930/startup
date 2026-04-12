@@ -39,7 +39,7 @@ export default function Footer() {
                   placeholder="Enter your email..."
                   className="w-full h-14 pl-6 pr-16 rounded-full border border-zinc-200 focus:border-zinc-900 focus:ring-0 transition-all outline-none bg-zinc-50/50 hover:bg-white text-zinc-900 font-medium"
                 />
-                <button className="absolute right-1.5 top-1.5 w-11 h-11 bg-[#FF4D4D] text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-all active:scale-95 shadow-lg shadow-red-500/20">
+                <button className="absolute right-1.5 top-1.5 w-11 h-11 bg-brand-orange text-white rounded-full flex items-center justify-center hover:bg-orange-600 transition-all active:scale-95 shadow-lg shadow-orange-500/20">
                   <ArrowRight size={20} />
                 </button>
               </div>

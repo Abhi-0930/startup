@@ -99,7 +99,7 @@ export default function ContactForm() {
   return (
     <div className="p-8 md:p-12 rounded-[2.5rem] bg-white text-zinc-950 border border-zinc-100 shadow-2xl relative overflow-hidden group">
       {/* Subtle Background Glow */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-red-500/[0.03] blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-64 h-64 bg-brand-orange/[0.03] blur-[120px] pointer-events-none" />
       
       <form onSubmit={handleSubmit} className="relative z-10 space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -292,7 +292,7 @@ export default function ContactForm() {
                             setIsCurrencyOpen(false);
                           }}
                           className={`w-full px-4 py-2 text-left text-sm font-semibold transition-colors ${
-                            currency.code === curr.code ? "bg-zinc-950 text-white" : "text-zinc-600 hover:bg-zinc-50"
+                            currency.code === curr.code ? "bg-brand-orange text-white" : "text-zinc-600 hover:bg-zinc-50"
                           }`}
                         >
                           {curr.code}
@@ -304,8 +304,8 @@ export default function ContactForm() {
               </div>
 
               {/* Budget Display / Input */}
-              <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-zinc-50 border border-zinc-100 focus-within:border-zinc-900 transition-colors">
-                <span className="text-red-500 font-bold">{currency.symbol}</span>
+              <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-zinc-50 border border-zinc-100 focus-within:border-brand-orange transition-colors">
+                <span className="text-brand-orange font-bold">{currency.symbol}</span>
                 <input
                   type="text"
                   value={budget >= currency.max ? currency.labelMax.replace(currency.symbol, '') : budget.toLocaleString()}
@@ -332,7 +332,7 @@ export default function ContactForm() {
               step={currency.step}
               value={budget}
               onChange={(e) => setBudget(parseInt(e.target.value))}
-              className="w-full h-1.5 bg-zinc-100 rounded-full appearance-none cursor-pointer accent-zinc-900"
+              className="w-full h-1.5 bg-zinc-100 rounded-full appearance-none cursor-pointer accent-brand-orange"
             />
             <div className="flex justify-between mt-4">
               <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-[0.1em]">{currency.symbol}{currency.labelMin}</span>
@@ -352,7 +352,7 @@ export default function ContactForm() {
 
         <button 
           type="submit"
-          className="w-full group relative flex items-center justify-center gap-3 px-8 py-5 bg-zinc-950 text-white rounded-2xl font-black text-lg hover:bg-black transition-all shadow-xl active:scale-[0.98]"
+          className="w-full group relative flex items-center justify-center gap-3 px-8 py-5 bg-brand-orange text-white rounded-2xl font-black text-lg hover:bg-orange-600 transition-all shadow-xl active:scale-[0.98] shadow-orange-500/20"
         >
           <span>Send Inquiry</span>
           <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />

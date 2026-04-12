@@ -100,7 +100,7 @@ export default function AboutPage() {
             <div>
               <div className="sticky top-40 flex flex-col items-start gap-8">
                 <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-[#FF4D4D]" />
+                  <div className="w-2 h-2 bg-brand-orange" />
                   <span className="text-[12px] font-black uppercase tracking-[0.2em] text-zinc-900">Our Story</span>
                 </div>
                 <h2 className="text-3xl md:text-6xl font-black tracking-tighter text-zinc-900 uppercase leading-[0.9]">
@@ -291,15 +291,15 @@ export default function AboutPage() {
       <section className="pb-16 md:pb-32 px-6">
         <div className="container mx-auto max-w-4xl">
           <div className="bg-black rounded-[32px] md:rounded-[48px] p-8 md:p-20 text-center relative overflow-hidden group">
-            <div className="absolute inset-0 bg-[#FF4D4D]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-brand-orange/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="relative z-10 flex flex-col items-center gap-6 md:gap-8">
               <h2 className="text-3xl md:text-6xl font-bold tracking-tight text-white leading-tight">
                 Let's build your <br />
-                <span className="text-[#FF4D4D]">next growth engine.</span>
+                <span className="text-brand-orange">next growth engine.</span>
               </h2>
               <Link 
                 href="/book" 
-                className="flex items-center gap-4 bg-white text-black px-8 py-4 md:px-10 md:py-5 rounded-full font-bold text-lg md:text-xl hover:bg-[#FF4D4D] hover:text-white transition-all transform hover:scale-105 shadow-xl shadow-black/20"
+                className="flex items-center gap-4 bg-white text-black px-8 py-4 md:px-10 md:py-5 rounded-full font-bold text-lg md:text-xl hover:bg-brand-orange hover:text-white transition-all transform hover:scale-105 shadow-xl shadow-black/20"
               >
                 <span>Start A Project</span>
                 <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />

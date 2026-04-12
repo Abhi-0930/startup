@@ -72,7 +72,7 @@ export default function ContactPage() {
               ].map((item, idx) => (
                 <div key={idx} className="flex flex-col gap-3 p-6 rounded-3xl bg-zinc-50 border border-zinc-100 hover:border-zinc-200 transition-colors group">
                   <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-zinc-100 shadow-sm group-hover:scale-110 transition-transform">
-                    <item.icon size={20} className="text-zinc-400 group-hover:text-red-500 transition-colors" />
+                    <item.icon size={20} className="text-zinc-400 group-hover:text-brand-orange transition-colors" />
                   </div>
                   <h3 className="font-bold text-zinc-900">{item.title}</h3>
                   <p className="text-xs text-zinc-500 font-medium leading-relaxed">{item.desc}</p>

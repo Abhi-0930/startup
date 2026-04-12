@@ -94,9 +94,9 @@ function ChallengeCard({ item }: { item: ChallengeItem }) {
       <div className="px-1 text-left">
         {/* Dynamic Badge Area */}
         <div className="relative h-6 flex items-center mb-3">
-          <div className={`absolute left-0 bg-red-50 border border-red-100 px-2.5 py-0.5 rounded-full flex items-center gap-1.5 transition-all duration-500 ${isActive ? 'opacity-0 -translate-y-2' : 'opacity-100 translate-y-0'}`}>
-            <div className="w-1.5 h-1.5 rounded-full bg-red-500"></div>
-            <span className="text-red-600 text-[10px] font-bold tracking-wider uppercase">Problem</span>
+          <div className={`absolute left-0 bg-orange-50 border border-orange-100 px-2.5 py-0.5 rounded-full flex items-center gap-1.5 transition-all duration-500 ${isActive ? 'opacity-0 -translate-y-2' : 'opacity-100 translate-y-0'}`}>
+            <div className="w-1.5 h-1.5 rounded-full bg-brand-orange"></div>
+            <span className="text-brand-orange text-[10px] font-bold tracking-wider uppercase">Problem</span>
           </div>
 
           <div className={`absolute left-0 bg-emerald-50 border border-emerald-100 px-2.5 py-0.5 rounded-full flex items-center gap-1.5 transition-all duration-500 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
