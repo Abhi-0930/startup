@@ -14,6 +14,7 @@ const founders = [
     twitter: "#",
     linkedin: "#",
   },
+  
   {
     name: "Chandan",
     role: "Co-founder",
