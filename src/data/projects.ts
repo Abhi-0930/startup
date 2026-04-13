@@ -18,6 +18,8 @@ export interface ProjectData {
   liveLink?: string;
   adminLink?: string;
   userLink?: string;
+  userLinkLabel?: string;
+  adminLinkLabel?: string;
   slug: string;
   year: string;
   heroImage: string;
@@ -129,9 +131,8 @@ export const projectsData: ProjectData[] = [
       { name: "Vercel" }
     ],
     services: ["Operations Software", "Admin Dashboard", "UI/UX Design"],
-    year: "2024",
+    year: "2026",
     liveLink: "https://edrleam-operations.vercel.app/",
-    adminLink: "https://edrleam-operations.vercel.app/admin/projects",
     heroImage: "/project3/img1.png",
     gallery: [
       { src: "/project3/img2.png", alt: "Admin Dashboard Overview", span: "wide" },
@@ -139,8 +140,46 @@ export const projectsData: ProjectData[] = [
     ],
     clientQuote: {
       text: "The new dashboard transformed how we track our training projects. We now see our profit margins instantly, and our trainers have everything they need in one place.",
-      author: "Abhishek Jujjuvarapu",
+      author: "Srivardhan",
       role: "Founder, EDRLEAM"
+    }
+  },
+  {
+    id: "smart-quiz-jr",
+    slug: "smart-quiz-jr",
+    title: "Smart Quiz JR",
+    category: "AI & EdTech Platform",
+    subtitle: "Frictionless classroom gamification powered by Generative AI.",
+    description: "Smart Quiz JR is a high-performance educational platform that bridges the gap between traditional teaching and modern engagement. It leverages large language models to automate the pedagogical loop of question creation, delivery, and real-time assessment.",
+    challenge: "Teachers often spend hours manually curating quiz questions for diverse age groups. Smart Quiz JR needed to automate this process while maintaining academic rigor and providing a zero-latency competitive environment for students in a classroom setting.",
+    solution: "We engineered a dual-portal architecture featuring an 'AI Question Factory' for teachers and a high-density, real-time interface for students. By optimizing the synchronization engine for sub-100ms latency and implementing a custom sentiment-aware leaderboard, we created a truly immersive competitive learning experience.",
+    impact: [
+      { label: "Question Gen", value: "Instant" },
+      { label: "Latency", value: "<100ms" },
+      { label: "Student Eng.", value: "+85%" }
+    ],
+    stack: [
+      { name: "React" },
+      { name: "Vite" },
+      { name: "Tailwind CSS" },
+      { name: "LLM APIs" },
+      { name: "Railway" }
+    ],
+    services: ["AI Integration", "Real-time Systems", "EdTech Design"],
+    year: "2026",
+    liveLink: "https://smartquiz-jr-eight.vercel.app/",
+    adminLink: "https://smartquiz-jr-eight.vercel.app/templates/teacher_start.html",
+    userLinkLabel: "Student Portal",
+    adminLinkLabel: "Teacher Portal",
+    heroImage: "/project4/hero.png",
+    gallery: [
+      { src: "/project4/interface.png", alt: "AI Question Generator Interface", span: "wide" },
+      { src: "/project4/leaderboard.png", alt: "Real-time Classroom Leaderboard", span: "normal" }
+    ],
+    clientQuote: {
+      text: "Smart Quiz JR has completely changed how I run my classroom. The AI-generated questions are spot-on, and the students are more engaged than ever before.",
+      author: "Code Loom",
+      role: "Internal Venture"
     }
   }
 ];

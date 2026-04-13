@@ -52,7 +52,7 @@ export default function ProjectHero({ project }: { project: ProjectData }) {
               {project.category}
             </span>
             
-            <h1 className="text-5xl md:text-7xl lg:text-9xl font-black text-white tracking-tight mb-8 md:mb-10 leading-[1] max-w-5xl drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
+            <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight mb-6 md:mb-8 leading-[1.05] max-w-4xl drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
               {project.title.split(' ').map((word, i) => (
                 <span key={i} className="inline-block whitespace-nowrap">
                   {word}{i !== project.title.split(' ').length - 1 && '\u00A0'}
@@ -60,7 +60,7 @@ export default function ProjectHero({ project }: { project: ProjectData }) {
               ))}
             </h1>
             
-            <p className="text-lg md:text-2xl text-zinc-200/90 max-w-3xl mx-auto font-semibold leading-normal mb-12 md:mb-16 tracking-tight drop-shadow-md">
+            <p className="text-sm md:text-base text-zinc-300 max-w-2xl mx-auto font-medium leading-relaxed opacity-90 mb-10 md:mb-12 drop-shadow-md">
               {project.subtitle}
             </p>
 
@@ -161,7 +161,7 @@ function ProjectVisitDropdown({ project }: { project: ProjectData }) {
                 onClick={() => setIsOpen(false)}
                 className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-white/10 transition-colors text-sm font-bold text-white group/link"
               >
-                <span>User Panel</span>
+                <span>{project.userLinkLabel || "User Panel"}</span>
                 <ExternalLink size={14} className="opacity-40 group-hover/link:opacity-100 transition-opacity" />
               </a>
               <a 
@@ -171,7 +171,7 @@ function ProjectVisitDropdown({ project }: { project: ProjectData }) {
                 onClick={() => setIsOpen(false)}
                 className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-white/10 transition-colors text-sm font-bold text-white group/link"
               >
-                <span>Admin Panel</span>
+                <span>{project.adminLinkLabel || "Admin Panel"}</span>
                 <ExternalLink size={14} className="opacity-40 group-hover/link:opacity-100 transition-opacity" />
               </a>
             </div>

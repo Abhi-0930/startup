@@ -58,7 +58,7 @@ export default function ProjectOverview({ project }: { project: ProjectData }) {
 
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 uppercase tracking-widest text-sm text-zinc-400">The Summary</h2>
-              <p className="text-xl md:text-2xl text-zinc-600 leading-relaxed font-medium">
+              <p className="text-zinc-600 text-sm leading-relaxed">
                 {project.description}
               </p>
             </div>
@@ -66,13 +66,13 @@ export default function ProjectOverview({ project }: { project: ProjectData }) {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 pt-12 border-t border-zinc-100">
               <div className="space-y-6">
                 <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">The Challenge</h3>
-                <p className="text-zinc-600 leading-loose">
+                <p className="text-zinc-600 text-sm leading-loose">
                   {project.challenge}
                 </p>
               </div>
               <div className="space-y-6">
                 <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">The Strategy</h3>
-                <p className="text-zinc-600 leading-loose">
+                <p className="text-zinc-600 text-sm leading-loose">
                   {project.solution}
                 </p>
               </div>
