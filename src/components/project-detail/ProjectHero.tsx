@@ -8,65 +8,85 @@ import { ProjectData } from "@/data/projects";
 export default function ProjectHero({ project }: { project: ProjectData }) {
   return (
     <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-neutral-900">
-      {/* Background Image with Parallax & Contrast */}
-      <motion.div 
-        initial={{ scale: 1.1, opacity: 0 }}
-        animate={{ scale: 1, opacity: 0.6 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-        className="absolute inset-0 z-0"
-      >
-        <Image
-          src={project.heroImage}
-          alt={project.title}
-          fill
-          className="object-cover object-top"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/60 via-transparent to-neutral-900" />
-      </motion.div>
-
-      {/* Content Overlay */}
-      <div className="container mx-auto px-4 relative z-10 text-center">
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="flex flex-col items-center"
+      {/* Background Image with Deep Parallax & Cinematic Blur Overlay */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <motion.div 
+          initial={{ scale: 1.2, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.5 }}
+          transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute inset-0"
         >
-          <span className="text-zinc-400 uppercase tracking-[0.3em] font-bold text-sm mb-6">
-            {project.category}
-          </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-6 max-w-4xl leading-[1.05]">
-            {project.title}
-          </h1>
-          <p className="text-base md:text-lg text-zinc-300 max-w-2xl mx-auto font-medium leading-relaxed opacity-80 mb-10">
-            {project.subtitle}
-          </p>
+          <Image
+            src={project.heroImage}
+            alt={project.title}
+            fill
+            className="object-cover object-top filter contrast-[1.1] saturate-[0.9]"
+            priority
+          />
+        </motion.div>
+        
+        {/* The 'Lens' - A masked blur that clarifies the center for text without hard edges */}
+        <div 
+          className="absolute inset-0 z-10 backdrop-blur-3xl"
+          style={{
+            maskImage: 'radial-gradient(circle at center, black 0%, transparent 60%)',
+            WebkitMaskImage: 'radial-gradient(circle at center, black 0%, transparent 60%)'
+          }}
+        />
 
-          <div className="flex flex-col items-center justify-center gap-4 mb-10">
-            {(project.adminLink && (project.userLink || project.liveLink)) ? (
-              <ProjectVisitDropdown project={project} />
-            ) : project.liveLink && (
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-              >
+        {/* Cinematic Vignette & Deep Gradient */}
+        <div className="absolute inset-0 bg-neutral-950/20 z-[5]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-neutral-950 via-transparent to-neutral-950 z-[15]" />
+      </div>
+
+      {/* Content Overlay - Agency Premium Typography */}
+      <div className="container mx-auto px-4 relative z-30">
+        <div className="flex flex-col items-center text-center">
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            className="flex flex-col items-center"
+          >
+            <span className="text-zinc-400 uppercase tracking-[0.4em] font-extrabold text-[10px] md:text-xs mb-8 md:mb-10 block animate-pulse">
+              {project.category}
+            </span>
+            
+            <h1 className="text-5xl md:text-7xl lg:text-9xl font-black text-white tracking-tight mb-8 md:mb-10 leading-[1] max-w-5xl drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
+              {project.title.split(' ').map((word, i) => (
+                <span key={i} className="inline-block whitespace-nowrap">
+                  {word}{i !== project.title.split(' ').length - 1 && '\u00A0'}
+                </span>
+              ))}
+            </h1>
+            
+            <p className="text-lg md:text-2xl text-zinc-200/90 max-w-3xl mx-auto font-semibold leading-normal mb-12 md:mb-16 tracking-tight drop-shadow-md">
+              {project.subtitle}
+            </p>
+
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+            >
+              {(project.adminLink && (project.userLink || project.liveLink)) ? (
+                <ProjectVisitDropdown project={project} />
+              ) : project.liveLink && (
                 <a 
                   href={project.liveLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-4 bg-white text-black px-6 py-3 rounded-full font-bold text-base hover:bg-zinc-200 transition-all active:scale-95 shadow-2xl shadow-white/10"
+                  className="group relative inline-flex items-center gap-6 bg-white text-black px-10 py-5 rounded-full font-black text-lg transition-all hover:bg-zinc-100 hover:scale-105 active:scale-95 shadow-[0_20px_50px_rgba(255,255,255,0.1)] overflow-hidden"
                 >
-                  <span>Visit Site</span>
-                  <div className="w-7 h-7 rounded-full border border-black/10 flex items-center justify-center transition-transform group-hover:translate-x-1">
-                    <ArrowDown size={14} className="-rotate-[135deg]" />
+                  <span className="relative z-10">Visit Project</span>
+                  <div className="relative z-10 w-8 h-8 rounded-full border border-black/10 flex items-center justify-center transition-transform group-hover:rotate-45">
+                    <ArrowDown size={18} className="-rotate-[135deg]" />
                   </div>
                 </a>
-              </motion.div>
-            )}
-          </div>
-        </motion.div>
+              )}
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Scroll Indicator */}
