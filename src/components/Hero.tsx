@@ -38,7 +38,7 @@ export default function Hero() {
   }, [imagesLoaded, minTimeElapsed]);
 
   return (
-    <section className="relative pt-52 pb-0 flex flex-col min-h-0 overflow-hidden">
+    <section className="relative pt-40 pb-0 flex flex-col min-h-0 overflow-hidden">
       {/* Premium Cyberpunk Backdrop */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Soft Neon Glows */}
@@ -69,18 +69,18 @@ export default function Hero() {
               className="flex flex-col items-center"
             >
               <div className="mb-6 space-y-3">
-                <Skeleton className="h-10 md:h-14 w-[280px] sm:w-[450px] md:w-[700px] mx-auto rounded-xl" />
-                <Skeleton className="h-10 md:h-14 w-[200px] sm:w-[350px] md:w-[500px] mx-auto rounded-xl" />
+                <Skeleton className="h-10 md:h-12 w-[280px] sm:w-[450px] md:w-[600px] mx-auto rounded-xl" />
+                <Skeleton className="h-10 md:h-12 w-[200px] sm:w-[350px] md:w-[400px] mx-auto rounded-xl" />
               </div>
 
-              <div className="mb-10 space-y-2">
+              <div className="mb-8 space-y-2">
                 <Skeleton className="h-4 w-[250px] sm:w-[500px] mx-auto" />
                 <Skeleton className="h-4 w-[200px] sm:w-[400px] mx-auto" />
               </div>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-                <Skeleton className="h-[56px] w-[240px] rounded-full" />
-                <Skeleton className="h-[56px] w-[180px] rounded-full" />
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+                <Skeleton className="h-[52px] w-[220px] rounded-full" />
+                <Skeleton className="h-[52px] w-[160px] rounded-full" />
               </div>
 
               <div className="flex flex-col items-center gap-3">
@@ -111,34 +111,34 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
             >
-              <h1 className="text-4xl md:text-7xl font-bold tracking-tight text-[#09090b] mb-6 max-w-5xl mx-auto leading-[1.05] font-heading">
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[#09090b] mb-4 max-w-4xl mx-auto leading-[1.05] font-heading">
                 Web & Brand Design <br /> For Ambitious Founders
               </h1>
 
-              <p className="text-lg md:text-xl text-zinc-500 mb-10 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-base md:text-base text-zinc-500 mb-8 max-w-2xl mx-auto leading-relaxed">
                 We build conversion-driven websites and marketing that attract, engage, and convert.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
                 <Link 
                   href="/book" 
-                  className="group/btn h-[52px] sm:h-[60px] flex items-center bg-[#09090b] text-white pl-7 pr-2 py-2 sm:pl-8 sm:pr-2.5 sm:py-2.5 rounded-full font-bold text-[16px] sm:text-[18px] hover:bg-black transition-all w-full sm:w-auto justify-center sm:justify-start ring-offset-4 hover:ring-2 ring-black/5 relative overflow-hidden group"
+                  className="group/btn h-[52px] sm:h-[56px] flex items-center bg-[#09090b] text-white pl-7 pr-2 py-2 sm:pl-8 sm:pr-2.5 sm:py-2.5 rounded-full font-bold text-[15px] sm:text-[16px] hover:bg-black transition-all w-full sm:w-auto justify-center sm:justify-start ring-offset-4 hover:ring-2 ring-black/5 relative overflow-hidden group"
                 >
                   {/* Subtle Inner Glow on Hover */}
                   <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-cyan-500/10 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                   
                   <div className="flex items-center gap-4 relative z-10">
                     <span>Book a 30-Min call</span>
-                    <div className="bg-white/10 w-9 h-9 sm:w-11 sm:h-11 rounded-full transition-all flex items-center justify-center group-hover/btn:w-[48px] sm:group-hover/btn:w-[60px] group-hover/btn:bg-white/20">
-                      <ArrowRight size={22} className="transition-transform duration-300 group-hover/btn:translate-x-1" />
+                    <div className="bg-white/10 w-8 h-8 sm:w-10 sm:h-10 rounded-full transition-all flex items-center justify-center group-hover/btn:w-[42px] sm:group-hover/btn:w-[50px] group-hover/btn:bg-white/20">
+                      <ArrowRight size={20} className="transition-transform duration-300 group-hover/btn:translate-x-1" />
                     </div>
                   </div>
                 </Link>
                 
-                <Link href="#work" className="group/btn h-[52px] sm:h-[60px] w-full sm:w-auto flex items-center justify-center gap-4 px-8 rounded-full bg-white border border-zinc-200 text-zinc-900 font-bold text-[16px] sm:text-[18px] hover:bg-zinc-50 hover:border-zinc-300 transition-all shadow-sm">
+                <Link href="#work" className="group/btn h-[52px] sm:h-[56px] w-full sm:w-auto flex items-center justify-center gap-4 px-6 rounded-full bg-white border border-zinc-200 text-zinc-900 font-bold text-[15px] sm:text-[16px] hover:bg-zinc-50 hover:border-zinc-300 transition-all shadow-sm">
                   <span>View Projects</span>
-                  <div className="bg-zinc-100 w-8 h-8 rounded-full flex items-center justify-center group-hover/btn:bg-zinc-200 transition-colors">
-                     <ArrowRight size={18} className="transition-transform duration-300 group-hover/btn:-rotate-45" />
+                  <div className="bg-zinc-100 w-7 h-7 rounded-full flex items-center justify-center group-hover/btn:bg-zinc-200 transition-colors">
+                     <ArrowRight size={16} className="transition-transform duration-300 group-hover/btn:-rotate-45" />
                   </div>
                 </Link>
               </div>

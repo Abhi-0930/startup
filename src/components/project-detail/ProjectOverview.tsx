@@ -148,7 +148,7 @@ export default function ProjectOverview({ project }: { project: ProjectData }) {
                   <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">Launch Year</span>
                   <span className="text-sm font-bold text-zinc-900">{project.year}</span>
                 </div>
-                {(project.adminLink && project.userLink) ? (
+                {(project.adminLink && (project.userLink || project.liveLink)) ? (
                   <div 
                     ref={menuRef}
                     className="relative"
@@ -175,12 +175,12 @@ export default function ProjectOverview({ project }: { project: ProjectData }) {
                         >
                           <div className="bg-white rounded-2xl shadow-2xl border border-zinc-100 p-2 min-w-[200px]">
                             <Link 
-                              href={project.userLink}
+                              href={(project.userLink || project.liveLink) as string}
                               target="_blank"
                               onClick={() => setIsVisitOpen(false)}
                               className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-zinc-50 transition-colors text-sm font-bold text-zinc-900 group/link"
                             >
-                              <span>Customer Panel</span>
+                              <span>User Panel</span>
                               <ExternalLink size={12} className="opacity-40 group-hover/link:opacity-100 transition-opacity" />
                             </Link>
                             <Link 

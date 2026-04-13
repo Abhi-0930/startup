@@ -53,15 +53,15 @@ function Counter({ target, suffix }: { target: number; suffix: string }) {
 export default function Stats() {
   return (
     <section className="py-8 md:py-12 -mt-12 md:-mt-20 bg-white">
-      <div className="container mx-auto px-6 max-w-[1400px]">
+      <div className="container mx-auto px-6 max-w-[900px]">
         
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-16 md:mb-24">
+        <div className="flex flex-col items-center text-center mb-16 md:mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[2.5rem] md:text-[3.5rem] font-bold tracking-tighter text-zinc-900 leading-[1.1]"
+            className="text-3xl md:text-3xl font-bold tracking-tighter text-zinc-900 leading-[1.1]"
           >
             Code Loom makes it simple, <br />
             <span className="text-zinc-400">and delivers results.</span>
@@ -69,7 +69,7 @@ export default function Stats() {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-6">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -77,14 +77,14 @@ export default function Stats() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-zinc-50/50 border border-zinc-100 p-8 md:p-12 rounded-[2.5rem] hover:bg-white hover:shadow-[0_40px_100px_rgba(0,0,0,0.04)] transition-all duration-500 group"
+              className="bg-zinc-50/50 border border-zinc-100 p-8 md:p-8 rounded-[2rem] hover:bg-white hover:shadow-[0_40px_100px_rgba(0,0,0,0.04)] transition-all duration-500 group"
             >
               <div className="space-y-6">
-                <h3 className="text-5xl md:text-6xl font-black text-zinc-900 tracking-tighter transition-transform duration-500 group-hover:scale-110 origin-left">
+                <h3 className="text-4xl md:text-5xl font-black text-zinc-900 tracking-tighter transition-transform duration-500 group-hover:scale-110 origin-left">
                   <Counter target={stat.target} suffix={stat.suffix} />
                 </h3>
                 <div className="space-y-3">
-                  <p className="text-xl md:text-2xl font-bold text-zinc-800 tracking-tight">
+                  <p className="text-lg md:text-xl font-bold text-zinc-800 tracking-tight">
                     {stat.label}
                   </p>
                   <p className="text-zinc-500 text-sm md:text-base font-medium leading-relaxed">

@@ -33,7 +33,7 @@ export default function FAQ() {
 
   return (
     <section className="py-12 md:py-20 -mt-28 md:-mt-32 bg-zinc-50 overflow-hidden">
-      <div className="container mx-auto px-6 max-w-4xl relative">
+      <div className="container mx-auto px-6 max-w-3xl relative">
         
         {/* Header Area with Avatar */}
         <div className="flex flex-col md:flex-row items-center gap-6 mb-20 md:mb-32">
@@ -41,7 +41,7 @@ export default function FAQ() {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="relative w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white shadow-xl flex-shrink-0"
+            className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-4 border-white shadow-xl flex-shrink-0"
           >
             <Image 
               src="/avatars/avatar-1.png" 
@@ -55,7 +55,7 @@ export default function FAQ() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-bold text-zinc-900 tracking-tight mb-4"
+              className="text-2xl md:text-3xl font-bold text-zinc-900 tracking-tight mb-3"
             >
               Frequently Asked Questions
             </motion.h2>
@@ -64,7 +64,7 @@ export default function FAQ() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-zinc-500 text-lg md:text-xl font-medium max-w-xl"
+              className="text-zinc-500 text-base md:text-lg font-medium max-w-xl"
             >
               Code Loom is powered by a passionate team of experts who care about your success.
             </motion.p>
@@ -88,10 +88,10 @@ export default function FAQ() {
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
                   className={`relative group flex items-center gap-4 px-6 py-4 md:px-8 md:py-6 rounded-[24px] md:rounded-[32px] border transition-all duration-300 ${isOpen ? 'bg-zinc-900 text-white border-zinc-900 shadow-xl' : 'bg-white text-zinc-900 border-zinc-200 hover:border-zinc-300 shadow-sm'}`}
                 >
-                  <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center border transition-colors ${isOpen ? 'bg-white/10 border-white/20 text-white' : 'bg-zinc-50 border-zinc-100 text-zinc-400'}`}>
-                    {isOpen ? <Minus size={20} /> : <Plus size={20} />}
+                  <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center border transition-colors ${isOpen ? 'bg-white/10 border-white/20 text-white' : 'bg-zinc-50 border-zinc-100 text-zinc-400'}`}>
+                    {isOpen ? <Minus size={16} /> : <Plus size={16} />}
                   </div>
-                  <span className="text-lg md:text-xl font-bold tracking-tight text-left">
+                  <span className="text-base md:text-lg font-bold tracking-tight text-left">
                     {faq.question}
                   </span>
                 </button>
@@ -105,7 +105,7 @@ export default function FAQ() {
                       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                       className="overflow-hidden w-full max-w-2xl mt-4 self-start"
                     >
-                      <div className="bg-white p-8 rounded-[24px] md:rounded-[32px] border border-zinc-200 shadow-sm text-zinc-600 text-base md:text-lg leading-relaxed font-medium">
+                      <div className="bg-white p-6 md:p-7 rounded-[24px] md:rounded-[32px] border border-zinc-200 shadow-sm text-zinc-600 text-sm md:text-base leading-relaxed font-medium">
                         {faq.answer}
                       </div>
                     </motion.div>

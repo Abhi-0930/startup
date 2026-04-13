@@ -5,63 +5,20 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { motion, AnimatePresence } from "framer-motion";
+import { projectsData } from "@/data/projects";
 
-const projects = [
-  {
-    id: "01",
-    slug: "bitebuzz-delivery",
-    title: "BiteBuzz Delivery",
-    category: "Full-Stack Development",
-    images: [
-      "/project1/img1.png",
-      "/project1/img2.png",
-      "/project1/img3.png",
-    ],
-    span: "normal",
-    delay: "0s",
-  },
-  {
-    id: "empathy-ai",
-    slug: "empathy-ai",
-    title: "Empathy AI",
-    category: "AI & Full-Stack Development",
-    images: [
-      "/project2/img1.png",
-      "/project2/img2.png",
-      "/project2/img3.png",
-      "/project2/img4.png",
-    ],
-    span: "normal",
-    delay: "-5s",
-  },
-  {
-    id: "03",
-    slug: "orbital-bank",
-    title: "Orbital Bank",
-    category: "Motion & 3D Design",
-    images: [
-      "/project3/uqJwE4mTSKeNtBAX8YU8vy1hkVs.png_width=2400&height=1600.png",
-      "/project3/1KCYDj61X5Ycm5Vp5kluuhMho.png_width=2400&height=1600.png",
-      "/project3/TwCiV5MUt16Q38ftZYKlEhNhbJI.png_width=1984&height=2400.png",
-    ],
-    span: "wide",
-    delay: "-10s",
-  },
-];
-
-function ProjectCard({ project }: { project: typeof projects[0] }) {
+function ProjectCard({ project }: { project: any }) {
   const [currentImg, setCurrentImg] = useState(0);
+  
+  // Map heroImage + gallery images for the carousel
+  const carouselImages = [project.heroImage, ...project.gallery.map((g: any) => g.src)];
 
   useEffect(() => {
-    const rawId = parseInt(project.id);
-    const timeout = setTimeout(() => {
-      const timer = setInterval(() => {
-        setCurrentImg((prev) => (prev + 1) % project.images.length);
-      }, 3500);
-      return () => clearInterval(timer);
-    }, rawId * 500);
-    return () => clearTimeout(timeout);
-  }, [project.images.length, project.id]);
+    const timer = setInterval(() => {
+      setCurrentImg((prev) => (prev + 1) % carouselImages.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [carouselImages.length]);
 
   return (
     <div className={`flex flex-col gap-6 ${project.span === 'wide' ? 'md:col-span-2' : 'col-span-1'}`}>
@@ -72,9 +29,9 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
           aspectRatio: project.span === 'wide' ? '21/9' : '4/3' 
         }}
       >
-        {project.images.map((src, idx) => {
+        {carouselImages.map((src, idx) => {
           const isCurrent = idx === currentImg;
-          const isPrev = idx === (currentImg - 1 + project.images.length) % project.images.length;
+          const isPrev = idx === (currentImg - 1 + carouselImages.length) % carouselImages.length;
           const isActive = isCurrent || isPrev;
 
           return (
@@ -97,12 +54,12 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
 
       <div className="flex items-center justify-between px-2">
         <div className="flex flex-col gap-1">
-          <h3 className="text-[22px] font-semibold tracking-tight text-zinc-900">{project.title}</h3>
+          <h3 className="text-[17px] md:text-[18px] font-semibold tracking-tight text-zinc-900">{project.title}</h3>
           <span className="text-[14px] font-medium text-zinc-500">{project.category}</span>
         </div>
         
         <Link 
-          href={`/projects/${project.id}`}
+          href={`/projects/${project.slug}`}
           className="group w-12 h-12 rounded-full bg-zinc-100 border border-zinc-200 flex items-center justify-center transition-all duration-300 hover:w-[58px] overflow-hidden"
         >
           <ArrowRight 
@@ -120,7 +77,7 @@ export default function Projects() {
   const [imagesLoaded, setImagesLoaded] = useState(0);
   const [minTimeElapsed, setMinTimeElapsed] = useState(false);
   const imgRefs = useRef<(HTMLImageElement | null)[]>([]);
-  const totalImages = projects.length;
+  const totalImages = projectsData.length;
 
   useEffect(() => {
     // 200ms minimum threshold to prevent flicker
@@ -141,10 +98,10 @@ export default function Projects() {
     if (imagesLoaded >= totalImages && minTimeElapsed) {
       setIsLoading(false);
     }
-  }, [imagesLoaded, minTimeElapsed]);
+  }, [imagesLoaded, minTimeElapsed, totalImages]);
 
   return (
-    <section id="work" className="pb-24 md:pb-32 pt-8 md:pt-12 px-4 md:px-8 max-w-[1400px] mx-auto min-h-[600px] -mt-10 md:-mt-16 relative z-20">
+    <section id="work" className="pb-24 md:pb-32 pt-8 md:pt-12 px-4 md:px-8 max-w-[950px] mx-auto min-h-[600px] -mt-10 md:-mt-16 relative z-20">
       <div className="flex flex-col items-center justify-center mb-16 text-center">
         <AnimatePresence mode="wait">
           {isLoading ? (
@@ -155,8 +112,8 @@ export default function Projects() {
               exit={{ opacity: 0 }}
               className="flex flex-col items-center justify-center w-full space-y-4"
             >
-              <Skeleton className="h-10 md:h-12 w-64 md:w-96" />
-              <Skeleton className="h-6 w-48 md:w-64" />
+              <Skeleton className="h-8 md:h-10 w-64 md:w-96" />
+              <Skeleton className="h-4 w-48 md:w-64" />
             </motion.div>
           ) : (
             <motion.div 
@@ -165,10 +122,10 @@ export default function Projects() {
               animate={{ opacity: 1, y: 0 }}
               className="flex flex-col items-center justify-center w-full space-y-4"
             >
-              <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-zinc-900">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900">
                 Selected Work
               </h2>
-              <p className="text-xl md:text-2xl text-zinc-400 font-medium max-w-2xl leading-relaxed">
+              <p className="text-lg md:text-xl text-zinc-400 font-medium max-w-2xl leading-relaxed">
                 Words Are Easy. Here Is Our Work.
               </p>
             </motion.div>
@@ -185,11 +142,11 @@ export default function Projects() {
             exit={{ opacity: 0 }}
             className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12"
           >
-            {[1, 2, 3].map((i) => (
-              <div key={i} className={`space-y-6 ${i === projects.length ? 'md:col-span-2' : ''}`}>
+            {projectsData.map((project, i) => (
+              <div key={project.id} className={`space-y-6 ${i === projectsData.length - 1 ? 'md:col-span-2' : ''}`}>
                 <Skeleton 
                   className="w-full rounded-[32px]" 
-                  style={{ aspectRatio: i === projects.length ? '21/9' : '4/3' }}
+                  style={{ aspectRatio: i === projectsData.length - 1 ? '21/9' : '4/3' }}
                 />
                 <div className="flex items-center justify-between px-2">
                   <div className="space-y-2">
@@ -203,11 +160,11 @@ export default function Projects() {
 
             {/* Hidden preloader for project images */}
             <div className="hidden" aria-hidden="true">
-              {projects.map((project, index) => (
+              {projectsData.map((project, index) => (
                 <img 
                   key={`pre-${project.id}`}
                   ref={(el) => { imgRefs.current[index] = el; }}
-                  src={project.images[0]} 
+                  src={project.heroImage} 
                   onLoad={() => setImagesLoaded(prev => prev + 1)} 
                 />
               ))}
@@ -221,7 +178,7 @@ export default function Projects() {
             transition={{ duration: 0.5 }}
             className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12"
           >
-            {projects.map((project) => (
+            {projectsData.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </motion.div>

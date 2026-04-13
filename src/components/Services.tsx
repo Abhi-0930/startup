@@ -90,8 +90,8 @@ export default function Services() {
   }, [mediaLoaded, minTimeElapsed]);
 
   return (
-    <section className="pt-16 pb-16 md:pt-20 md:pb-24 -mt-8 md:-mt-14 bg-white overflow-hidden">
-      <div className="max-w-[1300px] mx-auto px-6 md:px-12">
+    <section className="pt-12 pb-12 md:pt-16 md:pb-20 -mt-8 md:-mt-14 bg-white overflow-hidden">
+      <div className="max-w-[1000px] mx-auto px-6 md:px-12">
         <AnimatePresence mode="wait">
           {isLoading ? (
             <motion.div 
@@ -106,8 +106,8 @@ export default function Services() {
                 <div className="max-w-3xl space-y-6">
                   <Skeleton className="h-4 w-24" />
                   <div className="space-y-4">
-                    <Skeleton className="h-12 md:h-16 w-[280px] md:w-[450px]" />
-                    <Skeleton className="h-12 md:h-16 w-[200px] md:w-[350px]" />
+                    <Skeleton className="h-10 md:h-12 w-[280px] md:w-[450px]" />
+                    <Skeleton className="h-10 md:h-12 w-[200px] md:w-[350px]" />
                   </div>
                 </div>
                 <Skeleton className="h-14 w-[240px] rounded-full" />
@@ -139,21 +139,21 @@ export default function Services() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 md:mb-28 gap-10">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-10">
                 <div className="max-w-3xl">
-                  <div className="flex items-center gap-3 mb-8">
-                    <span className="text-[13px] font-bold text-neutral-500 tracking-[0.2em] uppercase">Services</span>
+                  <div className="flex items-center gap-3 mb-6">
+                    <span className="text-[10px] md:text-[11px] font-bold text-neutral-500 tracking-[0.2em] uppercase">Services</span>
                   </div>
-                  <h2 className="text-[2.8rem] md:text-[4rem] lg:text-[5rem] font-bold leading-[1.05] tracking-tighter text-neutral-900">
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-[1.05] tracking-tighter text-neutral-900">
                     From idea to scale. <br />
                     <span className="text-neutral-400">We master our craft.</span>
                   </h2>
                 </div>
                 
-                <Link href="/book" className="group flex items-center gap-4 bg-zinc-950 px-8 py-4 rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg">
-                  <span className="font-medium text-white tracking-tight">Start A Project</span>
-                  <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-white/20">
-                    <ArrowRight size={20} className="text-white transition-transform duration-300 group-hover:translate-x-1" />
+                <Link href="/book" className="group flex items-center gap-4 bg-zinc-950 px-6 py-3 rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg">
+                  <span className="text-sm font-medium text-white tracking-tight">Start A Project</span>
+                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-white/20">
+                    <ArrowRight size={18} className="text-white transition-transform duration-300 group-hover:translate-x-1" />
                   </div>
                 </Link>
               </div>
@@ -165,25 +165,25 @@ export default function Services() {
                       key={service.id}
                       onMouseEnter={() => setActiveTab(service.id)}
                       onMouseLeave={() => setActiveTab(null)}
-                      className={`group transition-all duration-500 rounded-[32px] overflow-hidden cursor-pointer ${
+                      className={`group transition-all duration-500 rounded-[24px] overflow-hidden cursor-pointer ${
                         activeTab === service.id 
-                          ? "bg-white border border-neutral-100 shadow-[0_20px_50px_rgba(0,0,0,0.05)] p-7" 
-                          : "bg-white border border-transparent hover:border-neutral-100 p-5"
+                          ? "bg-white border border-neutral-100 shadow-[0_20px_50px_rgba(0,0,0,0.05)] p-4 md:p-5" 
+                          : "bg-white border border-transparent hover:border-neutral-100 p-3"
                       }`}
                     >
                       <button 
                         onClick={() => setActiveTab(activeTab === service.id ? null : service.id)}
                         className="w-full flex items-center justify-between text-left"
                       >
-                        <div className="flex items-center gap-5">
-                          <div className={`w-12 h-12 rounded-2xl flex items-center justify-center border transition-all duration-500 sm:w-14 sm:h-14 ${
+                        <div className="flex items-center gap-4">
+                          <div className={`w-10 h-10 rounded-xl flex items-center justify-center border transition-all duration-500 sm:w-12 sm:h-12 ${
                             activeTab === service.id 
                               ? "bg-black border-black text-white" 
                               : "bg-white border-neutral-100 text-neutral-400 group-hover:border-neutral-200 group-hover:text-black"
                           }`}>
-                            {service.icon}
+                            <div className="scale-90">{service.icon}</div>
                           </div>
-                          <span className="text-[20px] md:text-[24px] font-normal tracking-tight text-neutral-900 transition-colors duration-500">
+                          <span className="text-[16px] md:text-[18px] font-normal tracking-tight text-neutral-900 transition-colors duration-500">
                             {service.title}
                           </span>
                         </div>
@@ -201,8 +201,8 @@ export default function Services() {
                             transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
                             className="overflow-hidden"
                           >
-                            <div className="pt-6 pl-16 md:pl-19 pr-4">
-                              <p className="text-neutral-600 text-[16px] md:text-[18px] leading-relaxed max-w-lg font-medium">
+                            <div className="pt-2 pl-14 md:pl-16 pr-4">
+                              <p className="text-neutral-600 text-[13px] md:text-[14px] leading-relaxed max-w-lg font-medium">
                                 {service.description}
                               </p>
                             </div>

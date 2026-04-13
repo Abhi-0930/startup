@@ -14,11 +14,11 @@ import {
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-white pt-32 pb-24">
-      <div className="container mx-auto px-6 max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+      <div className="container mx-auto px-6 max-w-6xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-16">
           
           {/* Left Side: Brand Content */}
-          <div className="flex flex-col gap-10">
+          <div className="flex flex-col gap-8">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -30,13 +30,13 @@ export default function ContactPage() {
                 <span className="text-[11px] font-bold text-zinc-600 uppercase tracking-widest">Always Available</span>
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-zinc-950 tracking-tight leading-[0.95]">
+              <h1 className="text-3xl md:text-3xl lg:text-4xl font-black text-zinc-950 tracking-tight leading-[0.95]">
                 Let's build <br />
                 <span className="text-zinc-400 font-serif italic font-normal">the future</span> <br />
                 together.
               </h1>
               
-              <p className="text-lg text-zinc-500 font-medium max-w-md leading-relaxed">
+              <p className="text-base md:text-lg text-zinc-500 font-medium max-w-md leading-relaxed">
                 Have a project in mind? We're ready to engineer it for maximum impact and performance.
               </p>
             </motion.div>

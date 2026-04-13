@@ -61,13 +61,13 @@ function ChallengeCard({ item }: { item: ChallengeItem }) {
 
   return (
     <div 
-      className="group relative w-full bg-white rounded-[24px] md:rounded-[28px] p-4 pb-6 md:p-5 md:pb-7 overflow-hidden cursor-pointer shadow-[0_8px_30px_rgb(0,0,0,0.03)] border border-neutral-100 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] transition-all duration-500"
+      className="group relative w-full bg-white rounded-[20px] md:rounded-[24px] p-3 pb-4 md:p-4 md:pb-5 overflow-hidden cursor-pointer shadow-[0_8px_30px_rgb(0,0,0,0.03)] border border-neutral-100 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] transition-all duration-500"
       onMouseEnter={() => setIsActive(true)}
       onMouseLeave={() => setIsActive(false)}
       onClick={() => setIsActive(!isActive)}
     >
       {/* Media Container (Top) */}
-      <div className="relative w-full aspect-[1.4/1] rounded-[18px] md:rounded-[20px] overflow-hidden bg-neutral-50 border border-neutral-100/50 mb-7">
+      <div className="relative w-full aspect-[1.4/1] rounded-[14px] md:rounded-[16px] overflow-hidden bg-neutral-50 border border-neutral-100/50 mb-4">
         {isVideo ? (
           <video
             ref={videoRef}
@@ -93,7 +93,7 @@ function ChallengeCard({ item }: { item: ChallengeItem }) {
       {/* Content Container (Bottom) */}
       <div className="px-1 text-left">
         {/* Dynamic Badge Area */}
-        <div className="relative h-6 flex items-center mb-3">
+        <div className="relative h-5 flex items-center mb-2">
           <div className={`absolute left-0 bg-orange-50 border border-orange-100 px-2.5 py-0.5 rounded-full flex items-center gap-1.5 transition-all duration-500 ${isActive ? 'opacity-0 -translate-y-2' : 'opacity-100 translate-y-0'}`}>
             <div className="w-1.5 h-1.5 rounded-full bg-brand-orange"></div>
             <span className="text-brand-orange text-[10px] font-bold tracking-wider uppercase">Problem</span>
@@ -106,20 +106,20 @@ function ChallengeCard({ item }: { item: ChallengeItem }) {
         </div>
 
         {/* Challenge Header */}
-        <h3 className="text-[#0a0a0b] text-[18px] md:text-[21px] font-bold leading-tight mb-2.5 tracking-tight group-hover:text-black transition-colors text-left">
+        <h3 className="text-[#0a0a0b] text-[16px] md:text-[18px] font-bold leading-tight mb-1.5 tracking-tight group-hover:text-black transition-colors text-left">
           {item.challenge}
         </h3>
         
         {/* Text Reveal Logic: Problem vs Solution */}
-        <div className="relative min-h-[50px] md:min-h-[60px] text-left">
+        <div className="relative min-h-[40px] md:min-h-[50px] text-left">
           {/* Problem Text */}
-          <p className={`text-zinc-500 text-[14px] md:text-[15px] leading-relaxed transition-all duration-500 absolute inset-0 text-left ${isActive ? 'opacity-0 invisible -translate-x-4' : 'opacity-100 visible translate-x-0'}`}>
+          <p className={`text-zinc-500 text-[13px] md:text-[14px] leading-relaxed transition-all duration-500 absolute inset-0 text-left ${isActive ? 'opacity-0 invisible -translate-x-4' : 'opacity-100 visible translate-x-0'}`}>
             {item.description}
           </p>
           
           {/* Solution Text */}
           <div className={`transition-all duration-500 absolute inset-0 text-left ${isActive ? 'opacity-100 visible translate-x-0' : 'opacity-0 invisible translate-x-4'}`}>
-            <p className="text-[#0a0a0b] text-[14px] md:text-[15px] leading-relaxed font-normal text-left">
+            <p className="text-[#0a0a0b] text-[13px] md:text-[14px] leading-relaxed font-normal text-left">
               {item.solution}
             </p>
           </div>
@@ -155,7 +155,7 @@ export default function Challenges() {
   }, [videoLoaded, minTimeElapsed]);
 
   return (
-    <section id="challenges" className="pt-4 pb-8 md:pt-6 md:pb-12 -mt-12 md:-mt-20 max-w-[1000px] mx-auto px-6">
+    <section id="challenges" className="pt-4 pb-8 md:pt-6 md:pb-12 -mt-12 md:-mt-20 max-w-[850px] mx-auto px-6">
       <AnimatePresence mode="wait">
         {isLoading ? (
           <motion.div 
@@ -166,17 +166,17 @@ export default function Challenges() {
             className="w-full"
           >
             {/* Header Skeleton */}
-            <div className="mb-14 md:mb-20 text-center space-y-4">
-              <Skeleton className="h-12 md:h-20 w-[240px] md:w-[400px] mx-auto" />
-              <Skeleton className="h-12 md:h-20 w-[180px] md:w-[300px] mx-auto" />
+            <div className="mb-14 md:mb-16 text-center space-y-4">
+              <Skeleton className="h-10 md:h-12 w-[240px] md:w-[400px] mx-auto" />
+              <Skeleton className="h-10 md:h-12 w-[180px] md:w-[300px] mx-auto" />
             </div>
 
             {/* Grid Skeleton */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="bg-white rounded-[28px] p-5 space-y-6 shadow-sm border border-neutral-100">
-                  <Skeleton className="aspect-[1.4/1] w-full rounded-[20px]" />
-                  <div className="space-y-4 px-1">
+                <div key={i} className="bg-white rounded-[24px] p-4 space-y-5 shadow-sm border border-neutral-100">
+                  <Skeleton className="aspect-[1.5/1] w-full rounded-[18px]" />
+                  <div className="space-y-3 px-1">
                     <Skeleton className="h-4 w-20 rounded-full" />
                     <Skeleton className="h-6 w-[80%]" />
                     <div className="space-y-2">
@@ -205,14 +205,14 @@ export default function Challenges() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="mb-14 md:mb-20 text-center">
-              <h2 className="text-[2.2rem] md:text-5xl lg:text-[4.2rem] font-black tracking-tighter text-neutral-900 leading-[1.05] mb-6 md:mb-8">
+            <div className="mb-14 md:mb-16 text-center">
+              <h2 className="text-3xl md:text-3xl lg:text-3xl font-black tracking-tighter text-neutral-900 leading-[1.05] mb-6 md:mb-8">
                 The challenges <br className="hidden md:block" />
                 <span className="text-neutral-400">modern businesses face.</span>
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
               {challengesData.map((item) => (
                 <ChallengeCard key={item.id} item={item} />
               ))}

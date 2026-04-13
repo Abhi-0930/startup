@@ -52,26 +52,26 @@ export default function Navbar() {
         onClick={() => setIsMobileMenuOpen(false)}
       />
 
-      <div className="max-w-[1200px] mx-auto px-4 overflow-visible">
+      <div className="max-w-[1050px] mx-auto px-4 overflow-visible">
         {/* The main Navbar Pill */}
         <div 
           className={`relative z-50 bg-white/80 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.04)] overflow-visible ${
             isMobileMenuOpen 
               ? 'rounded-[24px] p-5' 
-              : 'rounded-full md:rounded-[32px] px-3.5 md:px-6 py-2 md:py-2.5'
+              : 'rounded-full md:rounded-[28px] px-3.5 md:px-6 py-2 md:py-1.5'  
           }`}
         >
           {/* Header row (Logo + Toggle) */}
-          <div className="flex items-center justify-between h-14 md:h-14">
+          <div className="flex items-center justify-between h-10 md:h-12">
             <div className="flex items-center gap-3">
               <Link href="/" className="flex items-center gap-2 group/logo relative">
                 {/* Desktop Full Logo */}
                 <Image
                   src="/logo-Photoroom.png"
                   alt="Code Loom Logo"
-                  width={600}
-                  height={150}
-                  className="h-48 w-auto object-contain hidden md:block mt-4"
+                  width={400}
+                  height={100}
+                  className="h-28 w-auto object-contain hidden md:block mt-2"
                   priority
                 />
                 
@@ -79,9 +79,9 @@ export default function Navbar() {
                 <Image
                   src="/logo-Photoroom.png"
                   alt="Code Loom Logo"
-                  width={400}
-                  height={100}
-                  className="h-32 w-auto object-contain md:hidden mt-2"
+                  width={300}
+                  height={80}
+                  className="h-24 w-auto object-contain md:hidden mt-1.5"
                 />
               </Link>
             </div>
@@ -95,7 +95,7 @@ export default function Navbar() {
                 >
                   <Link 
                     href={link.href || "#"} 
-                    className="flex items-center gap-1 text-[15px] font-[550] text-black hover:bg-zinc-100/80 px-3.5 py-2 rounded-full cursor-pointer transition-colors leading-none"
+                    className="flex items-center gap-1 text-[13px] md:text-[14px] font-[550] text-black hover:bg-zinc-100/80 px-3 py-1.5 rounded-full cursor-pointer transition-colors leading-none"
                   >
                     {link.name}
                     {link.hasDropdown && (

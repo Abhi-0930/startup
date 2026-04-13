@@ -76,7 +76,7 @@ function StepItem({
   const x = useTransform(scrollProgress, [threshold - 0.15, threshold], [20, 0]);
 
   return (
-    <div className="relative py-8 md:py-16 flex items-center">
+    <div className="relative py-8 md:py-12 flex items-center">
       {/* Path Line Segment - DOWN */}
       {index < total && (
         <div className="absolute top-1/2 bottom-0 left-6 md:left-8 -translate-x-1/2 w-[2px]">
@@ -110,11 +110,11 @@ function StepItem({
       <div className="absolute left-6 md:left-8 -translate-x-1/2 z-20">
         <motion.div 
           style={{ borderColor: circleBorderColor }}
-          className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white border-2 flex items-center justify-center shadow-sm"
+          className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-white border-2 flex items-center justify-center shadow-sm"
         >
           <motion.span 
             style={{ color: circleTextColor }}
-            className="text-lg md:text-2xl font-bold font-heading"
+            className="text-base md:text-xl font-bold font-heading"
           >
             {step.number}
           </motion.span>
@@ -126,9 +126,9 @@ function StepItem({
         style={{ opacity, scale, x }}
         className="ml-16 md:ml-24 w-full"
       >
-        <div className="p-6 md:p-8 rounded-[32px] md:rounded-[40px] bg-zinc-50 border border-zinc-100/80 shadow-sm hover:shadow-md transition-all duration-500 max-w-[500px]">
-          <h3 className="text-xl md:text-3xl font-bold text-zinc-900 mb-2 md:mb-3">{step.title}</h3>
-          <p className="text-base md:text-xl text-zinc-600 leading-relaxed font-medium">{step.description}</p>
+        <div className="p-5 md:p-6 rounded-[24px] md:rounded-[32px] bg-zinc-50 border border-zinc-100/80 shadow-sm hover:shadow-md transition-all duration-500 max-w-[380px]">
+          <h3 className="text-xl md:text-xl font-bold text-zinc-900 mb-2 md:mb-3">{step.title}</h3>
+          <p className="text-sm md:text-base text-zinc-600 leading-relaxed font-medium">{step.description}</p>
         </div>
       </motion.div>
     </div>
@@ -144,9 +144,9 @@ export default function Process() {
 
   return (
     <section ref={containerRef} className="relative py-12 md:py-20 bg-white overflow-hidden -mt-40 md:-mt-64">
-      <div className="container mx-auto px-4 md:px-12 max-w-[1400px]">
+      <div className="container mx-auto px-4 md:px-12 max-w-[1000px]">
         
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-24">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-20">
           
           {/* Left Side: Header Content (Sticky on Desktop) */}
           <div className="md:col-span-5 h-fit md:sticky md:top-32 space-y-8">
@@ -156,7 +156,7 @@ export default function Process() {
             </div>
             
             <div className="space-y-6">
-              <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-zinc-900 leading-[1.05]">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 leading-[1.05]">
                 How We Bring <br className="hidden md:block" />
                 <span className="text-zinc-400">Your Vision To Life.</span>
               </h2>

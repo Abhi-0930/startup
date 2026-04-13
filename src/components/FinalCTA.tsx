@@ -34,7 +34,7 @@ const services = [
 export default function FinalCTA() {
   return (
     <section className="py-8 md:py-12 -mt-16 md:-mt-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-6 max-w-[1400px]">
+      <div className="container mx-auto px-6 max-w-[1100px]">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -50,7 +50,7 @@ export default function FinalCTA() {
           <div className="relative z-10 pt-16 md:pt-24 pb-12 flex flex-col items-center text-center">
             {/* Main Content */}
             <div className="px-6 space-y-8 md:space-y-10 mb-12">
-              <h2 className="text-xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-white/90 leading-tight max-w-4xl">
+              <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold tracking-tight text-white/90 leading-tight max-w-4xl">
                 You've reached the end — <br className="hidden md:block" />
                 <span className="text-white">now let's start something new!</span>
               </h2>

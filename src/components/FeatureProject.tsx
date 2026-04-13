@@ -1,25 +1,23 @@
 "use client";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { motion, AnimatePresence } from "framer-motion";
+import { projectsData } from "@/data/projects";
 
-const slides = [
-  // BiteBuzz (Project 1)
-  { id: 'b1', projectSlug: 'bitebuzz-delivery', category: 'BiteBuzz', title: 'Launch MVP for BiteBuzz', subtitle: 'Live in 21 days, 1,200+ early users', src: '/project1/img1.png' },
-  { id: 'b2', projectSlug: 'bitebuzz-delivery', category: 'BiteBuzz', title: 'Launch MVP for BiteBuzz', subtitle: 'Live in 21 days, 1,200+ early users', src: '/project1/img2.png' },
-  { id: 'b3', projectSlug: 'bitebuzz-delivery', category: 'BiteBuzz', title: 'Launch MVP for BiteBuzz', subtitle: 'Live in 21 days, 1,200+ early users', src: '/project1/img3.png' },
-  // Empathy AI (Project 2)
-  { id: 'e1', projectSlug: 'empathy-ai', category: 'Empathy AI', title: 'Empathy AI Therapy', subtitle: 'Multi-Modal Emotional Intelligence', src: '/project2/img1.png' },
-  { id: 'e2', projectSlug: 'empathy-ai', category: 'Empathy AI', title: 'Empathy AI Therapy', subtitle: 'Mood Tracking & Analysis', src: '/project2/img2.png' },
-  { id: 'e3', projectSlug: 'empathy-ai', category: 'Empathy AI', title: 'Empathy AI Therapy', subtitle: 'Secure Therapeutic Support', src: '/project2/img3.png' },
-  // Orbital Bank (Project 3)
-  { id: 'o1', projectSlug: 'orbital-bank', category: 'Orbital', title: 'Orbital Bank Dashboard', subtitle: 'Motion & 3D Interactive Design', src: '/project3/1KCYDj61X5Ycm5Vp5kluuhMho.png_width=2400&height=1600.png' },
-  { id: 'o2', projectSlug: 'orbital-bank', category: 'Orbital', title: 'Orbital Bank Dashboard', subtitle: 'Motion & 3D Interactive Design', src: '/project3/TwCiV5MUt16Q38ftZYKlEhNhbJI.png_width=1984&height=2400.png' },
-  { id: 'o3', projectSlug: 'orbital-bank', category: 'Orbital', title: 'Orbital Bank Dashboard', subtitle: 'Motion & 3D Interactive Design', src: '/project3/uqJwE4mTSKeNtBAX8YU8vy1hkVs.png_width=2400&height=1600.png' }
-];
+// Map central projectsData into the slides format used by this component
+const slides = projectsData.flatMap(project => 
+  project.gallery.slice(0, 3).map((img, idx) => ({
+    id: `${project.id}-${idx}`,
+    projectSlug: project.slug,
+    category: project.title.split(' ')[0], // Simplification for existing badge logic
+    title: project.title,
+    subtitle: project.subtitle,
+    src: img.src
+  }))
+);
 
 export default function FeatureProject() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -71,7 +69,7 @@ export default function FeatureProject() {
   };
 
   return (
-    <section className="px-4 md:px-8 max-w-[1400px] mx-auto pt-0 pb-8 md:pb-12">
+    <section className="px-4 md:px-8 max-w-[1100px] mx-auto pt-0 pb-8 md:pb-12">
       <AnimatePresence mode="wait">
         {isLoading ? (
           <motion.div 
@@ -84,7 +82,7 @@ export default function FeatureProject() {
             {/* Header Skeleton */}
             <div className="flex flex-col md:flex-row md:items-center justify-between px-4 pt-4 pb-5 md:px-6 md:pt-5 md:pb-6 gap-4">
               <div className="space-y-2">
-                <Skeleton className="h-8 w-48 md:w-64" />
+                <Skeleton className="h-6 w-48 md:w-64" />
                 <Skeleton className="h-4 w-32 md:w-40" />
               </div>
               <Skeleton className="h-10 w-32 rounded-full" />
@@ -123,20 +121,20 @@ export default function FeatureProject() {
             {/* Top Header of Card */}
             <div className="flex flex-col md:flex-row md:items-center justify-between px-4 pt-4 pb-5 md:px-6 md:pt-5 md:pb-6 gap-4">
               <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 transition-all duration-500">
-                <h2 key={`title-${activeSlide.category}`} className="text-[22px] md:text-[26px] font-semibold tracking-tight text-neutral-900 animate-slide-up-fade" style={{ animationDelay: '0s' }}>
+                <h2 key={`title-${activeSlide.category}`} className="text-[20px] md:text-[22px] font-semibold tracking-tight text-neutral-900 animate-slide-up-fade" style={{ animationDelay: '0s' }}>
                   {activeSlide.title}
                 </h2>
-                <span key={`sub-${activeSlide.category}`} className="text-[14px] md:text-[15px] text-neutral-500 font-medium animate-delayed-reveal">
+                <span key={`sub-${activeSlide.category}`} className="text-[13px] md:text-[14px] text-neutral-500 font-medium animate-delayed-reveal">
                   {activeSlide.subtitle}
                 </span>
               </div>
 
               <Link 
                 href={`/projects/${activeSlide.projectSlug}`}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-black/10 text-[14px] font-medium text-neutral-900 hover:bg-neutral-50 transition-colors shrink-0"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-black/10 text-[13px] font-medium text-neutral-900 hover:bg-neutral-50 transition-colors shrink-0"
               >
                 View Project
-                <ArrowRight size={16} />
+                <ArrowRight size={14} />
               </Link>
             </div>
 

@@ -9,13 +9,21 @@ import { useEffect } from "react";
 
 export default function ProjectPage() {
   const params = useParams();
-  const slug = params.slug as string;
+  const slug = (params?.slug as string) || "";
 
-  const project = projectsData.find((p) => p.slug === slug) || projectsData.find((p) => p.id === slug);
+  // Robust finding: check slug and id, case-insensitive, and handle potential encoding
+  const decodedSlug = decodeURIComponent(slug).toLowerCase();
+  
+  const project = projectsData.find((p) => {
+    const pSlug = p.slug.toLowerCase();
+    const pId = p.id.toLowerCase();
+    return pSlug === decodedSlug || pId === decodedSlug;
+  });
 
   useEffect(() => {
-    // Scroll to top on page transition
-    window.scrollTo(0, 0);
+    if (typeof window !== "undefined") {
+      window.scrollTo(0, 0);
+    }
   }, [slug]);
 
   if (!project) {

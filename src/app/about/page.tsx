@@ -81,11 +81,11 @@ export default function AboutPage() {
               <Sparkles size={14} className="text-zinc-400" />
               <span>Collective Intelligence</span>
             </div>
-            <h1 className="text-[12vw] md:text-[8vw] font-black leading-[0.9] tracking-tighter text-[#09090b] uppercase">
+            <h1 className="text-[10vw] md:text-[6vw] font-black leading-[0.9] tracking-tighter text-[#09090b] uppercase">
               Partners for <br />
               <span className="text-zinc-300">growth.</span>
             </h1>
-            <p className="mt-8 md:mt-12 text-lg md:text-2xl text-zinc-500 font-medium max-w-3xl mx-auto leading-relaxed">
+            <p className="mt-8 md:mt-10 text-lg md:text-xl text-zinc-500 font-medium max-w-2xl mx-auto leading-relaxed">
               We empower high-growth teams with design and engineering excellence that scales.
             </p>
           </motion.div>
@@ -103,7 +103,7 @@ export default function AboutPage() {
                   <div className="w-2 h-2 bg-brand-orange" />
                   <span className="text-[12px] font-black uppercase tracking-[0.2em] text-zinc-900">Our Story</span>
                 </div>
-                <h2 className="text-3xl md:text-6xl font-black tracking-tighter text-zinc-900 uppercase leading-[0.9]">
+                <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-zinc-900 uppercase leading-[0.9]">
                   Our journey <br />
                   <span className="text-zinc-300">matters.</span>
                 </h2>

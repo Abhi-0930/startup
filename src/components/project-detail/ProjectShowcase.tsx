@@ -18,10 +18,10 @@ export default function ProjectShowcase({ project }: { project: ProjectData }) {
   }, []);
 
   return (
-    <section className="py-12 md:py-20 bg-zinc-50 overflow-hidden">
-      <div className="container mx-auto px-4 md:px-12 max-w-[1400px]">
+    <section className="py-12 md:py-16 bg-zinc-50 overflow-hidden">
+      <div className="container mx-auto px-4 md:px-12 max-w-[1000px]">
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {project.gallery.map((image, idx) => (
             <motion.div
               key={idx}
@@ -30,7 +30,7 @@ export default function ProjectShowcase({ project }: { project: ProjectData }) {
               transition={{ duration: 0.8, delay: idx * 0.1 }}
               viewport={{ once: true }}
               onClick={() => setSelectedImage(image.src)}
-              className={`relative rounded-[40px] overflow-hidden border border-zinc-200/50 group cursor-zoom-in ${
+              className={`relative rounded-[32px] md:rounded-[40px] overflow-hidden border border-zinc-200/50 group cursor-zoom-in ${
                 image.span === "wide" ? "md:col-span-2" : "col-span-1"
               }`}
               style={{
@@ -44,7 +44,7 @@ export default function ProjectShowcase({ project }: { project: ProjectData }) {
                 className="object-cover transition-transform duration-1000 group-hover:scale-105"
               />
               {image.caption && (
-                <div className="absolute bottom-6 left-6 px-4 py-2 bg-white/80 backdrop-blur-md rounded-full text-[12px] font-bold text-zinc-900 border border-black/5 shadow-sm">
+                <div className="absolute bottom-6 left-6 px-4 py-2 bg-white/80 backdrop-blur-md rounded-full text-[10px] font-bold text-zinc-900 border border-black/5 shadow-sm">
                   {image.caption}
                 </div>
               )}
@@ -54,9 +54,9 @@ export default function ProjectShowcase({ project }: { project: ProjectData }) {
 
         {/* Client Quote Section */}
         {project.clientQuote && (
-          <div className="mt-40 max-w-4xl mx-auto text-center space-y-12">
-            <div className="w-16 h-1 w-16 h-1 bg-zinc-200 mx-auto" />
-            <blockquote className="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 leading-[1.15]">
+          <div className="mt-24 md:mt-32 max-w-3xl mx-auto text-center space-y-10">
+            <div className="w-12 h-1 bg-zinc-200 mx-auto" />
+            <blockquote className="text-2xl md:text-4xl font-bold tracking-tight text-zinc-900 leading-[1.15]">
               "{project.clientQuote.text}"
             </blockquote>
             <div className="flex flex-col items-center gap-2">
