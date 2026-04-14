@@ -8,33 +8,43 @@ import { motion, AnimatePresence } from "framer-motion";
 const testimonials = [
   {
     id: 1,
-    stat: "2.3x",
-    statLabel: "increase in lead conversion",
-    text: "Code Loom completely redefined our digital presence. Their strategic design approach and attention to user behavior boosted our conversion rate significantly. We went from just a pretty site to a performance-driven asset.",
-    author: "Sarah Coleman",
-    role: "CMO",
-    profileImage: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=256&h=256&auto=format&fit=crop",
+    stat: "45s",
+    statLabel: "Check-out speed",
+    text: "Code Loom took our idea for a food website and made it real very fast. The site is so quick and easy for our customers to use. Zero downtime during our biggest launch.",
+    author: "Nabin",
+    role: "Guest Relations, Malnadu Kitchen",
+    profileImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=256&h=256&auto=format&fit=crop",
     CompanyIcon: Activity,
   },
   {
     id: 2,
-    stat: "+150%",
-    statLabel: "growth in user engagement",
-    text: "The team didn't just build a website; they built an experience. The attention to detail in the animations and the overall premium feel elevated our entire brand identity overnight. Absolutely brilliant execution.",
-    author: "David Chen",
-    role: "Founder & CEO",
-    profileImage: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=256&h=256&auto=format&fit=crop",
+    stat: "94%",
+    statLabel: "AI assessment accuracy",
+    text: "The way this website understands face and voice is amazing. It feels much more human and helpful than other AI tools. Patient comfort improved markedly after launch.",
+    author: "Dr. Ajay Kumar",
+    role: "Founder, Mind Matters with Ajay",
+    profileImage: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=256&h=256&auto=format&fit=crop",
     CompanyIcon: Boxes,
   },
   {
     id: 3,
-    stat: "< 1s",
-    statLabel: "lightning fast page loads",
-    text: "Speed and aesthetic rarely go hand-in-hand, but Code Loom nailed it. The technical architecture is deeply optimized. Our site feels incredibly lightweight while still delivering high-end, graphics-heavy layouts.",
-    author: "Elena Rodriguez",
-    role: "VP of Engineering",
-    profileImage: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=256&h=256&auto=format&fit=crop",
+    stat: "+60%",
+    statLabel: "increase in ops efficiency",
+    text: "The new dashboard transformed how we track our training projects. We now see our profit margins instantly, and our trainers have everything they need in one place.",
+    author: "Srivardhan",
+    role: "Founder, EDRLEAM",
+    profileImage: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=256&h=256&auto=format&fit=crop",
     CompanyIcon: Aperture,
+  },
+  {
+    id: 4,
+    stat: "+85%",
+    statLabel: "student engagement",
+    text: "Smart Quiz JR has completely changed how I run my classroom. The AI-generated questions are spot-on, and the students are more engaged than ever before.",
+    author: "James Wilson",
+    role: "Internal Lead, Smart Quiz JR",
+    profileImage: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=256&h=256&auto=format&fit=crop",
+    CompanyIcon: Activity,
   }
 ];
 
@@ -43,7 +53,7 @@ export default function Testimonials() {
   const [imagesLoaded, setImagesLoaded] = useState(0);
   const [minTimeElapsed, setMinTimeElapsed] = useState(false);
   const imgRefs = useRef<(HTMLImageElement | null)[]>([]);
-  const totalImages = 3;
+  const totalImages = 4;
 
   useEffect(() => {
     // 200ms minimum threshold to prevent flicker
