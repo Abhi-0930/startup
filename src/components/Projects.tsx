@@ -7,10 +7,9 @@ import { Skeleton } from "@/components/ui/Skeleton";
 import { motion, AnimatePresence } from "framer-motion";
 import { projectsData } from "@/data/projects";
 
-function ProjectCard({ project }: { project: any }) {
+function ProjectCard({ project, index }: { project: any, index: number }) {
   const [currentImg, setCurrentImg] = useState(0);
   
-  // Map heroImage + gallery images for the carousel
   const carouselImages = [project.heroImage, ...project.gallery.map((g: any) => g.src)];
 
   useEffect(() => {
@@ -21,7 +20,17 @@ function ProjectCard({ project }: { project: any }) {
   }, [carouselImages.length]);
 
   return (
-    <div className={`flex flex-col gap-6 ${project.span === 'wide' ? 'md:col-span-2' : 'col-span-1'}`}>
+    <motion.div 
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ 
+        duration: 0.8, 
+        delay: index * 0.1,
+        ease: [0.21, 0.47, 0.32, 0.98] 
+      }}
+      className={`flex flex-col gap-6 ${project.span === 'wide' ? 'md:col-span-2' : 'col-span-1'}`}
+    >
       <Link 
         href={`/projects/${project.slug}`}
         className="block relative overflow-hidden rounded-[32px] shadow-sm bg-neutral-900 group/image cursor-pointer"
@@ -68,7 +77,7 @@ function ProjectCard({ project }: { project: any }) {
           />
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -178,8 +187,8 @@ export default function Projects() {
             transition={{ duration: 0.5 }}
             className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12"
           >
-            {projectsData.map((project) => (
-              <ProjectCard key={project.id} project={project} />
+            {projectsData.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} />
             ))}
           </motion.div>
         )}

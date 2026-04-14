@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, CheckCircle2, ChevronDown, Search } from "lucide-react";
-import PhoneInput, { getCountries, getCountryCallingCode } from 'react-phone-number-input';
+import { Send, CheckCircle2, ChevronDown, Search, Loader2, AlertCircle } from "lucide-react";
+import PhoneInput, { getCountries, getCountryCallingCode, isValidPhoneNumber } from 'react-phone-number-input';
 import en from 'react-phone-number-input/locale/en.json';
 import 'react-phone-number-input/style.css';
 
@@ -26,13 +26,27 @@ const currencies = [
 
 export default function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  // Form States
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    details: "",
+    otherService: ""
+  });
+  
   const [currency, setCurrency] = useState(currencies[0]);
   const [budget, setBudget] = useState(currencies[0].min); 
   const [phone, setPhone] = useState<string | undefined>();
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
-  const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
   
-  // High-Fidelity Phone States
+  // Validation States
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
+  const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
   const [country, setCountry] = useState<any>("IN");
   const [isCountrySelectorOpen, setIsCountrySelectorOpen] = useState(false);
   const [countrySearch, setCountrySearch] = useState("");
@@ -65,12 +79,81 @@ export default function ContactForm() {
         ? prev.filter(s => s !== service) 
         : [...prev, service]
     );
+    if (errors.services) {
+      setErrors(prev => {
+        const { services, ...rest } = prev;
+        return rest;
+      });
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitted(true);
+  const validate = () => {
+    const newErrors: { [key: string]: string } = {};
+
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Invalid email format";
+    }
+
+    if (phone && !isValidPhoneNumber(phone)) {
+      newErrors.phone = "Invalid phone number";
+    }
+
+    if (selectedServices.length === 0) {
+      newErrors.services = "Select at least one service";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitError(null);
+
+    if (!validate()) return;
+
+    setIsSubmitting(true);
+
+    try {
+      const payload = {
+        ...formData,
+        phone,
+        services: selectedServices.includes("Other") 
+          ? [...selectedServices.filter(s => s !== "Other"), `Other: ${formData.otherService}`]
+          : selectedServices,
+        budget: `${currency.symbol}${budget.toLocaleString()} (${currency.code})`,
+      };
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send inquiry. Please try again later.");
+      }
+
+      setIsSubmitted(true);
+      // Reset form
+      setFormData({ name: "", email: "", company: "", details: "", otherService: "" });
+      setPhone(undefined);
+      setSelectedServices([]);
+    } catch (err: any) {
+      setSubmitError(err.message || "Something went wrong.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const inputClasses = (fieldName: string) => `
+    w-full h-14 px-6 rounded-2xl bg-zinc-50 border transition-all placeholder:text-zinc-300 font-medium outline-none
+    ${errors[fieldName] ? 'border-red-500 bg-red-50/30' : 'border-zinc-100 focus:border-zinc-900 focus:bg-white'}
+  `;
 
   if (isSubmitted) {
     return (
@@ -79,16 +162,21 @@ export default function ContactForm() {
         animate={{ opacity: 1, scale: 1 }}
         className="h-full min-h-[500px] flex flex-col items-center justify-center text-center p-8 rounded-[2.5rem] bg-zinc-50 border border-zinc-200 text-zinc-950"
       >
-        <div className="w-20 h-20 rounded-full bg-zinc-900 flex items-center justify-center mb-8">
+        <motion.div 
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: "spring", damping: 12, stiffness: 200, delay: 0.2 }}
+          className="w-20 h-20 rounded-full bg-zinc-900 flex items-center justify-center mb-8 shadow-2xl shadow-black/20"
+        >
           <CheckCircle2 size={40} className="text-white" />
-        </div>
-        <h2 className="text-3xl font-bold mb-4">Message Received.</h2>
+        </motion.div>
+        <h2 className="text-3xl font-bold mb-4 tracking-tight">Inquiry Sent.</h2>
         <p className="text-zinc-500 max-w-sm font-medium leading-relaxed">
           Thanks for reaching out! Our lead engineer will review your project and get back to you within 24 hours.
         </p>
         <button 
           onClick={() => setIsSubmitted(false)}
-          className="mt-10 text-sm font-semibold uppercase tracking-widest text-zinc-400 hover:text-black transition-colors"
+          className="mt-10 text-sm font-bold uppercase tracking-widest text-zinc-400 hover:text-black transition-colors"
         >
           Send another message
         </button>
@@ -99,48 +187,56 @@ export default function ContactForm() {
   return (
     <div className="p-8 md:p-12 rounded-[2.5rem] bg-white text-zinc-950 border border-zinc-100 shadow-2xl relative overflow-hidden group">
       {/* Subtle Background Glow */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-brand-orange/[0.03] blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-64 h-64 bg-[#ff5c00]/[0.03] blur-[120px] pointer-events-none" />
       
       <form onSubmit={handleSubmit} className="relative z-10 space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Name Field */}
           <div className="space-y-2">
             <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest ml-4">Full Name</label>
             <input 
-              required
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               type="text" 
               placeholder="John Doe" 
-              className="w-full h-14 px-6 rounded-2xl bg-zinc-50 border border-zinc-100 focus:border-zinc-900 focus:ring-0 outline-none transition-all placeholder:text-zinc-300 font-medium"
+              className={inputClasses("name")}
             />
+            {errors.name && <p className="text-[10px] text-red-500 font-bold uppercase tracking-tight ml-4 mt-1">{errors.name}</p>}
           </div>
+          {/* Email Field */}
           <div className="space-y-2">
             <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest ml-4">Email Address</label>
             <input 
-              required
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               type="email" 
               placeholder="john@example.com" 
-              className="w-full h-14 px-6 rounded-2xl bg-zinc-50 border border-zinc-100 focus:border-zinc-900 focus:ring-0 outline-none transition-all placeholder:text-zinc-300 font-medium"
+              className={inputClasses("email")}
             />
+            {errors.email && <p className="text-[10px] text-red-500 font-bold uppercase tracking-tight ml-4 mt-1">{errors.email}</p>}
           </div>
         </div>
 
+        {/* Company Field */}
         <div className="md:max-w-2xl">
           <div className="space-y-2">
             <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest ml-4">Company / Website</label>
             <input 
+              value={formData.company}
+              onChange={(e) => setFormData({ ...formData, company: e.target.value })}
               type="text" 
               placeholder="example.com" 
-              className="w-full h-14 px-6 rounded-2xl bg-zinc-50 border border-zinc-100 focus:border-zinc-900 focus:ring-0 outline-none transition-all placeholder:text-zinc-300 font-medium"
+              className={inputClasses("company")}
             />
           </div>
         </div>
 
+        {/* Phone Field */}
         <div className="md:max-w-2xl relative" ref={dropdownRef}>
           <div className="space-y-2">
             <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest ml-4">Phone Number</label>
-            {/* Unified Visual Container with increased padding */}
-            <div className="h-14 rounded-2xl bg-zinc-50 border border-zinc-100 flex items-center px-2 focus-within:border-zinc-900 focus-within:bg-white transition-all">
+            <div className={`h-14 rounded-2xl bg-zinc-50 border flex items-center px-2 transition-all ${errors.phone ? 'border-red-500 bg-red-50/30' : 'border-zinc-100 focus-within:border-zinc-900 focus-within:bg-white'}`}>
               <div className="relative">
-                {/* Custom Trigger (Borderless) */}
                 <button
                   type="button"
                   onClick={() => setIsCountrySelectorOpen(!isCountrySelectorOpen)}
@@ -216,6 +312,7 @@ export default function ContactForm() {
                 />
               </div>
             </div>
+            {errors.phone && <p className="text-[10px] text-red-500 font-bold uppercase tracking-tight ml-4 mt-1">{errors.phone}</p>}
           </div>
         </div>
 
@@ -238,6 +335,7 @@ export default function ContactForm() {
               </button>
             ))}
           </div>
+          {errors.services && <p className="text-[10px] text-red-500 font-bold uppercase tracking-tight ml-4">{errors.services}</p>}
 
           <AnimatePresence>
             {selectedServices.includes("Other") && (
@@ -248,6 +346,8 @@ export default function ContactForm() {
                 className="overflow-hidden"
               >
                 <input 
+                  value={formData.otherService}
+                  onChange={(e) => setFormData({ ...formData, otherService: e.target.value })}
                   type="text" 
                   placeholder="Please specify your project type..." 
                   className="w-full h-12 px-6 rounded-xl bg-zinc-50 border border-zinc-100 focus:border-zinc-950 focus:ring-0 outline-none transition-all placeholder:text-zinc-300 font-medium text-sm"
@@ -263,7 +363,6 @@ export default function ContactForm() {
             <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest">Project Budget Range</label>
             
             <div className="flex items-center gap-3">
-              {/* Currency Selector */}
               <div className="relative">
                 <button
                   type="button"
@@ -292,7 +391,7 @@ export default function ContactForm() {
                             setIsCurrencyOpen(false);
                           }}
                           className={`w-full px-4 py-2 text-left text-sm font-semibold transition-colors ${
-                            currency.code === curr.code ? "bg-brand-orange text-white" : "text-zinc-600 hover:bg-zinc-50"
+                            currency.code === curr.code ? "bg-[#ff5c00] text-white" : "text-zinc-600 hover:bg-zinc-50"
                           }`}
                         >
                           {curr.code}
@@ -303,14 +402,12 @@ export default function ContactForm() {
                 </AnimatePresence>
               </div>
 
-              {/* Budget Display / Input */}
-              <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-zinc-50 border border-zinc-100 focus-within:border-brand-orange transition-colors">
-                <span className="text-brand-orange font-bold">{currency.symbol}</span>
+              <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-zinc-50 border border-zinc-100 focus-within:border-[#ff5c00] transition-colors">
+                <span className="text-[#ff5c00] font-bold">{currency.symbol}</span>
                 <input
                   type="text"
                   value={budget >= currency.max ? currency.labelMax.replace(currency.symbol, '') : budget.toLocaleString()}
                   onChange={(e) => {
-                    // Remove commas and non-numeric chars to get raw number
                     const val = e.target.value.replace(/,/g, '').replace(/[^0-9]/g, '');
                     if (val === '') {
                       setBudget(0);
@@ -332,7 +429,7 @@ export default function ContactForm() {
               step={currency.step}
               value={budget}
               onChange={(e) => setBudget(parseInt(e.target.value))}
-              className="w-full h-1.5 bg-zinc-100 rounded-full appearance-none cursor-pointer accent-brand-orange"
+              className="w-full h-1.5 bg-zinc-100 rounded-full appearance-none cursor-pointer accent-[#ff5c00]"
             />
             <div className="flex justify-between mt-4">
               <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-[0.1em]">{currency.symbol}{currency.labelMin}</span>
@@ -341,22 +438,52 @@ export default function ContactForm() {
           </div>
         </div>
 
+        {/* Details Field */}
         <div className="space-y-2">
           <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest ml-4">Project Details</label>
           <textarea 
             rows={4} 
+            value={formData.details}
+            onChange={(e) => setFormData({ ...formData, details: e.target.value })}
             placeholder="Tell us about your project goals, timeline, and any specific requirements..." 
-            className="w-full px-6 py-4 rounded-2xl bg-zinc-50 border border-zinc-100 focus:border-zinc-900 focus:ring-0 outline-none transition-all placeholder:text-zinc-300 font-medium resize-none"
+            className="w-full px-6 py-4 rounded-2xl bg-zinc-50 border border-zinc-100 focus:border-zinc-900 focus:ring-0 outline-none transition-all placeholder:text-zinc-300 font-medium resize-none shadow-sm"
           />
         </div>
 
-        <button 
-          type="submit"
-          className="w-full group relative flex items-center justify-center gap-3 px-8 py-5 bg-brand-orange text-white rounded-2xl font-black text-lg hover:bg-orange-600 transition-all shadow-xl active:scale-[0.98] shadow-orange-500/20"
-        >
-          <span>Send Inquiry</span>
-          <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-        </button>
+        {/* Submit Section */}
+        <div className="space-y-4">
+          <button 
+            type="submit"
+            disabled={isSubmitting}
+            className={`w-full group relative flex items-center justify-center gap-3 px-8 py-5 bg-[#ff5c00] text-white rounded-2xl font-black text-lg hover:bg-orange-600 transition-all shadow-xl active:scale-[0.98] shadow-orange-500/20 disabled:opacity-70 disabled:cursor-not-allowed`}
+          >
+            {isSubmitting ? (
+              <>
+                <Loader2 size={24} className="animate-spin" />
+                <span>Sending...</span>
+              </>
+            ) : (
+              <>
+                <span>Send Inquiry</span>
+                <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </>
+            )}
+          </button>
+
+          <AnimatePresence>
+            {submitError && (
+              <motion.div 
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="flex items-center gap-2 justify-center p-4 bg-red-50 rounded-xl text-red-600 border border-red-100"
+              >
+                <AlertCircle size={18} />
+                <span className="text-sm font-bold tracking-tight">{submitError}</span>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
 
         <p className="text-center text-[10px] text-zinc-300 font-semibold uppercase tracking-[0.2em]">
           Safe & Secure Lead Submission
