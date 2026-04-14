@@ -10,7 +10,7 @@ const founders = [
   {
     name: "Abhishek",
     role: "Founder",
-    image: "/about/abhi.jpg",
+    image: "/about/abhi.png",
     bio: "Visionary designer and strategist focused on high-performance digital ecosystems.",
     twitter: "#",
     linkedin: "#",
@@ -18,7 +18,7 @@ const founders = [
   {
     name: "Chandan",
     role: "Co-founder",
-    image: "/about/chandan.jpg",
+    image: "/about/chandan.png",
     bio: "Engineering lead dedicated to building scalable, robust, and pixel-perfect applications.",
     twitter: "#",
     linkedin: "#",
