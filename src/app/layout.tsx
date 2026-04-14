@@ -102,10 +102,10 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
-      { url: "/logo.png", type: "image/png" }
+      { url: "/web-logo.png", type: "image/png" }
     ],
     apple: [
-      { url: "/logo.png", sizes: "180x180", type: "image/png" }
+      { url: "/web-logo.png", sizes: "180x180", type: "image/png" }
     ],
   },
   manifest: "/manifest.json",
