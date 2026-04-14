@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Quote, Activity, Sparkles, BarChart3, GraduationCap } from "lucide-react";
+import { Quote, Activity, Sparkles, BarChart3, GraduationCap, Cookie } from "lucide-react";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -40,11 +40,21 @@ const testimonials = [
     id: 4,
     stat: "+85%",
     statLabel: "Student Engagement",
-    text: "Smart Quiz JR has completely revolutionized my classroom. The AI-generated questions are academically rigorous, and the zero-latency competitive environment keeps students fully engaged.",
-    author: "Ananya Sharma",
-    role: "Lead Educator & Tech Consultant",
-    profileImage: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=256&h=256&auto=format&fit=crop",
+    text: "Smart Quiz JR has completely revolutionized our assessment workflow. The AI-generated questions are academically rigorous, and the zero-latency competitive environment keeps our students fully engaged.",
+    author: "Rajendran Padmanabhan",
+    role: "Sunrise International School, Abu Dhabi",
+    profileImage: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=256&h=256&auto=format&fit=crop",
     CompanyIcon: GraduationCap,
+  },
+  {
+    id: 5,
+    stat: "Custom",
+    statLabel: "Orders Simplified",
+    text: "Code Loom captured the essence of Bake To Cherriish perfectly. The platform handles our complex custom cake orders seamlessly, allowing me to focus on baking rather than logistics.",
+    author: "Shravani",
+    role: "Founder & Lead Pâtissier, Bake To Cherriish",
+    profileImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=256&h=256&auto=format&fit=crop",
+    CompanyIcon: Cookie,
   }
 ];
 
@@ -53,7 +63,7 @@ export default function Testimonials() {
   const [imagesLoaded, setImagesLoaded] = useState(0);
   const [minTimeElapsed, setMinTimeElapsed] = useState(false);
   const imgRefs = useRef<(HTMLImageElement | null)[]>([]);
-  const totalImages = 4;
+  const totalImages = 5;
 
   useEffect(() => {
     // 200ms minimum threshold to prevent flicker

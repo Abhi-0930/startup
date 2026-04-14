@@ -177,9 +177,43 @@ export const projectsData: ProjectData[] = [
       { src: "/project4/leaderboard.png", alt: "Smart Quiz JR - Real-time Classroom Leaderboard and Student Stats", span: "normal" }
     ],
     clientQuote: {
-      text: "Smart Quiz JR has completely changed how I run my classroom. The AI-generated questions are spot-on, and the students are more engaged than ever before.",
-      author: "Code Loom",
-      role: "Internal Venture"
+      text: "Smart Quiz JR has completely revolutionized our assessment workflow. The AI-generated questions are academically rigorous, and the zero-latency competitive environment keeps our students fully engaged.",
+      author: "Rajendran Padmanabhan",
+      role: "Sunrise International School, Abu Dhabi"
+    }
+  },
+  {
+    id: "bake-to-cherriish",
+    slug: "bake-to-cherriish",
+    title: "Bake To Cherriish",
+    category: "Full-Stack Development & E-commerce",
+    subtitle: "Scaling a boutique bakery through simplified custom order management.",
+    description: "Bake To Cherriish is a premium boutique bakery dedicated to crafting 'Classic Cakes and Premium Joy'. They needed a digital home that could handle the high complexity of custom cake orders while maintaining their personal, home-baked brand essence.",
+    challenge: "Managing custom cake requests involves tracking detailed specifications (weight, flavor, design) and strict delivery timelines. Doing this manually via social media was becoming a bottleneck for scaling Shravani's vision.",
+    solution: "We developed a centralized order intake portal featuring a 'Customization Wizard' that guides clients through the cake selection process. By integrating a one-day pre-order logic and direct WhatsApp consultation pipelines, we streamlined the transition from curiosity to confirmed delivery.",
+    impact: [
+      { label: "Order Management", value: "Centralized" },
+      { label: "Lead Conversion", value: "+45%" },
+      { label: "Cust. Experience", value: "Premium" }
+    ],
+    stack: [
+      { name: "Next.js" },
+      { name: "Tailwind CSS" },
+      { name: "Node.js" },
+      { name: "WhatsApp API" }
+    ],
+    services: ["E-commerce Development", "Brand Identity", "Workflow Automation"],
+    year: "2024",
+    liveLink: "https://bake-to-cherriish-osfy.vercel.app/",
+    heroImage: "/project5/hero.png",
+    gallery: [
+      { src: "/project5/img1.png", alt: "Bake To Cherriish - Custom Cake Selection Interface", span: "wide" },
+      { src: "/project5/img2.png", alt: "Bake To Cherriish - Premium Flavors and Dessert Gallery", span: "normal" }
+    ],
+    clientQuote: {
+      text: "Code Loom captured the essence of Bake To Cherriish perfectly. The platform handles our complex custom cake orders seamlessly, allowing me to focus on baking rather than logistics.",
+      author: "Shravani",
+      role: "Founder & Lead Pâtissier"
     }
   }
 ];
