@@ -4,24 +4,33 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Globe, Send, Sparkles, Check, X } from "lucide-react";
+import { ArrowRight, Globe, Send, Sparkles, Check, X, Mail, MessageCircle } from "lucide-react";
+
+// Custom LinkedIn Icon as lucide-react v1.0+ removed brand icons
+const Linkedin = ({ size = 24, className = "" }: { size?: number | string, className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+    <rect x="2" y="9" width="4" height="12"></rect>
+    <circle cx="4" cy="4" r="2"></circle>
+  </svg>
+);
 
 const founders = [
   {
     name: "Abhishek",
     role: "Founder",
     image: "/about/abhi.png",
-    bio: "A Full-Stack Architect and product strategist specializing in secure, scalable systems. Abhishek bridges engineering excellence with high-impact business growth.",
-    twitter: "#",
-    linkedin: "#",
+    bio: "A Full-Stack Architect and product strategist specializing in secure, scalable systems. Bridging engineering excellence with high-impact business growth.",
+    linkedin: "https://www.linkedin.com/in/abhishek-j-556899276/",
+    email: "abhi@codeloom.in",
   },
   {
     name: "Chandan",
     role: "Co-founder",
     image: "/about/chandan.png",
-    bio: "A versatile AI researcher and engineer. Chandan drives our intelligent automation initiatives, mastering everything from Agentic AI to full-stack machine learning.",
-    twitter: "#",
-    linkedin: "#",
+    bio: "A versatile AI researcher and engineer driving intelligent automation initiatives. Mastering the full spectrum from Agentic AI to full-stack machine learning.",
+    linkedin: "https://www.linkedin.com/in/vanjarapuchandan?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    email: "chandan@codeloom.in",
   },
 ];
 
@@ -272,11 +281,11 @@ export default function AboutPageClient() {
                     {founder.bio}
                   </p>
                   <div className="flex items-center justify-center gap-4 pt-4">
-                    <Link href={founder.twitter} className="w-12 h-12 rounded-full border border-zinc-200 flex items-center justify-center text-zinc-400 hover:text-black hover:border-black transition-all">
-                      <Send size={20} />
+                    <Link href={`mailto:${founder.email}`} className="w-12 h-12 rounded-full border border-zinc-200 flex items-center justify-center text-zinc-400 hover:text-[#ff5c00] hover:border-[#ff5c00] transition-all">
+                      <Mail size={18} />
                     </Link>
-                    <Link href={founder.linkedin} className="w-12 h-12 rounded-full border border-zinc-200 flex items-center justify-center text-zinc-400 hover:text-black hover:border-black transition-all">
-                      <Globe size={20} />
+                    <Link href={founder.linkedin} target="_blank" className="w-12 h-12 rounded-full border border-zinc-200 flex items-center justify-center text-zinc-400 hover:text-[#0077b5] hover:border-[#0077b5] transition-all">
+                      <Linkedin size={18} />
                     </Link>
                   </div>
                 </div>
