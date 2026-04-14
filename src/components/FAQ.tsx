@@ -7,24 +7,24 @@ import { Plus, Minus } from "lucide-react";
 
 const faqs = [
   {
-    question: "Do you accept custom requirements?",
-    answer: "Absolutely. Every business has unique challenges. We thrive on building tailor-made solutions that fit your specific workflow and goals."
+    question: "Does Code Loom offer custom end-to-end engineering?",
+    answer: "Absolutely. We specialize in bespoke digital infrastructure. From architectural planning to deployment and scaling, we build tailored systems that integrate seamlessly with your business objectives."
   },
   {
-    question: "What is your turnaround time?",
-    answer: "For most MVPs and high-performance websites, we deliver within 30 days. Complex enterprise systems usually take 2-4 months depending on the scope."
+    question: "What is your typical engagement timeline?",
+    answer: "For high-performance MVPs, we usually target a 30-day launch window. For complex enterprise environments, timelines typically range from 3 to 6 months, depending on the architectural complexity."
   },
   {
-    question: "Do you provide ongoing support?",
-    answer: "Yes. We offer maintenance packages to ensure your application stays fast, secure, and up-to-date as your business scales."
+    question: "How do you handle post-launch stability and scaling?",
+    answer: "Stability is non-negotiable. We provide comprehensive post-launch management, including 24/7 infrastructure monitoring, security patching, and proactive scaling as your user base grows."
   },
   {
-    question: "Can you handle branding and marketing too?",
-    answer: "While we are engineering-first, we have a network of top-tier designers and strategists to ensure your product looks as good as it works."
+    question: "Who owns the Intellectual Property and source code?",
+    answer: "Upon project completion and final payment, 100% of the intellectual property, source code, and biological assets are transferred to the client. We believe in total transparency and client ownership."
   },
   {
-    question: "What's your pricing?",
-    answer: "We offer fixed, transparent pricing based on the project scope. No hidden fees, no hourly surprises. You know the cost before we write a single line of code."
+    question: "What is your approach to transparency and pricing?",
+    answer: "We operate on a fixed-fee, value-based model. We provide detailed project blueprints and cost breakdowns upfront, ensuring no hidden fees or unexpected line items during the engineering phase."
   }
 ];
 

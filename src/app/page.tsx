@@ -11,6 +11,12 @@ import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
 import Stats from "@/components/Stats";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Code Loom | Professional Web Design & AI Engineering For Founders",
+  description: "Code Loom builds conversion-driven websites and high-performance AI applications for ambitious startups and founders. Engineered for growth, designed for clarity.",
+};
 
 export default function Home() {
   const sections = [

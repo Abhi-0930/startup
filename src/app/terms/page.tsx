@@ -1,5 +1,12 @@
 import React from "react";
 import { FileText } from "lucide-react";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Terms of Service | Code Loom",
+  description: "Terms and conditions for using Code Loom's website and design/engineering services.",
+  robots: { index: false, follow: true },
+};
 
 export default function TermsOfService() {
   return (

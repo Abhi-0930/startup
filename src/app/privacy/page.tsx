@@ -1,5 +1,12 @@
 import React from "react";
 import { ShieldCheck } from "lucide-react";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | Code Loom",
+  description: "Code Loom's privacy policy regarding the collection, use, and protection of your personal information.",
+  robots: { index: false, follow: true }, // Don't index legal docs but follow links
+};
 
 export default function PrivacyPolicy() {
   return (
@@ -67,7 +74,7 @@ export default function PrivacyPolicy() {
               To ask questions or comment about this privacy policy and our privacy practices, contact us at:
             </p>
             <p className="font-bold text-zinc-900">
-              hello@codeloom.io
+              hello@codeloom.in
             </p>
           </section>
         </div>

@@ -46,10 +46,62 @@ const satoshi = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Code Loom | High-Performance Design & Engineering",
-  description: "Code Loom builds conversion-driven websites and marketing that attract, engage, and convert for ambitious founders.",
+  metadataBase: new URL("https://codeloom.in"),
+  title: {
+    default: "Code Loom | Professional Web Design & AI Engineering Agency",
+    template: "%s | Code Loom"
+  },
+  description: "Code Loom builds high-performance digital ecosystems, AI applications, and conversion-driven websites for ambitious founders and high-growth teams.",
+  keywords: ["web design agency", "software engineering", "AI development", "Next.js experts", "Bangalore design agency", "MVP development", "startup engineering", "Code Loom"],
+  authors: [{ name: "Code Loom Team" }],
+  creator: "Code Loom",
+  publisher: "Code Loom",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  verification: {
+    google: "NqXlkx9OuXG32XYtf5DVJbUIgW88Y831FYmOMWm-WLU",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://codeloom.in",
+    siteName: "Code Loom",
+    title: "Code Loom | Professional Web Design & AI Engineering Agency",
+    description: "Code Loom builds high-performance digital ecosystems, AI applications, and conversion-driven websites.",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Code Loom Agency Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Code Loom | Professional Web Design & AI Engineering Agency",
+    description: "High-performance design & engineering for ambitious teams.",
+    images: ["/logo.png"],
+    creator: "@codeloom_in",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png", // We should create this or use favicon
   },
 };
 
