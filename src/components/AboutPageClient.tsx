@@ -193,8 +193,8 @@ export default function AboutPageClient() {
       <section className="pb-12 md:pb-32 px-6">
         <div className="container mx-auto max-w-7xl">
           <div className="bg-black rounded-[24px] md:rounded-[48px] p-6 md:p-20 relative overflow-hidden group">
-            {/* Dot Pattern Background */}
-            <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px]" />
+            {/* Dot Pattern Background - Pin to Right Side */}
+            <div className="absolute top-0 right-0 bottom-0 w-1/3 opacity-25 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px]" />
             
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
               <div className="space-y-3 md:space-y-4 text-center md:text-left">
