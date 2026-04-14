@@ -48,11 +48,11 @@ const satoshi = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://codeloom.in"),
   title: {
-    default: "Code Loom | Professional Web Design & AI Engineering Agency",
+    default: "Code Loom | Premium Digital Product & AI Engineering Agency",
     template: "%s | Code Loom"
   },
-  description: "Code Loom builds high-performance digital ecosystems, AI applications, and conversion-driven websites for ambitious founders and high-growth teams.",
-  keywords: ["web design agency", "software engineering", "AI development", "Next.js experts", "Bangalore design agency", "MVP development", "startup engineering", "Code Loom"],
+  description: "Code Loom architects high-performance digital ecosystems, intelligent AI applications, and premium conversion-driven interfaces for ambitious founders and high-growth brands.",
+  keywords: ["premium web design", "digital product agency", "AI engineering", "Next.js experts", "Bangalore design agency", "MVP development", "startup engineering", "Code Loom"],
   authors: [{ name: "Code Loom Team" }],
   creator: "Code Loom",
   publisher: "Code Loom",
@@ -69,8 +69,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://codeloom.in",
     siteName: "Code Loom",
-    title: "Code Loom | Professional Web Design & AI Engineering Agency",
-    description: "Code Loom builds high-performance digital ecosystems, AI applications, and conversion-driven websites.",
+    title: "Code Loom | Premium Digital Product & AI Engineering Agency",
+    description: "Code Loom architects high-performance digital ecosystems, intelligent AI applications, and premium conversion-driven interfaces.",
     images: [
       {
         url: "/logo.png",
@@ -82,8 +82,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Code Loom | Professional Web Design & AI Engineering Agency",
-    description: "High-performance design & engineering for ambitious teams.",
+    title: "Code Loom | Premium Digital Product & AI Engineering Agency",
+    description: "High-performance digital design & intelligent engineering for ambitious brands.",
     images: ["/logo.png"],
     creator: "@codeloom_in",
   },
@@ -140,7 +140,7 @@ export default function RootLayout({
               "url": "https://codeloom.in",
               "logo": "https://codeloom.in/logo.png",
               "image": "https://codeloom.in/logo.png",
-              "description": "Code Loom builds high-performance digital ecosystems, AI applications, and conversion-driven websites for ambitious founders.",
+              "description": "Code Loom architects high-performance digital ecosystems, intelligent AI applications, and premium conversion-driven interfaces for ambitious founders and high-growth brands.",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Bangalore",
