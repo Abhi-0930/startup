@@ -98,10 +98,22 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  category: "technology",
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png", // We should create this or use favicon
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo.png", type: "image/png" }
+    ],
+    apple: [
+      { url: "/logo.png", sizes: "180x180", type: "image/png" }
+    ],
+  },
+  manifest: "/manifest.json",
+  themeColor: "#ffffff",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
   },
 };
 
