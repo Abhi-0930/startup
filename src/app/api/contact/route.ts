@@ -74,15 +74,18 @@ export async function POST(req: Request) {
     });
 
     if (error) {
-      console.error("Resend Error:", error);
-      return NextResponse.json({ error }, { status: 500 });
+      console.error("Resend Error Detail:", JSON.stringify(error, null, 2));
+      return NextResponse.json(
+        { error: error.message || "Email service error", details: error },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json({ success: true, data });
-  } catch (error) {
-    console.error("Internal Server Error:", error);
+  } catch (err: any) {
+    console.error("API Route Error Catch:", err);
     return NextResponse.json(
-      { error: "Internal Server Error" },
+      { error: err.message || "Internal Server Error", stack: process.env.NODE_ENV === 'development' ? err.stack : undefined },
       { status: 500 }
     );
   }

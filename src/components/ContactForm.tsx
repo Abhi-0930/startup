@@ -135,7 +135,8 @@ export default function ContactForm() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to send inquiry. Please try again later.");
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to send inquiry. Please try again later.");
       }
 
       setIsSubmitted(true);
