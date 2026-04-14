@@ -63,8 +63,8 @@ export const projectsData: ProjectData[] = [
     adminLink: "https://malnadukitchen-admin.vercel.app/",
     heroImage: "/project1/img1.png",
     gallery: [
-      { src: "/project1/img2.png", alt: "Ordering Screen", span: "wide" },
-      { src: "/project1/img3.png", alt: "Tracking Screen", span: "normal" }
+      { src: "/project1/img2.png", alt: "Malnadu Kitchen - High-Performance Food Ordering Dashboard UI", span: "wide" },
+      { src: "/project1/img3.png", alt: "Malnadu Kitchen - Real-time Delivery Tracking Interface for Foodies", span: "normal" }
     ],
     clientQuote: {
       text: "Code Loom took our idea for a food website and made it real very fast. The site is so quick and easy for our customers to use.",
@@ -99,10 +99,10 @@ export const projectsData: ProjectData[] = [
     liveLink: "https://mindmatterswithajay.com",
     heroImage: "/project2/img1.png",
     gallery: [
-      { src: "/project2/img2.png", alt: "Feeling Analysis", span: "wide" },
-      { src: "/project2/img3.png", alt: "Mood History", span: "normal" },
-      { src: "/project2/img4.png", alt: "Care Exercises", span: "normal" },
-      { src: "/project2/img5.png", alt: "Advanced Diagnostics", span: "normal" }
+      { src: "/project2/img2.png", alt: "Empathy AI - Mood Sentimental Analysis and Vibe-Check Feature", span: "wide" },
+      { src: "/project2/img3.png", alt: "Empathy AI - Patient Mood History and Progress Analytics", span: "normal" },
+      { src: "/project2/img4.png", alt: "Empathy AI - Therapeutic Care Exercises and Patient Dashboard", span: "normal" },
+      { src: "/project2/img5.png", alt: "Empathy AI - Advanced Neuro-Psychiatric Diagnostic Tools", span: "normal" }
     ],
     clientQuote: {
       text: "The way this website understands face and voice is amazing. It feels much more human and helpful than other AI tools.",
@@ -135,8 +135,8 @@ export const projectsData: ProjectData[] = [
     liveLink: "https://edrleam-operations.vercel.app/",
     heroImage: "/project3/img1.png",
     gallery: [
-      { src: "/project3/img2.png", alt: "Admin Dashboard Overview", span: "wide" },
-      { src: "/project3/img3.png", alt: "Trainer Portal View", span: "normal" }
+      { src: "/project3/img2.png", alt: "EDRLEAM Operations - Strategic Admin Financial Dashboard", span: "wide" },
+      { src: "/project3/img3.png", alt: "EDRLEAM Operations - Mobile-First Trainer Assignment Portal", span: "normal" }
     ],
     clientQuote: {
       text: "The new dashboard transformed how we track our training projects. We now see our profit margins instantly, and our trainers have everything they need in one place.",
@@ -173,8 +173,8 @@ export const projectsData: ProjectData[] = [
     adminLinkLabel: "Teacher Portal",
     heroImage: "/project4/hero.png",
     gallery: [
-      { src: "/project4/interface.png", alt: "AI Question Generator Interface", span: "wide" },
-      { src: "/project4/leaderboard.png", alt: "Real-time Classroom Leaderboard", span: "normal" }
+      { src: "/project4/interface.png", alt: "Smart Quiz JR - Generative AI Question Engine for Teachers", span: "wide" },
+      { src: "/project4/leaderboard.png", alt: "Smart Quiz JR - Real-time Classroom Leaderboard and Student Stats", span: "normal" }
     ],
     clientQuote: {
       text: "Smart Quiz JR has completely changed how I run my classroom. The AI-generated questions are spot-on, and the students are more engaged than ever before.",

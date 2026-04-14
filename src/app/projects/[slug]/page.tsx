@@ -60,5 +60,37 @@ export default async function ProjectPage({ params }: Props) {
     notFound();
   }
 
-  return <ProjectDetailClient project={project} />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CreativeWork",
+            "name": project.title,
+            "headline": project.subtitle,
+            "description": project.description,
+            "image": project.heroImage,
+            "author": {
+              "@type": "Organization",
+              "name": "Code Loom",
+              "url": "https://codeloom.in"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Code Loom",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://codeloom.in/logo.png"
+              }
+            },
+            "datePublished": project.year,
+            "genre": project.category
+          }),
+        }}
+      />
+      <ProjectDetailClient project={project} />
+    </>
+  );
 }

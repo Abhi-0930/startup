@@ -118,7 +118,35 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-sans">
         <Navbar />
         {children}
-        {/* The booking flow is now handled via the dedicated /book page */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              "name": "Code Loom",
+              "url": "https://codeloom.in",
+              "logo": "https://codeloom.in/logo.png",
+              "image": "https://codeloom.in/logo.png",
+              "description": "Code Loom builds high-performance digital ecosystems, AI applications, and conversion-driven websites for ambitious founders.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Bangalore",
+                "addressCountry": "IN"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "hello@codeloom.in",
+                "contactType": "customer service"
+              },
+              "sameAs": [
+                "https://x.com/codeloom_in",
+                "https://github.com/Abhi-0930"
+              ],
+              "priceRange": "$$$"
+            }),
+          }}
+        />
         <Footer />
       </body>
     </html>

@@ -183,9 +183,9 @@ export default function Services() {
                           }`}>
                             <div className="scale-90">{service.icon}</div>
                           </div>
-                          <span className="text-[16px] md:text-[18px] font-normal tracking-tight text-neutral-900 transition-colors duration-500">
+                          <h3 className="text-[16px] md:text-[18px] font-normal tracking-tight text-neutral-900 transition-colors duration-500">
                             {service.title}
-                          </span>
+                          </h3>
                         </div>
                         <ChevronDown className={`w-6 h-6 text-neutral-300 transition-transform duration-500 ${
                           activeTab === service.id ? "rotate-180 text-neutral-900" : ""
@@ -244,7 +244,7 @@ export default function Services() {
                          <Image
                            key={`active-img-${activeTab}`}
                            src={services.find(s => s.id === activeTab)?.imageSrc || services[0].imageSrc} 
-                           alt={services.find(s => s.id === activeTab)?.title || "Service"}
+                           alt={`${services.find(s => s.id === activeTab)?.title || "Service"} Preview - Code Loom Professional Services`}
                            fill
                            className="object-cover transition-transform duration-[10s] group-hover:scale-105"
                            priority={true}
