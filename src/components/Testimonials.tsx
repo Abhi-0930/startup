@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Quote, Activity, Boxes, Aperture } from "lucide-react";
+import { Quote, Activity, Sparkles, BarChart3, GraduationCap } from "lucide-react";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -9,42 +9,42 @@ const testimonials = [
   {
     id: 1,
     stat: "45s",
-    statLabel: "Check-out speed",
-    text: "Code Loom took our idea for a food website and made it real very fast. The site is so quick and easy for our customers to use. Zero downtime during our biggest launch.",
+    statLabel: "Checkout Speed",
+    text: "Code Loom took our vision for Malnadu Kitchen and made it real in record time. The platform handles our 1,500+ peak hour orders with absolute stability. It’s been a game-changer for our digital growth.",
     author: "Nabin",
-    role: "Guest Relations, Malnadu Kitchen",
+    role: "Senior Staff, Malnadu Kitchen",
     profileImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=256&h=256&auto=format&fit=crop",
     CompanyIcon: Activity,
   },
   {
     id: 2,
     stat: "94%",
-    statLabel: "AI assessment accuracy",
-    text: "The way this website understands face and voice is amazing. It feels much more human and helpful than other AI tools. Patient comfort improved markedly after launch.",
+    statLabel: "AI Assessment Accuracy",
+    text: "The AI sentiment engine developed by Code Loom is incredible. It provides an empathetic first touchpoint for our patients, making them feel heard and understood before their clinical session even begins.",
     author: "Dr. Ajay Kumar",
     role: "Founder, Mind Matters with Ajay",
     profileImage: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=256&h=256&auto=format&fit=crop",
-    CompanyIcon: Boxes,
+    CompanyIcon: Sparkles,
   },
   {
     id: 3,
     stat: "+60%",
-    statLabel: "increase in ops efficiency",
-    text: "The new dashboard transformed how we track our training projects. We now see our profit margins instantly, and our trainers have everything they need in one place.",
+    statLabel: "Ops Efficiency Increase",
+    text: "The new dashboard transformed how we track training projects. We now have real-time visibility into profit margins and trainer assignments across multiple cities. Truly world-class operational intelligence.",
     author: "Srivardhan",
     role: "Founder, EDRLEAM",
     profileImage: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=256&h=256&auto=format&fit=crop",
-    CompanyIcon: Aperture,
+    CompanyIcon: BarChart3,
   },
   {
     id: 4,
     stat: "+85%",
-    statLabel: "student engagement",
-    text: "Smart Quiz JR has completely changed how I run my classroom. The AI-generated questions are spot-on, and the students are more engaged than ever before.",
-    author: "James Wilson",
-    role: "Internal Lead, Smart Quiz JR",
-    profileImage: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=256&h=256&auto=format&fit=crop",
-    CompanyIcon: Activity,
+    statLabel: "Student Engagement",
+    text: "Smart Quiz JR has completely revolutionized my classroom. The AI-generated questions are academically rigorous, and the zero-latency competitive environment keeps students fully engaged.",
+    author: "Ananya Sharma",
+    role: "Lead Educator & Tech Consultant",
+    profileImage: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=256&h=256&auto=format&fit=crop",
+    CompanyIcon: GraduationCap,
   }
 ];
 
