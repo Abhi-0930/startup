@@ -178,13 +178,13 @@ export default function Footer() {
                 <Link href="#" className="group flex items-center gap-3 text-zinc-600 hover:text-black font-medium transition-colors">
                   <Send size={18} className="text-zinc-400 group-hover:text-black transition-colors" /> X
                 </Link>
-                <Link href="#" className="group flex items-center gap-3 text-zinc-600 hover:text-black font-medium transition-colors">
+                <Link href="https://www.instagram.com/codeloom.in/" target="_blank" className="group flex items-center gap-3 text-zinc-600 hover:text-black font-medium transition-colors">
                   <Camera size={18} className="text-zinc-400 group-hover:text-black transition-colors" /> Instagram
                 </Link>
-                <Link href="#" className="group flex items-center gap-3 text-zinc-600 hover:text-black font-medium transition-colors">
+                <Link href="https://www.linkedin.com/company/codeloom-in" target="_blank" className="group flex items-center gap-3 text-zinc-600 hover:text-black font-medium transition-colors">
                   <Globe size={18} className="text-zinc-400 group-hover:text-black transition-colors" /> LinkedIn
                 </Link>
-                <Link href="#" className="group flex items-center gap-3 text-zinc-600 hover:text-black font-medium transition-colors">
+                <Link href="https://github.com/codeloom-in" target="_blank" className="group flex items-center gap-3 text-zinc-600 hover:text-black font-medium transition-colors">
                   <Code size={18} className="text-zinc-400 group-hover:text-black transition-colors" /> GitHub
                 </Link>
               </nav>

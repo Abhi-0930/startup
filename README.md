@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Code Loom 🧶
 
-## Getting Started
+<div align="center">
+  <h3>From Idea to Scale. We Master our Craft.</h3>
+  <p>Code Loom is a high-performance digital agency specializing in rapid deployment of custom web, mobile, and AI solutions.</p>
+</div>
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 🚀 Our Mission
+At **Code Loom**, we bridge the gap between engineering excellence and high-impact business growth. We don't just build software; we build systems that establish authority and convert traffic into revenue.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 🛠️ Core Services
+| Service | Description |
+| :--- | :--- |
+| **🌐 Web Development** | High-speed, SEO-optimized sites built for conversion and reliability. |
+| **📱 App Development** | Scalable mobile and web applications with intuitive, modern interfaces. |
+| **🤖 AI Automation** | Multi-agentic AI workflows that turn manual tasks into automated intelligence. |
+| **💡 MVP Prototyping** | Rapid execution for early-stage products to validate core ideas fast. |
+| **⚡ Performance Engineering** | Deep optimization to ensure instant load times on any device. |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 🧠 The Code Loom Difference
+- **Rapid Deployment**: We deliver in days and weeks, not months.
+- **Direct Access**: You communicate directly with the builders, not account managers.
+- **Performance First**: Every line of code is optimized for speed and scalability.
+- **Fixed Pricing**: Transparent costs with clear, measurable deliverables.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+### 🗓️ Get in Touch
+We're always looking for ambitious projects and founders to partner with.
 
-To learn more about Next.js, take a look at the following resources:
+<div align="left">
+  <a href="https://codeloom.in/book">
+    <img src="https://img.shields.io/badge/Book%20a%20Discovery%20Call-000000?style=for-the-badge&logo=calendly&logoColor=white" />
+  </a>
+  <a href="INSERT_LINKEDIN_URL_HERE">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
+  </a>
+  <a href="INSERT_INSTAGRAM_URL_HERE">
+    <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" />
+  </a>
+</div>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- 📧 Email: [hello@codeloom.in](mailto:hello@codeloom.in)
+- 🌐 Website: [codeloom.in](https://codeloom.in)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+<div align="center">
+  <br />
+  <sub>© 2026 Code Loom. Build the future, one pixel at a time.</sub>
+</div>
