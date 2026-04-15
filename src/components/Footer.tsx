@@ -33,16 +33,30 @@ export default function Footer() {
                 Stay ahead with strategies uniting design, technology, and marketing to deliver measurable growth.
               </p>
               
-              <div className="relative group mt-2">
+              <form 
+                action="mailto:hello@codeloom.in" 
+                method="GET" 
+                className="relative group mt-2"
+              >
+                <input
+                  type="hidden"
+                  name="subject"
+                  value="Join Newsletter"
+                />
                 <input
                   type="email"
+                  name="body"
                   placeholder="Enter your email..."
                   className="w-full h-14 pl-6 pr-16 rounded-full border border-zinc-200 focus:border-zinc-900 focus:ring-0 transition-all outline-none bg-zinc-50/50 hover:bg-white text-zinc-900 font-medium"
+                  required
                 />
-                <button className="absolute right-1.5 top-1.5 w-11 h-11 bg-brand-orange text-white rounded-full flex items-center justify-center hover:bg-orange-600 transition-all active:scale-95 shadow-lg shadow-orange-500/20">
+                <button 
+                  type="submit"
+                  className="absolute right-1.5 top-1.5 w-11 h-11 bg-brand-orange text-white rounded-full flex items-center justify-center hover:bg-orange-600 transition-all active:scale-95 shadow-lg shadow-orange-500/20"
+                >
                   <ArrowRight size={20} />
                 </button>
-              </div>
+              </form>
             </div>
           </div>
 
