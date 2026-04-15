@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Send, Camera, Globe, Code, CheckCircle2, Loader2 } from "lucide-react";
+import { ArrowRight, Send, Camera, Globe, Code, Check, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Footer() {
@@ -11,9 +11,18 @@ export default function Footer() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState("");
 
+  useEffect(() => {
+    if (status === 'success') {
+      const timer = setTimeout(() => {
+        setStatus('idle');
+      }, 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
+
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
+    if (!email || status === 'loading') return;
 
     setStatus('loading');
     setErrorMessage("");
@@ -67,63 +76,75 @@ export default function Footer() {
                 Stay ahead with strategies uniting design, technology, and marketing to deliver measurable growth.
               </p>
               
-              <div className="relative min-h-[80px]">
-                <AnimatePresence mode="wait">
-                  {status === 'success' ? (
-                    <motion.div
-                      key="success"
-                      initial={{ opacity: 0, scale: 0.95, y: 10 }}
-                      animate={{ opacity: 1, scale: 1, y: 0 }}
-                      className="bg-emerald-50 border border-emerald-100 rounded-2xl p-4 md:p-6 flex items-start gap-4"
-                    >
-                      <div className="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center shrink-0">
-                        <CheckCircle2 className="text-white" size={20} />
-                      </div>
-                      <div className="space-y-1">
-                        <p className="text-emerald-900 font-bold text-sm md:text-base">Successfully Subscribed!</p>
-                        <p className="text-emerald-700/80 text-[12px] md:text-sm leading-relaxed">
-                          Welcome to the fold. You'll receive updates via email soon.
-                        </p>
-                      </div>
-                    </motion.div>
-                  ) : (
-                    <motion.form 
-                      key="form"
-                      exit={{ opacity: 0, scale: 0.95, y: -10 }}
-                      onSubmit={handleSubscribe}
-                      className="relative group"
-                    >
-                      <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Enter your email..."
-                        className="w-full h-14 pl-6 pr-16 rounded-full border border-zinc-200 focus:border-zinc-900 focus:ring-0 transition-all outline-none bg-zinc-50/50 hover:bg-white text-zinc-900 font-medium disabled:opacity-50"
-                        required
-                        disabled={status === 'loading'}
-                      />
-                      <button 
-                        type="submit"
-                        disabled={status === 'loading'}
-                        className="absolute right-1.5 top-1.5 w-11 h-11 bg-brand-orange text-white rounded-full flex items-center justify-center hover:bg-orange-600 transition-all active:scale-95 shadow-lg shadow-orange-500/20 disabled:bg-zinc-300 disabled:shadow-none"
-                      >
-                        {status === 'loading' ? (
+              <div className="relative">
+                <form 
+                  onSubmit={handleSubscribe}
+                  className="relative group h-14"
+                >
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder={status === 'success' ? "" : "Enter your email..."}
+                    className={`w-full h-full pl-6 pr-16 rounded-full border transition-all duration-500 outline-none font-medium ${
+                      status === 'success' 
+                        ? 'bg-black border-black text-white' 
+                        : 'bg-zinc-50/50 border-zinc-200 focus:border-zinc-900 text-zinc-900 hover:bg-white'
+                    }`}
+                    required
+                    disabled={status === 'loading' || status === 'success'}
+                  />
+                  
+                  <button 
+                    type="submit"
+                    disabled={status === 'loading' || status === 'success'}
+                    className={`absolute right-1.5 top-1.5 w-11 h-11 rounded-full flex items-center justify-center transition-all duration-500 active:scale-95 ${
+                      status === 'success'
+                        ? 'bg-white text-black'
+                        : 'bg-[#ff5c00] text-white shadow-lg shadow-orange-500/20 hover:bg-orange-600'
+                    }`}
+                  >
+                    <AnimatePresence mode="wait">
+                      {status === 'loading' ? (
+                        <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                           <Loader2 className="animate-spin" size={20} />
-                        ) : (
+                        </motion.div>
+                      ) : status === 'success' ? (
+                        <motion.div key="success" initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}>
+                          <Check size={20} strokeWidth={3} />
+                        </motion.div>
+                      ) : (
+                        <motion.div key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                           <ArrowRight size={20} />
-                        )}
-                      </button>
-                      
-                      {status === 'error' && (
-                        <motion.p 
-                          initial={{ opacity: 0, y: 5 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          className="text-red-500 text-xs font-medium mt-2 ml-4"
-                        >
-                          {errorMessage}
-                        </motion.p>
+                        </motion.div>
                       )}
-                    </motion.form>
+                    </AnimatePresence>
+                  </button>
+
+                  <AnimatePresence>
+                    {status === 'success' && (
+                      <motion.div 
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        className="absolute inset-0 flex items-center pl-6 pointer-events-none"
+                      >
+                        <span className="text-white font-bold tracking-tight text-sm">Successfully Subscribed.</span>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </form>
+
+                <AnimatePresence>
+                  {status === 'error' && (
+                    <motion.p 
+                      initial={{ opacity: 0, y: 5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0 }}
+                      className="text-[#ff5c00] text-xs font-bold mt-2 ml-6 uppercase tracking-wider"
+                    >
+                      {errorMessage}
+                    </motion.p>
                   )}
                 </AnimatePresence>
               </div>
