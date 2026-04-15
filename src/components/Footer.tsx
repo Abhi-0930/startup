@@ -1,11 +1,45 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Send, Camera, Globe, Code } from "lucide-react";
+import { ArrowRight, Send, Camera, Globe, Code, CheckCircle2, Loader2 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setStatus('loading');
+    setErrorMessage("");
+
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setStatus('success');
+        setEmail("");
+      } else {
+        setStatus('error');
+        setErrorMessage(data.error || "Something went wrong.");
+      }
+    } catch (err) {
+      setStatus('error');
+      setErrorMessage("Network error. Please try again.");
+    }
+  };
+
   return (
     <footer className="relative pt-12 pb-8 -mt-16 md:-mt-24 bg-white overflow-hidden">
       {/* 1. Main Content Section (Top) */}
@@ -33,30 +67,66 @@ export default function Footer() {
                 Stay ahead with strategies uniting design, technology, and marketing to deliver measurable growth.
               </p>
               
-              <form 
-                action="mailto:hello@codeloom.in" 
-                method="GET" 
-                className="relative group mt-2"
-              >
-                <input
-                  type="hidden"
-                  name="subject"
-                  value="Join Newsletter"
-                />
-                <input
-                  type="email"
-                  name="body"
-                  placeholder="Enter your email..."
-                  className="w-full h-14 pl-6 pr-16 rounded-full border border-zinc-200 focus:border-zinc-900 focus:ring-0 transition-all outline-none bg-zinc-50/50 hover:bg-white text-zinc-900 font-medium"
-                  required
-                />
-                <button 
-                  type="submit"
-                  className="absolute right-1.5 top-1.5 w-11 h-11 bg-brand-orange text-white rounded-full flex items-center justify-center hover:bg-orange-600 transition-all active:scale-95 shadow-lg shadow-orange-500/20"
-                >
-                  <ArrowRight size={20} />
-                </button>
-              </form>
+              <div className="relative min-h-[80px]">
+                <AnimatePresence mode="wait">
+                  {status === 'success' ? (
+                    <motion.div
+                      key="success"
+                      initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      className="bg-emerald-50 border border-emerald-100 rounded-2xl p-4 md:p-6 flex items-start gap-4"
+                    >
+                      <div className="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center shrink-0">
+                        <CheckCircle2 className="text-white" size={20} />
+                      </div>
+                      <div className="space-y-1">
+                        <p className="text-emerald-900 font-bold text-sm md:text-base">Successfully Subscribed!</p>
+                        <p className="text-emerald-700/80 text-[12px] md:text-sm leading-relaxed">
+                          Welcome to the fold. You'll receive updates via email soon.
+                        </p>
+                      </div>
+                    </motion.div>
+                  ) : (
+                    <motion.form 
+                      key="form"
+                      exit={{ opacity: 0, scale: 0.95, y: -10 }}
+                      onSubmit={handleSubscribe}
+                      className="relative group"
+                    >
+                      <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter your email..."
+                        className="w-full h-14 pl-6 pr-16 rounded-full border border-zinc-200 focus:border-zinc-900 focus:ring-0 transition-all outline-none bg-zinc-50/50 hover:bg-white text-zinc-900 font-medium disabled:opacity-50"
+                        required
+                        disabled={status === 'loading'}
+                      />
+                      <button 
+                        type="submit"
+                        disabled={status === 'loading'}
+                        className="absolute right-1.5 top-1.5 w-11 h-11 bg-brand-orange text-white rounded-full flex items-center justify-center hover:bg-orange-600 transition-all active:scale-95 shadow-lg shadow-orange-500/20 disabled:bg-zinc-300 disabled:shadow-none"
+                      >
+                        {status === 'loading' ? (
+                          <Loader2 className="animate-spin" size={20} />
+                        ) : (
+                          <ArrowRight size={20} />
+                        )}
+                      </button>
+                      
+                      {status === 'error' && (
+                        <motion.p 
+                          initial={{ opacity: 0, y: 5 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="text-red-500 text-xs font-medium mt-2 ml-4"
+                        >
+                          {errorMessage}
+                        </motion.p>
+                      )}
+                    </motion.form>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
           </div>
 
