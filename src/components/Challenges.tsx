@@ -111,7 +111,7 @@ function ChallengeCard({ item }: { item: ChallengeItem }) {
         </h3>
         
         {/* Text Reveal Logic: Problem vs Solution */}
-        <div className="relative min-h-[40px] md:min-h-[50px] text-left">
+        <div className="relative min-h-[60px] md:min-h-[50px] text-left">
           {/* Problem Text */}
           <p className={`text-zinc-500 text-[13px] md:text-[14px] leading-relaxed transition-all duration-500 absolute inset-0 text-left ${isActive ? 'opacity-0 invisible -translate-x-4' : 'opacity-100 visible translate-x-0'}`}>
             {item.description}

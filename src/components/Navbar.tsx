@@ -4,12 +4,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, ArrowRight, Menu, X, Folder, Users, LayoutGrid, MessageSquare } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCompanyOpen, setIsCompanyOpen] = useState(false);
+
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+    
+    // Logic: Hide when scrolling down (>150px), show when scrolling up
+    if (latest > previous && latest > 150) {
+      if (!isMobileMenuOpen) setIsHidden(true);
+    } else {
+      setIsHidden(false);
+    }
+  });
 
   // Desktop Hover Dropdown state
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
@@ -43,7 +57,15 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`fixed top-6 inset-x-0 z-50 ${scrolled ? 'top-4' : 'top-6'}`}>
+    <motion.nav 
+      variants={{
+        visible: { y: 0 },
+        hidden: { y: "-120%" },
+      }}
+      animate={isHidden ? "hidden" : "visible"}
+      transition={{ duration: 0.35, ease: "easeInOut" }}
+      className={`fixed top-6 inset-x-0 z-50 ${scrolled ? 'top-4' : 'top-6'}`}
+    >
       {/* Full Screen Blur Overlay: ONLY RENDER ON MOBILE */}
       <div 
         className={`fixed inset-0 bg-black/10 backdrop-blur-[3px] transition-all duration-300 ease-out md:hidden ${
@@ -337,6 +359,6 @@ export default function Navbar() {
           )}
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
