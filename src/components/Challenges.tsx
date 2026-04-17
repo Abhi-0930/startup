@@ -88,6 +88,87 @@ function ChallengeCard({ item }: { item: ChallengeItem }) {
         
         {/* Subtle Overlay */}
         <div className="absolute inset-0 bg-black/2 text-left"></div>
+
+        {/* Mobile Tap Indicator - Animated Cursor */}
+        <AnimatePresence>
+          {!isActive && (
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 z-20 md:hidden pointer-events-none"
+            >
+              {/* Moving Cursor & Dynamic Label */}
+              <motion.div
+                animate={{ 
+                  left: ["5%", "65%", "10%", "50%", "10%", "5%"],
+                  top: ["10%", "15%", "65%", "40%", "70%", "10%"],
+                }}
+                transition={{ 
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="absolute"
+              >
+                <div className="relative flex items-start gap-2">
+                  {/* The Cursor and Ripple Group */}
+                  <div className="relative">
+                    {/* Syncing Click Ripple */}
+                    <motion.div 
+                      animate={{ 
+                        scale: [1, 1.8, 1],
+                        opacity: [0, 0.7, 0]
+                      }}
+                      transition={{ 
+                        duration: 1.5,
+                        repeat: Infinity,
+                        times: [0, 0.5, 1],
+                        ease: "easeOut"
+                      }}
+                      className="absolute top-0 left-0 w-8 h-8 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/50 blur-[1px]"
+                    />
+                    
+                    {/* Sharp Neon Cursor */}
+                    <motion.div
+                      animate={{ scale: [1, 0.85, 1] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    >
+                      <svg 
+                        width="26" 
+                        height="26" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="white" 
+                        strokeWidth="2.5" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round"
+                        className="drop-shadow-[0_2px_8px_rgba(255,255,255,0.5)]"
+                      >
+                        <path d="m3 3 7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/>
+                        <path d="m13 13 6 6"/>
+                      </svg>
+                    </motion.div>
+                  </div>
+
+                  {/* Contextual Label (Following Cursor) */}
+                  <motion.div
+                    animate={{ 
+                      x: [0, 2, 0],
+                      opacity: [0.7, 1, 0.7]
+                    }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                    className="mt-4 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full shadow-lg border border-white/20"
+                  >
+                    <span className="text-[10px] font-bold text-black whitespace-nowrap tracking-tight uppercase">
+                      Tap to Interact
+                    </span>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Content Container (Bottom) */}

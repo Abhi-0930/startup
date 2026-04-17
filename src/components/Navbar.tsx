@@ -7,7 +7,6 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCompanyOpen, setIsCompanyOpen] = useState(false);
@@ -41,14 +40,6 @@ export default function Navbar() {
     }, 150);
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const navLinks = [
     { name: "Company", hasDropdown: true, icon: LayoutGrid },
     { name: "Projects", icon: Folder, href: "/#work" },
@@ -59,13 +50,17 @@ export default function Navbar() {
   return (
     <motion.nav 
       variants={{
-        visible: { y: 0 },
-        hidden: { y: "-120%" },
+        visible: { y: 0, opacity: 1 },
+        hidden: { y: -100, opacity: 0 },
       }}
       animate={isHidden ? "hidden" : "visible"}
-      transition={{ duration: 0.35, ease: "easeInOut" }}
-      className={`fixed top-6 inset-x-0 z-50 ${scrolled ? 'top-4' : 'top-6'}`}
+      transition={{ 
+        duration: 0.4, 
+        ease: [0.16, 1, 0.3, 1] // Custom cubic-bezier for a more "Apple-like" smooth reveal
+      }}
+      className="fixed top-6 inset-x-0 z-50 pointer-events-none"
     >
+      <div className="pointer-events-auto">
       {/* Full Screen Blur Overlay: ONLY RENDER ON MOBILE */}
       <div 
         className={`fixed inset-0 bg-black/10 backdrop-blur-[3px] transition-all duration-300 ease-out md:hidden ${
@@ -358,6 +353,7 @@ export default function Navbar() {
             </div>
           )}
         </div>
+      </div>
       </div>
     </motion.nav>
   );
