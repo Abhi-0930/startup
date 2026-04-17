@@ -135,27 +135,92 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "ProfessionalService",
-              "name": "Code Loom",
-              "url": "https://codeloom.in",
-              "logo": "https://codeloom.in/logo.png",
-              "image": "https://codeloom.in/logo.png",
-              "description": "Code Loom architects high-performance digital ecosystems, intelligent AI applications, and premium conversion-driven interfaces for ambitious founders and high-growth brands.",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Bangalore",
-                "addressCountry": "IN"
-              },
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "email": "hello@codeloom.in",
-                "contactType": "customer service"
-              },
-              "sameAs": [
-                "https://x.com/codeloom_in",
-                "https://github.com/Abhi-0930"
-              ],
-              "priceRange": "$$$"
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  "@id": "https://codeloom.in/#website",
+                  "url": "https://codeloom.in",
+                  "name": "Code Loom",
+                  "description": "Premium Digital Product & AI Engineering Agency",
+                  "potentialAction": [
+                    {
+                      "@type": "SearchAction",
+                      "target": "https://codeloom.in/search?q={search_term_string}",
+                      "query-input": "required name=search_term_string"
+                    }
+                  ],
+                  "inLanguage": "en-US"
+                },
+                {
+                  "@type": "ProfessionalService",
+                  "@id": "https://codeloom.in/#organization",
+                  "name": "Code Loom",
+                  "url": "https://codeloom.in",
+                  "logo": "https://codeloom.in/logo.png",
+                  "image": "https://codeloom.in/logo.png",
+                  "description": "Code Loom architects high-performance digital ecosystems and premium AI applications for ambitious founders.",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Bangalore",
+                    "addressCountry": "IN"
+                  },
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "email": "hello@codeloom.in",
+                    "contactType": "customer service"
+                  },
+                  "sameAs": [
+                    "https://x.com/codeloom_in",
+                    "https://github.com/codeloom-in",
+                    "https://www.linkedin.com/company/codeloom-in",
+                    "https://www.instagram.com/codeloom.in/"
+                  ],
+                  "priceRange": "$$$"
+                },
+                {
+                  "@type": "ItemList",
+                  "@id": "https://codeloom.in/#sitenavigation",
+                  "name": "Code Loom Main Navigation",
+                  "itemListElement": [
+                    {
+                      "@type": "SiteNavigationElement",
+                      "position": 1,
+                      "name": "Home",
+                      "url": "https://codeloom.in"
+                    },
+                    {
+                      "@type": "SiteNavigationElement",
+                      "position": 2,
+                      "name": "Services",
+                      "url": "https://codeloom.in#services"
+                    },
+                    {
+                      "@type": "SiteNavigationElement",
+                      "position": 3,
+                      "name": "Projects",
+                      "url": "https://codeloom.in#work"
+                    },
+                    {
+                      "@type": "SiteNavigationElement",
+                      "position": 4,
+                      "name": "About",
+                      "url": "https://codeloom.in/about"
+                    },
+                    {
+                      "@type": "SiteNavigationElement",
+                      "position": 5,
+                      "name": "Career",
+                      "url": "https://codeloom.in/career"
+                    },
+                    {
+                      "@type": "SiteNavigationElement",
+                      "position": 6,
+                      "name": "Contact",
+                      "url": "https://codeloom.in/contact"
+                    }
+                  ]
+                }
+              ]
             }),
           }}
         />

@@ -34,10 +34,10 @@ We're always looking for ambitious projects and founders to partner with.
   <a href="https://codeloom.in/book">
     <img src="https://img.shields.io/badge/Book%20a%20Discovery%20Call-000000?style=for-the-badge&logo=calendly&logoColor=white" />
   </a>
-  <a href="INSERT_LINKEDIN_URL_HERE">
+  <a href="https://www.linkedin.com/company/codeloom-in">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
   </a>
-  <a href="INSERT_INSTAGRAM_URL_HERE">
+  <a href="https://www.instagram.com/codeloom.in/">
     <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" />
   </a>
 </div>

@@ -67,26 +67,53 @@ export default async function ProjectPage({ params }: Props) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "CreativeWork",
-            "name": project.title,
-            "headline": project.subtitle,
-            "description": project.description,
-            "image": project.heroImage,
-            "author": {
-              "@type": "Organization",
-              "name": "Code Loom",
-              "url": "https://codeloom.in"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Code Loom",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://codeloom.in/logo.png"
+            "@graph": [
+              {
+                "@type": "CreativeWork",
+                "name": project.title,
+                "headline": project.subtitle,
+                "description": project.description,
+                "image": project.heroImage,
+                "author": {
+                  "@type": "Organization",
+                  "name": "Code Loom",
+                  "url": "https://codeloom.in"
+                },
+                "publisher": {
+                  "@type": "Organization",
+                  "name": "Code Loom",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://codeloom.in/logo.png"
+                  }
+                },
+                "datePublished": project.year,
+                "genre": project.category
+              },
+              {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://codeloom.in"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Projects",
+                    "item": "https://codeloom.in#work"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": project.title,
+                    "item": `https://codeloom.in/projects/${project.slug}`
+                  }
+                ]
               }
-            },
-            "datePublished": project.year,
-            "genre": project.category
+            ]
           }),
         }}
       />
