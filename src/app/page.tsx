@@ -36,6 +36,57 @@ export default function Home() {
 
   return (
     <main className="flex-1 bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Does Code Loom offer custom end-to-end engineering?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Absolutely. We specialize in bespoke digital infrastructure. From architectural planning to deployment and scaling, we build tailored systems that integrate seamlessly with your business objectives."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is your typical engagement timeline?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "For high-performance MVPs, we usually target a 30-day launch window. For complex enterprise environments, timelines typically range from 3 to 6 months, depending on the architectural complexity."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do you handle post-launch stability and scaling?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Stability is non-negotiable. We provide comprehensive post-launch management, including 24/7 infrastructure monitoring, security patching, and proactive scaling as your user base grows."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Who owns the Intellectual Property and source code?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Upon project completion and final payment, 100% of the intellectual property, source code, and biological assets are transferred to the client. We believe in total transparency and client ownership."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is your approach to transparency and pricing?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We operate on a fixed-fee, value-based model. We provide detailed project blueprints and cost breakdowns upfront, ensuring no hidden fees or unexpected line items during the engineering phase."
+                }
+              }
+            ]
+          }),
+        }}
+      />
       {sections.map((section, index) => (
         <ScrollReveal key={section.key} index={index} bgColor={section.bgColor}>
           {section.component}
