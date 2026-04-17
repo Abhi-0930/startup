@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Globe, Send, Sparkles, Check, X, Mail, MessageCircle } from "lucide-react";
 
 // Custom LinkedIn Icon as lucide-react v1.0+ removed brand icons
@@ -270,6 +270,50 @@ export default function AboutPageClient() {
                   }`}>
                     {founder.role}
                   </div>
+
+                  {/* Mobile Tap Indicator - Animated Cursor */}
+                  <AnimatePresence>
+                    {activeFounder !== founder.name && (
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="absolute inset-0 z-20 md:hidden pointer-events-none"
+                      >
+                        {/* Moving Cursor & Dynamic Label */}
+                        <motion.div
+                          animate={{ 
+                            left: ["10%", "60%", "20%", "70%", "10%"],
+                            top: ["20%", "30%", "65%", "45%", "20%"],
+                          }}
+                          transition={{ 
+                            duration: 5,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                          className="absolute"
+                        >
+                          <div className="relative flex items-start gap-2">
+                            <div className="relative">
+                              <motion.div 
+                                animate={{ scale: [1, 1.8, 1], opacity: [0, 0.7, 0] }}
+                                transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut" }}
+                                className="absolute top-0 left-0 w-8 h-8 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/50 blur-[1px]"
+                              />
+                              <motion.div animate={{ scale: [1, 0.85, 1] }} transition={{ duration: 1.5, repeat: Infinity }}>
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="drop-shadow-[0_2px_8px_rgba(255,255,255,0.5)]">
+                                  <path d="m3 3 7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="m13 13 6 6"/>
+                                </svg>
+                              </motion.div>
+                            </div>
+                            <motion.div className="mt-4 bg-white px-2.5 py-1 rounded-full shadow-lg border border-white/20">
+                              <span className="text-[10px] font-bold text-black whitespace-nowrap tracking-tight uppercase">Tap to View</span>
+                            </motion.div>
+                          </div>
+                        </motion.div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
 
                 <div className="text-center space-y-4">
