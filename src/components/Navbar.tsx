@@ -313,7 +313,7 @@ export default function Navbar() {
                             <div className="text-[13px] font-medium text-zinc-400 px-1">Pages</div>
                             <div className="flex flex-col gap-0.5">
                                <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Contact us</Link>
-                               <Link href="/career" onClick={() => setIsMobileMenuOpen(false)} className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Career</Link>
+                               <Link href="/career" onClick={() => setIsMobileMenuOpen(false)} className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Careers</Link>
                                <Link href="/privacy" onClick={() => setIsMobileMenuOpen(false)} className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Privacy Policy</Link>
                                <Link href="/terms" onClick={() => setIsMobileMenuOpen(false)} className="py-2 px-1 text-[15px] text-zinc-800 hover:text-black">Terms of Service</Link>
                             </div>

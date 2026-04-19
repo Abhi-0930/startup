@@ -87,6 +87,53 @@ export default function Home() {
           }),
         }}
       />
+      {/* SiteNavigationElement Schema for Google Sitelinks */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": [
+              {
+                "@type": "SiteNavigationElement",
+                "position": 1,
+                "name": "About Us",
+                "description": "Learn about our mission and the minds behind Code Loom.",
+                "url": "https://codeloom.in/about"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "position": 2,
+                "name": "Projects",
+                "description": "Explore our portfolio of high-fidelity design and engineering works.",
+                "url": "https://codeloom.in#work"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "position": 3,
+                "name": "Careers",
+                "description": "Join our team of extraordinary builders and designers.",
+                "url": "https://codeloom.in/career"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "position": 4,
+                "name": "Book a Strategy Session",
+                "description": "Schedule a 30-minute deep dive into your product roadmap.",
+                "url": "https://codeloom.in/book"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "position": 5,
+                "name": "Contact us",
+                "description": "Get in touch for custom inquiries and partnerships.",
+                "url": "https://codeloom.in/contact"
+              }
+            ]
+          })
+        }}
+      />
       {sections.map((section, index) => (
         <ScrollReveal key={section.key} index={index} bgColor={section.bgColor}>
           {section.component}

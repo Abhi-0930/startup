@@ -161,8 +161,8 @@ export default function Footer() {
                 <Link href="#work" className="text-zinc-600 hover:text-black font-medium transition-colors">
                   Projects
                 </Link>
-                <Link href="#" className="text-zinc-600 hover:text-black font-medium transition-colors flex items-center gap-2">
-                  Career
+                <Link href="/career" className="text-zinc-600 hover:text-black font-medium transition-colors flex items-center gap-2">
+                  Careers
                 </Link>
               </nav>
             </div>
