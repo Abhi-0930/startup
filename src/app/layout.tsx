@@ -185,8 +185,8 @@ export default function RootLayout({
                     {
                       "@type": "SiteNavigationElement",
                       "position": 1,
-                      "name": "Home",
-                      "url": "https://codeloom.in"
+                      "name": "About",
+                      "url": "https://codeloom.in/about"
                     },
                     {
                       "@type": "SiteNavigationElement",
@@ -203,20 +203,20 @@ export default function RootLayout({
                     {
                       "@type": "SiteNavigationElement",
                       "position": 4,
-                      "name": "About",
-                      "url": "https://codeloom.in/about"
-                    },
-                    {
-                      "@type": "SiteNavigationElement",
-                      "position": 5,
-                      "name": "Career",
+                      "name": "Careers",
                       "url": "https://codeloom.in/career"
                     },
                     {
                       "@type": "SiteNavigationElement",
-                      "position": 6,
+                      "position": 5,
                       "name": "Contact",
                       "url": "https://codeloom.in/contact"
+                    },
+                    {
+                      "@type": "SiteNavigationElement",
+                      "position": 6,
+                      "name": "Book a Call",
+                      "url": "https://codeloom.in/book"
                     }
                   ]
                 }
