@@ -64,10 +64,12 @@ export const metadata: Metadata = {
   verification: {
     google: "NqXlkx9OuXG32XYtf5DVJbUIgW88Y831FYmOMWm-WLU",
   },
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://codeloom.in",
     siteName: "Code Loom",
     title: "Code Loom | Premium Digital Product & AI Engineering Agency",
     description: "Code Loom architects high-performance digital ecosystems, intelligent AI applications, and premium conversion-driven interfaces.",
