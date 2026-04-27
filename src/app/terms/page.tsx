@@ -5,7 +5,10 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Terms of Service | Code Loom",
   description: "Terms and conditions for using Code Loom's website and design/engineering services.",
-  robots: { index: false, follow: true },
+  alternates: {
+    canonical: "https://codeloom.in/terms",
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function TermsOfService() {

@@ -5,7 +5,10 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Privacy Policy | Code Loom",
   description: "Code Loom's privacy policy regarding the collection, use, and protection of your personal information.",
-  robots: { index: false, follow: true }, // Don't index legal docs but follow links
+  alternates: {
+    canonical: "https://codeloom.in/privacy",
+  },
+  robots: { index: true, follow: true }, // Index legal docs and follow links
 };
 
 export default function PrivacyPolicy() {
