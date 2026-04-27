@@ -14,8 +14,8 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Code Loom | Professional Web Design & AI Engineering For Founders",
-  description: "Code Loom builds conversion-driven websites and high-performance AI applications for ambitious startups and founders. Engineered for growth, designed for clarity.",
+  title: "Code Loom | Web Development & AI Agency",
+  description: "Code Loom is a web development and AI agency that builds conversion-driven websites and high-performance AI applications for ambitious founders.",
   alternates: {
     canonical: "https://codeloom.in",
   },

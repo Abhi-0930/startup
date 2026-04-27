@@ -111,12 +111,12 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
             >
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[#09090b] mb-4 max-w-4xl mx-auto leading-[1.05] font-heading">
-                Web & Brand Design <br /> For Ambitious Founders
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-[#09090b] mb-4 max-w-4xl mx-auto leading-[1.05] font-heading">
+                Code Loom | Web Development <br /> & AI Agency
               </h1>
 
-              <p className="text-base md:text-base text-zinc-500 mb-8 max-w-2xl mx-auto leading-relaxed">
-                We build conversion-driven websites and marketing that attract, engage, and convert.
+              <p className="text-base md:text-lg text-zinc-500 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Code Loom is a web development and AI agency that builds conversion-driven websites and high-performance AI applications for ambitious founders.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
