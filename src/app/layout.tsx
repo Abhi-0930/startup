@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     google: "NqXlkx9OuXG32XYtf5DVJbUIgW88Y831FYmOMWm-WLU",
   },
   alternates: {
-    canonical: "/",
+    canonical: "https://codeloom.in",
   },
   openGraph: {
     type: "website",

@@ -16,6 +16,9 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Code Loom | Professional Web Design & AI Engineering For Founders",
   description: "Code Loom builds conversion-driven websites and high-performance AI applications for ambitious startups and founders. Engineered for growth, designed for clarity.",
+  alternates: {
+    canonical: "https://codeloom.in",
+  },
 };
 
 export default function Home() {
