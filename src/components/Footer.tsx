@@ -156,13 +156,13 @@ export default function Footer() {
             <div className="flex flex-col gap-6 min-w-[140px]">
               <h4 className="text-[13px] font-bold text-zinc-400 uppercase tracking-widest">Company</h4>
               <nav className="flex flex-col gap-4">
-                <Link href="/book" className="text-zinc-600 hover:text-black font-medium transition-colors">Book a call</Link>
-                <Link href="/about" className="text-zinc-600 hover:text-black font-medium transition-colors">About us</Link>
+                <Link href="/book" className="text-zinc-600 hover:text-black font-medium transition-colors">Book a Call</Link>
+                <Link href="/about" className="text-zinc-600 hover:text-black font-medium transition-colors">About Code Loom</Link>
                 <Link href="#work" className="text-zinc-600 hover:text-black font-medium transition-colors">
-                  Projects
+                  View Projects
                 </Link>
                 <Link href="/career" className="text-zinc-600 hover:text-black font-medium transition-colors flex items-center gap-2">
-                  Careers
+                  Careers at Code Loom
                 </Link>
               </nav>
             </div>

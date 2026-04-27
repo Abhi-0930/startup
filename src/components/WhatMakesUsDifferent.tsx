@@ -136,15 +136,21 @@ export default function WhatMakesUsDifferent() {
 
         {/* Bottom Call to Action */}
         <div className="mt-12 md:mt-20 flex flex-col md:flex-row items-center justify-between gap-8">
-          <motion.p 
+          <motion.div 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="text-lg md:text-xl text-zinc-400 font-medium max-w-xl"
+            className="text-lg md:text-xl text-zinc-400 font-medium max-w-xl space-y-4"
           >
-            We are not just another agency. We are your dedicated tech partners, building the future of your company.
-          </motion.p>
+            <p>
+              We are not just another agency. We are your dedicated tech partners, building the future of your company.
+            </p>
+            <Link href="/about" className="inline-flex items-center gap-2 text-zinc-900 font-bold hover:gap-3 transition-all border-b border-zinc-200 pb-1">
+              <span>Learn more about Code Loom</span>
+              <ArrowRight size={16} />
+            </Link>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}

@@ -23,9 +23,9 @@ export default function CareerPageClient() {
           <div className="max-w-3xl space-y-8 md:space-y-12 relative z-10 text-center md:text-left mx-auto md:mx-0">
             <div className="space-y-4 md:space-y-6">
               <div className="flex flex-col md:flex-row items-center md:items-baseline gap-4">
-                <h2 className="text-3xl md:text-6xl font-black tracking-tight text- zinc-900 uppercase leading-tight">
-                  Great things <br className="hidden md:block" /> <span className="text-zinc-300">take time.</span>
-                </h2>
+                <h1 className="text-3xl md:text-6xl font-black tracking-tight text-zinc-900 uppercase leading-tight">
+                  Careers at <br className="hidden md:block" /> <span className="text-zinc-300">Code Loom.</span>
+                </h1>
               </div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 text-zinc-500 text-[10px] md:text-[12px] font-bold uppercase tracking-widest">
                 Status: Selective

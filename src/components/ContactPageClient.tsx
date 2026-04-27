@@ -31,9 +31,9 @@ export default function ContactPageClient() {
               </div>
               
               <h1 className="text-3xl md:text-3xl lg:text-4xl font-black text-zinc-950 tracking-tight leading-[0.95]">
-                Let's build <br />
-                <span className="text-zinc-400 font-serif italic font-normal">the future</span> <br />
-                together.
+                Contact <br />
+                <span className="text-zinc-400 font-serif italic font-normal">Code Loom</span> <br />
+                Today.
               </h1>
               
               <p className="text-base md:text-lg text-zinc-500 font-medium max-w-md leading-relaxed">

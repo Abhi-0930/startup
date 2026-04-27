@@ -89,8 +89,8 @@ export default function AboutPageClient() {
               <span>Collective Intelligence</span>
             </div>
             <h1 className="text-[10vw] md:text-[6vw] font-black leading-[0.9] tracking-tighter text-[#09090b] uppercase">
-              Partners for <br />
-              <span className="text-zinc-300">growth.</span>
+              About <br />
+              <span className="text-zinc-300">Code Loom.</span>
             </h1>
             <p className="mt-8 md:mt-10 text-lg md:text-xl text-zinc-500 font-medium max-w-2xl mx-auto leading-relaxed">
               We empower high-growth teams with design and engineering excellence that scales.
