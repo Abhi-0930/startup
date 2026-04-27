@@ -175,7 +175,8 @@ export default function RootLayout({
                     "https://x.com/codeloom_in",
                     "https://github.com/codeloom-in",
                     "https://www.linkedin.com/company/codeloom-in",
-                    "https://www.instagram.com/codeloom.in/"
+                    "https://www.instagram.com/codeloom.in/",
+                    "https://wa.me/916302160783"
                   ],
                   "priceRange": "$$$"
                 },
